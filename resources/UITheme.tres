@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ccgcnbq3hocrl"]
+[gd_resource type="Theme" load_steps=7 format=3]
 
-[ext_resource type="FontFile" uid="uid://cmt04fltddig5" path="res://Caskaydia Cove Nerd Font Complete.ttf" id="1_4ejuk"]
+[ext_resource type="FontFile" uid="uid://cmt04fltddig5" path="res://assets/Caskaydia Cove Nerd Font Complete.ttf" id="1_4ejuk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ky4kg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.156863)

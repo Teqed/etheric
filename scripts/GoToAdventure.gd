@@ -7,10 +7,12 @@ func _ready():
 	pass
 
 func _pressed():
-	mainPanelContainer.remove_child(mainPanelContainer.get_child(0))
-	var test_scene = load("res://test_scene2.tscn")
+	for child in mainPanelContainer.get_children():
+		child.queue_free()
+	var test_scene = load("res://./scenes/test_scene.tscn")
 	var node = test_scene.instantiate()
 	mainPanelContainer.add_child(node)
 	Global.activeScene = node
-	Global.ecsWorld.disable("EnergySystem")
+	Global.ecsWorld.enable("EnergySystem")
+	Global.ecsWorld.enable("PositionSystem")
 	pass

@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8g428lc80f1q"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="FontFile" uid="uid://cmt04fltddig5" path="res://Caskaydia Cove Nerd Font Complete.ttf" id="1_3xau1"]
-[ext_resource type="Theme" uid="uid://ccgcnbq3hocrl" path="res://UITheme.tres" id="2_uycqa"]
-[ext_resource type="Script" path="res://Settings.gd" id="3_d11wf"]
-[ext_resource type="Script" path="res://Exit.gd" id="4_i6fps"]
-[ext_resource type="Script" path="res://ColorRect2.gd" id="5_085nb"]
+[ext_resource type="FontFile" uid="uid://cmt04fltddig5" path="res://assets/Caskaydia Cove Nerd Font Complete.ttf" id="1_3xau1"]
+[ext_resource type="Theme" path="res://resources/UITheme.tres" id="2_uycqa"]
+[ext_resource type="Script" path="res://scripts/Settings.gd" id="3_d11wf"]
+[ext_resource type="Script" path="res://scripts/Exit.gd" id="4_i6fps"]
+[ext_resource type="Script" path="res://scripts/ColorRect2.gd" id="5_085nb"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://vh4bwma7llyy"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://RegularPolygon2D.gd" id="1_1luqd"]
+[ext_resource type="Script" path="res://scripts/RegularPolygon2D.gd" id="1_1luqd"]
 
 [node name="Node2D" type="Node2D"]
 
