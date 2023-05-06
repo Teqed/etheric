@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://ms31v4c5nqw3"]
+
+[ext_resource type="Script" path="res://RegularPolygon2D.gd" id="1_6ykf6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -144.0
+offset_top = -96.0
+offset_right = 2032.0
+offset_bottom = 1168.0
+color = Color(0.301961, 1, 1, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1264, 320)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(1384, 184)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(1376, 288)
+script = ExtResource("1_6ykf6")
+_radius = 160
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D4" type="Node2D" parent="."]
+position = Vector2(1416, 392)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D5" type="Node2D" parent="."]
+position = Vector2(1320, 376)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D6" type="Node2D" parent="."]
+position = Vector2(1512, 336)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D7" type="Node2D" parent="."]
+position = Vector2(1584, 288)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D8" type="Node2D" parent="."]
+position = Vector2(1552, 224)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D9" type="Node2D" parent="."]
+position = Vector2(1480, 176)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D10" type="Node2D" parent="."]
+position = Vector2(1320, 208)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)
+
+[node name="Node2D11" type="Node2D" parent="."]
+position = Vector2(1280, 256)
+script = ExtResource("1_6ykf6")
+_color = Color(1, 1, 1, 1)

@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv5vb1a4e2qpj"]
+
+[ext_resource type="Texture2D" uid="uid://khge3ays1ryc" path="res://ss-logo.svg" id="1_5xsue"]
+[ext_resource type="Script" path="res://GoToAdventure.gd" id="2_l7l8f"]
+[ext_resource type="Script" path="res://GoToSky.gd" id="2_pb25r"]
+[ext_resource type="Script" path="res://SpeaksWithGlobal.gd" id="3_oohur"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 260.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+script = ExtResource("2_l7l8f")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+script = ExtResource("2_pb25r")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer4"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1350
+
+[node name="MarginContainer17" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer17"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+
+[node name="SpeaksWithGlobal" type="Node" parent="."]
+script = ExtResource("3_oohur")
+
+[node name="Timer" type="Timer" parent="SpeaksWithGlobal"]
+wait_time = 0.1
+autostart = true
