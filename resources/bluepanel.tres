@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cl786d7pb8xd8"]
+
+[ext_resource type="FontFile" uid="uid://cjvxl5nmpdcey" path="res://assets/RobotoMono-VariableFont_wght.ttf" id="1_7lbl5"]
+[ext_resource type="Texture2D" uid="uid://c4egap5anebe0" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/panel_blue.png" id="1_bai7v"]
+[ext_resource type="Texture2D" uid="uid://clok7ljarhrml" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_blue.png" id="1_pyjx6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtjjw"]
+texture = ExtResource("1_pyjx6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2wbfx"]
+texture = ExtResource("1_pyjx6")
+modulate_color = Color(0.741176, 0.741176, 0.741176, 0.929412)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_826hg"]
+texture = ExtResource("1_bai7v")
+modulate_color = Color(0.741176, 0.741176, 0.741176, 0.917647)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_dtjjw")
+Button/styles/normal = SubResource("StyleBoxTexture_2wbfx")
+Button/styles/pressed = SubResource("StyleBoxTexture_2wbfx")
+Label/fonts/font = ExtResource("1_7lbl5")
+Panel/styles/panel = SubResource("StyleBoxTexture_826hg")
+RichTextLabel/fonts/normal_font = ExtResource("1_7lbl5")

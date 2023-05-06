@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnom5oy2osxy5"]
+[gd_scene load_steps=6 format=3 uid="uid://cnom5oy2osxy5"]
 
 [ext_resource type="Texture2D" uid="uid://khge3ays1ryc" path="res://assets/ss-logo.svg" id="1_5xsue"]
 [ext_resource type="Script" path="res://scripts/GoToAdventure.gd" id="2_l7l8f"]
 [ext_resource type="Script" path="res://scripts/GoToSky.gd" id="2_pb25r"]
 [ext_resource type="Script" path="res://scripts/SpeaksWithGlobal.gd" id="3_oohur"]
+[ext_resource type="Script" path="res://scripts/GoToButton3.gd" id="4_uy185"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -61,6 +62,7 @@ custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 icon = ExtResource("1_5xsue")
 icon_alignment = 1
+script = ExtResource("4_uy185")
 
 [node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2

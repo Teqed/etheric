@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqi4f4jevp8jl"]
+
+[ext_resource type="Texture2D" uid="uid://bxtlnolqf168s" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalLeft.png" id="1_28dn7"]
+[ext_resource type="Texture2D" uid="uid://dfmrighk1hjr5" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalRight.png" id="2_iwb8t"]
+[ext_resource type="Texture2D" uid="uid://bchu23bolojww" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png" id="3_rergj"]
+[ext_resource type="Texture2D" uid="uid://cyttvaq0vjbs4" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/barYellow_horizontalLeft.png" id="4_7uuen"]
+[ext_resource type="Texture2D" uid="uid://gyjythnm6sh1" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/barYellow_horizontalMid.png" id="5_52t3b"]
+[ext_resource type="Texture2D" uid="uid://bc27mmbpwgvgv" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/barYellow_horizontalRight.png" id="6_jwari"]
+
+[node name="Statbar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 48.0
+
+[node name="Health" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+
+[node name="BarGreenHorizontalMid" type="Sprite2D" parent="Health"]
+position = Vector2(56, 16)
+scale = Vector2(4.77778, 1)
+texture = ExtResource("3_rergj")
+
+[node name="BarGreenHorizontalLeft" type="Sprite2D" parent="Health"]
+position = Vector2(13, 16)
+scale = Vector2(1.05556, 1)
+texture = ExtResource("1_28dn7")
+
+[node name="BarGreenHorizontalRight" type="Sprite2D" parent="Health"]
+position = Vector2(99, 16)
+scale = Vector2(1.05556, 1)
+texture = ExtResource("2_iwb8t")
+
+[node name="Energy" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+
+[node name="BarYellowHorizontalMid" type="Sprite2D" parent="Energy"]
+position = Vector2(57.75, 36)
+scale = Vector2(4.63889, 0.5)
+texture = ExtResource("5_52t3b")
+
+[node name="BarYellowHorizontalLeft" type="Sprite2D" parent="Energy"]
+position = Vector2(13, 36)
+scale = Vector2(1.05556, 0.5)
+texture = ExtResource("4_7uuen")
+
+[node name="BarYellowHorizontalRight" type="Sprite2D" parent="Energy"]
+position = Vector2(99, 36)
+scale = Vector2(1, 0.5)
+texture = ExtResource("6_jwari")

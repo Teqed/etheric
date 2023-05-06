@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 var ecsWorld: World
@@ -78,6 +79,9 @@ class World:
 	func disable(systemName: String):
 		systems[systemName].disable()
 		pass
+	func attach(_tilemap: TileMap):
+		systems["PositionSystem"].attach(_tilemap)
+		pass
 
 class System:
 	var name: String = "BlankSystem"
@@ -109,7 +113,6 @@ class EnergySystem extends System:
 		pass
 	func update():
 		if enabled:
-			print("EnergySystem is updating")
 			entitiesWithComponent = world.get_entities_with_component("Speed")
 			for entity in entitiesWithComponent:
 				energyComponent.data[entity.uid] += speedComponent.data[entity.uid]
@@ -123,40 +126,41 @@ class PositionSystem extends System:
 	var entitiesWithComponent: Dictionary = {} # Dictionary<Entity.uid: int, Entity>
 	var positionXComponent: Component
 	var positionYComponent: Component
+	var tilemap: TileMap
 	func _init(_world: World):
 		name = "PositionSystem"
 		world = _world
 		positionXComponent = world.get_component("Position_x")
 		positionYComponent = world.get_component("Position_y")
 		pass
+	func attach(_tilemap: TileMap):
+		tilemap = _tilemap
+		pass
 	func update():
 		if enabled:
-			# Check if any entities have been added or removed by comparing entitiesWithPosition to entitiesWithComponent
-			var _entitiesWithComponent = world.get_entities_with_component("Position_x")
-			for entity in _entitiesWithComponent:
-				entitiesWithComponent[entity.uid] = entity
-			if entitiesWithPosition.size() != entitiesWithComponent.size():
-				# Entities were added or removed. Figure out which ones.
-				for entityUid in entitiesWithComponent:
-					if not entitiesWithPosition.has(entitiesWithComponent[entityUid]):
-						# Entity was added
-						print("Entity was added")
-						entitiesWithPosition[entityUid] = entitiesWithComponent[entityUid]
-						# Create a square to represent the entity
-						var newNode = ColorRect.new()
-						newNode.color = Color(1, 0, 0)
-						newNode.set_size(Vector2(32, 32))
-						newNode.position = Vector2(positionXComponent.data[entityUid], positionYComponent.data[entityUid])
-						Global.activeScene.add_child(newNode)
-				for entityUid in entitiesWithPosition:
-					if not entitiesWithComponent.has(entitiesWithPosition[entityUid]):
-						# Entity was removed
-						entitiesWithPosition.erase(entitiesWithPosition[entityUid])
-			# Update positions
-			# for entity in entitiesWithPosition:
-				# positionXComponent.data[entity.uid] += 1
-				# positionYComponent.data[entity.uid] += 1
-		pass
+			if tilemap:
+				# Check if any entities have been added or removed by comparing entitiesWithPosition to entitiesWithComponent
+				var _entitiesWithComponent = world.get_entities_with_component("Position_x")
+				for entity in _entitiesWithComponent:
+					entitiesWithComponent[entity.uid] = entity
+				if entitiesWithPosition.size() != entitiesWithComponent.size():
+					# Entities were added or removed. Figure out which ones.
+					for entityUid in entitiesWithComponent:
+						if not entitiesWithPosition.has(entitiesWithComponent[entityUid]):
+							# Entity was added
+							print("Entity was added")
+							entitiesWithPosition[entityUid] = entitiesWithComponent[entityUid]
+							# Change the corresponding tile
+							tilemap.set_cell(3, Vector2i(positionXComponent.data[entityUid], positionYComponent.data[entityUid]), 0, Vector2i(2, 9))
+					for entityUid in entitiesWithPosition:
+						if not entitiesWithComponent.has(entitiesWithPosition[entityUid]):
+							# Entity was removed
+							entitiesWithPosition.erase(entitiesWithPosition[entityUid])
+				# Update positions
+				# for entity in entitiesWithPosition:
+					# positionXComponent.data[entity.uid] += 1
+					# positionYComponent.data[entity.uid] += 1
+			pass
 
 
 func _ready():
