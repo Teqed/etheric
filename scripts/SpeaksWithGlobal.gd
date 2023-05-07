@@ -5,7 +5,7 @@ func _ready():
 	var main_panel_array = get_tree().get_nodes_in_group("MainPanelGroup")
 	Global.main_panel = main_panel_array[0]
 	var hidden_panels_array = get_tree().get_nodes_in_group("HiddenPanelsGroup")
-	Global.hiddenPanels = hidden_panels_array[0]
+	Global.hidden_panels = hidden_panels_array[0]
 	$Timer.connect("timeout", _on_Timer_timeout)
 	for i in range(0, 10):
 		var entity = Global.ecs_world.add_entity()

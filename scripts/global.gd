@@ -4,10 +4,10 @@ extends Node
 var ecs_world: World
 var active_scene: Node
 var main_panel: PanelContainer
-var hiddenPanels: PanelContainer
-var adventureScene: Node
-var collectionScene: Node
-var combatScene: Node
+var hidden_panels: PanelContainer
+var adventure_scene: Node
+var collection_scene: Node
+var combat_scene: Node
 
 class Component:
 	var flag_position: int
