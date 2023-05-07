@@ -5,8 +5,11 @@ extends ColorRect
 # Every frame, reduce the alpha value of the ColorRect by a small amount.
 # When the alpha value reaches 0, queue_free() the node.
 
+var fading = true
+
 func _process(delta):
-	self.color.a -= delta * 0.5
-	if self.color.a <= 0:
-		queue_free()
+	if fading:
+		self.color.a -= delta * 0.5
+		if self.color.a <= 0:
+			fading = false
 

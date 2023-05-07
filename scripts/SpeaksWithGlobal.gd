@@ -2,6 +2,10 @@
 extends Node
 
 func _ready():
+	var mainPanelArray = get_tree().get_nodes_in_group("MainPanelGroup")
+	Global.mainPanel = mainPanelArray[0]
+	var hiddenPanelsArray = get_tree().get_nodes_in_group("HiddenPanelsGroup")
+	Global.hiddenPanels = hiddenPanelsArray[0]
 	$Timer.connect("timeout", _on_Timer_timeout)
 	for i in range(0, 10):
 		var entity = Global.ecsWorld.add_entity()

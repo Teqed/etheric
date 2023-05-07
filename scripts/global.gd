@@ -3,6 +3,11 @@ extends Node
 
 var ecsWorld: World
 var activeScene: Node
+var mainPanel: PanelContainer
+var hiddenPanels: PanelContainer
+var adventureScene: Node
+var collectionScene: Node
+var combatScene: Node
 
 class Component:
 	var flagPosition: int
@@ -137,30 +142,39 @@ class PositionSystem extends System:
 		tilemap = _tilemap
 		pass
 	func update():
-		if enabled:
-			if tilemap:
+		if tilemap:
+			if enabled:
 				# Check if any entities have been added or removed by comparing entitiesWithPosition to entitiesWithComponent
 				var _entitiesWithComponent = world.get_entities_with_component("Position_x")
 				for entity in _entitiesWithComponent:
 					entitiesWithComponent[entity.uid] = entity
 				if entitiesWithPosition.size() != entitiesWithComponent.size():
 					# Entities were added or removed. Figure out which ones.
-					for entityUid in entitiesWithComponent:
-						if not entitiesWithPosition.has(entitiesWithComponent[entityUid]):
-							# Entity was added
-							print("Entity was added")
-							entitiesWithPosition[entityUid] = entitiesWithComponent[entityUid]
-							# Change the corresponding tile
-							tilemap.set_cell(3, Vector2i(positionXComponent.data[entityUid], positionYComponent.data[entityUid]), 0, Vector2i(2, 9))
-					for entityUid in entitiesWithPosition:
-						if not entitiesWithComponent.has(entitiesWithPosition[entityUid]):
-							# Entity was removed
-							entitiesWithPosition.erase(entitiesWithPosition[entityUid])
+					if entitiesWithPosition.size() < entitiesWithComponent.size():
+						for entityUid in entitiesWithComponent:
+							if not entitiesWithPosition.has(entitiesWithComponent[entityUid]):
+								# Entity was added
+								entitiesWithPosition[entityUid] = entitiesWithComponent[entityUid]
+								# Change the corresponding tile
+								tilemap.set_cell(3, Vector2i(positionXComponent.data[entityUid], positionYComponent.data[entityUid]), 0, Vector2i(2, 9))
+					if entitiesWithPosition.size() > entitiesWithComponent.size():
+						for entityUid in entitiesWithPosition:
+							if not entitiesWithComponent.has(entitiesWithPosition[entityUid]):
+								# Entity was removed
+								entitiesWithPosition.erase(entitiesWithPosition[entityUid])
+								# Erase the corresponding tile
+								tilemap.set_cell(3, Vector2i(positionXComponent.data[entityUid], positionYComponent.data[entityUid]), 0, Vector2i(0, 0))
 				# Update positions
-				# for entity in entitiesWithPosition:
+				# for entity in entitiesWithPosition: // With CHANGED position? new component?
 					# positionXComponent.data[entity.uid] += 1
 					# positionYComponent.data[entity.uid] += 1
-			pass
+			else:
+				# Remove all entities from the tilemap belonging to this system
+				for entityUid in entitiesWithPosition:
+					tilemap.set_cell(3, Vector2i(positionXComponent.data[entityUid], positionYComponent.data[entityUid]), 0, Vector2i(0, 0))
+				entitiesWithPosition.clear()
+		pass
+
 
 
 func _ready():
@@ -178,4 +192,5 @@ func _ready():
 	ecsWorld.add_system(EnergySystem.new(ecsWorld))
 	ecsWorld.add_system(PositionSystem.new(ecsWorld))
 	ecsWorld.enable("EnergySystem")
+	ecsWorld.enable("PositionSystem")
 	pass

@@ -1,98 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnom5oy2osxy5"]
+[gd_scene load_steps=8 format=3 uid="uid://cnom5oy2osxy5"]
 
+[ext_resource type="PackedScene" uid="uid://tuish8ktym85" path="res://scenes/MainMenu.tscn" id="1_4f88r"]
 [ext_resource type="Texture2D" uid="uid://khge3ays1ryc" path="res://assets/ss-logo.svg" id="1_5xsue"]
-[ext_resource type="Script" path="res://scripts/GoToAdventure.gd" id="2_l7l8f"]
-[ext_resource type="Script" path="res://scripts/GoToSky.gd" id="2_pb25r"]
+[ext_resource type="Script" path="res://scripts/MainMenu/loadAllScenes.gd" id="2_e4oq6"]
 [ext_resource type="Script" path="res://scripts/SpeaksWithGlobal.gd" id="3_oohur"]
-[ext_resource type="Script" path="res://scripts/GoToButton3.gd" id="4_uy185"]
+[ext_resource type="Script" path="res://scripts/topbar/btn_adventure.gd" id="3_xuw70"]
+[ext_resource type="Script" path="res://scripts/topbar/btn_collection.gd" id="4_r8ipo"]
+[ext_resource type="Script" path="res://scripts/topbar/btn_combat.gd" id="5_s6rjl"]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(1920, 1080)
-offset_right = 260.0
-offset_bottom = 31.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
-script = ExtResource("2_l7l8f")
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer2"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
-script = ExtResource("2_pb25r")
-
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer3"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
-script = ExtResource("4_uy185")
-
-[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer4"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
-
-[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 1350
-
-[node name="MarginContainer17" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer17"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
+[node name="Root" type="Node2D"]
 
 [node name="SpeaksWithGlobal" type="Node" parent="."]
 script = ExtResource("3_oohur")
@@ -100,3 +16,101 @@ script = ExtResource("3_oohur")
 [node name="Timer" type="Timer" parent="SpeaksWithGlobal"]
 wait_time = 0.1
 autostart = true
+
+[node name="MainMarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 260.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HiddenPanels" type="PanelContainer" parent="MainMarginContainer" groups=["HiddenPanelsGroup"]]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("2_e4oq6")
+
+[node name="MainPanel" type="PanelContainer" parent="MainMarginContainer" groups=["MainPanelGroup"]]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MainMenu" parent="MainMarginContainer/MainPanel" instance=ExtResource("1_4f88r")]
+layout_mode = 2
+
+[node name="Topbar" type="HBoxContainer" parent="MainMarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Adventure" type="MarginContainer" parent="MainMarginContainer/Topbar"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Adventure"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+script = ExtResource("3_xuw70")
+
+[node name="Collection" type="MarginContainer" parent="MainMarginContainer/Topbar"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Collection"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+script = ExtResource("4_r8ipo")
+
+[node name="Village" type="MarginContainer" parent="MainMarginContainer/Topbar"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Village"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+
+[node name="Merchants" type="MarginContainer" parent="MainMarginContainer/Topbar"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Merchants"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1
+script = ExtResource("5_s6rjl")
+
+[node name="Margin" type="MarginContainer" parent="MainMarginContainer/Topbar"]
+layout_mode = 2
+theme_override_constants/margin_left = 1350
+
+[node name="Settings" type="MarginContainer" parent="MainMarginContainer/Topbar"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Settings"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+icon = ExtResource("1_5xsue")
+icon_alignment = 1

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://tuish8ktym85"]
 
 [ext_resource type="FontFile" uid="uid://cmt04fltddig5" path="res://assets/Caskaydia Cove Nerd Font Complete.ttf" id="1_3xau1"]
-[ext_resource type="Theme" path="res://resources/UITheme.tres" id="2_uycqa"]
-[ext_resource type="Script" path="res://scripts/Settings.gd" id="3_d11wf"]
-[ext_resource type="Script" path="res://scripts/Exit.gd" id="4_i6fps"]
+[ext_resource type="Theme" uid="uid://cogpwoa58yer7" path="res://resources/UITheme.tres" id="2_uycqa"]
+[ext_resource type="Script" path="res://scripts/MainMenu/btn_newGame.gd" id="3_yl703"]
 [ext_resource type="Script" path="res://scripts/ColorRect2.gd" id="5_085nb"]
 
 [node name="MainMenu" type="Control"]
@@ -73,6 +72,7 @@ text = "Continue"
 layout_mode = 2
 theme = ExtResource("2_uycqa")
 text = "New Game"
+script = ExtResource("3_yl703")
 
 [node name="Load Game" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2/MarginContainer7/VBoxContainer"]
 layout_mode = 2
@@ -84,19 +84,19 @@ text = "Load Game"
 layout_mode = 2
 theme = ExtResource("2_uycqa")
 text = "Settings"
-script = ExtResource("3_d11wf")
 
 [node name="Exit" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2/MarginContainer7/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_uycqa")
 text = "Exit"
-script = ExtResource("4_i6fps")
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+[node name="Fade" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("5_085nb")
