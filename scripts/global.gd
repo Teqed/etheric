@@ -1,55 +1,53 @@
 @tool
 extends Node
 
-var ecsWorld: World
-var activeScene: Node
-var mainPanel: PanelContainer
+var ecs_world: World
+var active_scene: Node
+var main_panel: PanelContainer
 var hiddenPanels: PanelContainer
 var adventureScene: Node
 var collectionScene: Node
 var combatScene: Node
 
 class Component:
-	var flagPosition: int
+	var flag_position: int
 	var data: PackedInt32Array
-	func _init(newFlagPosition):
-		flagPosition = newFlagPosition
+	func _init(new_flag_position):
+		flag_position = new_flag_position
 		data = PackedInt32Array()
-		pass
 
 class Entity:
-	var componentFlags: int
+	var component_flags: int
 	var uid: int
-	func _init(occupiedUids):
-		uid = occupiedUids
-		componentFlags = 0
-		pass
+	func _init(occupied_uids):
+		uid = occupied_uids
+		component_flags = 0
 
 class World:
 	var worldname: String = "DefaultWorld"
 	var components: Dictionary = {} # Dictionary<String, Component>
 	var entities: Array = Array() # Array<Entity>
-	var occupiedUids: int = -1
-	var occupiedFlags: Array = Array()
+	var occupied_uids: int = -1
+	var occupied_flags: Array = Array()
 	var systems: Dictionary = {} # Dictionary<String, System>
 	func _init():
 		pass
 	func add_entity() -> Entity:
-		occupiedUids += 1
-		var entity = Entity.new(occupiedUids)
+		occupied_uids += 1
+		var entity = Entity.new(occupied_uids)
 		entities.append(entity)
 		return entity
 	func remove_entity(entity: Entity):
 		# entities.erase(entity)
 		entities.remove_at(entity.uid)
 		for component in components:
-			var innerComponent = components[component]
-			if entity.componentFlags & (1 << innerComponent.flagPosition):
+			var inner_component = components[component]
+			if entity.componentFlags & (1 << inner_component.flagPosition):
 				remove_component(entity, component)
 	func create_component(name: String) -> Component:
-		var newFlagPosition = occupiedFlags.size()
-		occupiedFlags.append(newFlagPosition)
-		var component = Component.new(newFlagPosition)
+		var new_flag_position = occupied_flags.size()
+		occupied_flags.append(new_flag_position)
+		var component = Component.new(new_flag_position)
 		components[name] = component
 		return component
 	func add_component(entity: Entity, name: String, data: int) -> Component:
@@ -65,28 +63,23 @@ class World:
 		var component = components[name]
 		return component
 	func get_entities_with_component(name: String) -> Array:
-		var entitiesWithComponent = []
+		var entities_with_component = []
 		var component = components[name]
-		for entityFound in entities:
-			if entityFound.componentFlags & (1 << component.flagPosition):
-				entitiesWithComponent.append(entityFound)
-		return entitiesWithComponent
+		for entity_found in entities:
+			if entity_found.componentFlags & (1 << component.flagPosition):
+				entities_with_component.append(entity_found)
+		return entities_with_component
 	func add_system(system: System):
 		systems[system.name] = system
-		pass
 	func update():
 		for system in systems:
 			systems[system].update()
-		pass
-	func enable(systemName: String):
-		systems[systemName].enable()
-		pass
-	func disable(systemName: String):
-		systems[systemName].disable()
-		pass
+	func enable(system_name: String):
+		systems[system_name].enable()
+	func disable(system_name: String):
+		systems[system_name].disable()
 	func attach(_tilemap: TileMap):
 		systems["PositionSystem"].attach(_tilemap)
-		pass
 
 class System:
 	var name: String = "BlankSystem"
@@ -94,103 +87,104 @@ class System:
 	var enabled: bool = false
 	func _init(_world: World):
 		world = _world
-		pass
 	func update():
 		if enabled:
 			pass
-		pass
 	func enable():
 		enabled = true
-		pass
 	func disable():
 		enabled = false
-		pass
 
 class EnergySystem extends System:
-	var entitiesWithComponent: Array
-	var energyComponent: Component
-	var speedComponent: Component
+	var entities_with_component: Array
+	var energy_component: Component
+	var speed_component: Component
 	func _init(_world: World):
 		name = "EnergySystem"
 		world = _world
-		energyComponent = world.get_component("Energy")
-		speedComponent = world.get_component("Speed")
-		pass
+		energy_component = world.get_component("Energy")
+		speed_component = world.get_component("Speed")
 	func update():
 		if enabled:
-			entitiesWithComponent = world.get_entities_with_component("Speed")
-			for entity in entitiesWithComponent:
-				energyComponent.data[entity.uid] += speedComponent.data[entity.uid]
-				if energyComponent.data[entity.uid] > 1000:
+			entities_with_component = world.get_entities_with_component("Speed")
+			for entity in entities_with_component:
+				energy_component.data[entity.uid] += speed_component.data[entity.uid]
+				if energy_component.data[entity.uid] > 1000:
 					print(str(entity.uid) + " is taking a turn")
-					energyComponent.data[entity.uid] = 0
-		pass
+					energy_component.data[entity.uid] = 0
 
 class PositionSystem extends System:
-	var entitiesWithPosition: Dictionary = {} # Dictionary<Entity.uid: int, Entity>
-	var entitiesWithComponent: Dictionary = {} # Dictionary<Entity.uid: int, Entity>
-	var positionXComponent: Component
-	var positionYComponent: Component
+	var entities_with_position: Dictionary = {} # Dictionary<Entity.uid: int, Entity>
+	var entities_with_component: Dictionary = {} # Dictionary<Entity.uid: int, Entity>
+	var position_x_component: Component
+	var position_y_component: Component
 	var tilemap: TileMap
 	func _init(_world: World):
 		name = "PositionSystem"
 		world = _world
-		positionXComponent = world.get_component("Position_x")
-		positionYComponent = world.get_component("Position_y")
-		pass
+		position_x_component = world.get_component("Position_x")
+		position_y_component = world.get_component("Position_y")
 	func attach(_tilemap: TileMap):
 		tilemap = _tilemap
-		pass
 	func update():
 		if tilemap:
 			if enabled:
-				# Check if any entities have been added or removed by comparing entitiesWithPosition to entitiesWithComponent
-				var _entitiesWithComponent = world.get_entities_with_component("Position_x")
-				for entity in _entitiesWithComponent:
-					entitiesWithComponent[entity.uid] = entity
-				if entitiesWithPosition.size() != entitiesWithComponent.size():
+				# Check if any entities have been added or removed
+				var got_entities_with_component = world.get_entities_with_component("Position_x")
+				for entity in got_entities_with_component:
+					entities_with_component[entity.uid] = entity
+				if entities_with_position.size() != entities_with_component.size():
 					# Entities were added or removed. Figure out which ones.
-					if entitiesWithPosition.size() < entitiesWithComponent.size():
-						for entityUid in entitiesWithComponent:
-							if not entitiesWithPosition.has(entitiesWithComponent[entityUid]):
+					if entities_with_position.size() < entities_with_component.size():
+						for entity_uid in entities_with_component:
+							if not entities_with_position.has(entities_with_component[entity_uid]):
 								# Entity was added
-								entitiesWithPosition[entityUid] = entitiesWithComponent[entityUid]
+								entities_with_position[entity_uid] = entities_with_component[entity_uid]
 								# Change the corresponding tile
-								tilemap.set_cell(3, Vector2i(positionXComponent.data[entityUid], positionYComponent.data[entityUid]), 0, Vector2i(2, 9))
-					if entitiesWithPosition.size() > entitiesWithComponent.size():
-						for entityUid in entitiesWithPosition:
-							if not entitiesWithComponent.has(entitiesWithPosition[entityUid]):
+								tilemap.set_cell(3, Vector2i(
+										position_x_component.data[entity_uid],
+										position_y_component.data[entity_uid]),
+										0,
+										Vector2i(2, 9))
+					if entities_with_position.size() > entities_with_component.size():
+						for entity_uid in entities_with_position:
+							if not entities_with_component.has(entities_with_position[entity_uid]):
 								# Entity was removed
-								entitiesWithPosition.erase(entitiesWithPosition[entityUid])
+								entities_with_position.erase(entities_with_position[entity_uid])
 								# Erase the corresponding tile
-								tilemap.set_cell(3, Vector2i(positionXComponent.data[entityUid], positionYComponent.data[entityUid]), 0, Vector2i(0, 0))
+								tilemap.set_cell(3, Vector2i(
+									position_x_component.data[entity_uid],
+									position_y_component.data[entity_uid]),
+									0,
+									Vector2i(0, 0))
 				# Update positions
-				# for entity in entitiesWithPosition: // With CHANGED position? new component?
-					# positionXComponent.data[entity.uid] += 1
-					# positionYComponent.data[entity.uid] += 1
+				# for entity in entities_with_position: // With CHANGED position? new component?
+					# position_x_component.data[entity.uid] += 1
+					# position_y_component.data[entity.uid] += 1
 			else:
 				# Remove all entities from the tilemap belonging to this system
-				for entityUid in entitiesWithPosition:
-					tilemap.set_cell(3, Vector2i(positionXComponent.data[entityUid], positionYComponent.data[entityUid]), 0, Vector2i(0, 0))
-				entitiesWithPosition.clear()
-		pass
-
+				for entity_uid in entities_with_position:
+					tilemap.set_cell(3, Vector2i(
+						position_x_component.data[entity_uid],
+						position_y_component.data[entity_uid]),
+						0,
+						Vector2i(0, 0))
+				entities_with_position.clear()
 
 
 func _ready():
-	ecsWorld = World.new()
-	ecsWorld.create_component("Name");
-	ecsWorld.create_component("Position_x"); # Group 0
-	ecsWorld.create_component("Position_y"); # Group 0
-	ecsWorld.create_component("Energy"); # Group 1
-	ecsWorld.create_component("Speed"); # Group 1
-	ecsWorld.create_component("Health");
-	ecsWorld.create_component("Attack");
-	ecsWorld.create_component("IncomingDamage");
-	ecsWorld.create_component("IncomingHealing");
-	ecsWorld.create_component("InCombat");
-	ecsWorld.add_system(EnergySystem.new(ecsWorld))
-	ecsWorld.add_system(PositionSystem.new(ecsWorld))
-	ecsWorld.enable("EnergySystem")
-	ecsWorld.enable("PositionSystem")
-	pass
+	ecs_world = World.new()
+	ecs_world.create_component("Name");
+	ecs_world.create_component("Position_x"); # Group 0
+	ecs_world.create_component("Position_y"); # Group 0
+	ecs_world.create_component("Energy"); # Group 1
+	ecs_world.create_component("Speed"); # Group 1
+	ecs_world.create_component("Health");
+	ecs_world.create_component("Attack");
+	ecs_world.create_component("IncomingDamage");
+	ecs_world.create_component("IncomingHealing");
+	ecs_world.create_component("InCombat");
+	ecs_world.add_system(EnergySystem.new(ecs_world))
+	ecs_world.add_system(PositionSystem.new(ecs_world))
+	ecs_world.enable("EnergySystem")
+	ecs_world.enable("PositionSystem")

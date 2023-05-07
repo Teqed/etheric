@@ -56,18 +56,18 @@ func _read_cellmap():
 				if tile_id == -1:
 					print("No tile found at " + str(x) + ", " + str(y) + ", " + str(z))
 				if tile_id != -1:
-					var cellAtlas = tilemap.get_cell_atlas_coords(z, Vector2i(x, y))
+					var cell_atlas = tilemap.get_cell_atlas_coords(z, Vector2i(x, y))
 					var celldata = {
 						"tile_id": tile_id,
 						"tile_position": Vector2i(x, y),
 						"layer": z,
-						"cellAtlas": cellAtlas,
+						"cellAtlas": cell_atlas,
 					}
 					print(celldata)
 
-func _change_cell(newAtlasCoords):
+func _change_cell(new_atlas_coords):
 	var tilemap = get_node("/root/Node2D/MarginContainer/PanelContainer/Node2D/TileMap_Abandoned")
-	var newLayer = 0
-	var newCoords = Vector2i(1, 1)
-	var newSourceId = 0
-	tilemap.set_cell(newLayer, newCoords, newSourceId, newAtlasCoords)
+	var new_layer = 0
+	var new_coords = Vector2i(1, 1)
+	var new_source_id = 0
+	tilemap.set_cell(new_layer, new_coords, new_source_id, new_atlas_coords)
