@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://1wh8je3vhvif"]
+
+[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="1_rwttf"]
+[ext_resource type="Script" path="res://scripts/movepanel.gd" id="2_gktar"]
+
+[node name="MovePanel" type="Button"]
+offset_right = 320.0
+offset_bottom = 160.0
+focus_mode = 0
+theme = ExtResource("1_rwttf")
+script = ExtResource("2_gktar")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 18.0
+offset_right = 176.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 28
+text = "Move Name"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 90.0
+offset_right = 319.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 12
+text = "Atk: ?? - Acc: ??? - ??
+??"

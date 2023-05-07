@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyjxvqpqtiukn"]
+[gd_scene load_steps=14 format=3 uid="uid://dyjxvqpqtiukn"]
 
 [ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="1_6aoma"]
 [ext_resource type="TileSet" uid="uid://dcc4b126p1nx1" path="res://assets/prototype/kenney_tiny-dungeon/Tilemap/kenney_tiny-dungeon.tres" id="1_6vmwp"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d3yi0564dpv74" path="res://assets/prototype/kenney_background-elements/PNG/cloud9.png" id="9_j1s2m"]
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="11_8075h"]
 [ext_resource type="PackedScene" uid="uid://bqi4f4jevp8jl" path="res://scenes/statbar.tscn" id="12_fj0vb"]
+[ext_resource type="PackedScene" uid="uid://1wh8je3vhvif" path="res://scenes/movepanel.tscn" id="13_l2ubq"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -214,110 +215,63 @@ layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("11_8075h")
 
-[node name="Panel" type="Button" parent="Control/Moves"]
+[node name="Panel" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
 layout_mode = 0
 offset_left = 1216.0
 offset_top = 654.0
 offset_right = 1536.0
 offset_bottom = 814.0
-focus_mode = 0
 
-[node name="Name" type="Label" parent="Control/Moves/Panel"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 18.0
-offset_right = 176.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 28
+[node name="Name" parent="Control/Moves/Panel" index="0"]
 text = "Fireball"
 
-[node name="Description" type="Label" parent="Control/Moves/Panel"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 90.0
-offset_right = 319.0
-offset_bottom = 142.0
-theme_override_font_sizes/font_size = 12
+[node name="Description" parent="Control/Moves/Panel" index="1"]
 text = "Atk: 60 - Acc: 100 - All Foes
 Deals damage."
 
-[node name="Panel2" type="Button" parent="Control/Moves"]
+[node name="Panel2" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
 layout_mode = 0
-offset_left = 1568.0
+offset_left = 1566.0
 offset_top = 654.0
-offset_right = 1888.0
+offset_right = 1886.0
 offset_bottom = 814.0
-focus_mode = 0
 
-[node name="Name" type="Label" parent="Control/Moves/Panel2"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 18.0
-offset_right = 174.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 28
+[node name="Name" parent="Control/Moves/Panel2" index="0"]
 text = "Fireball"
 
-[node name="Description" type="Label" parent="Control/Moves/Panel2"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 90.0
-offset_right = 317.0
-offset_bottom = 142.0
-theme_override_font_sizes/font_size = 12
+[node name="Description" parent="Control/Moves/Panel2" index="1"]
 text = "Atk: 60 - Acc: 100 - All Foes
 Deals damage."
 
-[node name="Panel3" type="Button" parent="Control/Moves"]
+[node name="Panel3" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
 layout_mode = 0
 offset_left = 1216.0
 offset_top = 854.0
 offset_right = 1536.0
-offset_bottom = 1006.0
-focus_mode = 0
+offset_bottom = 1014.0
 
-[node name="Name" type="Label" parent="Control/Moves/Panel3"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 18.0
-offset_right = 176.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 28
+[node name="Name" parent="Control/Moves/Panel3" index="0"]
 text = "Fireball"
 
-[node name="Description" type="Label" parent="Control/Moves/Panel3"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 82.0
-offset_right = 319.0
-offset_bottom = 134.0
-theme_override_font_sizes/font_size = 12
+[node name="Description" parent="Control/Moves/Panel3" index="1"]
 text = "Atk: 60 - Acc: 100 - All Foes
 Deals damage."
 
-[node name="Panel4" type="Button" parent="Control/Moves"]
+[node name="Panel4" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
 layout_mode = 0
-offset_left = 1568.0
+offset_left = 1566.0
 offset_top = 854.0
-offset_right = 1888.0
-offset_bottom = 1006.0
-focus_mode = 0
+offset_right = 1886.0
+offset_bottom = 1014.0
 
-[node name="Name" type="Label" parent="Control/Moves/Panel4"]
-layout_mode = 0
-offset_left = 39.0
-offset_top = 18.0
-offset_right = 175.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 28
+[node name="Name" parent="Control/Moves/Panel4" index="0"]
 text = "Fireball"
 
-[node name="Description" type="Label" parent="Control/Moves/Panel4"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 82.0
-offset_right = 317.0
-offset_bottom = 134.0
-theme_override_font_sizes/font_size = 12
+[node name="Description" parent="Control/Moves/Panel4" index="1"]
 text = "Atk: 60 - Acc: 100 - All Foes
 Deals damage."
+
+[editable path="Control/Moves/Panel"]
+[editable path="Control/Moves/Panel2"]
+[editable path="Control/Moves/Panel3"]
+[editable path="Control/Moves/Panel4"]
