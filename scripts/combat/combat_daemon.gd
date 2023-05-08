@@ -10,12 +10,6 @@
 # in the form of events. When the player selects a move, you'll
 # send a message back to the combat system.
 
-# Let's define the 'monster' object.
-## tooltip: string[] // ([0]) is the name of the monster.
-## statpanel: int[] // ([0]) is the monster's health, ([1]) is the monster's energy.
-## appearance: vector2[] // ([0]) is the monster's position, ([1]) is the monster's spriteatlas.
-## moves: string[][] // ([0][0]) is the name of the first move, ([0][1]) is the move's description.
-
 class Monster:
 	var tooltip: Dictionary = {"name":"","description":""}
 	var statpanel: Dictionary = {"health":0,"energy":0}
@@ -57,10 +51,55 @@ class Monster:
 		elif key == "move3":
 			moves["move3"] = value
 
-# Let's define a 'position' object.
-## occupied: bool // Whether or not the position is occupied.
-## monster: monster // The monster that occupies the position.
-## animations: animation[] // The animations that are currently playing on the position.
+class CombatSlot extends Node2D:
+	var occupied: bool = false
+	var monster: Monster = null
+	var ordinal: int # Between 0 and 7, inclusive.
+	var other_objects: Array = []
+
+	func _init(set_ordinal: int):
+		self.ordinal = set_ordinal
+		if ordinal == 0:
+			self.position = Vector2(0,0)
+		elif ordinal == 1:
+			self.position = Vector2(1,0)
+		elif ordinal == 2:
+			self.position = Vector2(2,0)
+		elif ordinal == 3:
+			self.position = Vector2(3,0)
+		elif ordinal == 4:
+			self.position = Vector2(0,1)
+		elif ordinal == 5:
+			self.position = Vector2(1,1)
+		elif ordinal == 6:
+			self.position = Vector2(2,1)
+		elif ordinal == 7:
+			self.position = Vector2(3,1)
+	func populate(incoming_monster: Monster):
+		self.monster = incoming_monster
+		self.occupied = true
+	func depopulate():
+		self.monster = null
+		self.occupied = false
+	func update_monster(key: String, value):
+		self.monster.update_dictionary(key, value)
+	func get_monster():
+		if occupied:
+			return monster
+		else:
+			return null
+	func get_ordinal():
+		return ordinal
+	func swap_monsters(other_slot: CombatSlot):
+		var temp_monster: Monster = other_slot.get_monster()
+		if occupied:
+			other_slot.populate(monster)
+		else:
+			other_slot.depopulate()
+		if temp_monster != null:
+			populate(temp_monster)
+		else:
+			depopulate()
 
 
 # Some examples of possible actions are...

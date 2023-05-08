@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce7kpyxq0d54"]
+
+[ext_resource type="Script" path="res://scripts/combat/combat_slot.gd" id="1_8itr4"]
+
+[node name="CombatSlot" type="Node2D"]
+position = Vector2(128, 384)
+script = ExtResource("1_8itr4")
