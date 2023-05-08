@@ -1,0 +1,251 @@
+[gd_scene load_steps=15 format=3 uid="uid://b5ahwal26cbat"]
+
+[ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="1_5e83c"]
+[ext_resource type="Texture2D" uid="uid://cbociu42nw712" path="res://assets/prototype/kenney_background-elements/PNG/cloud2.png" id="2_yhy55"]
+[ext_resource type="Texture2D" uid="uid://mggwd5otaoei" path="res://assets/prototype/kenney_background-elements/PNG/cloud3.png" id="3_oy8i8"]
+[ext_resource type="Texture2D" uid="uid://dxukqofrytdk8" path="res://assets/prototype/kenney_background-elements/PNG/cloud4.png" id="4_rpwkk"]
+[ext_resource type="Texture2D" uid="uid://b6uco4tiwrkjc" path="res://assets/prototype/kenney_background-elements/PNG/cloud5.png" id="5_yk8ea"]
+[ext_resource type="Texture2D" uid="uid://bhi61bxq2jmml" path="res://assets/prototype/kenney_background-elements/PNG/cloud6.png" id="6_lf77q"]
+[ext_resource type="Texture2D" uid="uid://chwsp2gef5lli" path="res://assets/prototype/kenney_background-elements/PNG/cloud7.png" id="7_xcoq3"]
+[ext_resource type="Texture2D" uid="uid://chj47cksg7kn8" path="res://assets/prototype/kenney_background-elements/PNG/cloud8.png" id="8_3dxu0"]
+[ext_resource type="Texture2D" uid="uid://d3yi0564dpv74" path="res://assets/prototype/kenney_background-elements/PNG/cloud9.png" id="9_1o63f"]
+[ext_resource type="TileSet" uid="uid://dcc4b126p1nx1" path="res://assets/prototype/kenney_tiny-dungeon/Tilemap/kenney_tiny-dungeon.tres" id="10_qy25a"]
+[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="11_v2xo8"]
+[ext_resource type="PackedScene" uid="uid://bqi4f4jevp8jl" path="res://scenes/statbar.tscn" id="12_suyek"]
+[ext_resource type="Script" path="res://scripts/combat/moves_panel.gd" id="13_ndm7h"]
+[ext_resource type="PackedScene" uid="uid://1wh8je3vhvif" path="res://scenes/movepanel.tscn" id="14_nlwb5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sky" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 464.0
+color = Color(0, 0.796078, 0.996078, 1)
+
+[node name="Cloud1" type="Sprite2D" parent="Sky"]
+position = Vector2(216, 136)
+texture = ExtResource("1_5e83c")
+
+[node name="Cloud2" type="Sprite2D" parent="Sky"]
+position = Vector2(472, 104)
+texture = ExtResource("2_yhy55")
+
+[node name="Cloud3" type="Sprite2D" parent="Sky"]
+position = Vector2(736, 104)
+texture = ExtResource("3_oy8i8")
+
+[node name="Cloud4" type="Sprite2D" parent="Sky"]
+position = Vector2(1768, 208)
+texture = ExtResource("4_rpwkk")
+
+[node name="Cloud5" type="Sprite2D" parent="Sky"]
+position = Vector2(1464, 112)
+texture = ExtResource("5_yk8ea")
+
+[node name="Cloud6" type="Sprite2D" parent="Sky"]
+position = Vector2(1152, 120)
+texture = ExtResource("6_lf77q")
+
+[node name="Cloud7" type="Sprite2D" parent="Sky"]
+position = Vector2(320, 80)
+texture = ExtResource("7_xcoq3")
+
+[node name="Cloud8" type="Sprite2D" parent="Sky"]
+position = Vector2(1328, 88)
+texture = ExtResource("8_3dxu0")
+
+[node name="Cloud9" type="Sprite2D" parent="Sky"]
+position = Vector2(1672, 120)
+texture = ExtResource("9_1o63f")
+
+[node name="TileMap_Combat" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+tile_set = ExtResource("10_qy25a")
+format = 2
+layer_0/name = "Ground"
+layer_0/tile_data = PackedInt32Array(589824, 65537, 0, 655360, 65537, 0, 720896, 1, 0, 786432, 1, 0, 851968, 1, 0, 917504, 1, 0, 983040, 65537, 0, 1048576, 65537, 0, 1048577, 65537, 0, 1048578, 65537, 0, 1048579, 1, 0, 1048580, 65537, 0, 1048581, 65537, 0, 1048582, 1, 0, 1048583, 65537, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 65537, 0, 1048587, 1, 0, 1048588, 65537, 0, 1048589, 65537, 0, 1048590, 1, 0, 1048591, 65537, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 65537, 0, 1048595, 65537, 0, 1048596, 65537, 0, 1048597, 65537, 0, 1048598, 131073, 0, 1048599, 65537, 0, 1048600, 65537, 0, 1048601, 65537, 0, 1048602, 65537, 0, 1048603, 65537, 0, 1048604, 65537, 0, 1048605, 65537, 0, 983069, 1, 0, 917533, 1, 0, 851997, 65537, 0, 786461, 1, 0, 720925, 65537, 0, 655389, 1, 0, 589853, 65537, 0, 524317, 458753, 3, 458781, 458753, 3, 393245, 1, 0, 327709, 65537, 0, 262173, 1, 0, 262156, 1, 0, 327692, 1, 0, 393228, 131073, 0, 458764, 458753, 3, 524300, 1, 0, 589836, 65537, 0, 655372, 1, 0, 720908, 65537, 0, 786444, 65537, 0, 851980, 1, 0, 917516, 1, 0, 983052, 65537, 0, 262157, 65537, 0, 327693, 65537, 0, 393229, 65537, 0, 458765, 458753, 3, 524301, 131073, 0, 589837, 65537, 0, 655373, 1, 0, 720909, 65537, 0, 786445, 1, 0, 851981, 1, 0, 917517, 65537, 0, 983053, 1, 0, 262158, 1, 0, 327694, 1, 0, 393230, 458753, 3, 458766, 458753, 3, 524302, 458753, 3, 589838, 1, 0, 655374, 1, 0, 720910, 1, 0, 786446, 65537, 0, 851982, 65537, 0, 917518, 65537, 0, 983054, 65537, 0, 262159, 65537, 0, 327695, 65537, 0, 393231, 458753, 3, 458767, 458753, 3, 524303, 458753, 3, 589839, 1, 0, 655375, 65537, 0, 720911, 65537, 0, 786447, 1, 0, 851983, 65537, 0, 917519, 1, 0, 983055, 1, 0, 262160, 65537, 0, 327696, 1, 0, 393232, 1, 0, 458768, 458753, 3, 524304, 458753, 3, 589840, 1, 0, 655376, 65537, 0, 720912, 65537, 0, 786448, 1, 0, 851984, 65537, 0, 917520, 65537, 0, 983056, 1, 0, 262161, 1, 0, 327697, 65537, 0, 393233, 1, 0, 458769, 458753, 3, 524305, 65537, 0, 589841, 65537, 0, 655377, 1, 0, 720913, 1, 0, 786449, 1, 0, 851985, 65537, 0, 917521, 1, 0, 983057, 65537, 0, 262162, 65537, 0, 327698, 65537, 0, 393234, 458753, 3, 458770, 458753, 3, 524306, 1, 0, 589842, 1, 0, 655378, 1, 0, 720914, 1, 0, 786450, 1, 0, 851986, 1, 0, 917522, 65537, 0, 983058, 1, 0, 262163, 65537, 0, 327699, 65537, 0, 458771, 458753, 3, 524307, 1, 0, 589843, 65537, 0, 655379, 1, 0, 720915, 1, 0, 786451, 1, 0, 851987, 1, 0, 917523, 65537, 0, 983059, 1, 0, 262164, 1, 0, 327700, 1, 0, 393236, 65537, 0, 458772, 458753, 3, 524308, 458753, 3, 589844, 1, 0, 655380, 65537, 0, 720916, 65537, 0, 786452, 1, 0, 851988, 65537, 0, 917524, 1, 0, 983060, 1, 0, 262165, 65537, 0, 327701, 65537, 0, 393237, 1, 0, 458773, 458753, 3, 524309, 1, 0, 589845, 65537, 0, 655381, 65537, 0, 720917, 1, 0, 786453, 65537, 0, 851989, 65537, 0, 917525, 1, 0, 983061, 1, 0, 262166, 1, 0, 327702, 65537, 0, 393238, 1, 0, 458774, 458753, 3, 524310, 458753, 3, 589846, 1, 0, 655382, 65537, 0, 720918, 131073, 0, 786454, 65537, 0, 851990, 1, 0, 917526, 1, 0, 983062, 65537, 0, 262167, 1, 0, 327703, 1, 0, 393239, 65537, 0, 458775, 458753, 3, 524311, 458753, 3, 589847, 65537, 0, 655383, 65537, 0, 720919, 65537, 0, 786455, 1, 0, 851991, 1, 0, 917527, 1, 0, 983063, 65537, 0, 262168, 1, 0, 327704, 131073, 0, 393240, 1, 0, 458776, 458753, 3, 524312, 1, 0, 589848, 65537, 0, 655384, 1, 0, 720920, 1, 0, 786456, 65537, 0, 851992, 65537, 0, 917528, 65537, 0, 983064, 1, 0, 262169, 1, 0, 327705, 65537, 0, 393241, 458753, 3, 458777, 458753, 3, 524313, 1, 0, 589849, 65537, 0, 655385, 65537, 0, 720921, 65537, 0, 786457, 65537, 0, 851993, 1, 0, 917529, 1, 0, 983065, 65537, 0, 262170, 65537, 0, 327706, 1, 0, 393242, 458753, 3, 458778, 458753, 3, 524314, 458753, 3, 589850, 1, 0, 655386, 1, 0, 720922, 1, 0, 786458, 65537, 0, 851994, 65537, 0, 917530, 1, 0, 983066, 1, 0, 262171, 1, 0, 327707, 1, 0, 393243, 458753, 3, 458779, 458753, 3, 524315, 458753, 3, 589851, 65537, 0, 655387, 65537, 0, 720923, 65537, 0, 786459, 65537, 0, 851995, 1, 0, 917531, 1, 0, 983067, 1, 0, 262172, 65537, 0, 327708, 1, 0, 393244, 458753, 3, 458780, 458753, 3, 524316, 458753, 3, 589852, 131073, 0, 655388, 1, 0, 720924, 65537, 0, 786460, 65537, 0, 851996, 1, 0, 917532, 65537, 0, 983068, 1, 0, 589825, 65537, 0, 655361, 65537, 0, 720897, 65537, 0, 786433, 1, 0, 851969, 1, 0, 917505, 65537, 0, 983041, 1, 0, 589826, 65537, 0, 655362, 65537, 0, 720898, 1, 0, 786434, 65537, 0, 851970, 1, 0, 917506, 1, 0, 983042, 1, 0, 589827, 131073, 0, 655363, 65537, 0, 720899, 1, 0, 786435, 1, 0, 851971, 1, 0, 917507, 65537, 0, 983043, 65537, 0, 589828, 1, 0, 655364, 65537, 0, 720900, 1, 0, 786436, 1, 0, 851972, 1, 0, 917508, 1, 0, 983044, 1, 0, 589829, 65537, 0, 655365, 65537, 0, 720901, 1, 0, 786437, 65537, 0, 851973, 65537, 0, 917509, 65537, 0, 983045, 65537, 0, 589830, 1, 0, 655366, 1, 0, 720902, 65537, 0, 786438, 65537, 0, 851974, 131073, 0, 917510, 65537, 0, 983046, 1, 0, 589831, 65537, 0, 655367, 1, 0, 720903, 1, 0, 786439, 1, 0, 851975, 1, 0, 917511, 1, 0, 983047, 1, 0, 589832, 65537, 0, 655368, 65537, 0, 720904, 1, 0, 786440, 65537, 0, 851976, 1, 0, 917512, 1, 0, 983048, 1, 0, 589833, 65537, 0, 655369, 65537, 0, 720905, 65537, 0, 786441, 1, 0, 851977, 65537, 0, 917513, 1, 0, 983049, 1, 0, 589834, 1, 0, 655370, 65537, 0, 720906, 1, 0, 786442, 65537, 0, 851978, 1, 0, 917514, 1, 0, 983050, 1, 0, 589835, 65537, 0, 655371, 1, 0, 720907, 65537, 0, 786443, 65537, 0, 851979, 1, 0, 917515, 65537, 0, 983051, 1, 0, 262145, 65537, 0, 327681, 1, 0, 393217, 458753, 3, 458753, 458753, 3, 524289, 458753, 3, 262146, 1, 0, 327682, 65537, 0, 393218, 1, 0, 458754, 458753, 3, 524290, 1, 0, 262147, 65537, 0, 327683, 65537, 0, 393219, 1, 0, 458755, 458753, 3, 524291, 458753, 3, 262148, 65537, 0, 327684, 1, 0, 393220, 131073, 0, 458756, 458753, 3, 524292, 458753, 3, 262149, 1, 0, 327685, 65537, 0, 393221, 65537, 0, 458757, 458753, 3, 524293, 458753, 3, 262150, 65537, 0, 327686, 1, 0, 393222, 65537, 0, 458758, 458753, 3, 524294, 458753, 3, 262151, 1, 0, 327687, 65537, 0, 393223, 458753, 3, 458759, 458753, 3, 524295, 1, 0, 262152, 65537, 0, 327688, 65537, 0, 393224, 458753, 3, 458760, 458753, 3, 524296, 458753, 3, 262153, 65537, 0, 327689, 65537, 0, 393225, 1, 0, 458761, 458753, 3, 524297, 458753, 3, 262154, 1, 0, 327690, 1, 0, 393226, 1, 0, 458762, 458753, 3, 524298, 1, 0, 262155, 1, 0, 327691, 1, 0, 393227, 65537, 0, 458763, 458753, 3, 524299, 65537, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 458753, 3, 524288, 458753, 3, 393235, 458753, 3)
+layer_1/name = "Shrubbery"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(262144, 262145, 0, 262145, 262145, 0, 196610, 262145, 0, 262147, 262145, 0, 262148, 262145, 0, 262149, 262145, 0, 262150, 262145, 0, 196615, 262145, 0, 196616, 262145, 0, 196617, 262145, 0, 262153, 262145, 0, 262151, 262145, 0, 262152, 262145, 0, 196614, 262145, 0, 196612, 262145, 0, 262154, 262145, 0, 262155, 327681, 0, 262156, 262145, 0, 196618, 262145, 0, 196620, 262145, 0, 262158, 262145, 0, 262157, 262145, 0, 196621, 262145, 0, 262159, 262145, 0, 196625, 262145, 0, 262160, 262145, 0, 262161, 262145, 0, 262162, 262145, 0, 196627, 262145, 0, 262163, 262145, 0, 196626, 262145, 0, 262164, 262145, 0, 262165, 262145, 0, 262166, 262145, 0, 262167, 262145, 0, 196632, 262145, 0, 196629, 262145, 0, 196633, 262145, 0, 196634, 262145, 0, 196635, 262145, 0, 262171, 262145, 0, 262172, 262145, 0, 262173, 262145, 0, 196637, 262145, 0, 196636, 262145, 0, 196631, 262145, 0, 327682, 327681, 0, 327705, 327681, 0)
+layer_2/name = "Stuff"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 2
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Things"
+layer_3/enabled = true
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = 3
+layer_3/tile_data = PackedInt32Array(393218, 196608, 9, 393221, 262144, 65546, 393224, 196608, 65546, 393227, 196608, 65546, 393234, 0, 65544, 393237, 0, 65543, 393240, 65536, 65544, 393243, 196608, 65543)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("11_v2xo8")
+
+[node name="CombatLog" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/CombatLog"]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 640.0
+offset_right = 1152.0
+offset_bottom = 1024.0
+color = Color(0.231373, 0.231373, 0.231373, 0.733333)
+
+[node name="Panel" type="Panel" parent="Control/CombatLog"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 640.0
+offset_right = 1152.0
+offset_bottom = 1024.0
+theme = ExtResource("11_v2xo8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/CombatLog"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 672.0
+offset_right = 1104.0
+offset_bottom = 992.0
+theme = ExtResource("11_v2xo8")
+text = "Player 1 attacks the enemy for 10 damage.
+Enemy retaliates with a spell, dealing 5 damage to Player 1.
+Player 2 casts a healing spell, restoring 15 health to Player 1.
+Enemy attacks Player 2 for 8 damage.
+Player 1 uses a special ability, dealing 20 damage to the enemy.
+Enemy attempts to flee, but fails.
+Player 2 attacks the enemy for 12 damage.
+Player 1 attacks the enemy for 10 damage, defeating it.
+All players gain 100 experience points.
+Player 1 attacks the enemy for 10 damage.
+Enemy retaliates with a spell, dealing 5 damage to Player 1.
+Player 2 casts a healing spell, restoring 15 health to Player 1.
+Enemy attacks Player 2 for 8 damage.
+Player 1 uses a special ability, dealing 20 damage to the enemy.
+Enemy attempts to flee, but fails.
+Player 2 attacks the enemy for 12 damage.
+Player 1 attacks the enemy for 10 damage, defeating it.
+All players gain 100 experience points.
+Player 1 attacks the enemy for 10 damage.
+Enemy retaliates with a spell, dealing 5 damage to Player 1.
+Player 2 casts a healing spell, restoring 15 health to Player 1.
+Enemy attacks Player 2 for 8 damage.
+Player 1 uses a special ability, dealing 20 damage to the enemy.
+Enemy attempts to flee, but fails.
+Player 2 attacks the enemy for 12 damage.
+Player 1 attacks the enemy for 10 damage, defeating it.
+All players gain 100 experience points.
+Player 1 attacks the enemy for 10 damage.
+Enemy retaliates with a spell, dealing 5 damage to Player 1.
+Player 2 casts a healing spell, restoring 15 health to Player 1.
+Enemy attacks Player 2 for 8 damage.
+Player 1 uses a special ability, dealing 20 damage to the enemy.
+Enemy attempts to flee, but fails.
+Player 2 attacks the enemy for 12 damage.
+Player 1 attacks the enemy for 10 damage, defeating it.
+All players gain 100 experience points."
+scroll_following = true
+
+[node name="StatBars" type="Control" parent="Control"]
+anchors_preset = 0
+
+[node name="Enemy0" parent="Control/StatBars" instance=ExtResource("12_suyek")]
+offset_left = 104.0
+offset_top = 472.0
+offset_right = 104.0
+offset_bottom = 472.0
+
+[node name="Enemy1" parent="Control/StatBars" instance=ExtResource("12_suyek")]
+offset_left = 296.0
+offset_top = 472.0
+offset_right = 296.0
+offset_bottom = 472.0
+
+[node name="Enemy2" parent="Control/StatBars" instance=ExtResource("12_suyek")]
+offset_left = 488.0
+offset_top = 472.0
+offset_right = 488.0
+offset_bottom = 472.0
+
+[node name="Enemy3" parent="Control/StatBars" instance=ExtResource("12_suyek")]
+offset_left = 680.0
+offset_top = 472.0
+offset_right = 680.0
+offset_bottom = 472.0
+
+[node name="Ally0" parent="Control/StatBars" instance=ExtResource("12_suyek")]
+offset_left = 1128.0
+offset_top = 472.0
+offset_right = 1128.0
+offset_bottom = 472.0
+
+[node name="Ally1" parent="Control/StatBars" instance=ExtResource("12_suyek")]
+offset_left = 1320.0
+offset_top = 472.0
+offset_right = 1320.0
+offset_bottom = 472.0
+
+[node name="Ally2" parent="Control/StatBars" instance=ExtResource("12_suyek")]
+offset_left = 1512.0
+offset_top = 472.0
+offset_right = 1512.0
+offset_bottom = 472.0
+
+[node name="Ally3" parent="Control/StatBars" instance=ExtResource("12_suyek")]
+offset_left = 1704.0
+offset_top = 472.0
+offset_right = 1704.0
+offset_bottom = 472.0
+
+[node name="Moves" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("11_v2xo8")
+script = ExtResource("13_ndm7h")
+
+[node name="MoveButton1" parent="Control/Moves" instance=ExtResource("14_nlwb5")]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 654.0
+offset_right = 1536.0
+offset_bottom = 814.0
+
+[node name="MoveButton2" parent="Control/Moves" instance=ExtResource("14_nlwb5")]
+layout_mode = 0
+offset_left = 1566.0
+offset_top = 654.0
+offset_right = 1886.0
+offset_bottom = 814.0
+
+[node name="MoveButton3" parent="Control/Moves" instance=ExtResource("14_nlwb5")]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 854.0
+offset_right = 1536.0
+offset_bottom = 1014.0
+
+[node name="MoveButton4" parent="Control/Moves" instance=ExtResource("14_nlwb5")]
+layout_mode = 0
+offset_left = 1566.0
+offset_top = 854.0
+offset_right = 1886.0
+offset_bottom = 1014.0
+
+[editable path="Control/Moves/MoveButton1"]
+[editable path="Control/Moves/MoveButton2"]
+[editable path="Control/Moves/MoveButton3"]
+[editable path="Control/Moves/MoveButton4"]
