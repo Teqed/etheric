@@ -42,7 +42,7 @@ class World:
 		entities.remove_at(entity.uid)
 		for component in components:
 			var inner_component = components[component]
-			if entity.componentFlags & (1 << inner_component.flagPosition):
+			if entity.component_flags & (1 << inner_component.flag_position):
 				remove_component(entity, component)
 	func create_component(name: String) -> Component:
 		var new_flag_position = occupied_flags.size()
@@ -52,12 +52,12 @@ class World:
 		return component
 	func add_component(entity: Entity, name: String, data: int) -> Component:
 		var component = components[name]
-		entity.componentFlags = entity.componentFlags | (1 << component.flagPosition)
+		entity.component_flags = entity.component_flags | (1 << component.flag_position)
 		component.data.insert(entity.uid, data)
 		return component
 	func remove_component(entity: Entity, name: String):
 		var component = components[name]
-		entity.componentFlags = entity.componentFlags & ~(1 << component.flagPosition)
+		entity.component_flags = entity.component_flags & ~(1 << component.flag_position)
 		component.data[entity.uid] = 0
 	func get_component(name: String) -> Component:
 		var component = components[name]
@@ -66,7 +66,7 @@ class World:
 		var entities_with_component = []
 		var component = components[name]
 		for entity_found in entities:
-			if entity_found.componentFlags & (1 << component.flagPosition):
+			if entity_found.component_flags & (1 << component.flag_position):
 				entities_with_component.append(entity_found)
 		return entities_with_component
 	func add_system(system: System):

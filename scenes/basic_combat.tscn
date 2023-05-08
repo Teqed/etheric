@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyjxvqpqtiukn"]
+[gd_scene load_steps=15 format=3 uid="uid://dyjxvqpqtiukn"]
 
 [ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="1_6aoma"]
 [ext_resource type="TileSet" uid="uid://dcc4b126p1nx1" path="res://assets/prototype/kenney_tiny-dungeon/Tilemap/kenney_tiny-dungeon.tres" id="1_6vmwp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="11_8075h"]
 [ext_resource type="PackedScene" uid="uid://bqi4f4jevp8jl" path="res://scenes/statbar.tscn" id="12_fj0vb"]
 [ext_resource type="PackedScene" uid="uid://1wh8je3vhvif" path="res://scenes/movepanel.tscn" id="13_l2ubq"]
+[ext_resource type="Script" path="res://scripts/combat/moves_panel.gd" id="13_ow2sp"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -214,64 +215,37 @@ offset_bottom = 472.0
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("11_8075h")
+script = ExtResource("13_ow2sp")
 
-[node name="Panel" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
+[node name="MoveButton1" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
 layout_mode = 0
 offset_left = 1216.0
 offset_top = 654.0
 offset_right = 1536.0
 offset_bottom = 814.0
 
-[node name="Name" parent="Control/Moves/Panel" index="0"]
-text = "Fireball"
-
-[node name="Description" parent="Control/Moves/Panel" index="1"]
-text = "Atk: 60 - Acc: 100 - All Foes
-Deals damage."
-
-[node name="Panel2" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
+[node name="MoveButton2" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
 layout_mode = 0
 offset_left = 1566.0
 offset_top = 654.0
 offset_right = 1886.0
 offset_bottom = 814.0
 
-[node name="Name" parent="Control/Moves/Panel2" index="0"]
-text = "Fireball"
-
-[node name="Description" parent="Control/Moves/Panel2" index="1"]
-text = "Atk: 60 - Acc: 100 - All Foes
-Deals damage."
-
-[node name="Panel3" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
+[node name="MoveButton3" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
 layout_mode = 0
 offset_left = 1216.0
 offset_top = 854.0
 offset_right = 1536.0
 offset_bottom = 1014.0
 
-[node name="Name" parent="Control/Moves/Panel3" index="0"]
-text = "Fireball"
-
-[node name="Description" parent="Control/Moves/Panel3" index="1"]
-text = "Atk: 60 - Acc: 100 - All Foes
-Deals damage."
-
-[node name="Panel4" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
+[node name="MoveButton4" parent="Control/Moves" instance=ExtResource("13_l2ubq")]
 layout_mode = 0
 offset_left = 1566.0
 offset_top = 854.0
 offset_right = 1886.0
 offset_bottom = 1014.0
 
-[node name="Name" parent="Control/Moves/Panel4" index="0"]
-text = "Fireball"
-
-[node name="Description" parent="Control/Moves/Panel4" index="1"]
-text = "Atk: 60 - Acc: 100 - All Foes
-Deals damage."
-
-[editable path="Control/Moves/Panel"]
-[editable path="Control/Moves/Panel2"]
-[editable path="Control/Moves/Panel3"]
-[editable path="Control/Moves/Panel4"]
+[editable path="Control/Moves/MoveButton1"]
+[editable path="Control/Moves/MoveButton2"]
+[editable path="Control/Moves/MoveButton3"]
+[editable path="Control/Moves/MoveButton4"]
