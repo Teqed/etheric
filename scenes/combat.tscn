@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5ahwal26cbat"]
+[gd_scene load_steps=15 format=3 uid="uid://b5ahwal26cbat"]
 
 [ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="1_5e83c"]
 [ext_resource type="Texture2D" uid="uid://cbociu42nw712" path="res://assets/prototype/kenney_background-elements/PNG/cloud2.png" id="2_yhy55"]
@@ -12,7 +12,6 @@
 [ext_resource type="TileSet" uid="uid://dcc4b126p1nx1" path="res://assets/prototype/kenney_tiny-dungeon/Tilemap/kenney_tiny-dungeon.tres" id="10_qy25a"]
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="11_v2xo8"]
 [ext_resource type="Script" path="res://scripts/combat/combat_daemon.gd" id="12_gd315"]
-[ext_resource type="PackedScene" uid="uid://bqi4f4jevp8jl" path="res://scenes/statbar.tscn" id="12_suyek"]
 [ext_resource type="PackedScene" uid="uid://1wh8je3vhvif" path="res://scenes/movepanel.tscn" id="14_nlwb5"]
 [ext_resource type="PackedScene" uid="uid://ce7kpyxq0d54" path="res://scenes/combat_slot.tscn" id="14_plajn"]
 
@@ -162,57 +161,6 @@ Player 1 attacks the enemy for 10 damage, defeating it.
 All players gain 100 experience points."
 scroll_following = true
 
-[node name="StatBars" type="Control" parent="Control"]
-anchors_preset = 0
-
-[node name="Enemy0" parent="Control/StatBars" instance=ExtResource("12_suyek")]
-offset_left = 104.0
-offset_top = 472.0
-offset_right = 104.0
-offset_bottom = 472.0
-
-[node name="Enemy1" parent="Control/StatBars" instance=ExtResource("12_suyek")]
-offset_left = 296.0
-offset_top = 472.0
-offset_right = 296.0
-offset_bottom = 472.0
-
-[node name="Enemy2" parent="Control/StatBars" instance=ExtResource("12_suyek")]
-offset_left = 488.0
-offset_top = 472.0
-offset_right = 488.0
-offset_bottom = 472.0
-
-[node name="Enemy3" parent="Control/StatBars" instance=ExtResource("12_suyek")]
-offset_left = 680.0
-offset_top = 472.0
-offset_right = 680.0
-offset_bottom = 472.0
-
-[node name="Ally0" parent="Control/StatBars" instance=ExtResource("12_suyek")]
-offset_left = 1128.0
-offset_top = 472.0
-offset_right = 1128.0
-offset_bottom = 472.0
-
-[node name="Ally1" parent="Control/StatBars" instance=ExtResource("12_suyek")]
-offset_left = 1320.0
-offset_top = 472.0
-offset_right = 1320.0
-offset_bottom = 472.0
-
-[node name="Ally2" parent="Control/StatBars" instance=ExtResource("12_suyek")]
-offset_left = 1512.0
-offset_top = 472.0
-offset_right = 1512.0
-offset_bottom = 472.0
-
-[node name="Ally3" parent="Control/StatBars" instance=ExtResource("12_suyek")]
-offset_left = 1704.0
-offset_top = 472.0
-offset_right = 1704.0
-offset_bottom = 472.0
-
 [node name="Moves" type="Control" parent="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -251,24 +199,31 @@ offset_bottom = 1014.0
 [node name="CombatSlot0" parent="Control/Slots" instance=ExtResource("14_plajn")]
 
 [node name="CombatSlot1" parent="Control/Slots" instance=ExtResource("14_plajn")]
+position = Vector2(320, 384)
 ordinal = 1
 
 [node name="CombatSlot2" parent="Control/Slots" instance=ExtResource("14_plajn")]
+position = Vector2(512, 384)
 ordinal = 2
 
 [node name="CombatSlot3" parent="Control/Slots" instance=ExtResource("14_plajn")]
+position = Vector2(704, 384)
 ordinal = 3
 
 [node name="CombatSlot4" parent="Control/Slots" instance=ExtResource("14_plajn")]
+position = Vector2(1152, 384)
 ordinal = 4
 
 [node name="CombatSlot5" parent="Control/Slots" instance=ExtResource("14_plajn")]
+position = Vector2(1344, 384)
 ordinal = 5
 
 [node name="CombatSlot6" parent="Control/Slots" instance=ExtResource("14_plajn")]
+position = Vector2(1536, 384)
 ordinal = 6
 
 [node name="CombatSlot7" parent="Control/Slots" instance=ExtResource("14_plajn")]
+position = Vector2(1728, 384)
 ordinal = 7
 
 [editable path="Control/Moves/MoveButton1"]

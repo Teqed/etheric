@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://8wjtsge5nlem"]
+[gd_scene load_steps=2 format=3 uid="uid://8wjtsge5nlem"]
 
 [ext_resource type="TileSet" uid="uid://dcc4b126p1nx1" path="res://assets/prototype/kenney_tiny-dungeon/Tilemap/kenney_tiny-dungeon.tres" id="1_mm3cs"]
-[ext_resource type="PackedScene" uid="uid://byxwsfhkvwmld" path="res://scenes/PlayerKnight.tscn" id="2_lana4"]
 
 [node name="TileMapRoot" type="Node2D"]
 
@@ -33,9 +32,4 @@ layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 3
-layer_3/tile_data = PackedInt32Array(131078, 524289, 7, 196614, 524289, 8, 262147, 65536, 10, 262150, 262144, 7, 196615, 327680, 7, 262151, 0, 65543, 196620, 655360, 6, 262156, 655360, 6)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_lana4")]
-z_index = 3
-position = Vector2(480, 480)
-scale = Vector2(4, 4)
+layer_3/tile_data = PackedInt32Array(131078, 524289, 7, 196614, 524289, 8, 262147, 65536, 10, 262150, 262144, 7, 196615, 327680, 7, 262151, 0, 65543, 196620, 655360, 6, 262156, 655360, 6, 524303, 2, 65536)

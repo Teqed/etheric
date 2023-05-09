@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 @export_range(0,7) var ordinal: int # Between 0 and 7, inclusive.
@@ -30,6 +31,10 @@ func _ready():
 	elif ordinal == 7:
 		self.position = Vector2(1728,384)
 		add_to_group("slot_7")
+	if (true):
+		# Populate some temporary monsters for testing purposes.
+		var temp_monster: Monster = Monster.new()
+		populate(temp_monster)
 func populate(incoming_monster: Monster):
 	self.monster = incoming_monster
 	self.occupied = true
