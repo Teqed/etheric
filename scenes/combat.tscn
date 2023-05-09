@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5ahwal26cbat"]
+[gd_scene load_steps=16 format=3 uid="uid://b5ahwal26cbat"]
 
 [ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="1_5e83c"]
 [ext_resource type="Texture2D" uid="uid://cbociu42nw712" path="res://assets/prototype/kenney_background-elements/PNG/cloud2.png" id="2_yhy55"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d3yi0564dpv74" path="res://assets/prototype/kenney_background-elements/PNG/cloud9.png" id="9_1o63f"]
 [ext_resource type="TileSet" uid="uid://dcc4b126p1nx1" path="res://assets/prototype/kenney_tiny-dungeon/Tilemap/kenney_tiny-dungeon.tres" id="10_qy25a"]
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="11_v2xo8"]
+[ext_resource type="Script" path="res://scripts/combat/combat_daemon.gd" id="12_gd315"]
 [ext_resource type="PackedScene" uid="uid://bqi4f4jevp8jl" path="res://scenes/statbar.tscn" id="12_suyek"]
 [ext_resource type="PackedScene" uid="uid://1wh8je3vhvif" path="res://scenes/movepanel.tscn" id="14_nlwb5"]
 [ext_resource type="PackedScene" uid="uid://ce7kpyxq0d54" path="res://scenes/combat_slot.tscn" id="14_plajn"]
@@ -93,6 +94,7 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme = ExtResource("11_v2xo8")
+script = ExtResource("12_gd315")
 
 [node name="CombatLog" type="Control" parent="Control"]
 layout_mode = 3

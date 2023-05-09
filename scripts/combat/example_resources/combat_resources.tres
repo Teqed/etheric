@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CombatResources" load_steps=2 format=3 uid="uid://4i2ckgm176ar"]
+
+[ext_resource type="Script" path="res://scripts/combat/combat_resources.gd" id="1_5w7hc"]
+
+[resource]
+script = ExtResource("1_5w7hc")
+health = 100
+max_health = 100
+stamina = 100
+max_stamina = 100

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Monster_Resources" load_steps=2 format=3 uid="uid://brxrta1yyua5d"]
+
+[ext_resource type="Script" path="res://scripts/monsters/monster_resources.gd" id="1_1rdii"]
+
+[resource]
+script = ExtResource("1_1rdii")
+moves = null
