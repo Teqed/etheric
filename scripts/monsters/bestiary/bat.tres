@@ -1,7 +1,14 @@
-[gd_resource type="Resource" script_class="Monster_Resources" load_steps=2 format=3 uid="uid://bp8y32akox5k5"]
+[gd_resource type="Resource" script_class="Monster_Resources" load_steps=6 format=3 uid="uid://b1iureme2prey"]
 
-[ext_resource type="Script" path="res://scripts/monsters/monster_resources.gd" id="1_rd52y"]
+[ext_resource type="Resource" path="res://scripts/monsters/appearances/default.tres" id="1_dyi4r"]
+[ext_resource type="Resource" path="res://scripts/monsters/movesets/default.tres" id="2_3jg1i"]
+[ext_resource type="Script" path="res://scripts/monsters/bestiary/monster_resources.gd" id="3_wa001"]
+[ext_resource type="Resource" path="res://scripts/monsters/statpanels/default.tres" id="4_br8r3"]
+[ext_resource type="Resource" path="res://scripts/monsters/tooltips/default.tres" id="5_x7tj7"]
 
 [resource]
-script = ExtResource("1_rd52y")
-moves = null
+script = ExtResource("3_wa001")
+tooltip = ExtResource("5_x7tj7")
+statpanel = ExtResource("4_br8r3")
+appearance = ExtResource("1_dyi4r")
+moves = ExtResource("2_3jg1i")

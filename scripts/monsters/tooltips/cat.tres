@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Monster_Resources_Tooltip" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/monsters/tooltips/tooltip.gd" id="1_qy75v"]
+
+[resource]
+script = ExtResource("1_qy75v")
+monster_name = null
+description = null

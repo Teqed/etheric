@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="Monster_Resources_Moveset" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/monsters/movesets/moveset.gd" id="1_3vxkj"]
+
+[resource]
+script = ExtResource("1_3vxkj")

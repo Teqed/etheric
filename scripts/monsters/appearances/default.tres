@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Monster_Resources_Appearance" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/monsters/appearances/appearance.gd" id="1_1tyd5"]
+
+[resource]
+script = ExtResource("1_1tyd5")
+grid_position = Vector2(0, 0)
+spriteatlas = Vector2(0, 0)

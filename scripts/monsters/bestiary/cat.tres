@@ -1,7 +1,57 @@
-[gd_resource type="Resource" script_class="Monster_Resources" load_steps=2 format=3 uid="uid://brxrta1yyua5d"]
+[gd_resource type="Resource" script_class="Monster_Resources" load_steps=15 format=3]
 
-[ext_resource type="Script" path="res://scripts/monsters/monster_resources.gd" id="1_1rdii"]
+[ext_resource type="Script" path="res://scripts/monsters/bestiary/monster_resources.gd" id="1_1rdii"]
+[ext_resource type="Script" path="res://scripts/monsters/appearances/appearance.gd" id="1_nts62"]
+[ext_resource type="Script" path="res://scripts/monsters/moves/move.gd" id="2_33yqe"]
+[ext_resource type="Script" path="res://scripts/monsters/movesets/moveset.gd" id="3_d71wj"]
+[ext_resource type="Script" path="res://scripts/monsters/statpanels/statpanel.gd" id="4_2bnub"]
+[ext_resource type="Script" path="res://scripts/monsters/tooltips/tooltip.gd" id="5_huavb"]
+
+[sub_resource type="Resource" id="Resource_vwg7w"]
+script = ExtResource("1_nts62")
+grid_position = Vector2(0, 0)
+spriteatlas = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_0651t"]
+script = ExtResource("2_33yqe")
+move_name = "Move"
+description = "A move that a monster can learn."
+
+[sub_resource type="Resource" id="Resource_gy7lj"]
+script = ExtResource("2_33yqe")
+move_name = "Move"
+description = "A move that a monster can learn."
+
+[sub_resource type="Resource" id="Resource_16hx6"]
+script = ExtResource("2_33yqe")
+move_name = "Move"
+description = "A move that a monster can learn."
+
+[sub_resource type="Resource" id="Resource_lxmeg"]
+script = ExtResource("2_33yqe")
+move_name = "Move"
+description = "A move that a monster can learn."
+
+[sub_resource type="Resource" id="Resource_5yj4d"]
+script = ExtResource("3_d71wj")
+move0 = SubResource("Resource_0651t")
+move1 = SubResource("Resource_gy7lj")
+move2 = SubResource("Resource_16hx6")
+move3 = SubResource("Resource_lxmeg")
+
+[sub_resource type="Resource" id="Resource_u884e"]
+script = ExtResource("4_2bnub")
+health = 100
+energy = 0
+
+[sub_resource type="Resource" id="Resource_ewh40"]
+script = ExtResource("5_huavb")
+monster_name = "Monster Name"
+description = "Description"
 
 [resource]
 script = ExtResource("1_1rdii")
-moves = null
+tooltip = SubResource("Resource_ewh40")
+statpanel = SubResource("Resource_u884e")
+appearance = SubResource("Resource_vwg7w")
+moves = SubResource("Resource_5yj4d")

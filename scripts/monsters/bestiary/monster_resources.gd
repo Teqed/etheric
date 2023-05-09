@@ -1,14 +1,10 @@
-# @tool
+@tool
 class_name Monster_Resources extends Resource
 
-@export var tooltip: Monster_Resources_Tooltip = Monster_Resources_Tooltip.new()
-@export var statpanel: Monster_Resources_Statpanel = Monster_Resources_Statpanel.new()
-@export var appearance: Monster_Resources_Appearance = Monster_Resources_Appearance.new()
-@export var moves: Array[Monster_Resources_Move] = [
-	Monster_Resources_Move.new(),
-	Monster_Resources_Move.new(),
-	Monster_Resources_Move.new(),
-	Monster_Resources_Move.new()]
+@export var tooltip: Monster_Resources_Tooltip = preload("res://scripts/monsters/tooltips/default.tres")
+@export var statpanel: Monster_Resources_Statpanel = preload("res://scripts/monsters/statpanels/default.tres")
+@export var appearance: Monster_Resources_Appearance = preload("res://scripts/monsters/appearances/default.tres")
+@export var moves: Monster_Resources_Moveset = preload("res://scripts/monsters/movesets/default.tres")
 func fill_custom_monster(
 		monster_name: String,
 		description: String,
@@ -23,10 +19,10 @@ func fill_custom_monster(
 	statpanel["energy"] = energy
 	appearance["grid_position"] = grid_position
 	appearance["spriteatlas"] = spriteatlas
-	moves[0] = available_moves["move0"]
-	moves[1] = available_moves["move1"]
-	moves[2] = available_moves["move2"]
-	moves[3] = available_moves["move3"]
+	moves.move0 = available_moves["move0"]
+	moves.move1 = available_moves["move1"]
+	moves.move2 = available_moves["move2"]
+	moves.move3 = available_moves["move3"]
 func update_dictionary(key: String, value):
 	if key == "monster_name":
 		tooltip["monster_name"] = value
@@ -41,10 +37,10 @@ func update_dictionary(key: String, value):
 	elif key == "spriteatlas":
 		appearance["spriteatlas"] = value
 	elif key == "move0":
-		moves[0] = value
+		moves.move0 = value
 	elif key == "move1":
-		moves[1] = value
+		moves.move1 = value
 	elif key == "move2":
-		moves[2] = value
+		moves.move2 = value
 	elif key == "move3":
-		moves[3] = value
+		moves.move3 = value
