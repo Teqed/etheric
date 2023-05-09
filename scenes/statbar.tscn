@@ -53,3 +53,22 @@ texture = ExtResource("4_7uuen")
 position = Vector2(99, 36)
 scale = Vector2(1, 0.5)
 texture = ExtResource("6_jwari")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 104.0
+offset_bottom = 25.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_rergj")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 104.0
+offset_bottom = 27.0
+value = 50.0

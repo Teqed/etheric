@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Monster_Resources_Move" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="Monster_Resources_Move" load_steps=2 format=3 uid="uid://d31x8q5ufyxd5"]
 
-[ext_resource type="Script" path="res://scripts/monsters/moves/move.gd" id="1_b2nfv"]
+[ext_resource type="Script" path="res://scripts/monsters/moves/move.gd" id="1_3ng30"]
 
 [resource]
-script = ExtResource("1_b2nfv")
-move_name = "Bite"
-description = "Damage an opponent heavily."
+script = ExtResource("1_3ng30")
+move_name = "Roar"
+description = "Reduce an opponent's attack."

@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Monster_Resources_Tooltip" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="Monster_Resources_Tooltip" load_steps=2 format=3 uid="uid://baex8us8k2q5p"]
 
-[ext_resource type="Script" path="res://scripts/monsters/tooltips/tooltip.gd" id="1_qy75v"]
+[ext_resource type="Script" path="res://scripts/monsters/tooltips/tooltip.gd" id="1_spdjw"]
 
 [resource]
-script = ExtResource("1_qy75v")
-monster_name = null
-description = null
+script = ExtResource("1_spdjw")
+monster_name = "Cat"
+description = "A fuzzy mammal."

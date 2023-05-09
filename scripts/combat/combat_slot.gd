@@ -1,4 +1,3 @@
-# @tool
 extends Node2D
 
 @export_range(0,7) var ordinal: int # Between 0 and 7, inclusive.
@@ -34,7 +33,9 @@ func _ready():
 func populate(incoming_monster: Monster):
 	self.monster = incoming_monster
 	self.occupied = true
+	add_child(monster)
 func depopulate():
+	monster.queue_free()
 	self.monster = null
 	self.occupied = false
 func update_monster(key: String, value):

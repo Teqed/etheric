@@ -1,8 +1,10 @@
-# @tool
-class_name Monster extends Node3D
+@tool
+class_name Monster extends Node2D
 
 var resources := Monster_Resources.new()
-# var statpanel_node = load("res://scenes/statbar.tscn")
+var statpanel_node = preload("res://scenes/statbar.tscn").instantiate()
+func _init():
+	add_child(statpanel_node)
 func fill_custom_monster(
 		monster_name: String,
 		description: String,
