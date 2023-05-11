@@ -19,6 +19,7 @@ offset_right = 112.0
 offset_bottom = 48.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -28,10 +29,10 @@ value = 100.0
 texture_progress = ExtResource("7_a2c6d")
 
 [node name="EnergyBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 29.0
 offset_right = 106.0
 offset_bottom = 41.0
-value = 100.0
 texture_progress = ExtResource("8_rw6ea")

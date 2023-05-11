@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnom5oy2osxy5"]
+[gd_scene load_steps=7 format=3 uid="uid://035cdnnqbua1"]
 
 [ext_resource type="PackedScene" uid="uid://tuish8ktym85" path="res://scenes/MainMenu.tscn" id="1_4f88r"]
 [ext_resource type="Texture2D" uid="uid://khge3ays1ryc" path="res://assets/ss-logo.svg" id="1_5xsue"]
-[ext_resource type="Script" path="res://scripts/MainMenu/loadAllScenes.gd" id="2_e4oq6"]
-[ext_resource type="Script" path="res://scripts/SpeaksWithGlobal.gd" id="3_oohur"]
+[ext_resource type="Script" path="res://scripts/speaks_with_global.gd" id="1_6mxgi"]
 [ext_resource type="Script" path="res://scripts/topbar/btn_adventure.gd" id="3_xuw70"]
 [ext_resource type="Script" path="res://scripts/topbar/btn_collection.gd" id="4_r8ipo"]
 [ext_resource type="Script" path="res://scripts/topbar/btn_combat.gd" id="5_s6rjl"]
@@ -11,7 +10,7 @@
 [node name="Root" type="Node2D"]
 
 [node name="SpeaksWithGlobal" type="Node" parent="."]
-script = ExtResource("3_oohur")
+script = ExtResource("1_6mxgi")
 
 [node name="Timer" type="Timer" parent="SpeaksWithGlobal"]
 wait_time = 0.1
@@ -23,12 +22,6 @@ offset_right = 260.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="HiddenPanels" type="PanelContainer" parent="MainMarginContainer" groups=["HiddenPanelsGroup"]]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-script = ExtResource("2_e4oq6")
 
 [node name="MainPanel" type="PanelContainer" parent="MainMarginContainer" groups=["MainPanelGroup"]]
 unique_name_in_owner = true

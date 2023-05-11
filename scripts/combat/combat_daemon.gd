@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 # combat_daemon.gd
 # You are the combat daemon.
 # You are responsible for the combat system, including
@@ -49,6 +49,7 @@ extends Control
 ## This happens when something fundamental about the monster changes,
 ## such as their position or permanent appearance.
 
+var slots: Array
 
 func _ready():
 	var slot_0 = get_tree().get_nodes_in_group("slot_0")[0]
@@ -59,17 +60,47 @@ func _ready():
 	var slot_5 = get_tree().get_nodes_in_group("slot_5")[0]
 	var slot_6 = get_tree().get_nodes_in_group("slot_6")[0]
 	var slot_7 = get_tree().get_nodes_in_group("slot_7")[0]
-	var slots = [slot_0, slot_1, slot_2, slot_3, slot_4, slot_5, slot_6, slot_7]
-	# Populate each with dummy monsters.
-	var move: Dictionary = {"move_name":"Dummy","description":"Dummy"}
-	var dummy_monster: Monster = Monster.new(
-		"Dummy",
-		"Dummy",
-		100,
-		0,
-		Vector2(0,0),
-		Vector2(0,8),
-		{"move0":move,"move1":move,"move2":move,"move3":move}
-	)
-	for slot in slots:
-		slot.populate(dummy_monster)
+	slots = [slot_0, slot_1, slot_2, slot_3, slot_4, slot_5, slot_6, slot_7]
+	# # Populate each with dummy monsters.
+	var dummy_monster: Monster = Monster.new()
+	var dummy_monster2: Monster = Monster.new()
+	var dummy_monster3: Monster = Monster.new()
+	var dummy_monster4: Monster = Monster.new()
+	slots[3].populate(dummy_monster)
+	slots[4].populate(dummy_monster2)
+	slots[5].populate(dummy_monster3)
+	slots[6].populate(dummy_monster4)
+	update_selected_friendly_slot(4)
+	Events.combat_selected_friendly_slot.connect(update_selected_friendly_slot)
+
+func update_selected_friendly_slot(slot_ordinal: int):
+	var selected_friendly_slot = slots[slot_ordinal]
+	var move_button_1 = get_node("%MoveButton1")
+	var selected_friendly_slot_move0_name = (
+		selected_friendly_slot.monster.resources.moves.move0.move_name)
+	var selected_friendly_slot_move0_description = (
+		selected_friendly_slot.monster.resources.moves.move0.description)
+	move_button_1.get_child(0).get_child(0).set_text(
+		selected_friendly_slot_move0_name + "  @ " + str(slot_ordinal))
+	move_button_1.get_child(0).get_child(1).set_text(selected_friendly_slot_move0_description)
+	var move_button_2 = get_node("%MoveButton2")
+	var selected_friendly_slot_move1_name = (
+		selected_friendly_slot.monster.resources.moves.move1.move_name)
+	var selected_friendly_slot_move1_description = (
+		selected_friendly_slot.monster.resources.moves.move1.description)
+	move_button_2.get_child(0).get_child(0).set_text(selected_friendly_slot_move1_name)
+	move_button_2.get_child(0).get_child(1).set_text(selected_friendly_slot_move1_description)
+	var move_button_3 = get_node("%MoveButton3")
+	var selected_friendly_slot_move2_name = (
+		selected_friendly_slot.monster.resources.moves.move2.move_name)
+	var selected_friendly_slot_move2_description = (
+		selected_friendly_slot.monster.resources.moves.move2.description)
+	move_button_3.get_child(0).get_child(0).set_text(selected_friendly_slot_move2_name)
+	move_button_3.get_child(0).get_child(1).set_text(selected_friendly_slot_move2_description)
+	var move_button_4 = get_node("%MoveButton4")
+	var selected_friendly_slot_move3_name = (
+		selected_friendly_slot.monster.resources.moves.move3.move_name)
+	var selected_friendly_slot_move3_description = (
+		selected_friendly_slot.monster.resources.moves.move3.description)
+	move_button_4.get_child(0).get_child(0).set_text(selected_friendly_slot_move3_name)
+	move_button_4.get_child(0).get_child(1).set_text(selected_friendly_slot_move3_description)

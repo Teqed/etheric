@@ -1,7 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce7kpyxq0d54"]
+[gd_scene load_steps=3 format=3 uid="uid://ce7kpyxq0d54"]
 
 [ext_resource type="Script" path="res://scripts/combat/combat_slot.gd" id="1_8itr4"]
+[ext_resource type="Script" path="res://scripts/combat/btn_combat_slot.gd" id="2_1lwj3"]
 
 [node name="CombatSlot" type="Node2D"]
 position = Vector2(128, 384)
 script = ExtResource("1_8itr4")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1lwj3")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://tuish8ktym85"]
+[gd_scene load_steps=6 format=3 uid="uid://tuish8ktym85"]
 
 [ext_resource type="FontFile" uid="uid://cmt04fltddig5" path="res://assets/Caskaydia Cove Nerd Font Complete.ttf" id="1_3xau1"]
 [ext_resource type="Theme" uid="uid://cogpwoa58yer7" path="res://resources/UITheme.tres" id="2_uycqa"]
 [ext_resource type="Script" path="res://scripts/MainMenu/btn_newGame.gd" id="3_yl703"]
+[ext_resource type="Script" path="res://scripts/MainMenu/btn_exit.gd" id="4_wr3gf"]
 [ext_resource type="Script" path="res://scripts/ColorRect2.gd" id="5_085nb"]
 
 [node name="MainMenu" type="Control"]
@@ -89,6 +90,7 @@ text = "Settings"
 layout_mode = 2
 theme = ExtResource("2_uycqa")
 text = "Exit"
+script = ExtResource("4_wr3gf")
 
 [node name="Fade" type="ColorRect" parent="CanvasLayer"]
 unique_name_in_owner = true

@@ -38,15 +38,34 @@ func _physics_process(_delta):
 
 	if Input.is_action_just_pressed("debug_00"):
 		print("M key pressed")
-		_read_cellmap()
+		var tilemap = get_node("/root/TileMapRoot/TileMap")
+		var new_layer = 3
+		var new_coords = Vector2i(10, 10)
+		var new_source_id = 2
+		var new_atlas_coords = Vector2i(0, 0)
+		var new_alternative_tile = 1
+		tilemap.set_cell(new_layer, new_coords, new_source_id, new_atlas_coords, new_alternative_tile)
+		# _read_cellmap()
 
 	if Input.is_action_just_pressed("debug_01"):
 		print("N key pressed")
-		_change_cell(Vector2i(randi() % 10, randi() % 10))
+		# _change_cell(Vector2i(randi() % 10, randi() % 10))
+		var tilemap = get_node("/root/TileMapRoot/TileMap")
+		var new_layer = 3
+		var new_coords = Vector2i(10, 10)
+		var new_source_id = 2
+		var new_atlas_coords = Vector2i(0, 0)
+		var new_alternative_tile = 2
+		tilemap.set_cell(new_layer, new_coords, new_source_id, new_atlas_coords, new_alternative_tile)
+
+	# Log the current tile position
+	# var tilemap = get_node("/root/TileMapRoot/TileMap")
+	# var tile_position = tilemap.local_to_map(position)
+	# print("Tile position: " + str(tile_position))
 
 
 func _read_cellmap():
-	var tilemap = get_node("/root/Node2D/MarginContainer/PanelContainer/Node2D/TileMap_Abandoned")
+	var tilemap = get_node("/root/TileMapRoot/TileMap")
 	var map_size = tilemap.get_used_rect().size
 	var map_layers = tilemap.get_layers_count()
 	for y in range(map_size.y):
@@ -66,7 +85,7 @@ func _read_cellmap():
 					print(celldata)
 
 func _change_cell(new_atlas_coords):
-	var tilemap = get_node("/root/Node2D/MarginContainer/PanelContainer/Node2D/TileMap_Abandoned")
+	var tilemap = get_node("/root/TileMapRoot/TileMap")
 	var new_layer = 0
 	var new_coords = Vector2i(1, 1)
 	var new_source_id = 0
