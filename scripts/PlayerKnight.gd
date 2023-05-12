@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
-
 const SPEED = 200.0
+
+var sprite: Sprite2D
+
 # const JUMP_VELOCITY = -400.0
 
 # # Get the gravity from the project settings to be synced with RigidBody nodes.
 # var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	sprite = self.get_node("%Sprite2D")
 
 func _physics_process(_delta):
 	# Add the gravity.
@@ -31,6 +35,12 @@ func _physics_process(_delta):
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
+
+	# Flip the sprite by changing the frame to 1 or 0.
+	if input_direction.x > 0:
+		sprite.set_frame(0)
+	else: if input_direction.x < 0:
+		sprite.set_frame(1)
 
 	velocity = input_direction * SPEED
 
