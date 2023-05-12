@@ -61,16 +61,7 @@ func _ready():
 	var slot_6 = get_tree().get_nodes_in_group("slot_6")[0]
 	var slot_7 = get_tree().get_nodes_in_group("slot_7")[0]
 	slots = [slot_0, slot_1, slot_2, slot_3, slot_4, slot_5, slot_6, slot_7]
-	# # Populate each with dummy monsters.
-	var dummy_monster: Monster = Monster.new()
-	var dummy_monster2: Monster = Monster.new()
-	var dummy_monster3: Monster = Monster.new()
-	var dummy_monster4: Monster = Monster.new()
-	slots[3].populate(dummy_monster)
-	slots[4].populate(dummy_monster2)
-	slots[5].populate(dummy_monster3)
-	slots[6].populate(dummy_monster4)
-	update_selected_friendly_slot(4)
+	# update_selected_friendly_slot(4)
 	Events.combat_selected_friendly_slot.connect(update_selected_friendly_slot)
 
 func update_selected_friendly_slot(slot_ordinal: int):

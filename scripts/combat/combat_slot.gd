@@ -31,7 +31,13 @@ func _ready():
 	elif ordinal == 7:
 		self.position = Vector2(1728,384)
 		add_to_group("slot_7")
+	Events.populate_slot.connect(incoming_populate)
+func incoming_populate(slot_ordinal: int, incoming_monster: Monster):
+	if slot_ordinal == ordinal:
+		populate(incoming_monster)
 func populate(incoming_monster: Monster):
+	if occupied:
+		depopulate()
 	self.monster = incoming_monster
 	self.occupied = true
 	add_child(monster)

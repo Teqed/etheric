@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5ahwal26cbat"]
+[gd_scene load_steps=16 format=3 uid="uid://b5ahwal26cbat"]
 
 [ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="1_5e83c"]
 [ext_resource type="Texture2D" uid="uid://cbociu42nw712" path="res://assets/prototype/kenney_background-elements/PNG/cloud2.png" id="2_yhy55"]
@@ -12,6 +12,7 @@
 [ext_resource type="TileSet" uid="uid://dcc4b126p1nx1" path="res://assets/prototype/kenney_tiny-dungeon/Tilemap/kenney_tiny-dungeon.tres" id="10_qy25a"]
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="11_v2xo8"]
 [ext_resource type="Script" path="res://scripts/combat/combat_daemon.gd" id="12_gd315"]
+[ext_resource type="Script" path="res://scripts/combat/combat_log.gd" id="13_4d8mm"]
 [ext_resource type="PackedScene" uid="uid://1wh8je3vhvif" path="res://scenes/movepanel.tscn" id="14_nlwb5"]
 [ext_resource type="PackedScene" uid="uid://ce7kpyxq0d54" path="res://scenes/combat_slot.tscn" id="14_plajn"]
 
@@ -160,6 +161,7 @@ Player 2 attacks the enemy for 12 damage.
 Player 1 attacks the enemy for 10 damage, defeating it.
 All players gain 100 experience points."
 scroll_following = true
+script = ExtResource("13_4d8mm")
 
 [node name="Moves" type="Control" parent="Control"]
 layout_mode = 3
