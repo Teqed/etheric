@@ -153,6 +153,7 @@ class EnergySystem extends System:
 					Events.combat_log_message.emit("Entity " + str(uid) + " is taking an action!")
 					energy_component.data[uid] = 0
 				var slot_ordinal = world.get_component("OrdinalPosition").data[uid]
+				@warning_ignore("integer_division")
 				Events.statpanel_updated.emit(slot_ordinal, false, energy_component.data[uid] / 10)
 
 # class PositionSystem extends System:
