@@ -115,7 +115,6 @@ layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 450
 alignment = 1
 
@@ -128,7 +127,7 @@ size_flags_vertical = 6
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_3xau1")
 theme_override_font_sizes/font_size = 125
-text = "Conjunction"
+text = "Etheric"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -138,6 +137,7 @@ theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2/MarginContainer7"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
