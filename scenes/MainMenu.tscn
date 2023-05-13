@@ -25,7 +25,7 @@ grow_vertical = 2
 
 [node name="Sky" type="TextureRect" parent="CanvasLayer"]
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 768.0
 texture = ExtResource("1_3l81e")
 
 [node name="Clouds" type="Node2D" parent="CanvasLayer"]
@@ -116,7 +116,7 @@ layout_mode = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 300
+theme_override_constants/separation = 450
 alignment = 1
 
 [node name="MarginContainer6" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2"]
@@ -125,6 +125,7 @@ layout_mode = 2
 [node name="Game Title - Conjunction" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2/MarginContainer6"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_3xau1")
 theme_override_font_sizes/font_size = 125
 text = "Conjunction"
