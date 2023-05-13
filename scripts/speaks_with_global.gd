@@ -1,11 +1,11 @@
 @tool
 extends Node
 
-var adventure_scene_preload = preload("res://./scenes/adventure/main.tscn")
+var adventure_scene_preload = preload("res://scenes/adventure/adventure.tscn")
 var adventure_scene_instance = adventure_scene_preload.instantiate()
-var collection_scene_preload = preload("res://./scenes/test_scene2.tscn")
+var collection_scene_preload = preload("res://scenes/test_scene2.tscn")
 var collection_scene_instance = collection_scene_preload.instantiate()
-var combat_scene_preload = preload("res://./scenes/combat.tscn")
+var combat_scene_preload = preload("res://scenes/combat.tscn")
 var combat_scene_instance = combat_scene_preload.instantiate()
 
 func _ready():
