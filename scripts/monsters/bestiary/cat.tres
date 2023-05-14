@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Monster_Resources" load_steps=7 format=3 uid="uid://cnurejm4edv6v"]
 
-[ext_resource type="Resource" path="res://scripts/monsters/appearances/cat.tres" id="1_v7fsy"]
-[ext_resource type="Resource" path="res://scripts/monsters/movesets/default.tres" id="2_dca3k"]
+[ext_resource type="Resource" uid="uid://c1dtho54fki0d" path="res://scripts/monsters/appearances/cat.tres" id="1_v7fsy"]
+[ext_resource type="Resource" uid="uid://vehyo07aaevh" path="res://scripts/monsters/movesets/default.tres" id="2_dca3k"]
 [ext_resource type="Script" path="res://scripts/monsters/bestiary/monster_resources.gd" id="3_ptncd"]
 [ext_resource type="Script" path="res://scripts/monsters/statpanels/statpanel.gd" id="4_tbau7"]
-[ext_resource type="Resource" path="res://scripts/monsters/tooltips/cat.tres" id="5_4d2u0"]
+[ext_resource type="Resource" uid="uid://baex8us8k2q5p" path="res://scripts/monsters/tooltips/cat.tres" id="5_4d2u0"]
 
 [sub_resource type="Resource" id="Resource_u884e"]
 script = ExtResource("4_tbau7")
