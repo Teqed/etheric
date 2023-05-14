@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://035cdnnqbua1"]
+[gd_scene load_steps=3 format=3 uid="uid://035cdnnqbua1"]
 
 [ext_resource type="PackedScene" uid="uid://tuish8ktym85" path="res://scenes/MainMenu.tscn" id="1_4f88r"]
-[ext_resource type="Texture2D" uid="uid://khge3ays1ryc" path="res://assets/ss-logo.svg" id="1_5xsue"]
 [ext_resource type="Script" path="res://scripts/speaks_with_global.gd" id="1_6mxgi"]
-[ext_resource type="Script" path="res://scripts/topbar/btn_adventure.gd" id="3_xuw70"]
-[ext_resource type="Script" path="res://scripts/topbar/btn_collection.gd" id="4_r8ipo"]
-[ext_resource type="Script" path="res://scripts/topbar/btn_combat.gd" id="5_s6rjl"]
 
 [node name="Root" type="Node2D"]
 
@@ -30,81 +26,3 @@ mouse_filter = 2
 
 [node name="MainMenu" parent="MainMarginContainer/MainPanel" instance=ExtResource("1_4f88r")]
 layout_mode = 2
-
-[node name="Topbar" type="HBoxContainer" parent="MainMarginContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Adventure" type="MarginContainer" parent="MainMarginContainer/Topbar"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Adventure"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
-script = ExtResource("3_xuw70")
-
-[node name="Collection" type="MarginContainer" parent="MainMarginContainer/Topbar"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Collection"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
-script = ExtResource("4_r8ipo")
-
-[node name="Village" type="MarginContainer" parent="MainMarginContainer/Topbar"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Village"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
-
-[node name="Merchants" type="MarginContainer" parent="MainMarginContainer/Topbar"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Merchants"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1
-script = ExtResource("5_s6rjl")
-
-[node name="Margin" type="MarginContainer" parent="MainMarginContainer/Topbar"]
-layout_mode = 2
-theme_override_constants/margin_left = 1350
-
-[node name="Settings" type="MarginContainer" parent="MainMarginContainer/Topbar"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Button" type="Button" parent="MainMarginContainer/Topbar/Settings"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-icon = ExtResource("1_5xsue")
-icon_alignment = 1

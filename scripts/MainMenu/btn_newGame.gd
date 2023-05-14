@@ -17,7 +17,6 @@ func _process(_delta):
 		for child in Global.main_panel.get_children():
 			Global.main_panel.remove_child(child)
 		Global.main_panel.add_child(Global.adventure_scene)
-		# Global.main_panel.get_node("%Topbar").visible = true
 
 func _pressed():
 	already_pressed = true
