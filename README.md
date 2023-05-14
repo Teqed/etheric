@@ -4,7 +4,7 @@ Etheric is being developed using the Godot engine v4.0.2.stable.official [7a0977
 
 ## Installation
 
-To play, go to the [Releases](https://github.com/Teqed/conjunction/releases) tab and download the game.
+To play, go to the [Releases](https://github.com/Teqed/etheric/releases) tab and download the game.
 
 ## Gameplay
 
