@@ -11,10 +11,8 @@ var _space_state: PhysicsDirectSpaceState2D
 func _init(space_state: PhysicsDirectSpaceState2D, search_radius: float, collision_mask: int,
 		find_areas: = true) -> void:
 	_space_state = space_state
-
 	var query_shape: = CircleShape2D.new()
 	query_shape.radius = search_radius
-
 	query_parameters = PhysicsShapeQueryParameters2D.new()
 	query_parameters.shape = query_shape
 	query_parameters.collision_mask = collision_mask
@@ -29,5 +27,4 @@ func search(position: Vector2) -> Array[Dictionary]:
 	# viewport's current World2D). If there intersercts a collision shape matching the provided
 	# collision mask then it will be included in the results
 	query_parameters.transform.origin = position
-
 	return _space_state.intersect_shape(query_parameters)
