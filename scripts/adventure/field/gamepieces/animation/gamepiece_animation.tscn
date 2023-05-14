@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cak0dgybt5wve"]
+[gd_scene load_steps=2 format=3 uid="uid://caxhff6by5nqu"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/animation/gamepiece_animation.gd" id="1_l0scw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbkoa"]
-size = Vector2(16, 16)
 
 [node name="CharacterAnimation" type="Marker2D"]
 script = ExtResource("1_l0scw")
@@ -15,7 +12,6 @@ collision_layer = 2
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_kbkoa")
 debug_color = Color(0.690196, 0.188235, 0.380392, 0.419608)
 
 [node name="GFX" type="Marker2D" parent="."]

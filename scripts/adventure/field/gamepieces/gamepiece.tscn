@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7yj7rch3l513"]
+[gd_scene load_steps=2 format=3 uid="uid://b626e0bngfvjj"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/gamepiece.gd" id="1_xhsbn"]
 
