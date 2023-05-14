@@ -1,4 +1,4 @@
-@tool
+
 extends Node2D
 
 @export_range(0,7) var ordinal: int # Between 0 and 7, inclusive.

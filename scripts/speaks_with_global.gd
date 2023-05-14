@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 var adventure_scene_preload = preload("res://scenes/adventure/adventure.tscn")

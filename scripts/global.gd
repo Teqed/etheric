@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 var ecs_world: World

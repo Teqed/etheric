@@ -1,4 +1,4 @@
-@tool
+
 class_name Monster_Resources_Appearance extends Resource
 
 @export var grid_position := Vector2(0, 0) # The position of the sprite in the sprite atlas

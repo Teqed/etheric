@@ -1,4 +1,4 @@
-@tool
+
 class_name Monster_Resources_Move extends Resource
 
 @export var move_name: String = "Move"

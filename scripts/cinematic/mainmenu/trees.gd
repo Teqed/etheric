@@ -1,4 +1,4 @@
-# @tool
+
 extends Node2D
 
 var panning_left = true

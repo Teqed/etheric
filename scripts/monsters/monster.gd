@@ -1,4 +1,4 @@
-@tool
+
 class_name Monster extends Node2D
 
 var resources := Monster_Resources.new()

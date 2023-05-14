@@ -1,4 +1,4 @@
-@tool
+
 class_name Monster_Resources extends Resource
 
 @export var tooltip: Monster_Resources_Tooltip = preload("res://scripts/monsters/tooltips/default.tres")

@@ -1,4 +1,4 @@
-@tool
+@tool # Allows editor to draw clouds
 extends Node2D
 
 @export var _center = Vector2(0, 0):

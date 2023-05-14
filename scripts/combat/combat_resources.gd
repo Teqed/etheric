@@ -1,4 +1,4 @@
-@tool
+
 class_name CombatResources extends Resource
 
 @export var health = 100

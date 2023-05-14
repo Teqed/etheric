@@ -1,4 +1,3 @@
-@tool
 class_name Monster_Resources_Tooltip extends Resource
 
 @export var monster_name: String = "Monster Name"

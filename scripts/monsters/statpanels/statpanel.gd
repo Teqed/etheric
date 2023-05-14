@@ -1,4 +1,4 @@
-@tool
+
 class_name Monster_Resources_Statpanel extends Resource
 
 @export_range(0,100) var health: int = 100

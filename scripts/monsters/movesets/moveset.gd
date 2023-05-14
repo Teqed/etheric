@@ -1,4 +1,4 @@
-@tool
+
 class_name Monster_Resources_Moveset extends Resource
 
 @export var move0: Monster_Resources_Move
