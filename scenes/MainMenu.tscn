@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tuish8ktym85"]
+[gd_scene load_steps=14 format=3 uid="uid://tuish8ktym85"]
 
 [ext_resource type="Texture2D" uid="uid://d0e5flwpuam53" path="res://assets/cinematic/Day-Platformer/PNG/sky.png" id="1_3l81e"]
 [ext_resource type="Texture2D" uid="uid://5diudns1j2p5" path="res://assets/cinematic/Day-Platformer/PNG/clouds.png" id="2_b7cf2"]
@@ -6,12 +6,13 @@
 [ext_resource type="Script" path="res://scripts/cinematic/mainmenu/clouds.gd" id="2_xyldo"]
 [ext_resource type="Script" path="res://scripts/cinematic/mainmenu/trees.gd" id="3_dkl60"]
 [ext_resource type="Texture2D" uid="uid://b8h084157sapt" path="res://assets/cinematic/Day-Platformer/PNG/trees.png" id="3_ikrai"]
-[ext_resource type="Script" path="res://scripts/MainMenu/btn_newGame.gd" id="3_yl703"]
-[ext_resource type="Script" path="res://scripts/MainMenu/btn_exit.gd" id="4_wr3gf"]
 [ext_resource type="FontFile" uid="uid://b0mrtgm3h5y8n" path="res://assets/Hack Regular Nerd Font Complete.ttf" id="6_frofe"]
-[ext_resource type="Script" path="res://scripts/fade.gd" id="10_upk68"]
+[ext_resource type="Script" path="res://scripts/title/btn_continue.gd" id="8_0miai"]
+[ext_resource type="Script" path="res://scripts/title/btn_newgame.gd" id="9_6dbv4"]
+[ext_resource type="Script" path="res://scripts/title/btn_loadgame.gd" id="10_lo4hc"]
+[ext_resource type="Script" path="res://scripts/title/btn_exit.gd" id="11_6qq5n"]
+[ext_resource type="Script" path="res://scripts/title/btn_settings.gd" id="11_5028c"]
 [ext_resource type="AudioStream" uid="uid://bolnc70kv7ppu" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration1 - Grasslands.ogg" id="11_brbxo"]
-[ext_resource type="Script" path="res://scripts/MainMenu/fade_bgm.gd" id="12_2ti4f"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -145,43 +146,34 @@ layout_mode = 2
 theme = ExtResource("2_uycqa")
 disabled = true
 text = "Continue"
+script = ExtResource("8_0miai")
 
 [node name="New Game" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2/MarginContainer7/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_uycqa")
 text = "New Game"
-script = ExtResource("3_yl703")
+script = ExtResource("9_6dbv4")
 
 [node name="Load Game" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2/MarginContainer7/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_uycqa")
 disabled = true
 text = "Load Game"
+script = ExtResource("10_lo4hc")
 
 [node name="Settings" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2/MarginContainer7/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_uycqa")
 text = "Settings"
+script = ExtResource("11_5028c")
 
 [node name="Exit" type="Button" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer2/MarginContainer7/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_uycqa")
 text = "Exit"
-script = ExtResource("4_wr3gf")
-
-[node name="Fade" type="ColorRect" parent="CanvasLayer"]
-unique_name_in_owner = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("10_upk68")
+script = ExtResource("11_6qq5n")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("11_brbxo")
-autoplay = true
-script = ExtResource("12_2ti4f")
+volume_db = -20.0

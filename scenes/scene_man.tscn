@@ -8,7 +8,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color:a")
+tracks/0/path = NodePath("CanvasLayer/FadeRect:color:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a0m5d")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SceneManAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_mrksn")
 }
@@ -40,9 +41,10 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)

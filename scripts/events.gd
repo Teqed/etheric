@@ -3,9 +3,8 @@ extends Node
 
 # Direction: Nodes -> Nodes
 signal combat_selected_friendly_slot(slot_ordinal: int)
-signal fade_to_black_silence()
-signal fade_to_black_completed()
-signal fade_to_silence_completed()
+signal scene_changed
+signal scene_change(scene: Node, duration: float, delay: float)
 
 # Direction: ECS -> Nodes
 signal statpanel_updated(slot_ordinal: int, health_or_energy: bool, new_value: int)

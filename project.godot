@@ -25,6 +25,7 @@ Global="*res://scripts/global.gd"
 Events="*res://scripts/events.gd"
 FieldEvents="*res://scripts/adventure/global_field_events.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SaveMan="*res://scripts/savegames/save_man.gd"
 
 [display]
 

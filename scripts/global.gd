@@ -22,6 +22,28 @@ class Entity:
 		uid = occupied_uids
 		component_flags = 0
 
+## World for ECS. Contains all entities, components, and systems.
+## [b]entities[/b] = Dictionary<int, Entity>
+## [b]components[/b] = Dictionary<String, Component>
+## [b]systems[/b] = Dictionary<String, System>
+## [b]func[/b] serialize() -> Dictionary
+## [b]func[/b] deserialize(world_data: Dictionary)
+## [b]func[/b] add_entity() -> Entity
+## [b]func[/b] remove_entity(entity: Entity)
+## [b]func[/b] create_singleton(name: String, data: int = 0) -> Component
+## [b]func[/b] set_singleton(name: String, data: int)
+## [b]func[/b] get_singleton_data(name: String) -> int
+## [b]func[/b] create_component(name: String) -> Component
+## [b]func[/b] add_component(entity_uid: int, name: String, data: int = 0) -> Component
+## [b]func[/b] set_component(entity_uid: int, name: String, data: int)
+## [b]func[/b] remove_component(entity: Entity, name: String)
+## [b]func[/b] get_component(name: String) -> Component
+## [b]func[/b] get_uids_with_component(name: String) -> Array
+## [b]func[/b] get_uids_without_component(name: String) -> Array
+## [b]func[/b] add_system(system: System)
+## [b]func[/b] update()
+## [b]func[/b] enable(system_name: String)
+## [b]func[/b] disable(system_name: String)
 class World:
 	var worldname: String = "DefaultWorld"
 	var components: Dictionary = {} # Dictionary<String, Component>
@@ -32,6 +54,28 @@ class World:
 	var occupied_flags: Array = Array()
 	var occupied_singleton_flags: Array = Array()
 	var systems: Dictionary = {} # Dictionary<String, System>
+	func serialize() -> Dictionary:
+		var world_data: Dictionary = {}
+		world_data["worldname"] = worldname
+		world_data["occupied_uids"] = occupied_uids
+		world_data["occupied_flags"] = occupied_flags
+		world_data["occupied_singleton_flags"] = occupied_singleton_flags
+		world_data["singleton"] = singleton
+		world_data["singleton_components"] = singleton_components
+		world_data["components"] = components
+		world_data["entities"] = entities
+		world_data["systems"] = systems
+		return world_data
+	func deserialize(world_data: Dictionary):
+		worldname = world_data["worldname"]
+		occupied_uids = world_data["occupied_uids"]
+		occupied_flags = world_data["occupied_flags"]
+		occupied_singleton_flags = world_data["occupied_singleton_flags"]
+		singleton = world_data["singleton"]
+		singleton_components = world_data["singleton_components"]
+		components = world_data["components"]
+		entities = world_data["entities"]
+		systems = world_data["systems"]
 	func _init():
 		singleton = Entity.new(0)
 	func add_entity() -> Entity:
@@ -342,9 +386,10 @@ class DamageSystem extends System:
 					world.remove_component(uid, "Energy")
 					print("DamageSystem: Entity " + str(uid) + " has been defeated")
 
-
 func _ready():
 	ecs_world = World.new()
+
+func create_new_world_data() -> Dictionary:
 	ecs_world.create_component("Name");
 	# ecs_world.create_component("Position_x"); # Group 0
 	# ecs_world.create_component("Position_y"); # Group 0
@@ -368,14 +413,11 @@ func _ready():
 	ecs_world.enable("CombatStateSystem")
 	ecs_world.enable("DamageSystem")
 	ecs_world.enable("CombatSlotSystem")
+	return ecs_world.serialize()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("debug_00"):
-		for child in Global.main_panel.get_children():
-			Global.main_panel.remove_child(child)
-		Global.main_panel.add_child(Global.combat_scene)
+		Events.scene_change.emit(Global.combat_scene, 0.4)
 		Global.ecs_world.set_singleton("CombatState", 1)
 	if Input.is_action_just_pressed("debug_01"):
-		for child in Global.main_panel.get_children():
-			Global.main_panel.remove_child(child)
-		Global.main_panel.add_child(Global.adventure_scene)
+		Events.scene_change.emit(Global.adventure_scene, 0.4)

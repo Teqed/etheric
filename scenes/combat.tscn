@@ -199,8 +199,9 @@ position = Vector2(1728, 384)
 ordinal = 7
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("16_d5v5m")
-autoplay = true
+volume_db = -20.0
 
 [editable path="Control/Moves/MoveButton1"]
 [editable path="Control/Moves/MoveButton2"]
