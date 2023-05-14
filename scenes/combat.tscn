@@ -125,42 +125,7 @@ offset_top = 672.0
 offset_right = 1104.0
 offset_bottom = 992.0
 theme = ExtResource("11_v2xo8")
-text = "Player 1 attacks the enemy for 10 damage.
-Enemy retaliates with a spell, dealing 5 damage to Player 1.
-Player 2 casts a healing spell, restoring 15 health to Player 1.
-Enemy attacks Player 2 for 8 damage.
-Player 1 uses a special ability, dealing 20 damage to the enemy.
-Enemy attempts to flee, but fails.
-Player 2 attacks the enemy for 12 damage.
-Player 1 attacks the enemy for 10 damage, defeating it.
-All players gain 100 experience points.
-Player 1 attacks the enemy for 10 damage.
-Enemy retaliates with a spell, dealing 5 damage to Player 1.
-Player 2 casts a healing spell, restoring 15 health to Player 1.
-Enemy attacks Player 2 for 8 damage.
-Player 1 uses a special ability, dealing 20 damage to the enemy.
-Enemy attempts to flee, but fails.
-Player 2 attacks the enemy for 12 damage.
-Player 1 attacks the enemy for 10 damage, defeating it.
-All players gain 100 experience points.
-Player 1 attacks the enemy for 10 damage.
-Enemy retaliates with a spell, dealing 5 damage to Player 1.
-Player 2 casts a healing spell, restoring 15 health to Player 1.
-Enemy attacks Player 2 for 8 damage.
-Player 1 uses a special ability, dealing 20 damage to the enemy.
-Enemy attempts to flee, but fails.
-Player 2 attacks the enemy for 12 damage.
-Player 1 attacks the enemy for 10 damage, defeating it.
-All players gain 100 experience points.
-Player 1 attacks the enemy for 10 damage.
-Enemy retaliates with a spell, dealing 5 damage to Player 1.
-Player 2 casts a healing spell, restoring 15 health to Player 1.
-Enemy attacks Player 2 for 8 damage.
-Player 1 uses a special ability, dealing 20 damage to the enemy.
-Enemy attempts to flee, but fails.
-Player 2 attacks the enemy for 12 damage.
-Player 1 attacks the enemy for 10 damage, defeating it.
-All players gain 100 experience points."
+text = "Combat begins!"
 scroll_following = true
 script = ExtResource("13_4d8mm")
 
