@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddcivxrkednh7"]
+[gd_scene load_steps=23 format=3 uid="uid://lp7dk1tdfixt"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_u718e"]
 [ext_resource type="TileSet" uid="uid://ba2bnli4c27pk" path="res://assets/terrain/tilesets/kenney_terrain.tres" id="2_6nycj"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bvtk5qllej4b8" path="res://data/field/characters/smith_gfx.tscn" id="16_dbk03"]
 [ext_resource type="PackedScene" uid="uid://ccm8tsjysf8b5" path="res://data/field/characters/wizard_gfx.tscn" id="17_g6dmy"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="18_3nb06"]
+[ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="19_1clov"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_orie5"]
 resource_name = "Overlay"
@@ -163,3 +164,7 @@ position = Vector2(232, 113.6)
 scale = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_1clov")
+autoplay = true

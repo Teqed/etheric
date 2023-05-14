@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tuish8ktym85"]
+[gd_scene load_steps=13 format=3 uid="uid://tuish8ktym85"]
 
 [ext_resource type="Texture2D" uid="uid://d0e5flwpuam53" path="res://assets/cinematic/Day-Platformer/PNG/sky.png" id="1_3l81e"]
 [ext_resource type="Texture2D" uid="uid://5diudns1j2p5" path="res://assets/cinematic/Day-Platformer/PNG/clouds.png" id="2_b7cf2"]
@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b8h084157sapt" path="res://assets/cinematic/Day-Platformer/PNG/trees.png" id="3_ikrai"]
 [ext_resource type="Script" path="res://scripts/MainMenu/btn_newGame.gd" id="3_yl703"]
 [ext_resource type="Script" path="res://scripts/MainMenu/btn_exit.gd" id="4_wr3gf"]
-[ext_resource type="Script" path="res://scripts/ColorRect2.gd" id="5_085nb"]
 [ext_resource type="FontFile" uid="uid://b0mrtgm3h5y8n" path="res://assets/Hack Regular Nerd Font Complete.ttf" id="6_frofe"]
+[ext_resource type="Script" path="res://scripts/fade.gd" id="10_upk68"]
+[ext_resource type="AudioStream" uid="uid://bolnc70kv7ppu" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration1 - Grasslands.ogg" id="11_brbxo"]
+[ext_resource type="Script" path="res://scripts/MainMenu/fade_bgm.gd" id="12_2ti4f"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -176,4 +178,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-script = ExtResource("5_085nb")
+script = ExtResource("10_upk68")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_brbxo")
+autoplay = true
+script = ExtResource("12_2ti4f")

@@ -369,3 +369,14 @@ func _ready():
 	ecs_world.enable("CombatStateSystem")
 	ecs_world.enable("DamageSystem")
 	ecs_world.enable("CombatSlotSystem")
+
+func _process(_delta):
+	if Input.is_action_just_pressed("debug_00"):
+		for child in Global.main_panel.get_children():
+			Global.main_panel.remove_child(child)
+		Global.main_panel.add_child(Global.combat_scene)
+		Global.ecs_world.set_singleton("CombatState", 1)
+	if Input.is_action_just_pressed("debug_01"):
+		for child in Global.main_panel.get_children():
+			Global.main_panel.remove_child(child)
+		Global.main_panel.add_child(Global.adventure_scene)

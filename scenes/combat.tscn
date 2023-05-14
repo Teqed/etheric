@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5ahwal26cbat"]
+[gd_scene load_steps=17 format=3 uid="uid://b5ahwal26cbat"]
 
 [ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="1_5e83c"]
 [ext_resource type="Texture2D" uid="uid://cbociu42nw712" path="res://assets/prototype/kenney_background-elements/PNG/cloud2.png" id="2_yhy55"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/combat/combat_log.gd" id="13_4d8mm"]
 [ext_resource type="PackedScene" uid="uid://1wh8je3vhvif" path="res://scenes/movepanel.tscn" id="14_nlwb5"]
 [ext_resource type="PackedScene" uid="uid://ce7kpyxq0d54" path="res://scenes/combat_slot.tscn" id="14_plajn"]
+[ext_resource type="AudioStream" uid="uid://dd3bp57bco2r2" path="res://assets/sfx/music/gt-rpg-sountrack/gt-rpg-sountrack/13 Juhani Junkala - GT - Battle - Crystal World.mp3" id="16_d5v5m"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("12_gd315")
@@ -231,6 +232,10 @@ ordinal = 6
 [node name="CombatSlot7" parent="Control/Slots" instance=ExtResource("14_plajn")]
 position = Vector2(1728, 384)
 ordinal = 7
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_d5v5m")
+autoplay = true
 
 [editable path="Control/Moves/MoveButton1"]
 [editable path="Control/Moves/MoveButton2"]
