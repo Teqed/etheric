@@ -24,6 +24,7 @@ config/icon="res://assets/ss-logo.svg"
 Global="*res://scripts/global.gd"
 Events="*res://scripts/events.gd"
 FieldEvents="*res://scripts/adventure/global_field_events.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -32,6 +33,14 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://assets/tile_0578.png"
 mouse_cursor/custom_image_hotspot=Vector2(13, 4)
+
+[dotnet]
+
+project/assembly_name="Etheric"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -55,6 +64,10 @@ interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/test.dialogue")
 
 [rendering]
 

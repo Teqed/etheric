@@ -7,3 +7,5 @@ assets/prototype/
 *.ttf.import
 
 build/
+
+addons/
