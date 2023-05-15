@@ -14,13 +14,24 @@ class Component:
 	func _init(new_flag_position):
 		flag_position = new_flag_position
 		data = PackedInt32Array()
+	func serialize():
+		var component_data: Dictionary = {}
+		component_data["flag_position"] = flag_position
+		component_data["data"] = data
+		return component_data
 
-class Entity:
-	var component_flags: int
-	var uid: int
-	func _init(occupied_uids):
-		uid = occupied_uids
-		component_flags = 0
+# class Entity:
+	# var component_flags: int
+	# var uid: int
+	# func _init(occupied_uids):
+	# func _init():
+		# uid = occupied_uids
+		# component_flags = 0
+	# func serialize():
+		# var entity_data: Dictionary = {}
+		# entity_data["component_flags"] = component_flags
+		# entity_data["uid"] = uid
+		# return entity_data
 
 ## World for ECS. Contains all entities, components, and systems.
 ## [b]entities[/b] = Dictionary<int, Entity>
@@ -46,65 +57,41 @@ class Entity:
 ## [b]func[/b] disable(system_name: String)
 class World:
 	var worldname: String = "DefaultWorld"
-	var components: Dictionary = {} # Dictionary<String, Component>
-	var entities: Dictionary = {} #Dictionary<int, Entity>
-	var singleton: Entity
-	var singleton_components: Dictionary = {} # Dictionary<String, int>
+	var components: Dictionary = {} ## Dictionary<String, Component>
+	# var entities: Dictionary = {} #Dictionary<int, Entity>
+	var entities: PackedInt32Array
+	var singleton: PackedInt32Array
+	var singleton_components: Dictionary = {} ## Dictionary<String, Component>
 	var occupied_uids: int = -1
-	var occupied_flags: Array = Array()
-	var occupied_singleton_flags: Array = Array()
-	var systems: Dictionary = {} # Dictionary<String, System>
-	func serialize() -> Dictionary:
-		var world_data: Dictionary = {}
-		world_data["worldname"] = worldname
-		world_data["occupied_uids"] = occupied_uids
-		world_data["occupied_flags"] = occupied_flags
-		world_data["occupied_singleton_flags"] = occupied_singleton_flags
-		world_data["singleton"] = singleton
-		world_data["singleton_components"] = singleton_components
-		world_data["components"] = components
-		world_data["entities"] = entities
-		world_data["systems"] = systems
-		return world_data
-	func deserialize(world_data: Dictionary):
-		worldname = world_data["worldname"]
-		occupied_uids = world_data["occupied_uids"]
-		occupied_flags = world_data["occupied_flags"]
-		occupied_singleton_flags = world_data["occupied_singleton_flags"]
-		singleton = world_data["singleton"]
-		singleton_components = world_data["singleton_components"]
-		components = world_data["components"]
-		entities = world_data["entities"]
-		systems = world_data["systems"]
-	func _init():
-		singleton = Entity.new(0)
-	func add_entity() -> Entity:
+	var occupied_flags: Array = Array() ## Array<int>
+	var occupied_singleton_flags: Array = Array() ## Array<int>
+	var systems: Dictionary = {} ## Dictionary<String, System>
+	func add_entity() -> int:
 		occupied_uids += 1
-		var entity = Entity.new(occupied_uids)
-		entities[occupied_uids] = entity
-		return entity
-	func remove_entity(entity: Entity):
-		entities.erase(entity.uid)
+		entities[occupied_uids] = 0
+		return occupied_uids
+	func remove_entity(entity: int):
 		for component in components:
 			var inner_component = components[component]
-			if entity.component_flags & (1 << inner_component.flag_position):
+			if entities[entity] & (1 << inner_component.flag_position):
 				remove_component(entity, component)
+		entities.remove_at(entity)
 	func create_singleton(name: String, data: int = 0) -> Component:
 		var new_flag_position = occupied_singleton_flags.size()
 		occupied_singleton_flags.append(new_flag_position)
 		var component = Component.new(new_flag_position)
 		singleton_components[name] = component
-		singleton.component_flags = singleton.component_flags | (1 << component.flag_position)
-		component.data.insert(singleton.uid, data)
+		singleton[0] = singleton[0] | (1 << component.flag_position)
+		component.data.insert(0, data)
 		return component
 	func set_singleton(name: String, data: int):
-		if (singleton.component_flags & (1 << singleton_components[name].flag_position)) == 0:
+		if (singleton[0] & (1 << singleton_components[name].flag_position)) == 0:
 			create_singleton(name, data)
 		else:
-			singleton_components[name].data[singleton.uid] = data
+			singleton_components[name].data[0] = data
 	func get_singleton_data(name: String) -> int:
 		var component = singleton_components[name]
-		var data = component.data[singleton.uid]
+		var data = component.data[0]
 		return data
 	func create_component(name: String) -> Component:
 		var new_flag_position = occupied_flags.size()
@@ -114,20 +101,21 @@ class World:
 		return component
 	func add_component(entity_uid: int, name: String, data: int = 0) -> Component:
 		var component = components[name]
-		var entity = entities[entity_uid]
-		entity.component_flags = entity.component_flags | (1 << component.flag_position)
-		component.data.insert(entity.uid, data)
+		var entity_flags = entities[entity_uid]
+		entity_flags = entity_flags | (1 << component.flag_position)
+		component.data.insert(entity_uid, data)
 		return component
 	func set_component(entity_uid: int, name: String, data: int):
-		var entity = entities[entity_uid]
-		if (entity.component_flags & (1 << components[name].flag_position)) == 0:
+		var entity_flags = entities[entity_uid]
+		if (entity_flags & (1 << components[name].flag_position)) == 0:
 			add_component(entity_uid, name, data)
 		else:
-			components[name].data[entity.uid] = data
-	func remove_component(entity: Entity, name: String):
+			components[name].data[entity_uid] = data
+	func remove_component(entity_uid: int, name: String):
 		var component = components[name]
-		entity.component_flags = entity.component_flags & ~(1 << component.flag_position)
-		component.data[entity.uid] = 0
+		var entity_flags = entities[entity_uid]
+		entity_flags = entity_flags & ~(1 << component.flag_position)
+		component.data[entity_uid] = 0
 	func get_component(name: String) -> Component:
 		var component = components[name]
 		return component
@@ -141,16 +129,16 @@ class World:
 	func get_uids_with_component(name: String) -> Array:
 		var uids_with_component = []
 		var component = components[name]
-		for entity_found in entities:
-			if entities[entity_found].component_flags & (1 << component.flag_position):
-				uids_with_component.append(entities[entity_found].uid)
+		for entity_uid in entities:
+			if entities[entity_uid] & (1 << component.flag_position):
+				uids_with_component.append(entity_uid)
 		return uids_with_component
 	func get_uids_without_component(name: String) -> Array:
 		var uids_without_component = []
 		var component = components[name]
-		for entity_found in entities:
-			if entities[entity_found].component_flags & (1 << component.flag_position) == 0:
-				uids_without_component.append(entities[entity_found].uid)
+		for entity_uid in entities:
+			if entities[entity_uid] & (1 << component.flag_position) == 0:
+				uids_without_component.append(entity_uid)
 		return uids_without_component
 	func add_system(system: System):
 		systems[system.name] = system
@@ -161,8 +149,8 @@ class World:
 		systems[system_name].enable()
 	func disable(system_name: String):
 		systems[system_name].disable()
-	# func attach(_tilemap: TileMap):
-		# systems["PositionSystem"].attach(_tilemap)
+
+# class Query:
 
 class System:
 	var name: String = "BlankSystem"
@@ -199,80 +187,6 @@ class EnergySystem extends System:
 				@warning_ignore("integer_division")
 				Events.statpanel_updated.emit(slot_ordinal, false, energy_component.data[uid] / 10)
 
-# class PositionSystem extends System:
-# 	var entities_with_position: Dictionary = {} # Dictionary<Entity.uid: int, Entity>
-# 	var entities_with_component: Dictionary = {} # Dictionary<Entity.uid: int, Entity>
-# 	var position_x_component: Component
-# 	var position_y_component: Component
-# 	var tilemap: TileMap
-# 	func _init(_world: World):
-# 		name = "PositionSystem"
-# 		world = _world
-# 		position_x_component = world.get_component("Position_x")
-# 		position_y_component = world.get_component("Position_y")
-# 	func attach(_tilemap: TileMap):
-# 		tilemap = _tilemap
-# 	func update():
-# 		if tilemap:
-# 			if enabled:
-# 				# Check if any entities have been added or removed
-# 				var got_entities_with_component = world.get_entities_with_component("Position_x")
-# 				for entity in got_entities_with_component:
-# 					entities_with_component[entity.uid] = entity
-# 				if entities_with_position.size() != entities_with_component.size():
-# 					# Entities were added or removed. Figure out which ones.
-# 					if entities_with_position.size() < entities_with_component.size():
-# 						for entity_uid in entities_with_component:
-# 							if not entities_with_position.has(entities_with_component[entity_uid]):
-# 								# Entity was added
-# 								entities_with_position[entity_uid] = entities_with_component[entity_uid]
-# 								# Change the corresponding tile
-# 								tilemap.set_cell(3, Vector2i(
-# 										position_x_component.data[entity_uid],
-# 										position_y_component.data[entity_uid]),
-# 										0,
-# 										Vector2i(2, 9))
-# 					if entities_with_position.size() > entities_with_component.size():
-# 						for entity_uid in entities_with_position:
-# 							if not entities_with_component.has(entities_with_position[entity_uid]):
-# 								# Entity was removed
-# 								entities_with_position.erase(entities_with_position[entity_uid])
-# 								# Erase the corresponding tile
-# 								tilemap.set_cell(3, Vector2i(
-# 									position_x_component.data[entity_uid],
-# 									position_y_component.data[entity_uid]),
-# 									0,
-# 									Vector2i(0, 0))
-# 				# Update positions
-# 				# for entity in entities_with_position: // With CHANGED position? new component?
-# 					# position_x_component.data[entity.uid] += 1
-# 					# position_y_component.data[entity.uid] += 1
-# 			else:
-# 				# Remove all entities from the tilemap belonging to this system
-# 				for entity_uid in entities_with_position:
-# 					tilemap.set_cell(3, Vector2i(
-# 						position_x_component.data[entity_uid],
-# 						position_y_component.data[entity_uid]),
-# 						0,
-# 						Vector2i(0, 0))
-# 				entities_with_position.clear()
-# class OrdinalPositionSystem extends System:
-# 	var entities_with_component: Array
-# 	var ordinal_position_component: Component
-# 	var party_position_component: Component
-# 	func _init(_world: World):
-# 		name = "OrdinalPositionSystem"
-# 		world = _world
-# 		ordinal_position_component = world.get_component("OrdinalPosition")
-# 		party_position_component = world.get_component("Party")
-# 	func update():
-# 		if enabled:
-# 			entities_with_component_party = world.get_uids_with_component("Party")
-# 			for uid in entities_with_component_party:
-# 				ordinal_position_component.data[uid] += ordinal_position_component.data[uid]
-# 				if ordinal_position_component.data[uid] > 1000:
-# 					# print(str(entity.uid) + " is taking a turn")
-# 					ordinal_position_component.data[uid] = 0
 class CombatStateSystem extends System:
 	var entities_with_component_party: Array
 	var entities_with_component_energy: Array

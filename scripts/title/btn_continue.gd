@@ -5,4 +5,4 @@ func _ready():
 		self.disabled = false
 
 func _pressed():
-	pass
+	Events.scene_change.emit(Global.adventure_scene)

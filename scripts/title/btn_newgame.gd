@@ -5,5 +5,5 @@ func _ready():
 		self.disabled = true
 
 func _pressed():
-	SaveMan.new_game()
+	SaveMan.new_saveslot()
 	Events.scene_change.emit(Global.adventure_scene)
