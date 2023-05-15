@@ -1,20 +1,22 @@
+## CombatStateSystem
+# This system is responsible for managing the state of combat.
+# It is responsible for:
+# - Adding the energy component to all entities with the party component
+# - Removing the energy component from all entities when combat ends
+# - Ending combat when all entities of a party have been defeated
 extends System
-var entities_with_component_party: Array
-var entities_with_component_energy: Array
-var singleton_combat_state: int
 func _init(_world: World):
 	name = &"CombatStateSystem"
 	world = _world
-	singleton_combat_state = world.get_singleton_data("CombatState")
 func update():
 	if enabled:
-		singleton_combat_state = world.get_singleton_data("CombatState")
+		var singleton_combat_state = world.get_singleton_data("CombatState")
 		match (singleton_combat_state):
 			1:
 				var occupied_enemy_positions = []
 				var occupied_friendly_positions = []
 				# Add the energy component to all entities with the party component
-				entities_with_component_party = world.get_ids_with_component("Party")
+				var entities_with_component_party = world.get_ids_with_component("Party")
 				var party_component = world.get_component("Party")
 				for id in entities_with_component_party:
 					if party_component[id] == 1:
@@ -34,7 +36,7 @@ func update():
 							Events.populate_slot.emit(position, Monster.new())
 				world.set_singleton("CombatState", 2)
 			2:
-				entities_with_component_energy = world.get_ids_with_component("Energy")
+				var entities_with_component_energy = world.get_ids_with_component("Energy")
 				var friendly_entities_remaining = false
 				var enemy_entities_remaining = false
 				var party_component = world.get_component("Party")

@@ -1,15 +1,16 @@
+## EnergySystem
+# This system is responsible for updating the energy of all entities with an energy component.
+# When an entity's energy reaches 1000, it is that entity's turn to take an action.
+# Their energy is then reset to 0.
 extends System
-var entities_with_component: Array
-var energy_component: PackedInt32Array
-var speed_component: PackedInt32Array
 func _init(_world: World):
 	name = &"EnergySystem"
 	world = _world
-	energy_component = world.get_component_data("Energy")
-	speed_component = world.get_component_data("Speed")
 func update():
 	if enabled:
-		entities_with_component = world.get_ids_with_component("Energy")
+		var entities_with_component = world.get_ids_with_component("Energy")
+		var energy_component = world.get_component("Energy")
+		var speed_component = world.get_component("Speed")
 		for id in entities_with_component:
 			energy_component[id] += speed_component[id]
 			if energy_component[id] > 1000:

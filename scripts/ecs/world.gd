@@ -68,7 +68,13 @@ func set_singleton(name: StringName, data: int):
 ### Gets the data of a singleton component
 ## Returns the data of the singleton component
 func get_singleton_data(name: StringName) -> int:
-	return singleton_component_data[singleton_component_dictionary[name]]
+	var component_key = singleton_component_dictionary.get(name)
+	if !component_key:
+		return 0
+	var singleton_data = singleton_component_data[component_key]
+	if !singleton_data:
+		return 0
+	return singleton_data
 
 ################################
 ### 	Components 			###
@@ -90,21 +96,25 @@ func create_component(name: StringName) -> int:
 ### Gets the data of a component
 ## Using entity ids, you can navigate the component data
 ## Returns the data of the component as PackedInt32Array
-func get_component_data(name: String) -> PackedInt32Array:
-	var component_id = component_dictionary[name]
+func get_component(name: StringName) -> PackedInt32Array:
+	var component_id = component_dictionary.get(name)
+	if !component_id:
+		return PackedInt32Array()
 	return component_data[component_id]
 ### Gets all entity ids that match a component
 ## Returns an array of entity ids
-func get_ids_with_component(name: String) -> Array:
+func get_ids_with_component(name: StringName) -> Array:
 	var ids_with_component = []
-	var component_id = component_dictionary[name]
+	var component_id = component_dictionary.get(name)
+	if !component_id:
+		return []
 	for entity_id in entities:
 		if entities[entity_id] & (1 << component_id):
 			ids_with_component.append(entity_id)
 	return ids_with_component
 ### Gets all entity ids that do NOT match a component
 ## Returns an array of entity ids
-func get_ids_without_component(name: String) -> Array:
+func get_ids_without_component(name: StringName) -> Array:
 	var ids_without_component = []
 	var component_id = component_dictionary[name]
 	for entity_id in entities:
