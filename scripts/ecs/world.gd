@@ -6,7 +6,6 @@ const CombatStateSystem := preload("res://scripts/ecs/systems/combat_state.gd")
 const DamageSystem := preload("res://scripts/ecs/systems/damage.gd")
 const CombatSlotSystem := preload("res://scripts/ecs/systems/combat_slot.gd")
 var entities: PackedInt32Array
-var occupied_ids: int = -1
 var singleton: int
 var component_dictionary: Dictionary ## Dictionary<String, int>
 var component_data: Array ## Array<PackedInt32Array>
@@ -31,11 +30,14 @@ func _init():
 ## Automatically generates an id for the entity
 ## Returns the id of the entity
 func add_entity() -> int:
-	occupied_ids += 1
-	entities[occupied_ids] = 0
-	return occupied_ids
+	var new_id := entities.size()
+	entities[new_id] = 0
+	return new_id
 ### Removes an entity from the world
 ## Removes all components from the entity
+## This will invalidate all entity ids. Do not use entity ids after removing an entity.
+## For example, do not iterate over entities and remove them at the same time.
+## Instead, flag entities for removal by the removal system.
 func remove_entity(entity: int):
 	for component in component_data:
 		component.remove_at(entity)
@@ -80,33 +82,11 @@ func create_component(name: StringName) -> int:
 	component_data.append(0)
 	component_dictionary[name] = new_id
 	return new_id
-### Adds a component to an entity
-## Optionally sets the data of the component
-func add_component(entity_id: int, name: StringName, data: int = 0):
-	var component_id = component_dictionary[name]
-	entities[entity_id] = entities[entity_id] | (1 << component_id)
-	component_data[component_id][entity_id] = data
-	return
-### Sets the data of a component
-func set_component(entity_id: int, name: StringName, data: int):
-	var component_id = component_dictionary[name]
-	var entity_flags = entities[entity_id]
-	if (entity_flags & (1 << component_id)) == 0:
-		add_component(entity_id, name, data)
-	else:
-		component_data[component_id][entity_id] = data
-### Removes a component from an entity
-## Sets the data to 0 and removes the component flag from the entity
-func remove_component(entity_id: int, name: StringName):
-	var component_id = component_dictionary[name]
-	var entity_flags = entities[entity_id]
-	entity_flags = entity_flags & ~(1 << component_id)
-	component_data[component_id][entity_id] = 0
 ### Gets the id of a component
 ## Returns the id of the component
-func get_component_id(name: String) -> int:
-	var component_id = component_dictionary[name]
-	return component_id
+# func get_component_id(name: String) -> int:
+# 	var component_id = component_dictionary[name]
+# 	return component_id
 ### Gets the data of a component
 ## Using entity ids, you can navigate the component data
 ## Returns the data of the component as PackedInt32Array
@@ -131,6 +111,28 @@ func get_ids_without_component(name: String) -> Array:
 		if entities[entity_id] & (1 << component_id) == 0:
 			ids_without_component.append(entity_id)
 	return ids_without_component
+### Adds a component to an entity
+## Optionally sets the data of the component
+func add_component_to(entity_id: int, name: StringName, data: int = 0):
+	var component_id = component_dictionary[name]
+	entities[entity_id] = entities[entity_id] | (1 << component_id)
+	component_data[component_id][entity_id] = data
+	return
+### Sets the data of a component
+func set_component_of(entity_id: int, name: StringName, data: int):
+	var component_id = component_dictionary[name]
+	var entity_flags = entities[entity_id]
+	if (entity_flags & (1 << component_id)) == 0:
+		add_component_to(entity_id, name, data)
+	else:
+		component_data[component_id][entity_id] = data
+### Removes a component from an entity
+## Sets the data to 0 and removes the component flag from the entity
+func remove_component_from(entity_id: int, name: StringName):
+	var component_id = component_dictionary[name]
+	var entity_flags = entities[entity_id]
+	entity_flags = entity_flags & ~(1 << component_id)
+	component_data[component_id][entity_id] = 0
 
 ################################
 ### 	Systems 			###

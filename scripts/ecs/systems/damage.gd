@@ -13,16 +13,16 @@ func update():
 		var incoming_damage_component = world.get_component("IncomingDamage")
 		var incoming_healing_component = world.get_component("IncomingHealing")
 		for id in entities_with_component_incoming_damage:
-			world.set_component(id, "Health",
+			Global.ecs_world.set_component_of(id, "Health",
 			health_component[id] - incoming_damage_component[id])
-			world.remove_component(id, "IncomingDamage")
+			world.remove_component_from(id, "IncomingDamage")
 		entities_with_component_incoming_healing = world.get_ids_with_component("IncomingHealing")
 		for id in entities_with_component_incoming_healing:
-			world.set_component(id, "Health",
+			world.set_component_of(id, "Health",
 			health_component[id] + incoming_healing_component[id])
-			world.remove_component(id, "IncomingHealing")
+			world.remove_component_from(id, "IncomingHealing")
 		entities_with_component_energy = world.get_ids_with_component("Energy")
 		for id in entities_with_component_energy:
 			if health_component[id] <= 0:
-				world.remove_component(id, "Energy")
+				world.remove_component_from(id, "Energy")
 				print("DamageSystem: Entity " + str(id) + " has been defeated")

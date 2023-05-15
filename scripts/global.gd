@@ -1,13 +1,10 @@
 extends Node
 
-var ecs_world: World
+var ecs_world := World.new()
 var main_panel: PanelContainer
 var adventure_scene: Node
 var collection_scene: Node
 var combat_scene: Node
-
-func _ready():
-	ecs_world = World.new()
 
 func create_new_world_data() -> Dictionary:
 	ecs_world.create_component(&"Name");
