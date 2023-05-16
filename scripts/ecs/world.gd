@@ -101,7 +101,7 @@ func set_singleton(name: StringName, data: int):
 	if (singleton & (1 << singleton_flag)) == 0:
 		create_singleton(name, data)
 	else:
-		singleton_component_data[singleton_component_dictionary[name]] = data
+		singleton_component_data[singleton_flag] = data
 ### Gets the data of a singleton component
 ## Returns the data of the singleton component
 func get_singleton_data(name: StringName) -> int:
@@ -153,7 +153,7 @@ func get_ids_with_component(name: StringName) -> Array:
 ## Returns an array of entity ids
 func get_ids_without_component(name: StringName) -> Array:
 	var ids_without_component = []
-	var component_id = component_dictionary[name]
+	var component_id = component_dictionary.get(name)
 	for entity_id in entities:
 		if entities[entity_id] & (1 << component_id) == 0:
 			ids_without_component.append(entity_id)
@@ -161,13 +161,13 @@ func get_ids_without_component(name: StringName) -> Array:
 ### Adds a component to an entity
 ## Optionally sets the data of the component
 func add_component_to(entity_id: int, name: StringName, data: int = 0):
-	var component_id = component_dictionary[name]
+	var component_id = component_dictionary.get(name)
 	entities[entity_id] = entities[entity_id] | (1 << component_id)
 	component_data[component_id][entity_id] = data
 	return
 ### Sets the data of a component
 func set_component_of(entity_id: int, name: StringName, data: int):
-	var component_id = component_dictionary[name]
+	var component_id = component_dictionary.get(name)
 	var entity_flags = entities[entity_id]
 	if (entity_flags & (1 << component_id)) == 0:
 		add_component_to(entity_id, name, data)
@@ -176,7 +176,7 @@ func set_component_of(entity_id: int, name: StringName, data: int):
 ### Removes a component from an entity
 ## Sets the data to 0 and removes the component flag from the entity
 func remove_component_from(entity_id: int, name: StringName):
-	var component_id = component_dictionary[name]
+	var component_id = component_dictionary.get(name)
 	var entity_flags = entities[entity_id]
 	entity_flags = entity_flags & ~(1 << component_id)
 	component_data[component_id][entity_id] = 0
