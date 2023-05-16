@@ -23,6 +23,42 @@ func _init():
 	enable(&"CombatSlotSystem")
 
 ################################
+### 	Serialization		###
+################################
+
+func create_new_world_data() -> World:
+	create_component(&"Name");
+	create_component(&"OrdinalPosition")
+	create_component(&"Energy");
+	create_component(&"Speed");
+	create_component(&"Health");
+	create_component(&"IncomingDamage");
+	create_component(&"IncomingHealing");
+	create_component(&"Collection");
+	create_component(&"Party");
+	create_singleton(&"CombatState");
+	return self
+
+func serialize() -> Dictionary:
+	var world_data = {}
+	world_data["entities"] = entities
+	world_data["singleton"] = singleton
+	world_data["component_dictionary"] = component_dictionary
+	world_data["component_data"] = component_data
+	world_data["singleton_component_dictionary"] = singleton_component_dictionary
+	world_data["singleton_component_data"] = singleton_component_data
+	return world_data
+
+func deserialize(world_data) -> World:
+	entities = world_data["entities"]
+	singleton = world_data["singleton"]
+	component_dictionary = world_data["component_dictionary"]
+	component_data = world_data["component_data"]
+	singleton_component_dictionary = world_data["singleton_component_dictionary"]
+	singleton_component_data = world_data["singleton_component_data"]
+	return self
+
+################################
 ### 	Entities 			###
 ################################
 
@@ -61,7 +97,8 @@ func create_singleton(name: StringName, data: int = 0) -> int:
 	return new_id
 ### Sets the data of a singleton component
 func set_singleton(name: StringName, data: int):
-	if (singleton & (1 << singleton_component_dictionary[name])) == 0:
+	var singleton_flag: int = singleton_component_dictionary.get(name)
+	if (singleton & (1 << singleton_flag)) == 0:
 		create_singleton(name, data)
 	else:
 		singleton_component_data[singleton_component_dictionary[name]] = data
@@ -85,7 +122,7 @@ func get_singleton_data(name: StringName) -> int:
 ## Returns the id of the new component
 func create_component(name: StringName) -> int:
 	var new_id := component_data.size()
-	component_data.append(0)
+	component_data.append(PackedInt32Array())
 	component_dictionary[name] = new_id
 	return new_id
 ### Gets the id of a component

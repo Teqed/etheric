@@ -5,4 +5,5 @@ func _ready():
 		self.disabled = false
 
 func _pressed():
+	Global.ecs_world = World.new().deserialize(SaveMan.load_saveslot())
 	Events.scene_change.emit(Global.adventure_scene)

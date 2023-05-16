@@ -18,4 +18,5 @@ func _ready():
 	# 	Global.ecs_world.add_component(entity.uid, "Party", 0)
 
 func _on_Timer_timeout():
-	Global.ecs_world.update()
+	if Global.ecs_world:
+		Global.ecs_world.update()

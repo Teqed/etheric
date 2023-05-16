@@ -3,7 +3,7 @@
 ## Also responsible for defining save slots and their contents.
 extends Node
 
-var saveslots: Array
+var saveslots: Array # of world_data
 var currently_loaded_saveslot: int
 
 ## The savegame manager is a singleton / autoload.
@@ -13,10 +13,6 @@ var currently_loaded_saveslot: int
 ## - The player's current location (an adventure scene).
 ## - The contents of the ECS world (entity list, components).
 
-class Saveslot:
-	var world_data: Dictionary
-	func _init():
-		world_data = Global.create_new_world_data()
 
 func _init():
 	load_slots_from_disk()
@@ -24,14 +20,13 @@ func _init():
 func new_saveslot():
 	if saveslots.size() >= 3:
 		return
-	Global.ecs_world = Global.World.new()
-	var saveslot = Saveslot.new()
-	saveslot.world_data = Global.create_new_world_data()
+	Global.ecs_world = World.new().create_new_world_data()
+	var saveslot := Global.ecs_world.serialize()
 	saveslots.append(saveslot)
 	currently_loaded_saveslot = saveslots.size() - 1
 	save_slots_to_disk()
 
-func load_saveslot(index: int = currently_loaded_saveslot) -> Saveslot:
+func load_saveslot(index: int = currently_loaded_saveslot) -> Dictionary:
 	currently_loaded_saveslot = index
 	return saveslots[index]
 
@@ -43,7 +38,7 @@ func clear_saveslot(index: int):
 
 func save_world_to_slot():
 	var world_data = Global.ecs_world.serialize()
-	saveslots[currently_loaded_saveslot].world_data = world_data
+	saveslots[currently_loaded_saveslot] = world_data
 
 func save_slots_to_disk():
 	var json_global_state := JSON.stringify(currently_loaded_saveslot)
@@ -55,10 +50,8 @@ func save_slots_to_disk():
 
 func save_saveslot_to_disk(index: int):
 	var slot = saveslots[index]
-	var prestring: Dictionary = slot.world_data
-	print(prestring)
+	var prestring: Dictionary = slot
 	var json_saveslot = JSON.stringify(prestring)
-	print(json_saveslot)
 	var save_game = FileAccess.open("user://savegame" + str(index) + ".dat", FileAccess.WRITE)
 	save_game.store_pascal_string(json_saveslot)
 

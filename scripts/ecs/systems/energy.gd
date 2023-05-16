@@ -8,9 +8,9 @@ func _init(_world: World):
 	world = _world
 func update():
 	if enabled:
-		var entities_with_component = world.get_ids_with_component("Energy")
-		var energy_component = world.get_component("Energy")
-		var speed_component = world.get_component("Speed")
+		var entities_with_component := world.get_ids_with_component("Energy")
+		var energy_component := world.get_component("Energy")
+		var speed_component := world.get_component("Speed")
 		for id in entities_with_component:
 			energy_component[id] += speed_component[id]
 			if energy_component[id] > 1000:
