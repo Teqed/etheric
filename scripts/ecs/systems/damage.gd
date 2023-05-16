@@ -9,21 +9,22 @@ func _init(_world: World):
 func update():
 	# Consume all incoming damage components and apply them to their respective health components
 	if enabled:
-		var health_component = world.get_component("Health")
-		var entities_with_component_incoming_damage = world.get_ids_with_component("IncomingDamage")
-		var incoming_damage_component = world.get_component("IncomingDamage")
+		var health_component = world.get_component(&"Health")
+		var entities_with_component_incoming_damage = world.get_ids_with_component(&"IncomingDamage")
+		var incoming_damage_component = world.get_component(&"IncomingDamage")
 		for id in entities_with_component_incoming_damage:
-			Global.ecs_world.set_component_of(id, "Health",
+			Global.ecs_world.set_component_of(id, &"Health",
 			health_component[id] - incoming_damage_component[id])
-			world.remove_component_from(id, "IncomingDamage")
-		var entities_with_component_incoming_healing = world.get_ids_with_component("IncomingHealing")
-		var incoming_healing_component = world.get_component("IncomingHealing")
+			world.remove_component_from(id, &"IncomingDamage")
+		var entities_with_component_incoming_healing = world.get_ids_with_component(&"IncomingHealing")
+		var incoming_healing_component = world.get_component(&"IncomingHealing")
 		for id in entities_with_component_incoming_healing:
-			world.set_component_of(id, "Health",
+			world.set_component_of(id, &"Health",
 			health_component[id] + incoming_healing_component[id])
-			world.remove_component_from(id, "IncomingHealing")
-		var entities_with_component_energy = world.get_ids_with_component("Energy")
+			world.remove_component_from(id, "&IncomingHealing")
+		var entities_with_component_energy = world.get_ids_with_component(&"Energy")
 		for id in entities_with_component_energy:
+			print("DamageSystem: Entity " + str(id) + " has " + str(health_component[id]) + " health")
 			if health_component[id] <= 0:
-				world.remove_component_from(id, "Energy")
+				world.remove_component_from(id, &"Energy")
 				print("DamageSystem: Entity " + str(id) + " has been defeated")

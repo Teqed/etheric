@@ -14,13 +14,9 @@ var singleton_component_data: PackedInt32Array
 var systems: Dictionary = {} ## Dictionary<String, System>
 func _init():
 	add_system(EnergySystem.new(self))
-	enable(&"EnergySystem")
 	add_system(CombatStateSystem.new(self))
-	enable(&"CombatStateSystem")
 	add_system(DamageSystem.new(self))
-	enable(&"DamageSystem")
 	add_system(CombatSlotSystem.new(self))
-	enable(&"CombatSlotSystem")
 
 ################################
 ### 	Serialization		###
@@ -44,7 +40,9 @@ func serialize() -> Dictionary:
 	world_data["entities"] = entities
 	world_data["singleton"] = singleton
 	world_data["component_dictionary"] = component_dictionary
+	print("component_dictionary: ", world_data["component_dictionary"])
 	world_data["component_data"] = component_data
+	print("component_data: ", world_data["component_data"])
 	world_data["singleton_component_dictionary"] = singleton_component_dictionary
 	world_data["singleton_component_data"] = singleton_component_data
 	return world_data
@@ -52,7 +50,9 @@ func serialize() -> Dictionary:
 func deserialize(world_data) -> World:
 	entities = world_data["entities"]
 	singleton = world_data["singleton"]
+	print("component_dictionary: ", world_data["component_dictionary"])
 	component_dictionary = world_data["component_dictionary"]
+	print("component_data: ", world_data["component_data"])
 	component_data = world_data["component_data"]
 	singleton_component_dictionary = world_data["singleton_component_dictionary"]
 	singleton_component_data = world_data["singleton_component_data"]
@@ -67,7 +67,9 @@ func deserialize(world_data) -> World:
 ## Returns the id of the entity
 func add_entity() -> int:
 	var new_id := entities.size()
-	entities[new_id] = 0
+	entities.append(0)
+	for component in component_data:
+		component.append(0)
 	return new_id
 ### Removes an entity from the world
 ## Removes all components from the entity
@@ -141,45 +143,49 @@ func get_component(name: StringName) -> PackedInt32Array:
 ### Gets all entity ids that match a component
 ## Returns an array of entity ids
 func get_ids_with_component(name: StringName) -> Array:
-	var ids_with_component = []
-	var component_id = component_dictionary.get(name)
+	var ids_with_component := []
+	var component_id: int = component_dictionary.get(name)
 	if !component_id:
 		return []
-	for entity_id in entities:
-		if entities[entity_id] & (1 << component_id):
-			ids_with_component.append(entity_id)
+	var array_position := 0
+	for entity in entities:
+		if entity & (1 << component_id) != 0:
+			ids_with_component.append(array_position)
+		array_position += 1
 	return ids_with_component
 ### Gets all entity ids that do NOT match a component
 ## Returns an array of entity ids
 func get_ids_without_component(name: StringName) -> Array:
-	var ids_without_component = []
-	var component_id = component_dictionary.get(name)
+	var ids_without_component := []
+	var component_id: int = component_dictionary.get(name)
 	for entity_id in entities:
-		if entities[entity_id] & (1 << component_id) == 0:
+		if ((entities[entity_id] & (1 << component_id)) == 0):
 			ids_without_component.append(entity_id)
 	return ids_without_component
 ### Adds a component to an entity
 ## Optionally sets the data of the component
 func add_component_to(entity_id: int, name: StringName, data: int = 0):
-	var component_id = component_dictionary.get(name)
-	entities[entity_id] = entities[entity_id] | (1 << component_id)
-	component_data[component_id][entity_id] = data
+	var component_id: int = component_dictionary.get(name)
+	var entity_flags := entities[entity_id]
+	entities.set(entity_id, (entity_flags | (1 << component_id)))
+	var component: PackedInt32Array = component_data[component_id]
+	component[entity_id] = data
 	return
 ### Sets the data of a component
 func set_component_of(entity_id: int, name: StringName, data: int):
-	var component_id = component_dictionary.get(name)
-	var entity_flags = entities[entity_id]
-	if (entity_flags & (1 << component_id)) == 0:
+	var component_id: int = component_dictionary.get(name)
+	var entity_flags := entities[entity_id]
+	if ((entity_flags & (1 << component_id)) == 0):
 		add_component_to(entity_id, name, data)
 	else:
-		component_data[component_id][entity_id] = data
+		component_data[component_id].insert(entity_id, data)
 ### Removes a component from an entity
 ## Sets the data to 0 and removes the component flag from the entity
 func remove_component_from(entity_id: int, name: StringName):
-	var component_id = component_dictionary.get(name)
-	var entity_flags = entities[entity_id]
-	entity_flags = entity_flags & ~(1 << component_id)
-	component_data[component_id][entity_id] = 0
+	var component_id: int = component_dictionary.get(name)
+	var entity_flags := entities[entity_id]
+	entity_flags = (entity_flags & ~(1 << component_id))
+	component_data[component_id].insert(entity_id, 0)
 
 ################################
 ### 	Systems 			###

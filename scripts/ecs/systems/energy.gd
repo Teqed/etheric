@@ -8,14 +8,15 @@ func _init(_world: World):
 	world = _world
 func update():
 	if enabled:
-		var entities_with_component := world.get_ids_with_component("Energy")
-		var energy_component := world.get_component("Energy")
-		var speed_component := world.get_component("Speed")
+		var entities_with_component := world.get_ids_with_component(&"Energy")
+		var energy_component := world.get_component(&"Energy")
+		var speed_component := world.get_component(&"Speed")
 		for id in entities_with_component:
 			energy_component[id] += speed_component[id]
+			print("Updating energy for entity " + str(id) + " to " + str(energy_component[id]))
 			if energy_component[id] > 1000:
 				Events.combat_log_message.emit("Entity " + str(id) + " is taking an action!")
 				energy_component[id] = 0
-			var slot_ordinal = world.get_component("OrdinalPosition")[id]
+			var slot_ordinal = world.get_component(&"OrdinalPosition")[id]
 			@warning_ignore("integer_division")
 			Events.statpanel_updated.emit(slot_ordinal, false, energy_component[id] / 10)

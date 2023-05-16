@@ -50,8 +50,11 @@ func save_slots_to_disk():
 
 func save_saveslot_to_disk(index: int):
 	var slot = saveslots[index]
+	print("slot " + str(slot))
 	var prestring: Dictionary = slot
+	print("prestring " + str(prestring))
 	var json_saveslot = JSON.stringify(prestring)
+	print("json_saveslot " + str(json_saveslot))
 	var save_game = FileAccess.open("user://savegame" + str(index) + ".dat", FileAccess.WRITE)
 	save_game.store_pascal_string(json_saveslot)
 

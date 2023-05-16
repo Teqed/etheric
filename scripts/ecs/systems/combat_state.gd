@@ -16,8 +16,8 @@ func update():
 				var occupied_enemy_positions = []
 				var occupied_friendly_positions = []
 				# Add the energy component to all entities with the party component
-				var entities_with_component_party = world.get_ids_with_component("Party")
-				var party_component = world.get_component("Party")
+				var entities_with_component_party = world.get_ids_with_component(&"Party")
+				var party_component = world.get_component(&"Party")
 				for id in entities_with_component_party:
 					if party_component[id] == 1:
 						var position = occupied_friendly_positions.size()
@@ -36,10 +36,10 @@ func update():
 							Events.populate_slot.emit(position, Monster.new())
 				world.set_singleton("CombatState", 2)
 			2:
-				var entities_with_component_energy = world.get_ids_with_component("Energy")
+				var entities_with_component_energy = world.get_ids_with_component(&"Energy")
 				var friendly_entities_remaining = false
 				var enemy_entities_remaining = false
-				var party_component = world.get_component("Party")
+				var party_component = world.get_component(&"Party")
 				for id in entities_with_component_energy:
 					if party_component[id] == 1:
 						friendly_entities_remaining = true
@@ -47,13 +47,13 @@ func update():
 						enemy_entities_remaining = true
 				if not friendly_entities_remaining:
 					print("CombatStateSystem: All friendly entities have been defeated. Ending combat.")
-					entities_with_component_energy = world.get_ids_with_component("Energy")
+					entities_with_component_energy = world.get_ids_with_component(&"Energy")
 					for id in entities_with_component_energy:
 						world.remove_component(id, "Energy")
 					world.set_singleton("CombatState", 0)
 				else: if not enemy_entities_remaining:
 					print("CombatStateSystem: All enemy entities have been defeated. Ending combat.")
-					entities_with_component_energy = world.get_ids_with_component("Energy")
+					entities_with_component_energy = world.get_ids_with_component(&"Energy")
 					for id in entities_with_component_energy:
 						world.remove_component(id, "Energy")
 					world.set_singleton("CombatState", 0)
