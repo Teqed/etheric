@@ -24,15 +24,15 @@ func update():
 						var friendly_position = position + 4
 						if position <= 3:
 							occupied_friendly_positions.append(position)
-							world.set_component(id, "OrdinalPosition", friendly_position)
-							world.add_component(id, "Energy")
+							world.set_component_of(id, "OrdinalPosition", friendly_position)
+							world.add_component_to(id, "Energy")
 							Events.populate_slot.emit(friendly_position, Monster.new())
 					else: if party_component[id] == 0:
 						var position = occupied_enemy_positions.size()
 						if position <= 3:
 							occupied_enemy_positions.append(position)
-							world.set_component(id, "OrdinalPosition", position)
-							world.add_component(id, "Energy")
+							world.set_component_of(id, "OrdinalPosition", position)
+							world.add_component_to(id, "Energy")
 							Events.populate_slot.emit(position, Monster.new())
 				world.set_singleton("CombatState", 2)
 			2:
@@ -49,13 +49,13 @@ func update():
 					print("CombatStateSystem: All friendly entities have been defeated. Ending combat.")
 					entities_with_component_energy = world.get_ids_with_component(&"Energy")
 					for id in entities_with_component_energy:
-						world.remove_component(id, "Energy")
+						world.remove_component_from(id, "Energy")
 					world.set_singleton("CombatState", 0)
 				else: if not enemy_entities_remaining:
 					print("CombatStateSystem: All enemy entities have been defeated. Ending combat.")
 					entities_with_component_energy = world.get_ids_with_component(&"Energy")
 					for id in entities_with_component_energy:
-						world.remove_component(id, "Energy")
+						world.remove_component_from(id, "Energy")
 					world.set_singleton("CombatState", 0)
 				for i in range(0, 7):
 					Events.depopulate_slot.emit(i)

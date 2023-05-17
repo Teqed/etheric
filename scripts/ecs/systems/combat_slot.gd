@@ -3,7 +3,7 @@
 # It listens for the OrdinalPosition component and populates the slot with a monster.
 # It triggers whenever the OrdinalPosition component changes.
 extends System
-var previous_ordinal_position_component: PackedInt32Array
+var previous_ordinal_position_component: PackedInt32Array = PackedInt32Array()
 func _init(_world: World):
 	name = &"CombatSlotSystem"
 	world = _world

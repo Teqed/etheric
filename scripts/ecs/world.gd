@@ -46,12 +46,27 @@ func serialize() -> Dictionary:
 	return world_data
 
 func deserialize(world_data) -> World:
-	entities = world_data["entities"]
-	singleton = world_data["singleton"]
-	component_dictionary = world_data["component_dictionary"]
-	component_data = world_data["component_data"]
-	singleton_component_dictionary = world_data["singleton_component_dictionary"]
-	singleton_component_data = world_data["singleton_component_data"]
+	entities.clear()
+	for entity in world_data["entities"]:
+		entities.append(entity)
+	# singleton = world_data["singleton"]
+	singleton = 0
+	# component_dictionary = world_data["component_dictionary"]
+	component_dictionary.clear()
+	for component in world_data["component_dictionary"]:
+		component_dictionary[component] = world_data["component_dictionary"][component]
+	component_data.clear()
+	for component in world_data["component_data"]:
+		component_data.append(PackedInt32Array())
+		component_data[component_data.size() - 1].append_array(component)
+	# singleton_component_dictionary = world_data["singleton_component_dictionary"]
+	singleton_component_dictionary.clear()
+	for singleton_component in world_data["singleton_component_dictionary"]:
+		singleton_component_dictionary[singleton_component] = (
+			world_data["singleton_component_dictionary"][singleton_component])
+	singleton_component_data.clear()
+	for singleton_component in world_data["singleton_component_data"]:
+		singleton_component_data.append(singleton_component)
 	return self
 
 ################################

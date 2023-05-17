@@ -8,7 +8,6 @@ var combat_scene: Node
 
 func _process(_delta):
 	if Input.is_action_just_pressed("debug_00"):
-		Events.scene_change.emit(Global.combat_scene, 0.4)
 		Global.ecs_world.enable(&"EnergySystem")
 		Global.ecs_world.enable(&"CombatStateSystem")
 		Global.ecs_world.enable(&"DamageSystem")
@@ -25,7 +24,6 @@ func _process(_delta):
 		for i in range(0, 3):
 			var entity = Global.ecs_world.add_entity()
 			Global.ecs_world.add_component_to(entity, &"Name", randi())
-			Global.ecs_world.add_component_to(entity, &"Energy", 0)
 			Global.ecs_world.add_component_to(entity, &"Speed", (randi() % 20) + 10)
 			Global.ecs_world.add_component_to(entity, &"Health", (randi() % 100) + 10)
 			Global.ecs_world.add_component_to(entity, &"Collection", 1)
@@ -33,10 +31,11 @@ func _process(_delta):
 		for i in range(0, 3):
 			var entity = Global.ecs_world.add_entity()
 			Global.ecs_world.add_component_to(entity, &"Name", randi())
-			Global.ecs_world.add_component_to(entity, &"Energy", 0)
 			Global.ecs_world.add_component_to(entity, &"Speed", (randi() % 20) + 10)
 			Global.ecs_world.add_component_to(entity, &"Health", (randi() % 100) + 10)
 			Global.ecs_world.add_component_to(entity, &"Collection", 0)
 			Global.ecs_world.add_component_to(entity, &"Party", 0)
 	if Input.is_action_just_pressed("debug_03"):
 		print(str(Global.ecs_world.serialize()))
+	if Input.is_action_just_pressed("debug_04"):
+		Events.scene_change.emit(Global.combat_scene, 0.4)
