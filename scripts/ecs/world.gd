@@ -40,9 +40,7 @@ func serialize() -> Dictionary:
 	world_data["entities"] = entities
 	world_data["singleton"] = singleton
 	world_data["component_dictionary"] = component_dictionary
-	print("component_dictionary: ", world_data["component_dictionary"])
 	world_data["component_data"] = component_data
-	print("component_data: ", world_data["component_data"])
 	world_data["singleton_component_dictionary"] = singleton_component_dictionary
 	world_data["singleton_component_data"] = singleton_component_data
 	return world_data
@@ -50,9 +48,7 @@ func serialize() -> Dictionary:
 func deserialize(world_data) -> World:
 	entities = world_data["entities"]
 	singleton = world_data["singleton"]
-	print("component_dictionary: ", world_data["component_dictionary"])
 	component_dictionary = world_data["component_dictionary"]
-	print("component_data: ", world_data["component_data"])
 	component_data = world_data["component_data"]
 	singleton_component_dictionary = world_data["singleton_component_dictionary"]
 	singleton_component_data = world_data["singleton_component_data"]
