@@ -81,12 +81,12 @@ func _get_move_direction() -> Vector2:
 	)
 
 
-# The controller's focus will finish travelling this frame unless it is extended.
-# There are a few cases where the controller will want to extend the path:
-#	a) The gamepiece is following a series of waypoints, and needs to know which cell is next. Note
-#		that the controller is responsible for the waypoints (instead of the gamepiece, for
-#		instance) so that the path can be checked for any changes *as the gamepiece travels*.
-#	b) A movement key/button is held down and the gamepiece should smoothly flow into the next cell.
+## The controller's focus will finish travelling this frame unless it is extended.
+## There are a few cases where the controller will want to extend the path:
+##	a) The gamepiece is following a series of waypoints, and needs to know which cell is next. Note
+##		that the controller is responsible for the waypoints (instead of the gamepiece, for
+##		instance) so that the path can be checked for any changes *as the gamepiece travels*.
+##	b) A movement key/button is held down and the gamepiece should smoothly flow into the next cell.
 func _on_focus_arriving(excess_distance: float) -> void:
 	var move_direction: = _get_move_direction()
 
@@ -126,20 +126,37 @@ func _on_focus_arrived() -> void:
 		var distance_to_target: = _target.position - _focus.position
 		_focus.direction = distance_to_target
 
+		interaction()
+
 		# TODO: Interactions go here.
 
 		_target = null
 
+func interaction() -> void:
+	print("Arrived at target: " + str(_target))
+	# Tell target to travel, using travel_to_cell
+	_target.travel_to_cell(Vector2i(_target.cell.x + 1, _target.cell.y))
 
+## Triggered by the player clicking on a cell.
 func _on_cell_selected(cell: Vector2i) -> void:
 	if not _focus.is_moving():
-		# Don't move to the cell the focus is standing on. May want to open inventory.
 		if cell == _focus.cell:
+			# The player clicked on the cell that the gamepiece carrying the camera focus is on.
+			# Don't move to the cell the focus is standing on. May want to open inventory.
 			return
 
 		# We'll want different behaviour depending on what's underneath the cursor.
 		# If there is an interactable, blocking object beneath the cursor, we'll walk *next* to
 		# the cell.
+		if is_cell_blocked(cell):
+			# The cell is blocked, so try to find a path to a cell next to the blocked cell.
+			# Set the target to the gamepiece at the cell.
+			_target = get_gamepieces_at_cell(cell)[0]
+			var adjacent_cells = _grid.get_adjacent_cells(cell)
+			for adjacent_cell in adjacent_cells:
+				if not is_cell_blocked(adjacent_cell):
+					cell = adjacent_cell
+					break
 
 		# If the cell beneath the cursor is empty the focus can follow a path to the cell.
 		_update_changed_cells()

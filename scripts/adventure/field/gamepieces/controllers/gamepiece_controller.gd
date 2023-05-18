@@ -120,8 +120,8 @@ func _find_all_blocked_cells() -> void:
 	pathfinder.set_blocked_cells(blocked_cells)
 
 
-# Go through all cells that have been flagged for updates and determine if they are indeed occupied.
-# This should usually be called before searching for a move path.
+## Go through all cells that have been flagged for updates and determine if they are occupied.
+## This should usually be called before searching for a move path.
 func _update_changed_cells() -> void:
 	# Duplicate entries may be included in _cells_to_update. Filter them by converting the array to
 	# dictionary keys (which are always unique).
@@ -136,13 +136,13 @@ func _update_changed_cells() -> void:
 	_cells_to_update.clear()
 
 
-# Whenever a gamepiece moves, flag its destination and origin as in need of an update.
+## Whenever a gamepiece moves, flag its destination and origin as in need of an update.
 func _on_gamepiece_cell_changed(gamepiece: Gamepiece, old_cell: Vector2) -> void:
 	_cells_to_update.append(old_cell)
 	_cells_to_update.append(gamepiece.cell)
 
 
-# Various events may trigger a change in the terrain which, in turn, changes which cells are
-# passable. The pathfinder will need to be rebuilt.
+## Various events may trigger a change in the terrain which, in turn, changes which cells are
+## passable. The pathfinder will need to be rebuilt.
 func _on_terrain_passability_changed() -> void:
 	_rebuild_pathfinder()

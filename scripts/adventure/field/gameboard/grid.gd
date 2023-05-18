@@ -67,5 +67,7 @@ func get_adjacent_cells(cell: Vector2i) -> Array[Vector2i]:
 		var neighbour = get_adjacent_cell(cell, direction)
 		if not neighbour == cell:
 			neighbours.append(neighbour)
+	neighbours.append(neighbours.pop_front())
+	neighbours.append(neighbours.pop_front())
 	
 	return neighbours
