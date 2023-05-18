@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/cinematic/mainmenu/clouds.gd" id="2_xyldo"]
 [ext_resource type="Script" path="res://scripts/cinematic/mainmenu/trees.gd" id="3_dkl60"]
 [ext_resource type="Texture2D" uid="uid://b8h084157sapt" path="res://assets/cinematic/Day-Platformer/PNG/trees.png" id="3_ikrai"]
-[ext_resource type="FontFile" uid="uid://b0mrtgm3h5y8n" path="res://assets/Hack Regular Nerd Font Complete.ttf" id="6_frofe"]
+[ext_resource type="FontFile" uid="uid://4syi5tj43rip" path="res://assets/fonts/04B_30__.TTF" id="6_783rv"]
 [ext_resource type="Script" path="res://scripts/title/btn_continue.gd" id="8_0miai"]
 [ext_resource type="Script" path="res://scripts/title/btn_newgame.gd" id="9_6dbv4"]
 [ext_resource type="Script" path="res://scripts/title/btn_loadgame.gd" id="10_lo4hc"]
@@ -125,7 +125,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 7
-theme_override_fonts/font = ExtResource("6_frofe")
+theme_override_fonts/font = ExtResource("6_783rv")
 theme_override_font_sizes/font_size = 125
 text = "Etheric"
 horizontal_alignment = 1

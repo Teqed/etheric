@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce7kpyxq0d54"]
+[gd_scene load_steps=8 format=3 uid="uid://ce7kpyxq0d54"]
 
 [ext_resource type="Script" path="res://scripts/combat/combat_slot.gd" id="1_8itr4"]
 [ext_resource type="Script" path="res://scripts/combat/btn_combat_slot.gd" id="2_1lwj3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lqoot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfi77"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_buol5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0sdv"]
+
+[sub_resource type="Theme" id="Theme_f4yh7"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_lqoot")
+Button/styles/focus = SubResource("StyleBoxEmpty_tfi77")
+Button/styles/normal = SubResource("StyleBoxEmpty_buol5")
+Button/styles/pressed = SubResource("StyleBoxEmpty_y0sdv")
 
 [node name="CombatSlot" type="Node2D"]
 position = Vector2(128, 384)
@@ -17,4 +31,5 @@ offset_right = 128.0
 offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_f4yh7")
 script = ExtResource("2_1lwj3")

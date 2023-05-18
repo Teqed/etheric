@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://cl786d7pb8xd8"]
 
-[ext_resource type="FontFile" uid="uid://dka1xqoi0klw4" path="res://assets/DMSans-Regular.ttf" id="1_80804"]
 [ext_resource type="Texture2D" uid="uid://c4egap5anebe0" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/panel_blue.png" id="1_bai7v"]
+[ext_resource type="FontFile" uid="uid://qfefnomvln0q" path="res://assets/fonts/Super Mario Bros. 2.ttf" id="1_jwknf"]
 [ext_resource type="Texture2D" uid="uid://clok7ljarhrml" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_blue.png" id="1_pyjx6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtjjw"]
@@ -16,10 +16,10 @@ texture = ExtResource("1_bai7v")
 modulate_color = Color(0.741176, 0.741176, 0.741176, 0.917647)
 
 [resource]
-Button/fonts/font = ExtResource("1_80804")
+Button/fonts/font = ExtResource("1_jwknf")
 Button/styles/hover = SubResource("StyleBoxTexture_dtjjw")
 Button/styles/normal = SubResource("StyleBoxTexture_2wbfx")
 Button/styles/pressed = SubResource("StyleBoxTexture_2wbfx")
-Label/fonts/font = ExtResource("1_80804")
+Label/fonts/font = ExtResource("1_jwknf")
 Panel/styles/panel = SubResource("StyleBoxTexture_826hg")
-RichTextLabel/fonts/normal_font = ExtResource("1_80804")
+RichTextLabel/fonts/normal_font = ExtResource("1_jwknf")
