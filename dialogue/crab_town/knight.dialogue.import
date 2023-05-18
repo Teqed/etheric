@@ -1,0 +1,14 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://cwictshfi6tpa"
+path="res://.godot/imported/knight.dialogue-47b13e2e6e66d7c6d952eeac604dd0dc.tres"
+
+[deps]
+
+source_file="res://dialogue/crab_town/knight.dialogue"
+dest_files=["res://.godot/imported/knight.dialogue-47b13e2e6e66d7c6d952eeac604dd0dc.tres"]
+
+[params]
+

@@ -1,0 +1,12 @@
+~ crab_town_greeter
+
+Villager: [[Greetings|Welcome|Hello]], this is crab town.
+Villager: Recently, we've been under siege from the local crabs.
+Villager: Will you help save crab town from crabs?
+- Yes, I will
+	Villager: Thank you! They're near the beehives.
+- No, I'm siding with the crabs
+	Villager: Traitor!
+Villager: Well, so long...
+
+=> END

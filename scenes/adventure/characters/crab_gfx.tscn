@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://chof72jvtnkn"]
+
+[ext_resource type="PackedScene" uid="uid://c5bxecmqld14n" path="res://scenes/adventure/characters/generic_character_gfx.tscn" id="1_5dt2b"]
+[ext_resource type="Texture2D" uid="uid://1tnueuonf1fk" path="res://assets/prototype/kenney_tiny-dungeon/Tiles/tile_0110.png" id="2_4fx4n"]
+
+[node name="CrabGFX" instance=ExtResource("1_5dt2b")]
+
+[node name="Sprite" parent="GFX" index="0"]
+texture = ExtResource("2_4fx4n")
+region_enabled = false

@@ -1,0 +1,14 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://bkp1oj4qnjqlc"
+path="res://.godot/imported/greeter.dialogue-819e6e71dd74c551f1164edeb0d9c136.tres"
+
+[deps]
+
+source_file="res://dialogue/crab_town/greeter.dialogue"
+dest_files=["res://.godot/imported/greeter.dialogue-819e6e71dd74c551f1164edeb0d9c136.tres"]
+
+[params]
+

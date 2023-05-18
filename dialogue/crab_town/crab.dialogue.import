@@ -1,0 +1,14 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://cjvbfmeqlj4ay"
+path="res://.godot/imported/crab.dialogue-f87637ee5cac44c76927d086de9da425.tres"
+
+[deps]
+
+source_file="res://dialogue/crab_town/crab.dialogue"
+dest_files=["res://.godot/imported/crab.dialogue-f87637ee5cac44c76927d086de9da425.tres"]
+
+[params]
+
