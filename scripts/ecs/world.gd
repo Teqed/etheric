@@ -6,6 +6,7 @@ const CombatStateSystem := preload("res://scripts/ecs/systems/combat_state.gd")
 const DamageSystem := preload("res://scripts/ecs/systems/damage.gd")
 const CombatSlotSystem := preload("res://scripts/ecs/systems/combat_slot.gd")
 var entities: PackedInt32Array
+var entities_ex: PackedInt32Array
 var singleton: int
 var component_dictionary: Dictionary ## Dictionary<String, int>
 var component_data: Array ## Array<PackedInt32Array>
@@ -27,21 +28,24 @@ func _init():
 ################################
 
 func create_new_world_data() -> World:
-	create_component(&"Name");
-	create_component(&"OrdinalPosition")
-	create_component(&"Energy");
-	create_component(&"Speed");
-	create_component(&"Health");
-	create_component(&"IncomingDamage");
-	create_component(&"IncomingHealing");
-	create_component(&"Collection");
-	create_component(&"Party");
+	create_component(&"Name"); # Maps to a string
+	create_component(&"Health"); # Maps to an int between -1,000,000,000 and 1,000,000,000
+	create_component(&"Attack"); # Maps to an int between 0 and 1000
+	create_component(&"Speed"); # Maps to an int between 0 and 1000
+	create_component(&"Slot") # Maps to a combat slot on screen, 0 - 7
+	create_component(&"Energy"); # Maps to an int between 0 and 1000
+	create_component(&"IncomingDamage"); # Maps to an int between -1,000,000,000 and 1,000,000,000
+	create_component(&"IncomingHealing"); # Maps to an int between -1,000,000,000 and 1,000,000,000
+	create_component(&"Party"); # Binary ; 0 = not in party, 1 = in party
+	create_component(&"Collection"); # Binary ; 0 = not in collection, 1 = in collection
 	create_singleton(&"CombatState");
+	create_singleton(&"AdventureLocation");
 	return self
 
 func serialize() -> Dictionary:
 	var world_data = {}
 	world_data["entities"] = entities
+	world_data["entities_ex"] = entities_ex
 	world_data["singleton"] = singleton
 	world_data["component_dictionary"] = component_dictionary
 	world_data["component_data"] = component_data
@@ -53,6 +57,9 @@ func deserialize(world_data) -> World:
 	entities.clear()
 	for entity in world_data["entities"]:
 		entities.append(entity)
+	entities_ex.clear()
+	for entity_ex in world_data["entities_ex"]:
+		entities_ex.append(entity_ex)
 	# singleton = world_data["singleton"]
 	singleton = 0
 	# component_dictionary = world_data["component_dictionary"]
@@ -159,12 +166,16 @@ func get_component(name: StringName) -> PackedInt32Array:
 ## Returns an array of entity ids
 func get_ids_with_component(name: StringName) -> Array:
 	var ids_with_component := []
-	var component_id: int = component_dictionary.get(name)
-	if !component_id:
+	var component_flag_id: int = component_dictionary.get(name)
+	var entity_flags = entities
+	if component_flag_id > 31:
+		entity_flags = entities_ex
+		component_flag_id = component_flag_id - 32
+	if !component_flag_id:
 		return []
 	var array_position := 0
-	for entity in entities:
-		if entity & (1 << component_id) != 0:
+	for entity in entity_flags:
+		if entity & (1 << component_flag_id) != 0:
 			ids_with_component.append(array_position)
 		array_position += 1
 	return ids_with_component
@@ -172,9 +183,13 @@ func get_ids_with_component(name: StringName) -> Array:
 ## Returns an array of entity ids
 func get_ids_without_component(name: StringName) -> Array:
 	var ids_without_component := []
-	var component_id: int = component_dictionary.get(name)
+	var component_flag_id: int = component_dictionary.get(name)
+	var entity_flags = entities
+	if component_flag_id > 31:
+		entity_flags = entities_ex
+		component_flag_id = component_flag_id - 32
 	for entity_id in entities:
-		if ((entities[entity_id] & (1 << component_id)) == 0):
+		if ((entity_flags[entity_id] & (1 << component_flag_id)) == 0):
 			ids_without_component.append(entity_id)
 	return ids_without_component
 ### Adds a component to an entity
@@ -182,7 +197,11 @@ func get_ids_without_component(name: StringName) -> Array:
 func add_component_to(entity_id: int, name: StringName, data: int = 0):
 	var component_id: int = component_dictionary.get(name)
 	var entity_flags := entities[entity_id]
-	entities.set(entity_id, (entity_flags | (1 << component_id)))
+	var component_flag_id = component_id
+	if component_flag_id > 31:
+		entity_flags = entities_ex[entity_id]
+		component_flag_id = component_flag_id - 32
+	entities.set(entity_id, (entity_flags | (1 << component_flag_id)))
 	var component: PackedInt32Array = component_data[component_id]
 	component[entity_id] = data
 	return
@@ -190,7 +209,12 @@ func add_component_to(entity_id: int, name: StringName, data: int = 0):
 func set_component_of(entity_id: int, name: StringName, data: int):
 	var component_id: int = component_dictionary.get(name)
 	var entity_flags := entities[entity_id]
-	if ((entity_flags & (1 << component_id)) == 0):
+	var component_flag_id = component_id
+	if component_flag_id > 31:
+		entity_flags = entities_ex[entity_id]
+		component_flag_id = component_flag_id - 32
+		component_id = component_id - 32
+	if ((entity_flags & (1 << component_flag_id)) == 0):
 		add_component_to(entity_id, name, data)
 	else:
 		component_data[component_id].set(entity_id, data)
@@ -199,7 +223,11 @@ func set_component_of(entity_id: int, name: StringName, data: int):
 func remove_component_from(entity_id: int, name: StringName):
 	var component_id: int = component_dictionary.get(name)
 	var entity_flags := entities[entity_id]
-	entity_flags = (entity_flags & ~(1 << component_id))
+	var component_flag_id = component_id
+	if component_flag_id > 31:
+		entity_flags = entities_ex[entity_id]
+		component_flag_id = component_flag_id - 32
+	entity_flags = (entity_flags & ~(1 << component_flag_id))
 	component_data[component_id].set(entity_id, 0)
 
 ################################
