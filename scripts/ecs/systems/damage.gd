@@ -9,7 +9,7 @@ func _init(_world: World):
 func update():
 	# Consume all incoming damage components and apply them to their respective health components
 	if enabled:
-		var orindal_component = world.get_component(&"OrdinalPosition")
+		var orindal_component = world.get_component(&"Slot")
 		var health_component = world.get_component(&"Health")
 		var entities_with_component_incoming_damage = world.get_ids_with_component(&"IncomingDamage")
 		var incoming_damage_component = world.get_component(&"IncomingDamage")

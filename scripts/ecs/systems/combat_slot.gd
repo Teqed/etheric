@@ -9,10 +9,10 @@ func _init(_world: World):
 	world = _world
 func update():
 	if enabled:
-		var ordinal_position_component = world.get_component(&"OrdinalPosition")
+		var ordinal_position_component = world.get_component(&"Slot")
 		if previous_ordinal_position_component != ordinal_position_component:
 			previous_ordinal_position_component = ordinal_position_component
-			var entities_with_component_ordinal_position = world.get_ids_with_component(&"OrdinalPosition")
+			var entities_with_component_ordinal_position = world.get_ids_with_component(&"Slot")
 			var party_component = world.get_component(&"Party")
 			for id in entities_with_component_ordinal_position:
 				var position = ordinal_position_component[id]

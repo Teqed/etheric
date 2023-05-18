@@ -25,6 +25,6 @@ func update():
 						world.add_component_to(id_pos, &"IncomingDamage", 10)
 					id_pos += 1
 				energy_component[id] = 0
-			var slot_ordinal = world.get_component(&"OrdinalPosition")[id]
+			var slot_ordinal = world.get_component(&"Slot")[id]
 			@warning_ignore("integer_division")
 			Events.statpanel_updated.emit(slot_ordinal, false, energy_component[id] / 10)
