@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5bxecmqld14n"]
+
+[ext_resource type="PackedScene" uid="uid://caxhff6by5nqu" path="res://scripts/adventure/field/gamepieces/animation/gamepiece_animation.tscn" id="1_yvpyx"]
+[ext_resource type="AnimationLibrary" uid="uid://dmmjb8ambpwar" path="res://data/field/characters/default_animations/standard_animations.res" id="2_2bxj7"]
+[ext_resource type="Texture2D" uid="uid://cto2g3u6dvscs" path="res://assets/characters/character_generic_00.png" id="3_qyn2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyb3"]
+size = Vector2(16, 16)
+
+[node name="GenericCharacterAnimation" instance=ExtResource("1_yvpyx")]
+
+[node name="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": ExtResource("2_2bxj7")
+}
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_tbyb3")
+
+[node name="Sprite" parent="GFX" index="0"]
+texture = ExtResource("3_qyn2k")
+offset = Vector2(0, -6)
+region_enabled = true
+region_rect = Rect2(1, 1, 16, 16)

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://cogpwoa58yer7"]
 
-[ext_resource type="FontFile" uid="uid://4syi5tj43rip" path="res://assets/fonts/04B_30__.TTF" id="1_tf81h"]
+[ext_resource type="FontFile" uid="uid://qfefnomvln0q" path="res://assets/fonts/Super Mario Bros. 2.ttf" id="1_oarve"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ky4kg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.156863)
@@ -45,7 +45,7 @@ shadow_offset = Vector2(5, 5)
 
 [resource]
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("1_tf81h")
+Button/fonts/font = ExtResource("1_oarve")
 Button/styles/disabled = SubResource("StyleBoxFlat_ky4kg")
 Button/styles/focus = SubResource("StyleBoxEmpty_7ewy7")
 Button/styles/hover = SubResource("StyleBoxFlat_0s7l6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://lp7dk1tdfixt"]
+[gd_scene load_steps=23 format=3]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_u718e"]
 [ext_resource type="TileSet" uid="uid://ba2bnli4c27pk" path="res://assets/terrain/tilesets/kenney_terrain.tres" id="2_6nycj"]
@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://ct5k1x5ggblvc" path="res://data/default_grid.tres" id="6_xucnd"]
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="7_y8ld2"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="8_3tvbr"]
-[ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scripts/adventure/field/gamepieces/gamepiece.tscn" id="9_10sso"]
+[ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="9_10sso"]
 [ext_resource type="PackedScene" uid="uid://qxua6ekob7fa" path="res://data/field/characters/gobot_gfx.tscn" id="10_pq6iq"]
 [ext_resource type="Texture2D" uid="uid://ber3qsogrcx52" path="res://assets/characters/apothecary.atlastex" id="11_nfio8"]
 [ext_resource type="PackedScene" uid="uid://se1wnxu5svgj" path="res://data/field/characters/knight_gfx.tscn" id="12_jffg4"]

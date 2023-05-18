@@ -12,6 +12,8 @@ func update():
 	if enabled:
 		var singleton_combat_state = world.get_singleton_data("CombatState")
 		match (singleton_combat_state):
+			0:
+				pass
 			1:
 				Events.scene_change.emit(Global.combat_scene, 0.4)
 				var occupied_enemy_positions = []

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_jnxdl")
-boundaries = Rect2i(0, 0, 25, 15)
+boundaries = Rect2i(0, 0, 50, 30)
 cell_size = Vector2i(16, 16)
