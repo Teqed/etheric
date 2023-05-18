@@ -15,7 +15,8 @@ func update():
 		var incoming_damage_component = world.get_component(&"IncomingDamage")
 		for id in entities_with_component_incoming_damage:
 			print(health_component)
-			print("DamageSystem: Applying " + str(incoming_damage_component[id]) + " damage to entity " + str(id))
+			print("DamageSystem: Applying " + str(
+				incoming_damage_component[id]) + " damage to entity " + str(id))
 			var health = health_component[id]
 			print("DamageSystem: Entity " + str(id) + " has " + str(health) + " health")
 			var incoming_damage = incoming_damage_component[id]
