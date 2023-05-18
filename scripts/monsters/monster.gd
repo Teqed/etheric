@@ -35,5 +35,7 @@ func fill_custom_monster(
 		grid_position,
 		spriteatlas,
 		available_moves)
+	return self
 func update_dictionary(key: String, value):
 	resources.update_dictionary(key, value)
+	return self

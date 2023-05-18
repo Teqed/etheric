@@ -17,6 +17,10 @@ func _init():
 	add_system(CombatStateSystem.new(self))
 	add_system(DamageSystem.new(self))
 	add_system(CombatSlotSystem.new(self))
+	enable(&"EnergySystem")
+	enable(&"CombatStateSystem")
+	enable(&"DamageSystem")
+	enable(&"CombatSlotSystem")
 
 ################################
 ### 	Serialization		###
@@ -189,14 +193,14 @@ func set_component_of(entity_id: int, name: StringName, data: int):
 	if ((entity_flags & (1 << component_id)) == 0):
 		add_component_to(entity_id, name, data)
 	else:
-		component_data[component_id].insert(entity_id, data)
+		component_data[component_id].set(entity_id, data)
 ### Removes a component from an entity
 ## Sets the data to 0 and removes the component flag from the entity
 func remove_component_from(entity_id: int, name: StringName):
 	var component_id: int = component_dictionary.get(name)
 	var entity_flags := entities[entity_id]
 	entity_flags = (entity_flags & ~(1 << component_id))
-	component_data[component_id].insert(entity_id, 0)
+	component_data[component_id].set(entity_id, 0)
 
 ################################
 ### 	Systems 			###

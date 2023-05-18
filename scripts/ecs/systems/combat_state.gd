@@ -13,11 +13,13 @@ func update():
 		var singleton_combat_state = world.get_singleton_data("CombatState")
 		match (singleton_combat_state):
 			1:
+				Events.scene_change.emit(Global.combat_scene, 0.4)
 				var occupied_enemy_positions = []
 				var occupied_friendly_positions = []
 				# Add the energy component to all entities with the party component
 				var entities_with_component_party = world.get_ids_with_component(&"Party")
 				var party_component = world.get_component(&"Party")
+				await (Events.scene_changed)
 				for id in entities_with_component_party:
 					if party_component[id] == 1:
 						var position = occupied_friendly_positions.size()
@@ -51,11 +53,13 @@ func update():
 					for id in entities_with_component_energy:
 						world.remove_component_from(id, "Energy")
 					world.set_singleton("CombatState", 0)
+					for i in range(0, 7):
+						Events.depopulate_slot.emit(i)
 				else: if not enemy_entities_remaining:
 					print("CombatStateSystem: All enemy entities have been defeated. Ending combat.")
 					entities_with_component_energy = world.get_ids_with_component(&"Energy")
 					for id in entities_with_component_energy:
 						world.remove_component_from(id, "Energy")
 					world.set_singleton("CombatState", 0)
-				for i in range(0, 7):
-					Events.depopulate_slot.emit(i)
+					for i in range(0, 7):
+						Events.depopulate_slot.emit(i)
