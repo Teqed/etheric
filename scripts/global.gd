@@ -10,8 +10,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("debug_00"):
 		var monster_maker = Global.ecs_world.MonsterMaker.new();
 		monster_maker.create_hero(Global.ecs_world)
-		monster_maker.create_crab(Global.ecs_world)
-		Global.ecs_world.set_singleton(&"CombatState", 1)
 	if Input.is_action_just_pressed("debug_01"):
 		Events.scene_change.emit(Global.adventure_scene, 0.4)
 		# Global.ecs_world.disable(&"EnergySystem")
