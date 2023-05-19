@@ -1,10 +1,18 @@
 
 ## World for ECS. Contains all entities, components, and systems.
 class_name World
+enum Names {
+	BRAVE_ETHERIC,
+	CRAB
+}
 const EnergySystem := preload("res://scripts/ecs/systems/energy.gd")
 const CombatStateSystem := preload("res://scripts/ecs/systems/combat_state.gd")
 const DamageSystem := preload("res://scripts/ecs/systems/damage.gd")
 const CombatSlotSystem := preload("res://scripts/ecs/systems/combat_slot.gd")
+const NAMES_DICTIONARY = {
+	Names.BRAVE_ETHERIC: "Brave Etheric",
+	Names.CRAB: "Crab"
+}
 var entities: PackedInt32Array
 var entities_ex: PackedInt32Array
 var singleton: int
@@ -28,7 +36,6 @@ func _init():
 ################################
 
 func create_new_world_data() -> World:
-	create_component(&"Name"); # Maps to a string
 	create_component(&"Health"); # Maps to an int between -1,000,000,000 and 1,000,000,000
 	create_component(&"Attack"); # Maps to an int between 0 and 1000
 	create_component(&"Speed"); # Maps to an int between 0 and 1000
@@ -40,7 +47,32 @@ func create_new_world_data() -> World:
 	create_component(&"Collection"); # Binary ; 0 = not in collection, 1 = in collection
 	create_singleton(&"CombatState");
 	create_singleton(&"AdventureLocation");
+	create_component(&"Name"); # Maps to a string
 	return self
+
+class MonsterMaker:
+	## Create a new monster with the bare minimum components
+	func create_hero(world: World):
+		var new_id = world.add_entity()
+		print("Names.BRAVE_ETHERIC: ", Names.BRAVE_ETHERIC)
+		world.add_component_to(new_id, &"Name", Names.BRAVE_ETHERIC)
+		world.add_component_to(new_id, &"Health", 100)
+		world.add_component_to(new_id, &"Attack", 2)
+		world.add_component_to(new_id, &"Speed", 10)
+		world.add_component_to(new_id, &"Party", 1)
+		world.add_component_to(new_id, &"Collection", 1)
+		return new_id
+
+	## Create a crab
+	func create_crab(world: World):
+		var new_id = world.add_entity()
+		world.add_component_to(new_id, &"Name", Names.CRAB)
+		world.add_component_to(new_id, &"Health", 10)
+		world.add_component_to(new_id, &"Attack", 1)
+		world.add_component_to(new_id, &"Speed", 5)
+		world.add_component_to(new_id, &"Party", 0)
+		world.add_component_to(new_id, &"Collection", 0)
+		return new_id
 
 func serialize() -> Dictionary:
 	var world_data = {}
@@ -130,11 +162,7 @@ func set_singleton(name: StringName, data: int):
 ## Returns the data of the singleton component
 func get_singleton_data(name: StringName) -> int:
 	var component_key = singleton_component_dictionary.get(name)
-	if !component_key:
-		return 0
 	var singleton_data = singleton_component_data[component_key]
-	if !singleton_data:
-		return 0
 	return singleton_data
 
 ################################
@@ -159,8 +187,6 @@ func create_component(name: StringName) -> int:
 ## Returns the data of the component as PackedInt32Array
 func get_component(name: StringName) -> PackedInt32Array:
 	var component_id = component_dictionary.get(name)
-	if !component_id:
-		return PackedInt32Array()
 	return component_data[component_id]
 ### Gets all entity ids that match a component
 ## Returns an array of entity ids
@@ -171,8 +197,6 @@ func get_ids_with_component(name: StringName) -> Array:
 	if component_flag_id > 31:
 		entity_flags = entities_ex
 		component_flag_id = component_flag_id - 32
-	if !component_flag_id:
-		return []
 	var array_position := 0
 	for entity in entity_flags:
 		if entity & (1 << component_flag_id) != 0:
@@ -228,6 +252,7 @@ func remove_component_from(entity_id: int, name: StringName):
 		entity_flags = entities_ex[entity_id]
 		component_flag_id = component_flag_id - 32
 	entity_flags = (entity_flags & ~(1 << component_flag_id))
+	entities[entity_id] = entity_flags
 	component_data[component_id].set(entity_id, 0)
 
 ################################

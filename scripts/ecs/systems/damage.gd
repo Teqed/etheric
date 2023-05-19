@@ -11,18 +11,17 @@ func update():
 	if enabled:
 		var orindal_component = world.get_component(&"Slot")
 		var health_component = world.get_component(&"Health")
+		var name_component = world.get_component(&"Name")
 		var entities_with_component_incoming_damage = world.get_ids_with_component(&"IncomingDamage")
 		var incoming_damage_component = world.get_component(&"IncomingDamage")
 		for id in entities_with_component_incoming_damage:
-			print(health_component)
-			print("DamageSystem: Applying " + str(
-				incoming_damage_component[id]) + " damage to entity " + str(id))
+			var name_int = name_component[id]
+			var entity_name: String = world.NAMES_DICTIONARY[name_int]
 			var health = health_component[id]
-			print("DamageSystem: Entity " + str(id) + " has " + str(health) + " health")
 			var incoming_damage = incoming_damage_component[id]
 			Global.ecs_world.set_component_of(id, &"Health",
 			(health - incoming_damage))
-			print("DamageSystem: Entity " + str(id) + " now has " + str(health_component[id]) + " health")
+			Events.combat_log_message.emit(entity_name + " took " + str(incoming_damage) + " damage!")
 			world.remove_component_from(id, &"IncomingDamage")
 			Events.statpanel_updated.emit(orindal_component[id], true, health_component[id])
 		var entities_with_component_incoming_healing = world.get_ids_with_component(&"IncomingHealing")
@@ -37,4 +36,6 @@ func update():
 		for id in entities_with_component_energy:
 			if health_component[id] <= 0:
 				world.remove_component_from(id, &"Energy")
-				print("DamageSystem: Entity " + str(id) + " has been defeated")
+				var name_int = name_component[id]
+				var entity_name: String = world.NAMES_DICTIONARY[name_int]
+				Events.combat_log_message.emit(entity_name + " has been defeated")
