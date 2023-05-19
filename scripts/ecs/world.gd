@@ -36,6 +36,7 @@ func _init():
 ################################
 
 func create_new_world_data() -> World:
+	create_component(&"Name"); # Maps to a string
 	create_component(&"Health"); # Maps to an int between -1,000,000,000 and 1,000,000,000
 	create_component(&"Attack"); # Maps to an int between 0 and 1000
 	create_component(&"Speed"); # Maps to an int between 0 and 1000
@@ -47,7 +48,7 @@ func create_new_world_data() -> World:
 	create_component(&"Collection"); # Binary ; 0 = not in collection, 1 = in collection
 	create_singleton(&"CombatState");
 	create_singleton(&"AdventureLocation");
-	create_component(&"Name"); # Maps to a string
+	MonsterMaker.new().create_hero(self);
 	return self
 
 class MonsterMaker:

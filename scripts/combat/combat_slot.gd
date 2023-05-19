@@ -8,28 +8,28 @@ var monster: Monster = null
 func _ready():
 	add_to_group("slots")
 	if ordinal == 0:
-		self.position = Vector2(128,384)
+		# self.position = Vector2(128,384)
 		add_to_group("slot_0")
 	elif ordinal == 1:
-		self.position = Vector2(320,384)
+		# self.position = Vector2(320,384)
 		add_to_group("slot_1")
 	elif ordinal == 2:
-		self.position = Vector2(512,384)
+		# self.position = Vector2(512,384)
 		add_to_group("slot_2")
 	elif ordinal == 3:
-		self.position = Vector2(704,384)
+		# self.position = Vector2(704,384)
 		add_to_group("slot_3")
 	elif ordinal == 4:
-		self.position = Vector2(1152,384)
+		# self.position = Vector2(1152,384)
 		add_to_group("slot_4")
 	elif ordinal == 5:
-		self.position = Vector2(1344,384)
+		# self.position = Vector2(1344,384)
 		add_to_group("slot_5")
 	elif ordinal == 6:
-		self.position = Vector2(1536,384)
+		# self.position = Vector2(1536,384)
 		add_to_group("slot_6")
 	elif ordinal == 7:
-		self.position = Vector2(1728,384)
+		# self.position = Vector2(1728,384)
 		add_to_group("slot_7")
 	Events.populate_slot.connect(incoming_populate)
 func incoming_populate(slot_ordinal: int, incoming_monster: Monster):

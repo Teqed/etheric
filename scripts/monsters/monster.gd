@@ -1,5 +1,5 @@
 
-class_name Monster extends Node2D
+class_name Monster extends CharacterBody2D
 
 var resources := Monster_Resources.new()
 var statpanel_node = preload("res://scenes/statbar.tscn").instantiate()

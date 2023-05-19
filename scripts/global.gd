@@ -8,8 +8,7 @@ var combat_scene: Node
 
 func _process(_delta):
 	if Input.is_action_just_pressed("debug_00"):
-		var monster_maker = Global.ecs_world.MonsterMaker.new();
-		monster_maker.create_hero(Global.ecs_world)
+		pass
 	if Input.is_action_just_pressed("debug_01"):
 		Events.scene_change.emit(Global.adventure_scene, 0.4)
 		# Global.ecs_world.disable(&"EnergySystem")
