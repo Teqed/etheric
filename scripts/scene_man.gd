@@ -3,7 +3,7 @@ extends Control
 const DEFAULT_DURATION := 1.5
 const DEFAULT_DELAY := 0.0
 
-const AdventureScenePreload := preload("res://scenes/adventure/crab_town.tscn")
+const AdventureScenePreload := preload("res://scenes/adventure/places/crab_town.tscn")
 const CollectionScenePreload := preload("res://scenes/test_scene2.tscn")
 const CombatScenePreload := preload("res://scenes/combat.tscn")
 @onready var main_panel_array = get_tree().get_nodes_in_group("MainPanelGroup")
