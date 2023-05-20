@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cq408q4y8wpj7"]
+[gd_scene load_steps=34 format=3 uid="uid://cq408q4y8wpj7"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_hwom2"]
 [ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="2_c8e78"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cdkha7cc72h35" path="res://data/field/characters/generic_character_gfx.tscn" id="14_dn8uh"]
 [ext_resource type="PackedScene" uid="uid://chof72jvtnkn" path="res://scenes/adventure/characters/crab_gfx.tscn" id="17_aocwh"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="18_1rmg5"]
+[ext_resource type="Script" path="res://scripts/combat/combat_daemon.gd" id="26_3t6fm"]
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="27_dgngk"]
 [ext_resource type="AudioStream" uid="uid://dd3bp57bco2r2" path="res://assets/sfx/music/gt-rpg-sountrack/gt-rpg-sountrack/13 Juhani Junkala - GT - Battle - Crystal World.mp3" id="27_qy3xj"]
 [ext_resource type="Script" path="res://scripts/combat/combat_log.gd" id="28_8cdu1"]
@@ -172,38 +173,6 @@ grid = ExtResource("6_1ctse")
 [node name="Gamepieces" type="Node2D" parent="Objects"]
 y_sort_enabled = true
 
-[node name="Slots" type="Node" parent="Objects/Gamepieces"]
-
-[node name="CombatSlot0" parent="Objects/Gamepieces/Slots" instance=ExtResource("30_u8sqd")]
-
-[node name="CombatSlot1" parent="Objects/Gamepieces/Slots" instance=ExtResource("30_u8sqd")]
-position = Vector2(320, 384)
-ordinal = 1
-
-[node name="CombatSlot2" parent="Objects/Gamepieces/Slots" instance=ExtResource("30_u8sqd")]
-position = Vector2(512, 384)
-ordinal = 2
-
-[node name="CombatSlot3" parent="Objects/Gamepieces/Slots" instance=ExtResource("30_u8sqd")]
-position = Vector2(704, 384)
-ordinal = 3
-
-[node name="CombatSlot4" parent="Objects/Gamepieces/Slots" instance=ExtResource("30_u8sqd")]
-position = Vector2(1152, 384)
-ordinal = 4
-
-[node name="CombatSlot5" parent="Objects/Gamepieces/Slots" instance=ExtResource("30_u8sqd")]
-position = Vector2(1344, 384)
-ordinal = 5
-
-[node name="CombatSlot6" parent="Objects/Gamepieces/Slots" instance=ExtResource("30_u8sqd")]
-position = Vector2(1536, 384)
-ordinal = 6
-
-[node name="CombatSlot7" parent="Objects/Gamepieces/Slots" instance=ExtResource("30_u8sqd")]
-position = Vector2(1728, 384)
-ordinal = 7
-
 [node name="Player" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(280, 136)
 grid = ExtResource("6_1ctse")
@@ -333,6 +302,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.25, 0.25)
 theme = ExtResource("27_dgngk")
+script = ExtResource("26_3t6fm")
 
 [node name="CombatLog" type="Control" parent="Objects/Gamepieces/Control"]
 layout_mode = 3
@@ -394,6 +364,39 @@ offset_left = 1566.0
 offset_top = 854.0
 offset_right = 1886.0
 offset_bottom = 1014.0
+
+[node name="Slots" type="Control" parent="Objects/Gamepieces/Control"]
+anchors_preset = 0
+
+[node name="CombatSlot0" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+
+[node name="CombatSlot1" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+position = Vector2(320, 384)
+ordinal = 1
+
+[node name="CombatSlot2" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+position = Vector2(512, 384)
+ordinal = 2
+
+[node name="CombatSlot3" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+position = Vector2(704, 384)
+ordinal = 3
+
+[node name="CombatSlot4" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+position = Vector2(1152, 384)
+ordinal = 4
+
+[node name="CombatSlot5" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+position = Vector2(1344, 384)
+ordinal = 5
+
+[node name="CombatSlot6" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+position = Vector2(1536, 384)
+ordinal = 6
+
+[node name="CombatSlot7" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+position = Vector2(1728, 384)
+ordinal = 7
 
 [node name="MapBoundaries" type="Node2D" parent="."]
 script = ExtResource("18_1rmg5")

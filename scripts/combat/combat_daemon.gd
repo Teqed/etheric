@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 # combat_daemon.gd
 # You are the combat daemon.
 # You are responsible for the combat system, including
