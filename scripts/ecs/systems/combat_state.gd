@@ -51,6 +51,7 @@ func update():
 						enemy_entities_remaining = true
 				if not friendly_entities_remaining:
 					print("CombatStateSystem: All friendly entities have been defeated. Ending combat.")
+					# TODO: Send player back to title screen
 					world.set_singleton(&"CombatState", 3)
 				else: if not enemy_entities_remaining:
 					print("CombatStateSystem: All enemy entities have been defeated. Ending combat.")
@@ -60,11 +61,11 @@ func update():
 				entities_with_component_energy = world.get_ids_with_component(&"Energy")
 				for id in entities_with_component_energy:
 					world.remove_component_from(id, &"Energy")
-					print("CombatStateSystem: Removing energy component from entity " + str(id) + ".")
 				for i in range(0, 7):
 					Events.depopulate_slot.emit(i)
 				# TODO: Show the end of combat screen
 				# TODO: Show loot, exp gain, etc.
 				# TODO: Play a victory fanfare
+			4:
 				world.set_singleton(&"CombatState", 0)
 				Events.scene_change.emit(Global.adventure_scene, 0.4)
