@@ -79,7 +79,8 @@ func _on_focus_arrived() -> void:
 		_target = null
 
 func interaction() -> void:
-	print("Arrived at target: " + str(_target))
+	pass
+	# print("Arrived at target: " + str(_target))
 	# Tell target to travel, using travel_to_cell
 	# _target.travel_to_cell(Vector2i(_target.cell.x + 1, _target.cell.y))
 
