@@ -38,10 +38,9 @@ func set_focused_game_piece(value: Gamepiece) -> void:
 	if not is_inside_tree():
 		await ready
 
-	# Free up any lingering player controllers.
+	# Free up any lingering controller(s).
 	for controller in get_tree().get_nodes_in_group(PlayerController.GROUP_NAME):
 		controller.queue_free()
-
 
 	if focused_game_piece:
 		focused_game_piece.camera_anchor.remote_path = (
