@@ -64,7 +64,7 @@ func get_path_cells_to_adjacent_cell(source_cell: Vector2i,
 
 
 ## Manually update whether or not a single cell is blocked.
-## [br][br][b]Note:[/b] Blocked cells are usually occupied by a blocking [Gamepiece]. Cells that are 
+## [br][br][b]Note:[/b] Blocked cells are usually occupied by a blocking [Gamepiece]. Cells that are
 ## no longer pathable due to changes in terrain should be removed from the pathfinder entirely.
 func block_cell(cell: Vector2i, value: = true) -> void:
 	var cell_id: = _gameboard.cell_to_index(cell)
