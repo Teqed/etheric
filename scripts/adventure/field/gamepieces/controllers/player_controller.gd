@@ -99,7 +99,7 @@ func _on_focus_arriving(excess_distance: float) -> void:
 
 			_current_waypoint = _waypoints.pop_front()
 			var distance_to_waypoint: = \
-				_focus.position.distance_to(_grid.cell_to_pixel(_current_waypoint))
+				_focus.position.distance_to(_gameboard.cell_to_pixel(_current_waypoint))
 
 			_focus.travel_to_cell(_current_waypoint)
 			excess_distance -= distance_to_waypoint
@@ -152,7 +152,7 @@ func _on_cell_selected(cell: Vector2i) -> void:
 			# The cell is blocked, so try to find a path to a cell next to the blocked cell.
 			# Set the target to the gamepiece at the cell.
 			_target = get_gamepieces_at_cell(cell)[0]
-			var adjacent_cells = _grid.get_adjacent_cells(cell)
+			var adjacent_cells = _gameboard.get_adjacent_cells(cell)
 			for adjacent_cell in adjacent_cells:
 				if not is_cell_blocked(adjacent_cell):
 					cell = adjacent_cell
