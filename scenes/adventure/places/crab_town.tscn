@@ -4,11 +4,11 @@
 [ext_resource type="TileSet" uid="uid://ba2bnli4c27pk" path="res://assets/terrain/tilesets/kenney_terrain.tres" id="2_7faj5"]
 [ext_resource type="TileSet" uid="uid://biq84075xlypd" path="res://assets/terrain/tilesets/kenney_obstacles.tres" id="3_uuemy"]
 [ext_resource type="Texture2D" uid="uid://dm4h0uo6gjp22" path="res://assets/terrain/dungeon_tilemap.png" id="4_pyxa7"]
-[ext_resource type="Script" path="res://scripts/adventure/field/cursor/field_cursor.gd" id="5_evobr"]
-[ext_resource type="Resource" uid="uid://ct5k1x5ggblvc" path="res://data/default_gameboard.tres" id="6_q1fpe"]
+[ext_resource type="Script" path="res://scripts/adventure/field/field_cursor.gd" id="5_stbk8"]
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="7_ofn6v"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="8_ybxg1"]
 [ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="9_sitjh"]
+[ext_resource type="Resource" path="res://data/default_gameboard.tres" id="10_0x1ab"]
 [ext_resource type="PackedScene" uid="uid://qxua6ekob7fa" path="res://data/field/characters/gobot_gfx.tscn" id="10_asp3q"]
 [ext_resource type="PackedScene" uid="uid://se1wnxu5svgj" path="res://data/field/characters/knight_gfx.tscn" id="11_p0w2j"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/controllers/passive_controller.gd" id="12_rwhc4"]
@@ -30,7 +30,7 @@ separation = Vector2i(1, 1)
 [sub_resource type="TileSet" id="TileSet_uvju2"]
 sources/0 = SubResource("TileSetAtlasSource_orie5")
 
-[node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
+[node name="Gameboard2" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
 scale = Vector2(4, 4)
 script = ExtResource("1_kq5rp")
 gamepiece_mask = 2
@@ -59,35 +59,32 @@ layer_1/z_index = 100
 layer_1/tile_data = PackedInt32Array(655398, 524288, 7, 458759, 0, 65540, 458762, 131072, 65540, 458760, 65536, 65540, 458761, 65536, 65540, 524327, 262144, 65540, 524330, 393216, 65540, 524328, 327680, 65540, 524329, 327680, 65540)
 
 [node name="PlayerCursor" type="TileMap" parent="Objects"]
-visible = false
 tile_set = SubResource("TileSet_uvju2")
 format = 2
-script = ExtResource("5_evobr")
-gameboard = ExtResource("6_q1fpe")
+script = ExtResource("5_stbk8")
+gameboard = ExtResource("10_0x1ab")
 
 [node name="PlayerPathDestinationMarker" type="Sprite2D" parent="Objects"]
-visible = false
 modulate = Color(0.909804, 0.270588, 0.215686, 0.705882)
 position = Vector2(608, -68.8)
 texture = ExtResource("7_ofn6v")
 script = ExtResource("8_ybxg1")
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 
 [node name="Gamepieces" type="Node2D" parent="Objects"]
 y_sort_enabled = true
 
 [node name="Player" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(264, 140.8)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
-max_speed = 96.0
 metadata/_edit_group_ = true
 
 [node name="GoBotGFX" parent="Objects/Gamepieces/Player" instance=ExtResource("10_asp3q")]
 
 [node name="Knight" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(276.8, 9.6)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -104,7 +101,7 @@ npc_id = 1
 
 [node name="Runner" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(348.8, 272.4)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -128,7 +125,7 @@ script = ExtResource("13_bql83")
 
 [node name="NPC_StableGuy" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(648, 200)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -144,7 +141,7 @@ script = ExtResource("13_bql83")
 
 [node name="NPC_StableGuy2" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(164.8, 171.2)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -160,7 +157,7 @@ script = ExtResource("13_bql83")
 
 [node name="NPC_StableGuy3" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(492.8, 211.2)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -176,7 +173,7 @@ script = ExtResource("13_bql83")
 
 [node name="Gamepiece" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(313.6, 140.8)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 
 [node name="GenericCharacterAnimation" parent="Objects/Gamepieces/Gamepiece" instance=ExtResource("16_ti5vf")]
@@ -196,7 +193,7 @@ width = 2.0
 
 [node name="Crab" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(57.6, 390.4)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab" instance=ExtResource("17_esm4l")]
@@ -212,7 +209,7 @@ npc_id = 2
 
 [node name="Crab2" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(96, 390.4)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab2" instance=ExtResource("17_esm4l")]
@@ -228,7 +225,7 @@ npc_id = 2
 
 [node name="Crab3" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(57.6, 428.8)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab3" instance=ExtResource("17_esm4l")]
@@ -244,7 +241,7 @@ npc_id = 2
 
 [node name="Crab4" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(136, 403.2)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab4" instance=ExtResource("17_esm4l")]
@@ -260,7 +257,7 @@ npc_id = 2
 
 [node name="Crab5" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(107.2, 428.8)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab5" instance=ExtResource("17_esm4l")]
@@ -276,7 +273,7 @@ npc_id = 2
 
 [node name="Crab6" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(65.6, 456)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab6" instance=ExtResource("17_esm4l")]
@@ -292,7 +289,7 @@ npc_id = 2
 
 [node name="Crab7" parent="Objects/Gamepieces" instance=ExtResource("9_sitjh")]
 position = Vector2(83.2, 417.6)
-gameboard = ExtResource("6_q1fpe")
+gameboard = ExtResource("10_0x1ab")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab7" instance=ExtResource("17_esm4l")]
@@ -308,7 +305,6 @@ npc_id = 2
 
 [node name="MapBoundaries" type="Node2D" parent="."]
 script = ExtResource("18_yeqln")
-gameboard = ExtResource("6_q1fpe")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

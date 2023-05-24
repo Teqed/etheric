@@ -17,10 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://ce7kpyxq0d54" path="res://scenes/combat_slot.tscn" id="14_plajn"]
 [ext_resource type="AudioStream" uid="uid://dd3bp57bco2r2" path="res://assets/sfx/music/gt-rpg-sountrack/gt-rpg-sountrack/13 Juhani Junkala - GT - Battle - Crystal World.mp3" id="16_d5v5m"]
 
-[node name="Node2D" type="Node2D"]
+[node name="CombatDaemon" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("12_gd315")
 
 [node name="Sky" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 464.0
 color = Color(0, 0.796078, 0.996078, 1)

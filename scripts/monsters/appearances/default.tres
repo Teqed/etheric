@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Monster_Resources_Appearance" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="Monster_Resources_Appearance" load_steps=2 format=3 uid="uid://dg8pae73g6dcy"]
 
 [ext_resource type="Script" path="res://scripts/monsters/appearances/appearance.gd" id="1_1tyd5"]
 

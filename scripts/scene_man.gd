@@ -4,18 +4,18 @@ const DEFAULT_DURATION := 1.5
 const DEFAULT_DELAY := 0.0
 
 const AdventureScenePreload := preload("res://scenes/adventure/places/crab_town.tscn")
-const CollectionScenePreload := preload("res://scenes/test_scene2.tscn")
+# const CollectionScenePreload := preload("res://scenes/test_scene2.tscn")
 const CombatScenePreload := preload("res://scenes/combat.tscn")
 @onready var main_panel_array = get_tree().get_nodes_in_group("MainPanelGroup")
 @onready var adventure_scene_instance: Node = AdventureScenePreload.instantiate()
-@onready var collection_scene_instance: Node = CollectionScenePreload.instantiate()
+# @onready var collection_scene_instance: Node = CollectionScenePreload.instantiate()
 @onready var combat_scene_instance: Node = CombatScenePreload.instantiate()
 @onready var _animator: AnimationPlayer = %SceneManAnimation
 @onready var _curtain: ColorRect = %FadeRect
 
 func _ready():
 	Global.adventure_scene = adventure_scene_instance
-	Global.collection_scene = collection_scene_instance
+	Global.collection_scene = adventure_scene_instance # collection_scene_instance
 	Global.combat_scene = combat_scene_instance
 	Global.main_panel = main_panel_array[0]
 	fade_in()

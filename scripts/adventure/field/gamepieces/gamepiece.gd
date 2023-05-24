@@ -53,7 +53,7 @@ const GROUP_NAME: = "_GAMEPIECES"
 
 ## The gamepiece's position is snapped to whichever cell it currently occupies.
 ## [br][br]The gamepiece will move by steps, being placed at whichever cell it currently occupies.
-## This is useful for snapping its collision shape to the gameboard gameboard, so that there is never
+## This is useful for snapping its collision shape to the gameboard grid, so that there is never
 ## ambiguity to which space/cell is occupied according to the physics engine. [br][br]
 ## It is not desirable, however, for the graphical representation of the gamepiece (or the camera!)
 ## to jump around the gameboard with the gamepiece. Rather, a follower will travel a movement path

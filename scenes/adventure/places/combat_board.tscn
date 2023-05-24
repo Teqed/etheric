@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cq408q4y8wpj7"]
+[gd_scene load_steps=36 format=3 uid="uid://cq408q4y8wpj7"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_hwom2"]
 [ext_resource type="Texture2D" uid="uid://ckvunj24a8mnr" path="res://assets/prototype/kenney_background-elements/PNG/cloud1.png" id="2_c8e78"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://mggwd5otaoei" path="res://assets/prototype/kenney_background-elements/PNG/cloud3.png" id="4_7nutp"]
 [ext_resource type="Texture2D" uid="uid://dm4h0uo6gjp22" path="res://assets/terrain/dungeon_tilemap.png" id="4_vmgqd"]
 [ext_resource type="Texture2D" uid="uid://dxukqofrytdk8" path="res://assets/prototype/kenney_background-elements/PNG/cloud4.png" id="5_j31oy"]
-[ext_resource type="Script" path="res://scripts/adventure/field/cursor/field_cursor.gd" id="5_lx4b6"]
-[ext_resource type="Resource" uid="uid://ct5k1x5ggblvc" path="res://data/default_gameboard.tres" id="6_1ctse"]
 [ext_resource type="Texture2D" uid="uid://b6uco4tiwrkjc" path="res://assets/prototype/kenney_background-elements/PNG/cloud5.png" id="6_krj65"]
 [ext_resource type="Texture2D" uid="uid://bhi61bxq2jmml" path="res://assets/prototype/kenney_background-elements/PNG/cloud6.png" id="7_lx3bp"]
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="7_w6kf8"]
@@ -22,8 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://se1wnxu5svgj" path="res://data/field/characters/knight_gfx.tscn" id="11_hd03x"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/controllers/passive_controller.gd" id="12_i0f2x"]
 [ext_resource type="Script" path="res://scripts/adventure/interaction.gd" id="13_f00ge"]
+[ext_resource type="Script" path="res://scripts/adventure/field/field_cursor.gd" id="14_7ghhb"]
 [ext_resource type="PackedScene" uid="uid://cdkha7cc72h35" path="res://data/field/characters/generic_character_gfx.tscn" id="14_dn8uh"]
+[ext_resource type="Resource" path="res://data/default_gameboard.tres" id="15_6iteb"]
 [ext_resource type="PackedScene" uid="uid://chof72jvtnkn" path="res://scenes/adventure/characters/crab_gfx.tscn" id="17_aocwh"]
+[ext_resource type="Script" path="res://scripts/adventure/field/gameboard/gameboard.gd" id="17_hhdbj"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="18_1rmg5"]
 [ext_resource type="Script" path="res://scripts/combat/combat_daemon.gd" id="26_3t6fm"]
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="27_dgngk"]
@@ -42,7 +43,12 @@ separation = Vector2i(1, 1)
 [sub_resource type="TileSet" id="TileSet_uvju2"]
 sources/0 = SubResource("TileSetAtlasSource_orie5")
 
-[node name="Gameboard" type="Node2D"]
+[sub_resource type="Resource" id="Resource_ohqnq"]
+script = ExtResource("17_hhdbj")
+boundaries = Rect2i(0, 0, 50, 30)
+cell_size = Vector2i(16, 16)
+
+[node name="Gameboard3" type="Node2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_hwom2")
 gamepiece_mask = 2
@@ -159,8 +165,8 @@ layer_1/tile_data = PackedInt32Array(196608, 262144, 0, 262144, 262144, 0, 19660
 visible = false
 tile_set = SubResource("TileSet_uvju2")
 format = 2
-script = ExtResource("5_lx4b6")
-gameboard = ExtResource("6_1ctse")
+script = ExtResource("14_7ghhb")
+gameboard = ExtResource("15_6iteb")
 
 [node name="PlayerPathDestinationMarker" type="Sprite2D" parent="Objects"]
 visible = false
@@ -168,23 +174,22 @@ modulate = Color(0.909804, 0.270588, 0.215686, 0.705882)
 position = Vector2(608, -68.8)
 texture = ExtResource("7_w6kf8")
 script = ExtResource("8_an054")
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 
 [node name="Gamepieces" type="Node2D" parent="Objects"]
 y_sort_enabled = true
 
 [node name="Player" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(280, 136)
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 blocks_movement = true
-max_speed = 96.0
 metadata/_edit_group_ = true
 
 [node name="GoBotGFX" parent="Objects/Gamepieces/Player" instance=ExtResource("10_kwbc5")]
 
 [node name="Knight" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(328, 136)
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -201,7 +206,7 @@ npc_id = 1
 
 [node name="NPC_StableGuy" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(376, 136)
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -217,7 +222,7 @@ script = ExtResource("13_f00ge")
 
 [node name="NPC_StableGuy2" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(424, 136)
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -233,7 +238,7 @@ script = ExtResource("13_f00ge")
 
 [node name="Crab" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(200, 136)
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab" instance=ExtResource("17_aocwh")]
@@ -249,7 +254,7 @@ npc_id = 2
 
 [node name="Crab2" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(152, 136)
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab2" instance=ExtResource("17_aocwh")]
@@ -265,7 +270,7 @@ npc_id = 2
 
 [node name="Crab3" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(104, 136)
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab3" instance=ExtResource("17_aocwh")]
@@ -281,7 +286,7 @@ npc_id = 2
 
 [node name="Crab4" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(56, 136)
-gameboard = ExtResource("6_1ctse")
+gameboard = ExtResource("15_6iteb")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab4" instance=ExtResource("17_aocwh")]
@@ -295,7 +300,7 @@ gamepiece_mask = 2
 script = ExtResource("13_f00ge")
 npc_id = 2
 
-[node name="Control" type="Control" parent="Objects/Gamepieces"]
+[node name="CombatDaemon" type="Control" parent="Objects/Gamepieces"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -304,12 +309,12 @@ scale = Vector2(0.25, 0.25)
 theme = ExtResource("27_dgngk")
 script = ExtResource("26_3t6fm")
 
-[node name="CombatLog" type="Control" parent="Objects/Gamepieces/Control"]
+[node name="CombatLog" type="Control" parent="Objects/Gamepieces/CombatDaemon"]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("27_dgngk")
 
-[node name="Panel" type="Panel" parent="Objects/Gamepieces/Control/CombatLog"]
+[node name="Panel" type="Panel" parent="Objects/Gamepieces/CombatDaemon/CombatLog"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 640.0
@@ -317,7 +322,7 @@ offset_right = 1152.0
 offset_bottom = 1024.0
 theme = ExtResource("27_dgngk")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Objects/Gamepieces/Control/CombatLog"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Objects/Gamepieces/CombatDaemon/CombatLog"]
 layout_mode = 0
 offset_left = 120.0
 offset_top = 672.0
@@ -328,12 +333,12 @@ text = "Combat begins!"
 scroll_following = true
 script = ExtResource("28_8cdu1")
 
-[node name="Moves" type="Control" parent="Objects/Gamepieces/Control"]
+[node name="Moves" type="Control" parent="Objects/Gamepieces/CombatDaemon"]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("27_dgngk")
 
-[node name="MoveButton1" parent="Objects/Gamepieces/Control/Moves" instance=ExtResource("30_021np")]
+[node name="MoveButton1" parent="Objects/Gamepieces/CombatDaemon/Moves" instance=ExtResource("30_021np")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1216.0
@@ -341,7 +346,7 @@ offset_top = 654.0
 offset_right = 1536.0
 offset_bottom = 814.0
 
-[node name="MoveButton2" parent="Objects/Gamepieces/Control/Moves" instance=ExtResource("30_021np")]
+[node name="MoveButton2" parent="Objects/Gamepieces/CombatDaemon/Moves" instance=ExtResource("30_021np")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1566.0
@@ -349,7 +354,7 @@ offset_top = 654.0
 offset_right = 1886.0
 offset_bottom = 814.0
 
-[node name="MoveButton3" parent="Objects/Gamepieces/Control/Moves" instance=ExtResource("30_021np")]
+[node name="MoveButton3" parent="Objects/Gamepieces/CombatDaemon/Moves" instance=ExtResource("30_021np")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1216.0
@@ -357,7 +362,7 @@ offset_top = 854.0
 offset_right = 1536.0
 offset_bottom = 1014.0
 
-[node name="MoveButton4" parent="Objects/Gamepieces/Control/Moves" instance=ExtResource("30_021np")]
+[node name="MoveButton4" parent="Objects/Gamepieces/CombatDaemon/Moves" instance=ExtResource("30_021np")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1566.0
@@ -365,42 +370,42 @@ offset_top = 854.0
 offset_right = 1886.0
 offset_bottom = 1014.0
 
-[node name="Slots" type="Control" parent="Objects/Gamepieces/Control"]
+[node name="Slots" type="Control" parent="Objects/Gamepieces/CombatDaemon"]
 anchors_preset = 0
 
-[node name="CombatSlot0" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+[node name="CombatSlot0" parent="Objects/Gamepieces/CombatDaemon/Slots" instance=ExtResource("30_u8sqd")]
 
-[node name="CombatSlot1" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+[node name="CombatSlot1" parent="Objects/Gamepieces/CombatDaemon/Slots" instance=ExtResource("30_u8sqd")]
 position = Vector2(320, 384)
 ordinal = 1
 
-[node name="CombatSlot2" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+[node name="CombatSlot2" parent="Objects/Gamepieces/CombatDaemon/Slots" instance=ExtResource("30_u8sqd")]
 position = Vector2(512, 384)
 ordinal = 2
 
-[node name="CombatSlot3" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+[node name="CombatSlot3" parent="Objects/Gamepieces/CombatDaemon/Slots" instance=ExtResource("30_u8sqd")]
 position = Vector2(704, 384)
 ordinal = 3
 
-[node name="CombatSlot4" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+[node name="CombatSlot4" parent="Objects/Gamepieces/CombatDaemon/Slots" instance=ExtResource("30_u8sqd")]
 position = Vector2(1152, 384)
 ordinal = 4
 
-[node name="CombatSlot5" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+[node name="CombatSlot5" parent="Objects/Gamepieces/CombatDaemon/Slots" instance=ExtResource("30_u8sqd")]
 position = Vector2(1344, 384)
 ordinal = 5
 
-[node name="CombatSlot6" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+[node name="CombatSlot6" parent="Objects/Gamepieces/CombatDaemon/Slots" instance=ExtResource("30_u8sqd")]
 position = Vector2(1536, 384)
 ordinal = 6
 
-[node name="CombatSlot7" parent="Objects/Gamepieces/Control/Slots" instance=ExtResource("30_u8sqd")]
+[node name="CombatSlot7" parent="Objects/Gamepieces/CombatDaemon/Slots" instance=ExtResource("30_u8sqd")]
 position = Vector2(1728, 384)
 ordinal = 7
 
 [node name="MapBoundaries" type="Node2D" parent="."]
 script = ExtResource("18_1rmg5")
-gameboard = ExtResource("6_1ctse")
+gameboard = SubResource("Resource_ohqnq")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -414,7 +419,7 @@ unique_name_in_owner = true
 stream = ExtResource("27_qy3xj")
 volume_db = -20.0
 
-[editable path="Objects/Gamepieces/Control/Moves/MoveButton1"]
-[editable path="Objects/Gamepieces/Control/Moves/MoveButton2"]
-[editable path="Objects/Gamepieces/Control/Moves/MoveButton3"]
-[editable path="Objects/Gamepieces/Control/Moves/MoveButton4"]
+[editable path="Objects/Gamepieces/CombatDaemon/Moves/MoveButton1"]
+[editable path="Objects/Gamepieces/CombatDaemon/Moves/MoveButton2"]
+[editable path="Objects/Gamepieces/CombatDaemon/Moves/MoveButton3"]
+[editable path="Objects/Gamepieces/CombatDaemon/Moves/MoveButton4"]
