@@ -4,7 +4,6 @@
 ## Allows [method play]ing animations that automatically adapt to the parent [Gamepiece]'s state.
 ## Transitions between animations are handled automatically, including changes to direction.
 ## [br][br][b]Note:[/b] Requires a [Gamepiece] as parent.
-@tool
 class_name GamepieceAnimation
 extends Marker2D
 
