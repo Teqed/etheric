@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqi4f4jevp8jl"]
+[gd_scene load_steps=5 format=3 uid="uid://e4no7k75xgws"]
 
-[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="1_tkbhi"]
-[ext_resource type="Script" path="res://scripts/combat/combat_statpanel.gd" id="2_03wb6"]
-[ext_resource type="Texture2D" uid="uid://jmwnf007kltm" path="res://assets/barGreen.png" id="7_a2c6d"]
-[ext_resource type="Texture2D" uid="uid://coj0g3reieanl" path="res://assets/barYellow.png" id="8_rw6ea"]
+[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="1_kticc"]
+[ext_resource type="Script" path="res://scripts/combat/combat_statpanel.gd" id="2_r6sqf"]
+[ext_resource type="Texture2D" uid="uid://jmwnf007kltm" path="res://assets/gui/barGreen.png" id="3_2egqj"]
+[ext_resource type="Texture2D" uid="uid://coj0g3reieanl" path="res://assets/gui/barYellow.png" id="4_h7d7i"]
 
 [node name="Statbar" type="Control"]
 layout_mode = 3
@@ -13,8 +13,8 @@ offset_top = 88.0
 offset_right = -24.0
 offset_bottom = 88.0
 mouse_filter = 2
-theme = ExtResource("1_tkbhi")
-script = ExtResource("2_03wb6")
+theme = ExtResource("1_kticc")
+script = ExtResource("2_r6sqf")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -31,7 +31,7 @@ offset_right = 106.0
 offset_bottom = 24.0
 mouse_filter = 2
 value = 100.0
-texture_progress = ExtResource("7_a2c6d")
+texture_progress = ExtResource("3_2egqj")
 
 [node name="EnergyBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
@@ -41,4 +41,4 @@ offset_top = 29.0
 offset_right = 106.0
 offset_bottom = 41.0
 mouse_filter = 2
-texture_progress = ExtResource("8_rw6ea")
+texture_progress = ExtResource("4_h7d7i")

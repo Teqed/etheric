@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://cl786d7pb8xd8"]
 
-[ext_resource type="Texture2D" uid="uid://c4egap5anebe0" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/panel_blue.png" id="1_bai7v"]
+[ext_resource type="Texture2D" uid="uid://bvt3tnoku07x1" path="res://assets/gui/panel_blue.png" id="1_bai7v"]
 [ext_resource type="FontFile" uid="uid://qfefnomvln0q" path="res://assets/fonts/Super Mario Bros. 2.ttf" id="1_jwknf"]
-[ext_resource type="Texture2D" uid="uid://clok7ljarhrml" path="res://assets/prototype/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_blue.png" id="1_pyjx6"]
+[ext_resource type="Texture2D" uid="uid://ddhdrt7c1s2uj" path="res://assets/gui/buttonSquare_blue.png" id="1_pyjx6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtjjw"]
 texture = ExtResource("1_pyjx6")

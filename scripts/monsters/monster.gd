@@ -2,8 +2,8 @@
 class_name Monster extends CharacterBody2D
 
 var resources := Monster_Resources.new()
-var statpanel_node = preload("res://scenes/statbar.tscn").instantiate()
-var dummymonster_node = preload("res://scenes/DummyMonster.tscn").instantiate()
+var statpanel_node = preload("res://scenes/combat/statbar.tscn").instantiate()
+var dummymonster_node = preload("res://scenes/adventure/characters/DummyMonster.tscn").instantiate()
 var deltaAccumulate = 0
 func _init():
 	add_child(statpanel_node)

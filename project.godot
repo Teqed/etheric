@@ -17,7 +17,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://assets/ss-logo.svg"
+config/icon="res://assets/misc/ss-logo.svg"
 
 [autoload]
 
@@ -32,7 +32,7 @@ SaveMan="*res://scripts/savegames/save_man.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://assets/tile_0578.png"
+mouse_cursor/custom_image="res://assets/gui/tile_0578.png"
 mouse_cursor/custom_image_hotspot=Vector2(13, 4)
 
 [dotnet]
