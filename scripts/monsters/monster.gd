@@ -24,7 +24,7 @@ func fill_custom_monster(
 		description: String,
 		health: int,
 		energy: int,
-		grid_position: Vector2,
+		gameboard_position: Vector2,
 		spriteatlas: Vector2,
 		available_moves: Dictionary):
 	resources = Monster_Resources.new().fill_custom_monster(
@@ -32,7 +32,7 @@ func fill_custom_monster(
 		description,
 		health,
 		energy,
-		grid_position,
+		gameboard_position,
 		spriteatlas,
 		available_moves)
 	return self

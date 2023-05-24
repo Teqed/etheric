@@ -10,14 +10,14 @@ func fill_custom_monster(
 		description: String,
 		health: int,
 		energy: int,
-		grid_position: Vector2,
+		gameboard_position: Vector2,
 		spriteatlas: Vector2,
 		available_moves: Dictionary):
 	tooltip["monster_name"] = monster_name
 	tooltip["description"] = description
 	statpanel["health"] = health
 	statpanel["energy"] = energy
-	appearance["grid_position"] = grid_position
+	appearance["gameboard_position"] = gameboard_position
 	appearance["spriteatlas"] = spriteatlas
 	moves.move0 = available_moves["move0"]
 	moves.move1 = available_moves["move1"]
@@ -32,8 +32,8 @@ func update_dictionary(key: String, value):
 		statpanel["health"] = value
 	elif key == "energy":
 		statpanel["energy"] = value
-	elif key == "grid_position":
-		appearance["grid_position"] = value
+	elif key == "gameboard_position":
+		appearance["gameboard_position"] = value
 	elif key == "spriteatlas":
 		appearance["spriteatlas"] = value
 	elif key == "move0":

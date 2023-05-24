@@ -96,6 +96,15 @@ func is_cell_blocked(cell: Vector2i) -> bool:
 	# have flagged this cell as 'targeted this frame'.
 	return FieldEvents.did_gp_move_to_cell_this_frame(cell)
 
+## Finds all gamepieces at a given cell.
+## Returns an array of gamepieces.
+func get_gamepieces_at_cell(cell: Vector2i) -> Array[Gamepiece]:
+	var gamepieces: Array[Gamepiece] = []
+	for gamepiece in get_tree().get_nodes_in_group(Gamepiece.GROUP_NAME):
+		if gamepiece.cell == cell:
+			gamepieces.append(gamepiece)
+
+	return gamepieces
 
 ## Find all collision matching [member gamepiece_mask] at a given cell.
 func get_collisions(cell: Vector2i) -> Array:

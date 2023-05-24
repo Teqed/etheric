@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dm4h0uo6gjp22" path="res://assets/terrain/dungeon_tilemap.png" id="4_vmgqd"]
 [ext_resource type="Texture2D" uid="uid://dxukqofrytdk8" path="res://assets/prototype/kenney_background-elements/PNG/cloud4.png" id="5_j31oy"]
 [ext_resource type="Script" path="res://scripts/adventure/field/cursor/field_cursor.gd" id="5_lx4b6"]
-[ext_resource type="Resource" uid="uid://ct5k1x5ggblvc" path="res://data/default_grid.tres" id="6_1ctse"]
+[ext_resource type="Resource" uid="uid://ct5k1x5ggblvc" path="res://data/default_gameboard.tres" id="6_1ctse"]
 [ext_resource type="Texture2D" uid="uid://b6uco4tiwrkjc" path="res://assets/prototype/kenney_background-elements/PNG/cloud5.png" id="6_krj65"]
 [ext_resource type="Texture2D" uid="uid://bhi61bxq2jmml" path="res://assets/prototype/kenney_background-elements/PNG/cloud6.png" id="7_lx3bp"]
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="7_w6kf8"]
@@ -160,7 +160,7 @@ visible = false
 tile_set = SubResource("TileSet_uvju2")
 format = 2
 script = ExtResource("5_lx4b6")
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 
 [node name="PlayerPathDestinationMarker" type="Sprite2D" parent="Objects"]
 visible = false
@@ -168,14 +168,14 @@ modulate = Color(0.909804, 0.270588, 0.215686, 0.705882)
 position = Vector2(608, -68.8)
 texture = ExtResource("7_w6kf8")
 script = ExtResource("8_an054")
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 
 [node name="Gamepieces" type="Node2D" parent="Objects"]
 y_sort_enabled = true
 
 [node name="Player" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(280, 136)
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 blocks_movement = true
 max_speed = 96.0
 metadata/_edit_group_ = true
@@ -184,7 +184,7 @@ metadata/_edit_group_ = true
 
 [node name="Knight" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(328, 136)
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -201,7 +201,7 @@ npc_id = 1
 
 [node name="NPC_StableGuy" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(376, 136)
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -217,7 +217,7 @@ script = ExtResource("13_f00ge")
 
 [node name="NPC_StableGuy2" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(424, 136)
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 blocks_movement = true
 metadata/_edit_group_ = true
 
@@ -233,7 +233,7 @@ script = ExtResource("13_f00ge")
 
 [node name="Crab" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(200, 136)
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab" instance=ExtResource("17_aocwh")]
@@ -249,7 +249,7 @@ npc_id = 2
 
 [node name="Crab2" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(152, 136)
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab2" instance=ExtResource("17_aocwh")]
@@ -265,7 +265,7 @@ npc_id = 2
 
 [node name="Crab3" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(104, 136)
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab3" instance=ExtResource("17_aocwh")]
@@ -281,7 +281,7 @@ npc_id = 2
 
 [node name="Crab4" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
 position = Vector2(56, 136)
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 blocks_movement = true
 
 [node name="CrabGFX" parent="Objects/Gamepieces/Crab4" instance=ExtResource("17_aocwh")]
@@ -400,7 +400,7 @@ ordinal = 7
 
 [node name="MapBoundaries" type="Node2D" parent="."]
 script = ExtResource("18_1rmg5")
-grid = ExtResource("6_1ctse")
+gameboard = ExtResource("6_1ctse")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

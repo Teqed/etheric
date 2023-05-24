@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_4hc3g")
-grid_position = Vector2(1, 0)
+gameboard_position = Vector2(1, 0)
 spriteatlas = Vector2(0, 0)

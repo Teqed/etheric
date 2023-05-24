@@ -1,9 +1,9 @@
 ## Defines the playable area of the game and where everything on it lies.
 ##
-## The gameboard is defined, essentially, as a grid of [Vector2i] cells. Anything may be
+## The gameboard is defined, essentially, as a gameboard of [Vector2i] cells. Anything may be
 ## placed on one of these cells, so the gameboard determines where each cell is located. In this 
 ## case, we are using a simple orthographic (square) projection.
-## [br][br]The grid is contained within the playable [member boundaries] and its constituent cells.
+## [br][br]The gameboard is contained within the playable [member boundaries] and its constituent cells.
 class_name Gameboard
 extends Resource
 
@@ -36,7 +36,7 @@ const _DIRECTION_MAPPINGS: = {
 		boundaries.size.x = maxi(boundaries.size.x, 1)
 		boundaries.size.y = maxi(boundaries.size.y, 1)
 
-## The size of each grid cell. Usually - though not always - analogous to [TileSet]'s
+## The size of each gameboard cell. Usually - though not always - analogous to [TileSet]'s
 ## [member TileSet.tile_size].
 @export var cell_size: = Vector2i(16, 16):
 	set(value):
