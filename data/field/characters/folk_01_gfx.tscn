@@ -22,5 +22,4 @@ texture = ExtResource("3_obubo")
 offset = Vector2(0, -6)
 hframes = 4
 vframes = 8
-frame = 1
 region_rect = Rect2(1, 37, 16, 16)
