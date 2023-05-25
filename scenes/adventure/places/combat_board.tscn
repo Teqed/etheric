@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://pu303xj08nm0"]
+[gd_scene load_steps=29 format=3 uid="uid://pu303xj08nm0"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_hwom2"]
 [ext_resource type="Texture2D" uid="uid://budksdcjqnylx" path="res://assets/cinematic/clouds/cloud1.png" id="2_c8e78"]
@@ -13,17 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="7_w6kf8"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="8_an054"]
 [ext_resource type="Texture2D" uid="uid://c6f5g6ejhyqo8" path="res://assets/cinematic/clouds/cloud7.png" id="8_eq70y"]
-[ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="9_a6ehv"]
 [ext_resource type="Texture2D" uid="uid://bfevkpvdketc2" path="res://assets/cinematic/clouds/cloud8.png" id="9_dkkkt"]
 [ext_resource type="Texture2D" uid="uid://ccmcjnyemww1x" path="res://assets/cinematic/clouds/cloud9.png" id="10_kt8u8"]
-[ext_resource type="PackedScene" uid="uid://qxua6ekob7fa" path="res://data/field/characters/gobot_gfx.tscn" id="10_kwbc5"]
-[ext_resource type="PackedScene" uid="uid://se1wnxu5svgj" path="res://data/field/characters/knight_gfx.tscn" id="11_hd03x"]
-[ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/controllers/passive_controller.gd" id="12_i0f2x"]
-[ext_resource type="Script" path="res://scripts/adventure/interaction.gd" id="13_f00ge"]
 [ext_resource type="Script" path="res://scripts/adventure/field/field_cursor.gd" id="14_7ghhb"]
-[ext_resource type="PackedScene" uid="uid://cdkha7cc72h35" path="res://data/field/characters/generic_character_gfx.tscn" id="14_dn8uh"]
 [ext_resource type="Resource" path="res://data/default_gameboard.tres" id="15_6iteb"]
-[ext_resource type="PackedScene" uid="uid://chof72jvtnkn" path="res://scenes/adventure/characters/crab_gfx.tscn" id="17_aocwh"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/gameboard.gd" id="17_hhdbj"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="18_1rmg5"]
 [ext_resource type="Script" path="res://scripts/combat/combat_daemon.gd" id="26_3t6fm"]
@@ -178,127 +171,6 @@ gameboard = ExtResource("15_6iteb")
 
 [node name="Gamepieces" type="Node2D" parent="Objects"]
 y_sort_enabled = true
-
-[node name="Player" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
-position = Vector2(280, 136)
-gameboard = ExtResource("15_6iteb")
-blocks_movement = true
-metadata/_edit_group_ = true
-
-[node name="GoBotGFX" parent="Objects/Gamepieces/Player" instance=ExtResource("10_kwbc5")]
-
-[node name="Knight" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
-position = Vector2(328, 136)
-gameboard = ExtResource("15_6iteb")
-blocks_movement = true
-metadata/_edit_group_ = true
-
-[node name="KnightGFX" parent="Objects/Gamepieces/Knight" instance=ExtResource("11_hd03x")]
-
-[node name="PassiveAI" type="Node2D" parent="Objects/Gamepieces/Knight"]
-position = Vector2(-12.8, 131.2)
-script = ExtResource("12_i0f2x")
-gamepiece_mask = 2
-
-[node name="Interaction" type="Node" parent="Objects/Gamepieces/Knight"]
-script = ExtResource("13_f00ge")
-npc_id = 1
-
-[node name="NPC_StableGuy" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
-position = Vector2(376, 136)
-gameboard = ExtResource("15_6iteb")
-blocks_movement = true
-metadata/_edit_group_ = true
-
-[node name="GenericCharacterAnimation" parent="Objects/Gamepieces/NPC_StableGuy" instance=ExtResource("14_dn8uh")]
-
-[node name="PassiveAI" type="Node2D" parent="Objects/Gamepieces/NPC_StableGuy"]
-position = Vector2(-12.8, 131.2)
-script = ExtResource("12_i0f2x")
-gamepiece_mask = 2
-
-[node name="Interaction" type="Node" parent="Objects/Gamepieces/NPC_StableGuy"]
-script = ExtResource("13_f00ge")
-
-[node name="NPC_StableGuy2" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
-position = Vector2(424, 136)
-gameboard = ExtResource("15_6iteb")
-blocks_movement = true
-metadata/_edit_group_ = true
-
-[node name="GenericCharacterAnimation" parent="Objects/Gamepieces/NPC_StableGuy2" instance=ExtResource("14_dn8uh")]
-
-[node name="PassiveAI" type="Node2D" parent="Objects/Gamepieces/NPC_StableGuy2"]
-position = Vector2(-12.8, 131.2)
-script = ExtResource("12_i0f2x")
-gamepiece_mask = 2
-
-[node name="Interaction" type="Node" parent="Objects/Gamepieces/NPC_StableGuy2"]
-script = ExtResource("13_f00ge")
-
-[node name="Crab" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
-position = Vector2(200, 136)
-gameboard = ExtResource("15_6iteb")
-blocks_movement = true
-
-[node name="CrabGFX" parent="Objects/Gamepieces/Crab" instance=ExtResource("17_aocwh")]
-
-[node name="PassiveAI" type="Node2D" parent="Objects/Gamepieces/Crab"]
-position = Vector2(-12.8, 131.2)
-script = ExtResource("12_i0f2x")
-gamepiece_mask = 2
-
-[node name="Interaction" type="Node" parent="Objects/Gamepieces/Crab"]
-script = ExtResource("13_f00ge")
-npc_id = 2
-
-[node name="Crab2" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
-position = Vector2(152, 136)
-gameboard = ExtResource("15_6iteb")
-blocks_movement = true
-
-[node name="CrabGFX" parent="Objects/Gamepieces/Crab2" instance=ExtResource("17_aocwh")]
-
-[node name="PassiveAI" type="Node2D" parent="Objects/Gamepieces/Crab2"]
-position = Vector2(-12.8, 131.2)
-script = ExtResource("12_i0f2x")
-gamepiece_mask = 2
-
-[node name="Interaction" type="Node" parent="Objects/Gamepieces/Crab2"]
-script = ExtResource("13_f00ge")
-npc_id = 2
-
-[node name="Crab3" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
-position = Vector2(104, 136)
-gameboard = ExtResource("15_6iteb")
-blocks_movement = true
-
-[node name="CrabGFX" parent="Objects/Gamepieces/Crab3" instance=ExtResource("17_aocwh")]
-
-[node name="PassiveAI" type="Node2D" parent="Objects/Gamepieces/Crab3"]
-position = Vector2(-12.8, 131.2)
-script = ExtResource("12_i0f2x")
-gamepiece_mask = 2
-
-[node name="Interaction" type="Node" parent="Objects/Gamepieces/Crab3"]
-script = ExtResource("13_f00ge")
-npc_id = 2
-
-[node name="Crab4" parent="Objects/Gamepieces" instance=ExtResource("9_a6ehv")]
-position = Vector2(56, 136)
-gameboard = ExtResource("15_6iteb")
-blocks_movement = true
-
-[node name="CrabGFX" parent="Objects/Gamepieces/Crab4" instance=ExtResource("17_aocwh")]
-
-[node name="PassiveAI" type="Node2D" parent="Objects/Gamepieces/Crab4"]
-position = Vector2(-12.8, 131.2)
-script = ExtResource("12_i0f2x")
-gamepiece_mask = 2
-
-[node name="Interaction" type="Node" parent="Objects/Gamepieces/Crab4"]
-script = ExtResource("13_f00ge")
-npc_id = 2
 
 [node name="CombatDaemon" type="Control" parent="Objects/Gamepieces"]
 layout_mode = 3
