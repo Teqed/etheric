@@ -70,10 +70,10 @@ func set_focus(value: Vector2i) -> void:
 	var old_focus: = focus
 	focus = value
 
-	clear()
+	clear_layer(1)
 
 	if focus != Gameboard.INVALID_CELL:
-		set_cell(0, focus, 0, Vector2(1, 5))
+		set_cell(1, focus, 1, Vector2(1, 5))
 
 	focus_changed.emit(old_focus, focus)
 	FieldEvents.cell_highlighted.emit(focus)
