@@ -4,10 +4,10 @@ extends Node
 ## The physics layers which will be used to search for gamepiece obejcts.
 ## Please see the project properties for the specific physics layers. [b]All[/b] collision shapes
 ## matching the mask will be checked regardless of position in the scene tree.
-@export_flags_2d_physics var gamepiece_mask: = 0
+@export_flags_2d_physics var gamepiece_mask: = 2
 
-## The physics layers which will be used to search for terrain obejcts.
-@export_flags_2d_physics var terrain_mask: = 0
+## The physics layers which will be used to search for terrain objects.
+@export_flags_2d_physics var terrain_mask: = 1
 
 @export var focused_game_piece: Gamepiece = null:
 	set = set_focused_game_piece

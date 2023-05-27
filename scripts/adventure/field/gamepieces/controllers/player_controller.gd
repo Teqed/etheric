@@ -135,11 +135,15 @@ func _on_focus_arrived() -> void:
 func interaction() -> void:
 	print("Arrived at target: " + str(_target))
 	# _target.get_children()[2].go_to_cell(Vector2i(_target.cell.x + 1, _target.cell.y))
-	_target.get_children()[3].interact()
+	if _target.get_node("%Brain"):
+		if _target.get_node("%Brain").has_method("interact"):
+			_target.get_node("%Brain").interact()
 
 ## Triggered by the player clicking on a cell.
 func _on_cell_selected(cell: Vector2i) -> void:
+	print("Cell selected: " + str(cell))
 	if not _focus.is_moving():
+		print("Focus is not moving")
 		if cell == _focus.cell:
 			# The player clicked on the cell that the gamepiece carrying the camera focus is on.
 			# Don't move to the cell the focus is standing on. May want to open inventory.
@@ -149,6 +153,7 @@ func _on_cell_selected(cell: Vector2i) -> void:
 		# If there is an interactable, blocking object beneath the cursor, we'll walk *next* to
 		# the cell.
 		if is_cell_blocked(cell):
+			print("Cell is blocked")
 			# The cell is blocked, so try to find a path to a cell next to the blocked cell.
 			# Set the target to the gamepiece at the cell.
 			_target = get_gamepieces_at_cell(cell)[0]
@@ -158,12 +163,16 @@ func _on_cell_selected(cell: Vector2i) -> void:
 					cell = adjacent_cell
 					break
 
+		print("Cell is not blocked")
 		# If the cell beneath the cursor is empty the focus can follow a path to the cell.
 		_update_changed_cells()
+		print("Focus cell: " + str(_focus.cell) + ", target cell: " + str(cell))
 		_waypoints = pathfinder.get_path_cells(_focus.cell, cell)
+		print("Waypoints: " + str(_waypoints))
 
 		# Only follow a valid path with a length greater than 0 (more than one waypoint).
 		if _waypoints.size() > 1:
+			print("Following path")
 			FieldEvents.player_path_set.emit(_focus, _waypoints.back())
 
 			# The first waypoint is the focus' current cell and may be discarded.

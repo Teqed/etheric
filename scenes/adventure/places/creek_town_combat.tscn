@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cx8gnbykaxdjj" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6 - 400%.png" id="6_ihcmd"]
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="7_l8r1b"]
 [ext_resource type="Texture2D" uid="uid://dm4h0uo6gjp22" path="res://assets/terrain/dungeon_tilemap.png" id="13_ofwi8"]
-[ext_resource type="PackedScene" uid="uid://cs6t4ew7jyprr" path="res://scenes/adventure/characters/adult_red_dragon.tscn" id="13_oqbr0"]
+[ext_resource type="PackedScene" uid="uid://bllq4iwb6x2yf" path="res://scenes/adventure/characters/adult_red_dragon.tscn" id="13_oqbr0"]
 [ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="14_aqp3t"]
 [ext_resource type="Script" path="res://scripts/adventure/field/field_cursor.gd" id="14_qiuhv"]
-[ext_resource type="PackedScene" uid="uid://d0nmk2d3f2e3g" path="res://scenes/adventure/characters/slime.tscn" id="15_7fffj"]
+[ext_resource type="PackedScene" uid="uid://cue5wp0sm0mlb" path="res://scenes/adventure/characters/slime.tscn" id="15_7fffj"]
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="16_3fn8m"]
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/ui/bluepanel.tres" id="17_1drbj"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="17_pbh3j"]
@@ -4998,8 +4998,6 @@ shader_parameter/smoothing_factor = 1.0
 
 [node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
 script = ExtResource("1_8teh2")
-gamepiece_mask = 2
-terrain_mask = 1
 focused_game_piece = NodePath("")
 is_active = true
 
@@ -5082,27 +5080,35 @@ material = SubResource("ShaderMaterial_a1wg2")
 
 [node name="AdultRedDragon_05" parent="TileMap/Gamepieces" instance=ExtResource("13_oqbr0")]
 position = Vector2(1728, 384)
+blocks_movement = false
 
 [node name="AdultRedDragon_04" parent="TileMap/Gamepieces" instance=ExtResource("13_oqbr0")]
 position = Vector2(1543, 384)
+blocks_movement = false
 
 [node name="AdultRedDragon_03" parent="TileMap/Gamepieces" instance=ExtResource("13_oqbr0")]
 position = Vector2(1344, 384)
+blocks_movement = false
 
 [node name="AdultRedDragon_02" parent="TileMap/Gamepieces" instance=ExtResource("13_oqbr0")]
 position = Vector2(128, 384)
+blocks_movement = false
 
 [node name="AdultRedDragon_01" parent="TileMap/Gamepieces" instance=ExtResource("13_oqbr0")]
 position = Vector2(320, 384)
+blocks_movement = false
 
 [node name="AdultRedDragon_00" parent="TileMap/Gamepieces" instance=ExtResource("13_oqbr0")]
 position = Vector2(512, 384)
+blocks_movement = false
 
 [node name="Slime_00" parent="TileMap/Gamepieces" instance=ExtResource("15_7fffj")]
 position = Vector2(704, 384)
+blocks_movement = false
 
 [node name="Slime_01" parent="TileMap/Gamepieces" instance=ExtResource("15_7fffj")]
 position = Vector2(1152, 384)
+blocks_movement = false
 
 [node name="Lighting" type="Node2D" parent="."]
 position = Vector2(232, 113.6)

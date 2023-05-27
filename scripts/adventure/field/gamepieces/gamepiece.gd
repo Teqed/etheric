@@ -41,7 +41,7 @@ const GROUP_NAME: = "_GAMEPIECES"
 
 ## A gamepiece may block movement into the cell it currently occupies. To do so, the gamepiece also
 ## requires a descendant [CollisionObject2D] with a valid collision shape.
-@export var blocks_movement: = false:
+@export var blocks_movement: = true:
 	set(value):
 		if value != blocks_movement:
 			blocks_movement = value

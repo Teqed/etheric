@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj1u6ucc816xa"]
+
+[ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="1_yscrj"]
+[ext_resource type="PackedScene" uid="uid://csnrcmjemaj6u" path="res://scenes/adventure/characters/gamepiece_static_gfx.tscn" id="2_af5nw"]
+
+[node name="Wooden_Sign_00" instance=ExtResource("1_yscrj")]
+
+[node name="GFX" parent="." index="1" instance=ExtResource("2_af5nw")]

@@ -87,8 +87,9 @@ func is_cell_blocked(cell: Vector2i) -> bool:
 	# of the collision shape for a blocking flag.
 	# Please see BLOCKING_PROPERTY for more information.
 	for collision in collisions:
-		if collision.collider.owner.has_method(IS_BLOCKING_METHOD):
-			if collision.collider.owner.call(IS_BLOCKING_METHOD):
+		var gfx = collision.collider.owner.get_node("GFX")
+		if gfx.has_method(IS_BLOCKING_METHOD):
+			if gfx.call(IS_BLOCKING_METHOD):
 				return true
 
 	# There is one last check to make. It is possible that a gamepiece has decided to move to cell
