@@ -1,9 +1,9 @@
 extends PointLight2D
 
-var pos_1 = -400
+@export var speed = 1
+var pos_1 = -800
 var pos_2 = 2200
 var direction = 1
-var speed = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

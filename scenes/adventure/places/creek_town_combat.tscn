@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cflkgaq14k1tr"]
+[gd_scene load_steps=43 format=3 uid="uid://cflkgaq14k1tr"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_8teh2"]
 [ext_resource type="Texture2D" uid="uid://dq8ol0whj6t3y" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6.png" id="2_fb22u"]
@@ -5035,17 +5035,11 @@ script = ExtResource("24_hbstx")
 boundaries = Rect2i(0, 0, 50, 30)
 cell_size = Vector2i(64, 64)
 
-[sub_resource type="Environment" id="Environment_200us"]
-background_mode = 3
-ambient_light_source = 1
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_23uvi"]
-
 [node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
 script = ExtResource("1_8teh2")
 gamepiece_mask = 2
 terrain_mask = 1
-focused_game_piece = NodePath("TileMap/Gamepieces/Dragon")
+focused_game_piece = NodePath("TileMap/Gamepieces/Sorcerer")
 is_active = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5289,6 +5283,37 @@ drag_top_margin = 0.03
 drag_right_margin = 0.03
 drag_bottom_margin = 0.03
 
+[node name="Daytime" type="CanvasModulate" parent="Camera2D"]
+position = Vector2(-928, -508)
+color = Color(0.8, 0.811765, 0.976471, 1)
+
+[node name="Nighttime" type="CanvasModulate" parent="Camera2D"]
+visible = false
+position = Vector2(-928, -508)
+color = Color(0.262745, 0.2, 0.482353, 1)
+
+[node name="PointDRIFT" type="PointLight2D" parent="Camera2D"]
+position = Vector2(-1224, -652)
+color = Color(0.776471, 0.858824, 0.494118, 1)
+energy = 0.25
+shadow_color = Color(0.101961, 0, 0.188235, 1)
+shadow_filter = 2
+shadow_filter_smooth = 6.5
+texture = ExtResource("28_dj0pc")
+texture_scale = 3.0
+height = 5.0
+script = ExtResource("31_de082")
+
+[node name="PointOVERHEAD" type="PointLight2D" parent="Camera2D"]
+position = Vector2(0, -490)
+energy = 0.25
+shadow_color = Color(0.101961, 0, 0.188235, 1)
+shadow_filter = 2
+shadow_filter_smooth = 6.5
+texture = ExtResource("28_dj0pc")
+texture_scale = 15.0
+height = 100.0
+
 [node name="MapBoundaries" type="Node2D" parent="."]
 visible = false
 script = ExtResource("23_1frlh")
@@ -5299,62 +5324,6 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 stream = ExtResource("14_aqp3t")
 volume_db = -20.0
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.364706, 0.290196, 0.647059, 1)
-
-[node name="PointDRIFT" type="PointLight2D" parent="."]
-position = Vector2(-288, -576)
-energy = 0.8
-blend_mode = 2
-shadow_color = Color(0.101961, 0, 0.188235, 1)
-shadow_filter = 2
-shadow_filter_smooth = 6.5
-texture = ExtResource("28_dj0pc")
-texture_scale = 3.0
-script = ExtResource("31_de082")
-
-[node name="PointOVERHEAD" type="PointLight2D" parent="."]
-position = Vector2(888, 90)
-color = Color(0.776471, 0.858824, 0.494118, 1)
-shadow_color = Color(0.101961, 0, 0.188235, 1)
-shadow_filter = 2
-shadow_filter_smooth = 6.5
-texture = ExtResource("28_dj0pc")
-texture_scale = 15.0
-height = 5000.0
-
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(1191, -872)
-energy = 0.25
-shadow_color = Color(0.101961, 0, 0.188235, 1)
-shadow_filter = 2
-shadow_filter_smooth = 6.5
-texture = ExtResource("28_dj0pc")
-texture_scale = 7.0
-height = 100.0
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
-height = 0.75
-
-[node name="DirDARK" type="DirectionalLight2D" parent="."]
-visible = false
-rotation = 3.14159
-blend_mode = 1
-height = 1.0
-max_distance = 200.0
-
-[node name="DirectionalLight2D3" type="DirectionalLight2D" parent="."]
-visible = false
-rotation = 0.785398
-scale = Vector2(1, 1)
-height = 0.7
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_200us")
-camera_attributes = SubResource("CameraAttributesPractical_23uvi")
 
 [editable path="TileMap/Gamepieces/Dragon/GenericCharacterAnimation"]
 [editable path="TileMap/Gamepieces/Slime/GenericCharacterAnimation"]
