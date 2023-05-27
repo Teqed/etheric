@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://tuish8ktym85"]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="Texture2D" uid="uid://d0e5flwpuam53" path="res://assets/cinematic/Day-Platformer/PNG/sky.png" id="1_3l81e"]
 [ext_resource type="Texture2D" uid="uid://5diudns1j2p5" path="res://assets/cinematic/Day-Platformer/PNG/clouds.png" id="2_b7cf2"]
-[ext_resource type="Theme" uid="uid://cogpwoa58yer7" path="res://resources/UITheme.tres" id="2_uycqa"]
+[ext_resource type="Theme" uid="uid://cogpwoa58yer7" path="res://resources/ui/UITheme.tres" id="2_uycqa"]
 [ext_resource type="Script" path="res://scripts/cinematic/mainmenu/clouds.gd" id="2_xyldo"]
 [ext_resource type="Script" path="res://scripts/cinematic/mainmenu/trees.gd" id="3_dkl60"]
 [ext_resource type="Texture2D" uid="uid://b8h084157sapt" path="res://assets/cinematic/Day-Platformer/PNG/trees.png" id="3_ikrai"]

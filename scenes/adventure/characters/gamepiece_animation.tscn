@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://caxhff6by5nqu"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/animation/gamepiece_animation.gd" id="1_l0scw"]
-[ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv" path="res://data/field/characters/animations/standard_animations.res" id="2_16r6q"]
-[ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/textures/characters/slime.tres" id="3_p08oc"]
+[ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv" path="res://resources/characters/animations/standard_animations.res" id="2_16r6q"]
+[ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/characters/textures/slime.tres" id="3_p08oc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aefb2"]
 radius = 24.4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dniw0fs1urv7h"]
+[gd_scene load_steps=29 format=3]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_6564q"]
 [ext_resource type="Texture2D" uid="uid://budksdcjqnylx" path="res://assets/cinematic/clouds/cloud1.png" id="2_uhdun"]
@@ -14,10 +14,10 @@
 [ext_resource type="TileSet" uid="uid://biq84075xlypd" path="res://assets/terrain/tilesets/kenney_obstacles.tres" id="12_jj3yn"]
 [ext_resource type="Texture2D" uid="uid://dm4h0uo6gjp22" path="res://assets/terrain/dungeon_tilemap.png" id="13_85vbj"]
 [ext_resource type="Script" path="res://scripts/adventure/field/field_cursor.gd" id="14_4nevx"]
-[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://data/default_gameboard.tres" id="15_v4hpa"]
+[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="15_v4hpa"]
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="16_7pq56"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="17_0r4sc"]
-[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="18_or8dh"]
+[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/ui/bluepanel.tres" id="18_or8dh"]
 [ext_resource type="Script" path="res://scripts/combat/combat_daemon.gd" id="19_rlcs6"]
 [ext_resource type="Script" path="res://scripts/combat/combat_log.gd" id="20_gkwj0"]
 [ext_resource type="PackedScene" uid="uid://d0gtmahfusd61" path="res://scenes/combat/movepanel.tscn" id="21_vo52n"]

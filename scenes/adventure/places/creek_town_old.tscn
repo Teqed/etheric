@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7ve2ewd52ntr"]
+[gd_scene load_steps=17 format=3]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_tkpv7"]
 [ext_resource type="Texture2D" uid="uid://dq8ol0whj6t3y" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6.png" id="2_26bdm"]
@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="7_ou2dd"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="8_ixoyl"]
 [ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="9_4p208"]
-[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://data/default_gameboard.tres" id="9_hgbu1"]
-[ext_resource type="PackedScene" uid="uid://cb4k51qr6clfk" path="res://scenes/adventure/characters/character_gfx.tscn" id="10_aev6f"]
+[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="9_hgbu1"]
+[ext_resource type="PackedScene" path="res://scenes/adventure/characters/character_gfx.tscn" id="10_aev6f"]
 [ext_resource type="Texture2D" uid="uid://vc7058yurfpj" path="res://assets/characters/AdultRedDragon.png" id="10_o4im8"]
 [ext_resource type="Texture2D" uid="uid://c7xact5ph6h11" path="res://assets/characters/slime.png" id="11_ff5gl"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="18_8bwjt"]

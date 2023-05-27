@@ -16,11 +16,13 @@ extends Node2D
 
 		queue_redraw()
 
+## The color of the boundaries.
 @export var boundary_color: Color = Color.DARK_RED:
 	set(value):
 		boundary_color = value
 		queue_redraw()
 
+## The width of the boundaries.
 @export_range(0.5, 5.0, 0.1, "or_greater") var line_width: = 2.0:
 	set(value):
 		line_width = value

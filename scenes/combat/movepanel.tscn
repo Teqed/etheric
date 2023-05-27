@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0gtmahfusd61"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="1_rwttf"]
+[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/ui/bluepanel.tres" id="1_rwttf"]
 
 [node name="MovePanel" type="Button"]
 offset_right = 320.0

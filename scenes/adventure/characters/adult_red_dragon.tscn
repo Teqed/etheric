@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbasbkuc3b1b7"]
+[gd_scene load_steps=5 format=3 uid="uid://cs6t4ew7jyprr"]
 
 [ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="1_x5y2q"]
-[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://data/default_gameboard.tres" id="2_eqmea"]
-[ext_resource type="PackedScene" uid="uid://caxhff6by5nqu" path="res://scenes/adventure/characters/gamepiece_animation.tscn" id="3_apfnw"]
-[ext_resource type="Texture2D" uid="uid://bbfehut14176f" path="res://resources/textures/characters/adult_red_dragon.tres" id="4_agfsp"]
+[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="2_eqmea"]
+[ext_resource type="PackedScene" path="res://scenes/adventure/characters/gamepiece_animation.tscn" id="3_apfnw"]
+[ext_resource type="Texture2D" uid="uid://bbfehut14176f" path="res://resources/characters/textures/adult_red_dragon.tres" id="4_3ukil"]
 
 [node name="AdultRedDragon_00" instance=ExtResource("1_x5y2q")]
 gameboard = ExtResource("2_eqmea")
@@ -11,6 +11,6 @@ gameboard = ExtResource("2_eqmea")
 [node name="CharacterAnimation" parent="." index="1" instance=ExtResource("3_apfnw")]
 
 [node name="Sprite" parent="CharacterAnimation/GFX" index="0"]
-texture = ExtResource("4_agfsp")
+texture = ExtResource("4_3ukil")
 
 [editable path="CharacterAnimation"]

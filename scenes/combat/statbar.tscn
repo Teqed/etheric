@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://e4no7k75xgws"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="1_kticc"]
+[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/ui/bluepanel.tres" id="1_kticc"]
 [ext_resource type="Script" path="res://scripts/combat/combat_statpanel.gd" id="2_r6sqf"]
 [ext_resource type="Texture2D" uid="uid://jmwnf007kltm" path="res://assets/gui/barGreen.png" id="3_2egqj"]
 [ext_resource type="Texture2D" uid="uid://coj0g3reieanl" path="res://assets/gui/barYellow.png" id="4_h7d7i"]

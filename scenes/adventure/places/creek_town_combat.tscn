@@ -1,21 +1,21 @@
-[gd_scene load_steps=29 format=3 uid="uid://dpbdl0cf4e33q"]
+[gd_scene load_steps=29 format=3 uid="uid://bmvcynhdwiex8"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_8teh2"]
 [ext_resource type="Texture2D" uid="uid://dq8ol0whj6t3y" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6.png" id="2_fb22u"]
-[ext_resource type="Shader" path="res://resources/subpixel.gdshader" id="2_osx3k"]
+[ext_resource type="Shader" path="res://resources/shaders/subpixel.gdshader" id="2_l4piq"]
 [ext_resource type="Texture2D" uid="uid://cx8gnbykaxdjj" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6 - 400%.png" id="6_ihcmd"]
+[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="7_l8r1b"]
 [ext_resource type="Texture2D" uid="uid://dm4h0uo6gjp22" path="res://assets/terrain/dungeon_tilemap.png" id="13_ofwi8"]
-[ext_resource type="PackedScene" uid="uid://dbasbkuc3b1b7" path="res://scenes/adventure/characters/adult_red_dragon.tscn" id="13_oqbr0"]
+[ext_resource type="PackedScene" uid="uid://cs6t4ew7jyprr" path="res://scenes/adventure/characters/adult_red_dragon.tscn" id="13_oqbr0"]
 [ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="14_aqp3t"]
 [ext_resource type="Script" path="res://scripts/adventure/field/field_cursor.gd" id="14_qiuhv"]
 [ext_resource type="PackedScene" uid="uid://d0nmk2d3f2e3g" path="res://scenes/adventure/characters/slime.tscn" id="15_7fffj"]
-[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://data/default_gameboard.tres" id="15_judak"]
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="16_3fn8m"]
+[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/ui/bluepanel.tres" id="17_1drbj"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="17_pbh3j"]
-[ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/bluepanel.tres" id="18_i4e5p"]
 [ext_resource type="Script" path="res://scripts/combat/combat_daemon.gd" id="19_lnb8a"]
 [ext_resource type="Script" path="res://scripts/combat/combat_log.gd" id="20_v7gf8"]
-[ext_resource type="PackedScene" uid="uid://d0gtmahfusd61" path="res://scenes/combat/movepanel.tscn" id="21_4wbse"]
+[ext_resource type="PackedScene" path="res://scenes/combat/movepanel.tscn" id="21_4wbse"]
 [ext_resource type="PackedScene" uid="uid://ce7kpyxq0d54" path="res://scenes/combat/combat_slot.tscn" id="22_xdfpe"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="23_1frlh"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/gameboard.gd" id="24_hbstx"]
@@ -23,7 +23,7 @@
 [ext_resource type="Script" path="res://scripts/PointLight2D_slide.gd" id="31_de082"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yajr2"]
-shader = ExtResource("2_osx3k")
+shader = ExtResource("2_l4piq")
 shader_parameter/smoothing_factor = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rt3t"]
@@ -4993,7 +4993,7 @@ boundaries = Rect2i(0, 0, 50, 30)
 cell_size = Vector2i(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a1wg2"]
-shader = ExtResource("2_osx3k")
+shader = ExtResource("2_l4piq")
 shader_parameter/smoothing_factor = 1.0
 
 [node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
@@ -5056,7 +5056,7 @@ layer_6/y_sort_origin = 64
 layer_6/z_index = 0
 layer_6/tile_data = PackedInt32Array()
 script = ExtResource("14_qiuhv")
-gameboard = ExtResource("15_judak")
+gameboard = ExtResource("7_l8r1b")
 
 [node name="PlayerPathDestinationMarker" type="Sprite2D" parent="TileMap"]
 modulate = Color(0.909804, 0.270588, 0.215686, 0.705882)
@@ -5064,7 +5064,7 @@ position = Vector2(-1070, -1241)
 scale = Vector2(4, 4)
 texture = ExtResource("16_3fn8m")
 script = ExtResource("17_pbh3j")
-gameboard = ExtResource("15_judak")
+gameboard = ExtResource("7_l8r1b")
 
 [node name="MapBoundaries" type="Node2D" parent="TileMap"]
 script = ExtResource("23_1frlh")
@@ -5175,7 +5175,7 @@ render_target_update_mode = 4
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
-theme = ExtResource("18_i4e5p")
+theme = ExtResource("17_1drbj")
 script = ExtResource("19_lnb8a")
 
 [node name="CombatLog" type="Control" parent="CombatHUD/SubViewport/CombatDaemon"]
@@ -5185,13 +5185,13 @@ offset_left = 19.0
 offset_top = 598.0
 offset_right = 19.0
 offset_bottom = 598.0
-theme = ExtResource("18_i4e5p")
+theme = ExtResource("17_1drbj")
 
 [node name="Panel" type="Panel" parent="CombatHUD/SubViewport/CombatDaemon/CombatLog"]
 layout_mode = 0
 offset_right = 1088.0
 offset_bottom = 384.0
-theme = ExtResource("18_i4e5p")
+theme = ExtResource("17_1drbj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CombatHUD/SubViewport/CombatDaemon/CombatLog"]
 layout_mode = 0
@@ -5199,7 +5199,7 @@ offset_left = 53.0
 offset_top = 31.0
 offset_right = 1037.0
 offset_bottom = 351.0
-theme = ExtResource("18_i4e5p")
+theme = ExtResource("17_1drbj")
 text = "Combat begins!"
 scroll_following = true
 script = ExtResource("20_v7gf8")
@@ -5211,7 +5211,7 @@ offset_left = 1151.0
 offset_top = 616.0
 offset_right = 1151.0
 offset_bottom = 616.0
-theme = ExtResource("18_i4e5p")
+theme = ExtResource("17_1drbj")
 
 [node name="MoveButton1" parent="CombatHUD/SubViewport/CombatDaemon/Moves" instance=ExtResource("21_4wbse")]
 unique_name_in_owner = true
