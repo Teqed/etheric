@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0nmk2d3f2e3g"]
+
+[ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="1_p1nfy"]
+[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://data/default_gameboard.tres" id="2_0glfj"]
+[ext_resource type="PackedScene" uid="uid://caxhff6by5nqu" path="res://scenes/adventure/characters/gamepiece_animation.tscn" id="2_q2307"]
+
+[node name="Slime_00" instance=ExtResource("1_p1nfy")]
+gameboard = ExtResource("2_0glfj")
+
+[node name="CharacterAnimation" parent="." index="1" instance=ExtResource("2_q2307")]
