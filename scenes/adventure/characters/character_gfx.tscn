@@ -1,26 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb4k51qr6clfk"]
+[gd_scene load_steps=3 format=3 uid="uid://cb4k51qr6clfk"]
 
 [ext_resource type="PackedScene" uid="uid://caxhff6by5nqu" path="res://scripts/adventure/field/gamepieces/animation/gamepiece_animation.tscn" id="1_o60wc"]
-[ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv" path="res://data/field/characters/animations/standard_animations.res" id="2_kiams"]
-[ext_resource type="Texture2D" uid="uid://c5gx62hq1ptt6" path="res://assets/characters/sorcerer.png" id="3_cdu2y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyb3"]
-size = Vector2(16, 16)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ju11q"]
+closed = false
+cull_mode = 2
+polygon = PackedVector2Array(-8, 6, -16, -10, -8, -26, 0, -26, 8, -26, 16, -10, 8, 6, 0, 6)
 
 [node name="GenericCharacterAnimation" instance=ExtResource("1_o60wc")]
 
-[node name="AnimationPlayer" parent="." index="0"]
-autoplay = "idle_s"
-libraries = {
-"": ExtResource("2_kiams")
-}
+[node name="LightOccluder2D" type="LightOccluder2D" parent="GFX" index="0"]
+visible = false
+position = Vector2(0, -6)
+occluder = SubResource("OccluderPolygon2D_ju11q")
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource("RectangleShape2D_tbyb3")
-
-[node name="Sprite" parent="GFX" index="0"]
-texture = ExtResource("3_cdu2y")
-offset = Vector2(0, -6)
-hframes = 16
-vframes = 9
+[node name="Sprite" parent="GFX" index="1"]
 region_rect = Rect2(1, 37, 16, 16)

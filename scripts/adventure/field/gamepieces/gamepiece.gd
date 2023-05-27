@@ -49,7 +49,7 @@ const GROUP_NAME: = "_GAMEPIECES"
 		update_configuration_warnings()
 
 ## The gamepiece will traverse a movement path at [code]move_speed[/code] pixels per second.
-@export var move_speed: = 64.0
+@export var move_speed: = 160.0
 
 ## The gamepiece's position is snapped to whichever cell it currently occupies.
 ## [br][br]The gamepiece will move by steps, being placed at whichever cell it currently occupies.

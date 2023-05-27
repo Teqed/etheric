@@ -1,14 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8w1bdvx8s4nb"]
+[gd_scene load_steps=17 format=3 uid="uid://b8w1bdvx8s4nb"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_tkpv7"]
 [ext_resource type="Texture2D" uid="uid://dq8ol0whj6t3y" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6.png" id="2_26bdm"]
 [ext_resource type="Texture2D" uid="uid://dm4h0uo6gjp22" path="res://assets/terrain/dungeon_tilemap.png" id="4_8bg7o"]
 [ext_resource type="Script" path="res://scripts/adventure/field/field_cursor.gd" id="4_g843x"]
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="7_ou2dd"]
-[ext_resource type="Script" path="res://scripts/adventure/field/gameboard/gameboard.gd" id="8_1hq6v"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="8_ixoyl"]
 [ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="9_4p208"]
-[ext_resource type="Resource" path="res://data/default_gameboard.tres" id="9_hgbu1"]
+[ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://data/default_gameboard.tres" id="9_hgbu1"]
 [ext_resource type="PackedScene" uid="uid://cb4k51qr6clfk" path="res://scenes/adventure/characters/character_gfx.tscn" id="10_aev6f"]
 [ext_resource type="Texture2D" uid="uid://vc7058yurfpj" path="res://assets/characters/AdultRedDragon.png" id="10_o4im8"]
 [ext_resource type="Texture2D" uid="uid://c7xact5ph6h11" path="res://assets/characters/slime.png" id="11_ff5gl"]
@@ -2747,26 +2746,24 @@ separation = Vector2i(1, 1)
 11:10/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_1dpqn"]
+tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1rt3t")
 sources/1 = SubResource("TileSetAtlasSource_oevn6")
 
-[sub_resource type="Resource" id="Resource_ohqnq"]
-script = ExtResource("8_1hq6v")
-boundaries = Rect2i(0, 0, 50, 30)
-cell_size = Vector2i(16, 16)
-
 [node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
-scale = Vector2(4, 4)
+y_sort_enabled = true
 script = ExtResource("1_tkpv7")
 gamepiece_mask = 2
 terrain_mask = 1
-focused_game_piece = NodePath("TileMap/Gamepieces/Slime")
+focused_game_piece = NodePath("Gamepieces/Slime")
 is_active = true
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
+scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_1dpqn")
+cell_quadrant_size = 64
 format = 2
 layer_0/name = "Ground"
 layer_0/z_index = -2
@@ -2774,7 +2771,7 @@ layer_0/tile_data = PackedInt32Array(-1900574, 196608, 7, -1835038, 196608, 7, -
 layer_1/name = "Cursor"
 layer_1/enabled = false
 layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
+layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 0
 layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array()
@@ -2823,54 +2820,62 @@ texture = ExtResource("7_ou2dd")
 script = ExtResource("8_ixoyl")
 gameboard = ExtResource("9_hgbu1")
 
-[node name="Gamepieces" type="Node2D" parent="TileMap"]
+[node name="Gamepieces" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Dragon" parent="TileMap/Gamepieces" instance=ExtResource("9_4p208")]
-position = Vector2(248, 136)
+[node name="Dragon" parent="Gamepieces" instance=ExtResource("9_4p208")]
+position = Vector2(934, 480)
 gameboard = ExtResource("9_hgbu1")
 blocks_movement = true
+move_speed = 64.0
 
-[node name="GenericCharacterAnimation" parent="TileMap/Gamepieces/Dragon" instance=ExtResource("10_aev6f")]
+[node name="GenericCharacterAnimation" parent="Gamepieces/Dragon" instance=ExtResource("10_aev6f")]
 y_sort_enabled = true
 
-[node name="Sprite" parent="TileMap/Gamepieces/Dragon/GenericCharacterAnimation/GFX" index="0"]
+[node name="Sprite" parent="Gamepieces/Dragon/GenericCharacterAnimation/GFX" index="0"]
 texture = ExtResource("10_o4im8")
 
-[node name="Slime" parent="TileMap/Gamepieces" instance=ExtResource("9_4p208")]
-position = Vector2(264, 168)
+[node name="Slime" parent="Gamepieces" instance=ExtResource("9_4p208")]
+position = Vector2(928, 658)
 gameboard = ExtResource("9_hgbu1")
 blocks_movement = true
+move_speed = 256.0
 
-[node name="GenericCharacterAnimation" parent="TileMap/Gamepieces/Slime" instance=ExtResource("10_aev6f")]
+[node name="GenericCharacterAnimation" parent="Gamepieces/Slime" instance=ExtResource("10_aev6f")]
 y_sort_enabled = true
 
-[node name="Sprite" parent="TileMap/Gamepieces/Slime/GenericCharacterAnimation/GFX" index="0"]
+[node name="Sprite" parent="Gamepieces/Slime/GenericCharacterAnimation/GFX" index="0"]
 texture = ExtResource("11_ff5gl")
 
-[node name="Sorcerer" parent="TileMap/Gamepieces" instance=ExtResource("9_4p208")]
-position = Vector2(296, 136)
+[node name="Sorcerer" parent="Gamepieces" instance=ExtResource("9_4p208")]
+position = Vector2(1178, 582)
 gameboard = ExtResource("9_hgbu1")
 blocks_movement = true
+move_speed = 64.0
 
-[node name="GenericCharacterAnimation" parent="TileMap/Gamepieces/Sorcerer" instance=ExtResource("10_aev6f")]
+[node name="GenericCharacterAnimation" parent="Gamepieces/Sorcerer" instance=ExtResource("10_aev6f")]
 y_sort_enabled = true
 
 [node name="MapBoundaries" type="Node2D" parent="."]
 script = ExtResource("18_8bwjt")
-gameboard = SubResource("Resource_ohqnq")
+gameboard = ExtResource("9_hgbu1")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(232, 113.6)
-scale = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.06
+drag_top_margin = 0.06
+drag_right_margin = 0.06
+drag_bottom_margin = 0.06
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("19_wfdln")
 volume_db = -20.0
 
-[editable path="TileMap/Gamepieces/Dragon/GenericCharacterAnimation"]
-[editable path="TileMap/Gamepieces/Slime/GenericCharacterAnimation"]
+[editable path="Gamepieces/Dragon/GenericCharacterAnimation"]
+[editable path="Gamepieces/Slime/GenericCharacterAnimation"]

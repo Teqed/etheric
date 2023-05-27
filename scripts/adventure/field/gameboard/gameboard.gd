@@ -38,7 +38,7 @@ const _DIRECTION_MAPPINGS: = {
 
 ## The size of each gameboard cell. Usually - though not always - analogous to [TileSet]'s
 ## [member TileSet.tile_size].
-@export var cell_size: = Vector2i(16, 16):
+@export var cell_size: = Vector2i(64, 64):
 	set(value):
 		cell_size = value
 		_half_cell_size = cell_size/2

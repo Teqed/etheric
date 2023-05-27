@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Gameboard" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="Gameboard" load_steps=2 format=3 uid="uid://ccd7nys7e4bdc"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/gameboard.gd" id="1_jnxdl"]
 
 [resource]
 script = ExtResource("1_jnxdl")
 boundaries = Rect2i(0, 0, 50, 30)
-cell_size = Vector2i(16, 16)
+cell_size = Vector2i(64, 64)
