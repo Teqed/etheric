@@ -1,5 +1,6 @@
 ## The passive controller does not move on its own, but has methods that can be called by others.
 @tool
+class_name PassiveAiController
 extends GamepieceController
 
 var is_active: = false:
@@ -11,7 +12,11 @@ var is_active: = false:
 		set_process_input(is_active)
 		set_process_unhandled_input(is_active)
 
+# Keep track of the target of a path. Used to face/interact with the object at a path's end.
+# It is reset on cancelling the move path or continuing movement via arrows/gamepad directions.
 var _target: Gamepiece = null
+# Keep track of a move path. The controller will check that the path is clear each time the
+# gamepiece needs to continue on to the next cell.
 var _waypoints: Array[Vector2i] = []
 var _current_waypoint: Vector2i
 
@@ -67,27 +72,20 @@ func _on_focus_arriving(excess_distance: float) -> void:
 
 func _on_focus_arrived() -> void:
 	_waypoints.clear()
-
 	if _target:
 		var distance_to_target: = _target.position - _focus.position
 		_focus.direction = distance_to_target
-
 		interaction()
-
-		# TODO: Interactions go here.
-
 		_target = null
 
 func interaction() -> void:
 	pass
-	# print("Arrived at target: " + str(_target))
-	# Tell target to travel, using travel_to_cell
-	# _target.travel_to_cell(Vector2i(_target.cell.x + 1, _target.cell.y))
 
 func go_to_cell(cell: Vector2i) -> void:
 	return _on_cell_selected(cell)
 
 ## Triggered by something requesting us to move.
+## For players, triggered by the player clicking on a cell.
 func _on_cell_selected(cell: Vector2i) -> void:
 	if not _focus.is_moving():
 		if cell == _focus.cell:

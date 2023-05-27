@@ -1,5 +1,7 @@
 @tool
-extends GamepieceController
+## The path looping controller that follows a Line2D according to a timer.
+class_name PathLoopAiController
+extends PassiveAiController
 
 ## The points in the move_path will be used to generate the waypoints that the AI will follow.
 @export var move_path: Line2D:
@@ -7,7 +9,6 @@ extends GamepieceController
 		move_path = value
 		update_configuration_warnings()
 
-var _waypoints: Array[Vector2i] = []
 var _current_waypoint_index: = 0
 
 @onready var _timer: Timer = $WaitTimer
@@ -17,7 +18,10 @@ func _ready() -> void:
 	# gdlint:ignore = private-method-call
 	super._ready()
 
-	set_physics_process(false)
+	set_process(true)
+	# set_process_input(true)
+	# set_process_unhandled_input(true)
+
 
 	if not Engine.is_editor_hint():
 		move_path.hide()
@@ -25,19 +29,6 @@ func _ready() -> void:
 		_timer.one_shot = true
 		_timer.timeout.connect(_on_timer_timeout)
 		_timer.start()
-
-		_focus.arriving.connect(_on_focus_arriving)
-		_focus.arrived.connect(_on_focus_arrived)
-
-
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings: PackedStringArray = []
-
-	# Node exports are currently broken.
-#	if not move_path:
-#		warnings.append("The path loop controller needs a valid Line2D to follow!")
-
-	return warnings
 
 
 # Ensure that the waypoints are updated whenever the pathfinder is re-created.
@@ -88,28 +79,10 @@ func _find_waypoints_from_line2D() -> void:
 	# If we've made it this far there must be a path between the first and last cell.
 	_waypoints.append_array(pathfinder.get_path_cells(last_cell, first_cell).slice(1))
 
-
-func _on_focus_arriving(excess_distance: float) -> void:
-	# If the gamepiece is currently following a path, continue moving along the path if it is still
-	# a valid movement path since obstacles may shift while in transit.
-	while _current_waypoint_index >= 0 and _current_waypoint_index < _waypoints.size() - 1 \
-			and excess_distance > 0:
-		_current_waypoint_index += 1
-		var waypoint: = _waypoints[_current_waypoint_index]
-		if is_cell_blocked(waypoint) or FieldEvents.did_gp_move_to_cell_this_frame(waypoint):
-			set_process(true)
-			return
-
-		var distance_to_waypoint: = \
-			_focus.position.distance_to(_gameboard.cell_to_pixel(waypoint))
-
-		_focus.travel_to_cell(waypoint)
-		excess_distance -= distance_to_waypoint
-
-
 func _on_focus_arrived() -> void:
+	# gdlint:ignore = private-method-call
+	super._on_focus_arrived()
 	_timer.start()
-
 
 func _on_timer_timeout() -> void:
 	if _current_waypoint_index < 0 or _current_waypoint_index >= _waypoints.size():
