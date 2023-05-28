@@ -51,7 +51,29 @@ extends Control
 
 var slots: Array
 
+@onready var move_button_1: Button = get_node("Moves/MoveButton1")
+@onready var move_button_2: Button = get_node("Moves/MoveButton2")
+@onready var move_button_3: Button = get_node("Moves/MoveButton3")
+@onready var move_button_4: Button = get_node("Moves/MoveButton4")
+@onready var combat_log: RichTextLabel = get_node("CombatLog/RichTextLabel")
+
 func _ready():
+	# Change the 'Name' and 'Description' label on each button
+	move_button_1.get_node("VBoxContainer/Name").set_text("Move 1")
+	move_button_1.get_node("VBoxContainer/Description").set_text("Move 1 Description")
+	move_button_2.get_node("VBoxContainer/Name").set_text("Move 2")
+	move_button_2.get_node("VBoxContainer/Description").set_text("Move 2 Description")
+	move_button_3.get_node("VBoxContainer/Name").set_text("Move 3")
+	move_button_3.get_node("VBoxContainer/Description").set_text("Move 3 Description")
+	move_button_4.get_node("VBoxContainer/Name").set_text("Move 4")
+	move_button_4.get_node("VBoxContainer/Description").set_text("Move 4 Description")
+
+	# Connect the 'pressed' signal of each button to the 'on_move_button_pressed' function
+	move_button_1.connect("pressed", on_move_button_1_pressed)
+	move_button_2.connect("pressed", on_move_button_2_pressed)
+	move_button_3.connect("pressed", on_move_button_3_pressed)
+	move_button_4.connect("pressed", on_move_button_4_pressed)
+
 	var slot_0 = get_tree().get_nodes_in_group("slot_0")[0]
 	var slot_1 = get_tree().get_nodes_in_group("slot_1")[0]
 	var slot_2 = get_tree().get_nodes_in_group("slot_2")[0]
@@ -61,37 +83,42 @@ func _ready():
 	var slot_6 = get_tree().get_nodes_in_group("slot_6")[0]
 	var slot_7 = get_tree().get_nodes_in_group("slot_7")[0]
 	slots = [slot_0, slot_1, slot_2, slot_3, slot_4, slot_5, slot_6, slot_7]
-	# update_selected_friendly_slot(4)
 	Events.combat_selected_friendly_slot.connect(update_selected_friendly_slot)
+	Events.combat_log_message.connect(new_combat_log_message)
+	# update_selected_friendly_slot(4)
+
+func new_combat_log_message(message: String):
+	combat_log.newline()
+	# Append the message to the RichTextLabel
+	combat_log.append_text(message)
+	# Scroll to the bottom of the RichTextLabel
+	combat_log.scroll_to_line(combat_log.get_line_count())
+
+# Called when a move button is pressed
+func on_move_button_1_pressed():
+	print("Move 1 pressed")
+
+func on_move_button_2_pressed():
+	print("Move 2 pressed")
+
+func on_move_button_3_pressed():
+	print("Move 3 pressed")
+
+func on_move_button_4_pressed():
+	print("Move 4 pressed")
 
 func update_selected_friendly_slot(slot_ordinal: int):
+	# Get the monster and moves for the selected friendly slot
 	var selected_friendly_slot = slots[slot_ordinal]
-	var move_button_1 = get_node("%MoveButton1")
-	var selected_friendly_slot_move0_name = (
-		selected_friendly_slot.monster.resources.moves.move0.move_name)
-	var selected_friendly_slot_move0_description = (
-		selected_friendly_slot.monster.resources.moves.move0.description)
-	move_button_1.get_child(0).get_child(0).set_text(
-		selected_friendly_slot_move0_name + "  @ " + str(slot_ordinal))
-	move_button_1.get_child(0).get_child(1).set_text(selected_friendly_slot_move0_description)
-	var move_button_2 = get_node("%MoveButton2")
-	var selected_friendly_slot_move1_name = (
-		selected_friendly_slot.monster.resources.moves.move1.move_name)
-	var selected_friendly_slot_move1_description = (
-		selected_friendly_slot.monster.resources.moves.move1.description)
-	move_button_2.get_child(0).get_child(0).set_text(selected_friendly_slot_move1_name)
-	move_button_2.get_child(0).get_child(1).set_text(selected_friendly_slot_move1_description)
-	var move_button_3 = get_node("%MoveButton3")
-	var selected_friendly_slot_move2_name = (
-		selected_friendly_slot.monster.resources.moves.move2.move_name)
-	var selected_friendly_slot_move2_description = (
-		selected_friendly_slot.monster.resources.moves.move2.description)
-	move_button_3.get_child(0).get_child(0).set_text(selected_friendly_slot_move2_name)
-	move_button_3.get_child(0).get_child(1).set_text(selected_friendly_slot_move2_description)
-	var move_button_4 = get_node("%MoveButton4")
-	var selected_friendly_slot_move3_name = (
-		selected_friendly_slot.monster.resources.moves.move3.move_name)
-	var selected_friendly_slot_move3_description = (
-		selected_friendly_slot.monster.resources.moves.move3.description)
-	move_button_4.get_child(0).get_child(0).set_text(selected_friendly_slot_move3_name)
-	move_button_4.get_child(0).get_child(1).set_text(selected_friendly_slot_move3_description)
+	var moves: Monster_Resources_Moveset = selected_friendly_slot.monster.monster_resources.moves
+
+	# Update the UI elements for each move button
+	update_move_button(move_button_1, moves.move0)
+	update_move_button(move_button_2, moves.move1)
+	update_move_button(move_button_3, moves.move2)
+	update_move_button(move_button_4, moves.move3)
+
+func update_move_button(button, move):
+	# Update the name and description UI elements for a move button
+	button.get_node("%Name").set_text(move.move_name)
+	button.get_node("%Description").set_text(move.description)

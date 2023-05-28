@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ce7kpyxq0d54"]
 
 [ext_resource type="Script" path="res://scripts/combat/combat_slot.gd" id="1_8itr4"]
-[ext_resource type="Script" path="res://scripts/combat/btn_combat_slot.gd" id="2_1lwj3"]
+[ext_resource type="PackedScene" uid="uid://bvniqn302587o" path="res://scenes/combat/statbar.tscn" id="2_asn8b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lqoot"]
 
@@ -32,4 +32,7 @@ offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_f4yh7")
-script = ExtResource("2_1lwj3")
+
+[node name="Statbar" parent="." instance=ExtResource("2_asn8b")]
+
+[connection signal="pressed" from="Button" to="." method="child_pressed"]

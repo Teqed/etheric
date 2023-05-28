@@ -3,6 +3,8 @@
 # It listens for the OrdinalPosition component and populates the slot with a monster.
 # It triggers whenever the OrdinalPosition component changes.
 extends System
+# var slime: Gamepiece = preload(
+# 	"res://scenes/adventure/characters/bestiary/slime.tscn").instantiate();
 var previous_ordinal_position_component: PackedInt32Array = PackedInt32Array()
 func _init(_world: World):
 	name = &"CombatSlotSystem"
@@ -17,6 +19,8 @@ func update():
 			for id in entities_with_component_ordinal_position:
 				var position = ordinal_position_component[id]
 				if party_component[id] == 1:
-					Events.populate_slot.emit(position, Monster.new())
+					pass
+					# Events.populate_slot.emit(position, slime)
 				else: if party_component[id] == 0:
-					Events.populate_slot.emit(position, Monster.new())
+					pass
+					# Events.populate_slot.emit(position, slime)

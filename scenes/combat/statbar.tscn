@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://bvniqn302587o"]
 
 [ext_resource type="Theme" uid="uid://cl786d7pb8xd8" path="res://resources/ui/bluepanel.tres" id="1_kticc"]
-[ext_resource type="Script" path="res://scripts/combat/combat_statpanel.gd" id="2_r6sqf"]
 [ext_resource type="Texture2D" uid="uid://jmwnf007kltm" path="res://assets/gui/barGreen.png" id="3_2egqj"]
 [ext_resource type="Texture2D" uid="uid://coj0g3reieanl" path="res://assets/gui/barYellow.png" id="4_h7d7i"]
 
@@ -14,7 +13,6 @@ offset_right = -24.0
 offset_bottom = 88.0
 mouse_filter = 2
 theme = ExtResource("1_kticc")
-script = ExtResource("2_r6sqf")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -22,7 +20,7 @@ offset_right = 112.0
 offset_bottom = 48.0
 mouse_filter = 2
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
+[node name="HealthBar" type="TextureProgressBar" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 6.0
@@ -33,7 +31,7 @@ mouse_filter = 2
 value = 100.0
 texture_progress = ExtResource("3_2egqj")
 
-[node name="EnergyBar" type="TextureProgressBar" parent="."]
+[node name="EnergyBar" type="TextureProgressBar" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 6.0

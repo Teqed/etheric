@@ -160,6 +160,8 @@ func _update_changed_cells() -> void:
 	# This ensures that given coordinates are only queried once per update.
 	var checked_coordinates: = {}
 
+	_rebuild_pathfinder()
+
 	for cell in _cells_to_update:
 		if not cell in checked_coordinates:
 			pathfinder.block_cell(cell, is_cell_blocked(cell))

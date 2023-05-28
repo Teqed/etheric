@@ -55,6 +55,10 @@ const GROUP_NAME: = "_GAMEPIECES"
 ## The gamepiece will traverse a movement path at [code]move_speed[/code] pixels per second.
 @export var move_speed: = 160.0
 
+## Some gamepieces are monsters that can participate in combat. The [Monster_Resources] object
+## provides the monster's stats and abilities.
+@export var monster_resources := Monster_Resources.new()
+
 ## The gamepiece's position is snapped to whichever cell it currently occupies.
 ## [br][br]The gamepiece will move by steps, being placed at whichever cell it currently occupies.
 ## This is useful for snapping its collision shape to the gameboard grid, so that there is never

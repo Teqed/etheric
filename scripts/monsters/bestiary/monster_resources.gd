@@ -2,23 +2,18 @@
 class_name Monster_Resources extends Resource
 
 @export var tooltip: Monster_Resources_Tooltip = preload("res://scripts/monsters/tooltips/default.tres")
-@export var statpanel: Monster_Resources_Statpanel = preload("res://scripts/monsters/statpanels/default.tres")
-@export var appearance: Monster_Resources_Appearance = preload("res://scripts/monsters/appearances/default.tres")
+@export var stats: Monster_Resources_Stats = preload("res://scripts/monsters/stats/default.tres")
 @export var moves: Monster_Resources_Moveset = preload("res://scripts/monsters/movesets/default.tres")
 func fill_custom_monster(
 		monster_name: String,
 		description: String,
 		health: int,
 		energy: int,
-		gameboard_position: Vector2,
-		spriteatlas: Vector2,
 		available_moves: Dictionary):
 	tooltip["monster_name"] = monster_name
 	tooltip["description"] = description
-	statpanel["health"] = health
-	statpanel["energy"] = energy
-	appearance["gameboard_position"] = gameboard_position
-	appearance["spriteatlas"] = spriteatlas
+	stats["health"] = health
+	stats["energy"] = energy
 	moves.move0 = available_moves["move0"]
 	moves.move1 = available_moves["move1"]
 	moves.move2 = available_moves["move2"]
@@ -29,13 +24,9 @@ func update_dictionary(key: String, value):
 	elif key == "description":
 		tooltip["description"] = value
 	elif key == "health":
-		statpanel["health"] = value
+		stats["health"] = value
 	elif key == "energy":
-		statpanel["energy"] = value
-	elif key == "gameboard_position":
-		appearance["gameboard_position"] = value
-	elif key == "spriteatlas":
-		appearance["spriteatlas"] = value
+		stats["energy"] = value
 	elif key == "move0":
 		moves.move0 = value
 	elif key == "move1":

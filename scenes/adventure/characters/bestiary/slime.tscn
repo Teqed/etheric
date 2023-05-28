@@ -1,8 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cue5wp0sm0mlb"]
+[gd_scene load_steps=8 format=3 uid="uid://3akjfgymw0e7"]
 
-[ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="1_p1nfy"]
-[ext_resource type="PackedScene" uid="uid://ul4766wjemiu" path="res://scenes/adventure/characters/gamepiece_gfx.tscn" id="2_q2307"]
+[ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="1_j4ni3"]
+[ext_resource type="PackedScene" uid="uid://ul4766wjemiu" path="res://scenes/adventure/characters/gamepiece_gfx.tscn" id="2_iyrwr"]
+[ext_resource type="Resource" path="res://scripts/monsters/stats/default.tres" id="4_kdl8e"]
+[ext_resource type="Resource" uid="uid://vehyo07aaevh" path="res://scripts/monsters/movesets/default.tres" id="5_s3wcs"]
+[ext_resource type="Script" path="res://scripts/monsters/bestiary/monster_resources.gd" id="6_xo1lo"]
+[ext_resource type="Resource" path="res://scripts/monsters/tooltips/default.tres" id="8_56iac"]
 
-[node name="Slime_00" instance=ExtResource("1_p1nfy")]
+[sub_resource type="Resource" id="Resource_odahm"]
+script = ExtResource("6_xo1lo")
+tooltip = ExtResource("8_56iac")
+stats = ExtResource("4_kdl8e")
+moves = ExtResource("5_s3wcs")
 
-[node name="GFX" parent="." index="1" instance=ExtResource("2_q2307")]
+[node name="Slime_00" instance=ExtResource("1_j4ni3")]
+monster_resources = SubResource("Resource_odahm")
+
+[node name="GFX" parent="." index="1" instance=ExtResource("2_iyrwr")]

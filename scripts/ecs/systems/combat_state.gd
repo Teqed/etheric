@@ -5,6 +5,8 @@
 # - Removing the energy component from all entities when combat ends
 # - Ending combat when all entities of a party have been defeated
 extends System
+# var slime: Gamepiece = preload(
+# 	"res://scenes/adventure/characters/bestiary/slime.tscn").instantiate();
 func _init(_world: World):
 	name = &"CombatStateSystem"
 	world = _world
@@ -30,14 +32,14 @@ func update():
 							occupied_friendly_positions.append(position)
 							world.set_component_of(id, &"Slot", friendly_position)
 							world.add_component_to(id, &"Energy")
-							Events.populate_slot.emit(friendly_position, Monster.new())
+							# Events.populate_slot.emit(friendly_position, slime)
 					else: if party_component[id] == 0:
 						var position = occupied_enemy_positions.size()
 						if position <= 3:
 							occupied_enemy_positions.append(position)
 							world.set_component_of(id, &"Slot", position)
 							world.add_component_to(id, &"Energy")
-							Events.populate_slot.emit(position, Monster.new())
+							# Events.populate_slot.emit(position, slime)
 				world.set_singleton(&"CombatState", 2)
 			2:
 				var entities_with_component_energy = world.get_ids_with_component(&"Energy")
