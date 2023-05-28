@@ -2,16 +2,17 @@
 
 Etheric is being developed using the Godot engine v4.0.2.stable.official [7a0977ce2].
 
-## Installation
+🚧 In prototype stage 🚧
 
-To play, go to the [Releases](https://github.com/Teqed/etheric/releases) tab and download the game.
+<!-- ## Installation
+
+To play, go to the [Releases](https://github.com/Teqed/etheric/releases) tab and download the game. -->
 
 ## Gameplay
 
 The gameplay of this game is designed to be similar to traditional RPGs. Players will control a party of characters as they explore a world filled with monsters and other challenges.
 
-![image](https://github.com/Teqed/etheric/assets/5181964/dac863c9-e98e-4747-948d-e5660d7782fc)
-Prototype art assets from [kenny.nl](https://kenney.nl/assets/tiny-dungeon).
+![image](https://github.com/Teqed/etheric/assets/5181964/4110e776-6bd7-4cab-986c-0907d93232df)
 
 ## Building from source
 
