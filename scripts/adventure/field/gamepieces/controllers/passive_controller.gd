@@ -78,8 +78,8 @@ func _on_focus_arrived() -> void:
 		interaction()
 		_target = null
 
-func interaction() -> void:
-	pass
+func interaction() -> bool:
+	return false
 
 func go_to_cell(cell: Vector2i) -> void:
 	return _on_cell_selected(cell)

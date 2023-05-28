@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba6a6ydpedrn4"]
+
+[ext_resource type="PackedScene" uid="uid://4054ktk3jnbj" path="res://scenes/adventure/characters/character_prototype.tscn" id="1_blny4"]
+[ext_resource type="Texture2D" uid="uid://boypyc86u75ox" path="res://resources/characters/textures/sorcerer.tres" id="2_gg8ok"]
+
+[node name="Sorcerer_00" instance=ExtResource("1_blny4")]
+
+[node name="Sprite" parent="GFX" index="0"]
+texture = ExtResource("2_gg8ok")
+
+[editable path="GFX"]

@@ -29,6 +29,10 @@ signal blocks_movement_changed
 signal cell_changed(old_cell: Vector2i)
 ## Emitted when the gamepiece's [member direction] changes, usually as it travels about the board.
 signal direction_changed(new_direction: Vector2)
+## Emitted when the gamepiece begins pushing another gamepiece.
+signal push_begun
+## Emitted when the gamepiece stops pushing another gamepiece.
+signal push_ended
 
 const GROUP_NAME: = "_GAMEPIECES"
 

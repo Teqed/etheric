@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b626e0bngfvjj"]
+[gd_scene load_steps=6 format=3 uid="uid://b626e0bngfvjj"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/gamepiece.gd" id="1_xhsbn"]
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="2_6hg4y"]
 [ext_resource type="Script" path="res://scripts/adventure/interaction.gd" id="2_yxdt5"]
+[ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/controllers/passive_controller.gd" id="4_bxv12"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ym0r2"]
 radius = 24.4
@@ -12,7 +13,11 @@ y_sort_enabled = true
 script = ExtResource("1_xhsbn")
 gameboard = ExtResource("2_6hg4y")
 
-[node name="Brain" type="Node" parent="."]
+[node name="Brain" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_bxv12")
+
+[node name="Interactions" type="Node" parent="Brain"]
 unique_name_in_owner = true
 script = ExtResource("2_yxdt5")
 

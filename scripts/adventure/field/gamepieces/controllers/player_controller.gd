@@ -6,6 +6,8 @@ extends PassiveAiController
 
 const GROUP_NAME: = "_PLAYER_CONTROLLER_GROUP"
 
+var is_pushing = false
+
 func _ready() -> void:
 	# gdlint:ignore = private-method-call
 	super._ready()
@@ -40,6 +42,22 @@ func _physics_process(_delta: float) -> void:
 
 				else:
 					_focus.travel_to_cell(target_cell)
+			else:
+				if not is_pushing:
+					is_pushing = true
+					# Get the gamepiece at the target cell.
+					_target = get_gamepieces_at_cell(target_cell)[0]
+					if interaction():
+						pass
+					else:
+						# The player is is_pushing against a wall or another gamepiece.
+						# Let's play the push animation by signalling the animation.
+						_focus.push_begun.emit()
+					_target = null
+		else:
+			if is_pushing:
+				_focus.push_ended.emit()
+				is_pushing = false
 
 
 func _get_move_direction() -> Vector2:
@@ -68,9 +86,11 @@ func _on_focus_arriving(excess_distance: float) -> void:
 						not FieldEvents.did_gp_move_to_cell_this_frame(next_cell):
 					_focus.travel_to_cell(next_cell)
 
-func interaction() -> void:
+func interaction() -> bool:
+	var parent: Gamepiece = get_parent()
 	print("Arrived at target: " + str(_target))
 	# _target.get_children()[2].go_to_cell(Vector2i(_target.cell.x + 1, _target.cell.y))
-	if _target.get_node("%Brain"):
-		if _target.get_node("%Brain").has_method("interact"):
-			_target.get_node("%Brain").interact()
+	if _target.get_node("%Interactions"):
+		if _target.get_node("%Interactions").has_method("interact"):
+			return _target.get_node("%Interactions").interact(parent)
+	return false

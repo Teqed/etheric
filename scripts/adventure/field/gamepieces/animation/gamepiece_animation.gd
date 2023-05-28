@@ -55,6 +55,8 @@ func _ready() -> void:
 		gamepiece.arrived.connect(_on_gamepiece_arrived)
 		gamepiece.direction_changed.connect(_on_gamepiece_direction_changed)
 		gamepiece.travel_begun.connect(_on_gamepiece_travel_begun)
+		gamepiece.push_begun.connect(_on_gamepiece_push_begun)
+		gamepiece.push_ended.connect(_on_gamepiece_push_ended)
 
 		# Need to wait one frame in the event that the parent gamepiece is not yet ready. We cannot
 		# just wait for the ready signal since there is no guarantee that it will be emitted (for
@@ -174,4 +176,12 @@ func _on_gamepiece_blocks_movement_changed(gamepiece: Gamepiece) -> void:
 
 
 func _on_gamepiece_travel_begun():
-	play("run")
+	# If not playing the push animation, play the travel animation.
+	if current_sequence_id != "push":
+		play("run")
+
+func _on_gamepiece_push_begun():
+	play("push")
+
+func _on_gamepiece_push_ended():
+	play("idle")
