@@ -1,7 +1,7 @@
 extends Node
 
 var ecs_world: World
-var main_panel: PanelContainer
+var main_panel: Node
 var adventure_scene: Node
 var collection_scene: Node
 var combat_scene: Node

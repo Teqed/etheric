@@ -45,6 +45,9 @@ func _physics_process(_delta: float) -> void:
 			else:
 				if not is_pushing:
 					is_pushing = true
+					var parent: Gamepiece = get_parent()
+					parent.move_speed = parent.move_speed / 3
+
 					# Get the gamepiece at the target cell.
 					_target = get_gamepieces_at_cell(target_cell)[0]
 					if interaction():
@@ -58,6 +61,8 @@ func _physics_process(_delta: float) -> void:
 			if is_pushing:
 				_focus.push_ended.emit()
 				is_pushing = false
+				var parent: Gamepiece = get_parent()
+				parent.move_speed = parent.move_speed * 3
 
 
 func _get_move_direction() -> Vector2:

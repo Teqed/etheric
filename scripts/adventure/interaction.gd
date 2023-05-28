@@ -54,11 +54,16 @@ func _interact_2(actor: Gamepiece):
 		new_position.y -= 1
 	elif actor_position.y < current_position.y:
 		new_position.y += 1
-	print("NPC position: ", current_position)
-	print("Actor position: ", actor_position)
-	print("New position: ", new_position)
+	get_parent().get_parent().move_speed = get_parent().get_parent().move_speed / 3
 	get_parent().get_node("%Brain").go_to_cell(new_position)
+	# When finished moving, reset the move speed.
+	when_arrived()
 	return false
+
+func when_arrived():
+	await get_parent().get_parent().arrived
+	get_parent().get_parent().move_speed = get_parent().get_parent().move_speed * 3
+
 
 func _interact_3():
 	return show_dialogue_balloon(resource_0)
