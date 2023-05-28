@@ -16,8 +16,10 @@ theme = ExtResource("1_kticc")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 112.0
-offset_bottom = 48.0
+offset_left = -43.0
+offset_top = -40.0
+offset_right = 69.0
+offset_bottom = 8.0
 mouse_filter = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="Panel"]

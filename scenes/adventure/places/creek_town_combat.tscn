@@ -5266,37 +5266,44 @@ anchors_preset = 0
 [node name="CombatSlot0" parent="CombatHUD/SubViewport/CombatDaemon/Slots" instance=ExtResource("22_xdfpe")]
 
 [node name="CombatSlot1" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("22_xdfpe")]
-position = Vector2(320, 384)
+offset_left = 320.0
+offset_right = 320.0
 ordinal = 1
 monster = NodePath("../../../../../TileMap/Gamepieces/AdultRedDragon_02")
 
 [node name="CombatSlot2" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("22_xdfpe")]
-position = Vector2(512, 384)
+offset_left = 512.0
+offset_right = 512.0
 ordinal = 2
 monster = NodePath("../../../../../TileMap/Gamepieces/AdultRedDragon_01")
 
 [node name="CombatSlot3" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("22_xdfpe")]
-position = Vector2(704, 384)
+offset_left = 704.0
+offset_right = 704.0
 ordinal = 3
 monster = NodePath("../../../../../TileMap/Gamepieces/AdultRedDragon_00")
 
 [node name="CombatSlot4" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("22_xdfpe")]
-position = Vector2(1152, 384)
+offset_left = 1152.0
+offset_right = 1152.0
 ordinal = 4
 monster = NodePath("../../../../../TileMap/Gamepieces/Slime_00")
 
 [node name="CombatSlot5" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("22_xdfpe")]
-position = Vector2(1344, 384)
+offset_left = 1344.0
+offset_right = 1344.0
 ordinal = 5
 monster = NodePath("../../../../../TileMap/Gamepieces/Slime_01")
 
 [node name="CombatSlot6" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("22_xdfpe")]
-position = Vector2(1536, 384)
+offset_left = 1536.0
+offset_right = 1536.0
 ordinal = 6
 monster = NodePath("../../../../../TileMap/Gamepieces/Slime_02")
 
 [node name="CombatSlot7" parent="CombatHUD/SubViewport/CombatDaemon/Slots" instance=ExtResource("22_xdfpe")]
-position = Vector2(1728, 384)
+offset_left = 1728.0
+offset_right = 1728.0
 ordinal = 7
 
 [editable path="CombatHUD/SubViewport/CombatDaemon/Moves/MoveButton1"]

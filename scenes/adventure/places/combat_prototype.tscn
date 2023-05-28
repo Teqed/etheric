@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://biqrt8k0u2lij"]
+[gd_scene load_steps=12 format=3 uid="uid://biqrt8k0u2lij"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_pahqk"]
 [ext_resource type="PackedScene" uid="uid://p1vt4gkwf87w" path="res://scenes/adventure/places/tilemap_prototype.tscn" id="2_5d4f3"]
+[ext_resource type="PackedScene" uid="uid://ba6a6ydpedrn4" path="res://scenes/adventure/characters/bestiary/sorcerer.tscn" id="5_f7ayd"]
+[ext_resource type="PackedScene" uid="uid://3akjfgymw0e7" path="res://scenes/adventure/characters/bestiary/slime.tscn" id="5_vf1qr"]
 [ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="12_n05mv"]
 [ext_resource type="Texture2D" uid="uid://dtvr6mvfc8n3a" path="res://assets/misc/light.png" id="19_yn5sl"]
 [ext_resource type="Script" path="res://scripts/PointLight2D_slide.gd" id="20_qpp0m"]
@@ -10,9 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bgtq52t535ivq" path="res://scenes/combat/movepanel.tscn" id="23_3q7l8"]
 [ext_resource type="PackedScene" uid="uid://ce7kpyxq0d54" path="res://scenes/combat/combat_slot.tscn" id="24_yfdmq"]
 
-[node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
+[node name="Gameboard" type="Node2D"]
 script = ExtResource("1_pahqk")
-focused_game_piece = NodePath("")
 is_active = true
 
 [node name="Lighting" type="Node2D" parent="."]
@@ -66,8 +67,32 @@ layer_5/tile_data = PackedInt32Array(720897, 0, 22, 720898, 65536, 22, 720899, 1
 layer_6/tile_data = PackedInt32Array(655361, 0, 21, 655362, 65536, 21, 655363, 131072, 21, 655364, 196608, 21, 655365, 262144, 21, 655403, 0, 26, 655404, 65536, 26, 655405, 131072, 26, 655406, 196608, 26, 655407, 262144, 26)
 layer_7/tile_data = PackedInt32Array(589825, 0, 20, 589826, 65536, 20, 589827, 131072, 20, 589828, 196608, 20, 589829, 262144, 20, 589867, 0, 25, 589868, 65536, 25, 589869, 131072, 25, 589870, 196608, 25, 589871, 262144, 25)
 
+[node name="Sorcerer_03" parent="TileMap" instance=ExtResource("5_f7ayd")]
+position = Vector2(3000, 949)
+
+[node name="Sorcerer_02" parent="TileMap" instance=ExtResource("5_f7ayd")]
+position = Vector2(3000, 1059)
+
+[node name="Sorcerer_01" parent="TileMap" instance=ExtResource("5_f7ayd")]
+position = Vector2(2840, 957)
+
+[node name="Sorcerer_00" parent="TileMap" instance=ExtResource("5_f7ayd")]
+position = Vector2(2840, 1083)
+
+[node name="Slime_03" parent="TileMap" instance=ExtResource("5_vf1qr")]
+position = Vector2(293, 981)
+
+[node name="Slime_02" parent="TileMap" instance=ExtResource("5_vf1qr")]
+position = Vector2(144, 1101)
+
+[node name="Slime_01" parent="TileMap" instance=ExtResource("5_vf1qr")]
+position = Vector2(293, 1114)
+
+[node name="Slime_00" parent="TileMap" instance=ExtResource("5_vf1qr")]
+position = Vector2(144, 963)
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
+position = Vector2(1567, 949)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 drag_horizontal_enabled = true
@@ -82,30 +107,18 @@ unique_name_in_owner = true
 stream = ExtResource("12_n05mv")
 volume_db = -20.0
 
-[node name="CombatHUD" type="SubViewportContainer" parent="."]
-offset_left = 640.0
-offset_top = 448.0
-offset_right = 2560.0
-offset_bottom = 1528.0
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="CombatHUD"]
-disable_3d = true
-transparent_bg = true
-handle_input_locally = false
-snap_2d_transforms_to_pixel = true
-snap_2d_vertices_to_pixel = true
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
-
-[node name="CombatDaemon" type="Control" parent="CombatHUD/SubViewport"]
+[node name="CombatDaemon" type="Control" parent="."]
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
+offset_left = 619.0
+offset_top = 485.0
+offset_right = 619.0
+offset_bottom = 485.0
 theme = ExtResource("21_6rftc")
 script = ExtResource("22_y3rcs")
 
-[node name="CombatLog" type="Control" parent="CombatHUD/SubViewport/CombatDaemon"]
+[node name="CombatLog" type="Control" parent="CombatDaemon"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 19.0
@@ -114,13 +127,13 @@ offset_right = 19.0
 offset_bottom = 598.0
 theme = ExtResource("21_6rftc")
 
-[node name="Panel" type="Panel" parent="CombatHUD/SubViewport/CombatDaemon/CombatLog"]
+[node name="Panel" type="Panel" parent="CombatDaemon/CombatLog"]
 layout_mode = 0
 offset_right = 1088.0
 offset_bottom = 384.0
 theme = ExtResource("21_6rftc")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CombatHUD/SubViewport/CombatDaemon/CombatLog"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CombatDaemon/CombatLog"]
 layout_mode = 0
 offset_left = 53.0
 offset_top = 31.0
@@ -130,7 +143,7 @@ theme = ExtResource("21_6rftc")
 text = "Combat begins!"
 scroll_following = true
 
-[node name="Moves" type="Control" parent="CombatHUD/SubViewport/CombatDaemon"]
+[node name="Moves" type="Control" parent="CombatDaemon"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1151.0
@@ -139,23 +152,23 @@ offset_right = 1151.0
 offset_bottom = 616.0
 theme = ExtResource("21_6rftc")
 
-[node name="MoveButton1" parent="CombatHUD/SubViewport/CombatDaemon/Moves" instance=ExtResource("23_3q7l8")]
+[node name="MoveButton1" parent="CombatDaemon/Moves" instance=ExtResource("23_3q7l8")]
 unique_name_in_owner = true
 layout_mode = 0
 
-[node name="MoveButton2" parent="CombatHUD/SubViewport/CombatDaemon/Moves" instance=ExtResource("23_3q7l8")]
+[node name="MoveButton2" parent="CombatDaemon/Moves" instance=ExtResource("23_3q7l8")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 384.0
 offset_right = 704.0
 
-[node name="MoveButton3" parent="CombatHUD/SubViewport/CombatDaemon/Moves" instance=ExtResource("23_3q7l8")]
+[node name="MoveButton3" parent="CombatDaemon/Moves" instance=ExtResource("23_3q7l8")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_top = 192.0
 offset_bottom = 352.0
 
-[node name="MoveButton4" parent="CombatHUD/SubViewport/CombatDaemon/Moves" instance=ExtResource("23_3q7l8")]
+[node name="MoveButton4" parent="CombatDaemon/Moves" instance=ExtResource("23_3q7l8")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 384.0
@@ -163,46 +176,70 @@ offset_top = 192.0
 offset_right = 704.0
 offset_bottom = 352.0
 
-[node name="Slots" type="Control" parent="CombatHUD/SubViewport/CombatDaemon"]
+[node name="Slots" type="Control" parent="CombatDaemon"]
 anchors_preset = 0
 
-[node name="CombatSlot0" parent="CombatHUD/SubViewport/CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot0" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+monster = NodePath("../../../TileMap/Slime_00")
 
-[node name="CombatSlot1" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
-position = Vector2(320, 384)
+[node name="CombatSlot1" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+offset_left = 320.0
+offset_right = 320.0
 ordinal = 1
-monster = NodePath("")
+monster = NodePath("../../../TileMap/Slime_01")
 
-[node name="CombatSlot2" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
-position = Vector2(512, 384)
+[node name="CombatSlot2" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+offset_left = 512.0
+offset_right = 512.0
 ordinal = 2
-monster = NodePath("")
+monster = NodePath("../../../TileMap/Slime_02")
 
-[node name="CombatSlot3" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
-position = Vector2(704, 384)
+[node name="CombatSlot3" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+offset_left = 704.0
+offset_right = 704.0
 ordinal = 3
-monster = NodePath("")
+monster = NodePath("../../../TileMap/Slime_03")
 
-[node name="CombatSlot4" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
-position = Vector2(1152, 384)
+[node name="CombatSlot4" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+offset_left = 1152.0
+offset_right = 1152.0
 ordinal = 4
-monster = NodePath("")
+monster = NodePath("../../../TileMap/Sorcerer_00")
 
-[node name="CombatSlot5" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
-position = Vector2(1344, 384)
+[node name="CombatSlot5" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+offset_left = 1344.0
+offset_right = 1344.0
 ordinal = 5
-monster = NodePath("")
+monster = NodePath("../../../TileMap/Sorcerer_01")
 
-[node name="CombatSlot6" parent="CombatHUD/SubViewport/CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
-position = Vector2(1536, 384)
+[node name="CombatSlot6" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+offset_left = 1536.0
+offset_right = 1536.0
 ordinal = 6
-monster = NodePath("")
+monster = NodePath("../../../TileMap/Sorcerer_02")
 
-[node name="CombatSlot7" parent="CombatHUD/SubViewport/CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
-position = Vector2(1728, 384)
+[node name="CombatSlot7" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+offset_left = 1728.0
+offset_right = 1728.0
 ordinal = 7
+monster = NodePath("../../../TileMap/Sorcerer_03")
 
-[editable path="CombatHUD/SubViewport/CombatDaemon/Moves/MoveButton1"]
-[editable path="CombatHUD/SubViewport/CombatDaemon/Moves/MoveButton2"]
-[editable path="CombatHUD/SubViewport/CombatDaemon/Moves/MoveButton3"]
-[editable path="CombatHUD/SubViewport/CombatDaemon/Moves/MoveButton4"]
+[node name="CombatHUD" type="SubViewportContainer" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CombatHUD"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[editable path="CombatDaemon/Moves/MoveButton1"]
+[editable path="CombatDaemon/Moves/MoveButton2"]
+[editable path="CombatDaemon/Moves/MoveButton3"]
+[editable path="CombatDaemon/Moves/MoveButton4"]

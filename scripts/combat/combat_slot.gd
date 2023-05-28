@@ -1,5 +1,5 @@
 
-extends Node2D
+extends Control
 
 @export_range(0,7) var ordinal: int # Between 0 and 7, inclusive.
 @export var monster: Gamepiece
@@ -15,8 +15,10 @@ func _ready():
 	Events.statpanel_updated.connect(update_statpanel)
 	if monster:
 		occupied = true
-		var slot_position = monster.gameboard.pixel_to_cell(self.position)
-		print("Slot " + str(ordinal) + " is occupied by " + monster.name + " at " + str(slot_position) + ".")
+		print(self.global_position)
+		var slot_position = monster.gameboard.pixel_to_cell(self.global_position)
+		print("Slot " + str(ordinal) + " is occupied by " \
+			+ monster.name + " at " + str(slot_position) + ".")
 		monster.get_node("%Brain").go_to_cell(slot_position)
 	if not occupied:
 		statpanel.visible = false
