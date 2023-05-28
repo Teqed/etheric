@@ -16,6 +16,8 @@ signal selected(selected_cell: Vector2i)
 ## must be valid for the cursor to function properly.
 @export var gameboard: Gameboard
 
+@export var enabled: bool = false
+
 ## The cursor may focus on any cell from those included in valid_cells.
 ## The valid cell list may be used to change what is 'highlightable' at any given moment (e.g. an
 ## ability that only affects neighbouring cells or limiting movement to a given direction).
@@ -75,7 +77,8 @@ func set_focus(value: Vector2i) -> void:
 	clear_layer(CURSOR_LAYER)
 
 	if focus != Gameboard.INVALID_CELL:
-		set_cell(CURSOR_LAYER, focus, 1, Vector2(1, 5))
+		if enabled:
+			set_cell(CURSOR_LAYER, focus, 1, Vector2(1, 5))
 
 	focus_changed.emit(old_focus, focus)
 	FieldEvents.cell_highlighted.emit(focus)
