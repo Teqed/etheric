@@ -1,6 +1,6 @@
 # Etheric
 
-Etheric is being developed using the Godot engine v4.0.2.stable.official [7a0977ce2].
+Etheric is being developed using the Godot engine v4.0.3.stable.mono.official [5222a99f5]
 
 🚧 In prototype stage 🚧
 
