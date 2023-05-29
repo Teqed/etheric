@@ -17,28 +17,23 @@ Button/styles/focus = SubResource("StyleBoxEmpty_tfi77")
 Button/styles/normal = SubResource("StyleBoxEmpty_buol5")
 Button/styles/pressed = SubResource("StyleBoxEmpty_y0sdv")
 
-[node name="CombatSlot" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 128.0
-offset_top = 384.0
-offset_right = 128.0
-offset_bottom = 384.0
+[node name="CombatSlot" type="Node2D"]
 script = ExtResource("1_8itr4")
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 128.0
-offset_bottom = 192.0
+offset_left = -95.0
+offset_top = -136.0
+offset_right = 97.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_f4yh7")
 
 [node name="Statbar" parent="." instance=ExtResource("2_asn8b")]
-
-[connection signal="pressed" from="Button" to="." method="child_pressed"]
+offset_left = -13.0
+offset_top = 108.0
+offset_right = -13.0
+offset_bottom = 108.0

@@ -1,5 +1,16 @@
+class_name CombatSlot
+extends Node2D
 
-extends Control
+const SLOT_VECTOR_INITIAL: Dictionary = {
+	0: Vector2(160, 992),
+	1: Vector2(288, 1120),
+	2: Vector2(160, 1120),
+	3: Vector2(288, 992),
+	4: Vector2(2848, 1056),
+	5: Vector2(2848, 928),
+	6: Vector2(2976, 1056),
+	7: Vector2(2976, 928),
+}
 
 ## Slot number, 0-7.
 @export_range(0,7) var ordinal: int
@@ -10,6 +21,7 @@ var occupied: bool = false
 @onready var statpanel: Control = get_node("Statbar")
 @onready var healthbar: TextureProgressBar = statpanel.get_node("%HealthBar")
 @onready var energybar: TextureProgressBar = statpanel.get_node("%EnergyBar")
+@onready var gamepiece_container: Node2D = get_node("%Gamepieces")
 func _ready():
 	add_to_group("slots")
 	add_to_group("slot_" + str(ordinal))
@@ -17,11 +29,8 @@ func _ready():
 	Events.statpanel_updated.connect(update_statpanel)
 	if monster:
 		occupied = true
-		print(self.global_position)
 		var slot_position = monster.gameboard.pixel_to_cell(self.global_position)
-		print("Slot " + str(ordinal) + " is occupied by " \
-			+ monster.name + " at " + str(slot_position) + ".")
-		monster.get_node("%Brain").go_to_cell(slot_position)
+		monster.get_node("%PassiveAiController").go_to_cell(slot_position)
 	if not occupied:
 		statpanel.visible = false
 func incoming_populate(slot_ordinal: int, incoming_monster: Gamepiece):
@@ -33,6 +42,10 @@ func populate(incoming_monster: Gamepiece):
 	self.monster = incoming_monster
 	self.occupied = true
 	statpanel.visible = true
+	gamepiece_container.add_child(monster)
+	monster.position = SLOT_VECTOR_INITIAL[ordinal]
+	monster.get_node("%PassiveAiController").go_to_cell(
+		monster.gameboard.pixel_to_cell(self.global_position))
 func depopulate():
 	monster.queue_free() # TODO: Send it to a nice farm.
 	self.monster = null

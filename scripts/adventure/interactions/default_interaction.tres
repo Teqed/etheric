@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="Interaction" load_steps=2 format=3 uid="uid://cvr7elotd14lc"]
+
+[ext_resource type="Script" path="res://scripts/adventure/interactions/default_interaction.gd" id="1_ba8ix"]
+
+[resource]
+script = ExtResource("1_ba8ix")

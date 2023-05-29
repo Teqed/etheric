@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://3akjfgymw0e7"]
+[gd_scene load_steps=6 format=3 uid="uid://3akjfgymw0e7"]
 
 [ext_resource type="PackedScene" uid="uid://b626e0bngfvjj" path="res://scenes/adventure/characters/gamepiece.tscn" id="1_j4ni3"]
 [ext_resource type="Resource" uid="uid://c262n2nfby6jy" path="res://resources/characters/monster_resources/slime.tres" id="2_3bj5p"]
 [ext_resource type="PackedScene" uid="uid://ul4766wjemiu" path="res://scenes/adventure/characters/gamepiece_gfx.tscn" id="2_iyrwr"]
+[ext_resource type="Script" path="res://scripts/adventure/interactions/interaction.gd" id="3_m0w5g"]
+[ext_resource type="Script" path="res://scripts/adventure/interactions/stuck.gd" id="4_kifkv"]
 
 [node name="Slime_00" instance=ExtResource("1_j4ni3")]
 monster_resources = ExtResource("2_3bj5p")
+
+[node name="Interactions" parent="PassiveAiController" index="0"]
+script = ExtResource("3_m0w5g")
+interaction = ExtResource("4_kifkv")
 
 [node name="GFX" parent="." index="1" instance=ExtResource("2_iyrwr")]

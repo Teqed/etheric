@@ -10,7 +10,7 @@ func update():
 	# Consume all incoming damage components and apply them to their respective health components
 	if enabled:
 		var orindal_component = world.get_component(&"Slot")
-		var health_component = world.get_component(&"Health")
+		var health_component = world.get_component(&"CurrentHealth")
 		var name_component = world.get_component(&"Name")
 		var entities_with_component_incoming_damage = world.get_ids_with_component(&"IncomingDamage")
 		var incoming_damage_component = world.get_component(&"IncomingDamage")
@@ -19,7 +19,7 @@ func update():
 			var entity_name: String = world.NAMES_DICTIONARY[name_int]
 			var health = health_component[id]
 			var incoming_damage = incoming_damage_component[id]
-			Global.ecs_world.set_component_of(id, &"Health",
+			Global.ecs_world.set_component_of(id, &"CurrentHealth",
 			(health - incoming_damage))
 			Events.combat_log_message.emit(entity_name + " took " + str(incoming_damage) + " damage!")
 			world.remove_component_from(id, &"IncomingDamage")
@@ -29,7 +29,7 @@ func update():
 		for id in entities_with_component_incoming_healing:
 			var health = health_component[id]
 			var incoming_healing = incoming_healing_component[id]
-			world.set_component_of(id, &"Health",
+			world.set_component_of(id, &"CurrentHealth",
 			health + incoming_healing)
 			world.remove_component_from(id, "&IncomingHealing")
 		var entities_with_component_energy = world.get_ids_with_component(&"Energy")

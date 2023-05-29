@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_xcbrw")
-monster_name = "Slime"
-description = "A hungry creature made of goo."
+monster_name = "Monster Name"
+description = "Description"

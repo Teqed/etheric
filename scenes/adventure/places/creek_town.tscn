@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://xdr34oppohu6"]
+[gd_scene load_steps=22 format=3 uid="uid://xdr34oppohu6"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_tkpv7"]
 [ext_resource type="Texture2D" uid="uid://dq8ol0whj6t3y" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6.png" id="2_26bdm"]
@@ -12,15 +12,10 @@
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="10_dy5gu"]
 [ext_resource type="PackedScene" uid="uid://bllq4iwb6x2yf" path="res://scenes/adventure/characters/bestiary/adult_red_dragon.tscn" id="13_a42or"]
 [ext_resource type="PackedScene" uid="uid://dj1u6ucc816xa" path="res://scenes/adventure/characters/wooden_sign.tscn" id="15_12eky"]
-[ext_resource type="PackedScene" uid="uid://ba6a6ydpedrn4" path="res://scenes/adventure/characters/bestiary/sorcerer.tscn" id="15_ow6r1"]
-[ext_resource type="Resource" uid="uid://vehyo07aaevh" path="res://resources/characters/monster_resources/movesets/default.tres" id="17_aa0rp"]
 [ext_resource type="Texture2D" uid="uid://dtvr6mvfc8n3a" path="res://assets/misc/light.png" id="17_x1ypm"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="18_8bwjt"]
 [ext_resource type="Script" path="res://scripts/PointLight2D_slide.gd" id="18_66hlo"]
-[ext_resource type="Script" path="res://scripts/monsters/monster_resources.gd" id="18_w1wkf"]
-[ext_resource type="Resource" path="res://resources/characters/monster_resources/stats/default.tres" id="19_ixg0o"]
 [ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="19_wfdln"]
-[ext_resource type="Resource" uid="uid://do1tufbj508kl" path="res://resources/characters/monster_resources/tooltips/default.tres" id="20_rwqta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rt3t"]
 texture = ExtResource("2_26bdm")
@@ -5000,18 +4995,6 @@ sources/0 = SubResource("TileSetAtlasSource_1rt3t")
 sources/1 = SubResource("TileSetAtlasSource_oevn6")
 sources/2 = SubResource("TileSetAtlasSource_tjg2g")
 
-[sub_resource type="Resource" id="Resource_o6vqm"]
-script = ExtResource("18_w1wkf")
-tooltip = ExtResource("20_rwqta")
-stats = ExtResource("19_ixg0o")
-moves = ExtResource("17_aa0rp")
-
-[sub_resource type="Resource" id="Resource_msh2u"]
-script = ExtResource("18_w1wkf")
-tooltip = ExtResource("20_rwqta")
-stats = ExtResource("19_ixg0o")
-moves = ExtResource("17_aa0rp")
-
 [node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
 y_sort_enabled = true
 script = ExtResource("1_tkpv7")
@@ -5153,19 +5136,9 @@ volume_db = -20.0
 [node name="Gamepieces" type="Node2D" parent="TileMap"]
 y_sort_enabled = true
 
-[node name="Sorcerer_00" parent="TileMap/Gamepieces" instance=ExtResource("15_ow6r1")]
-position = Vector2(1120, 372)
-monster_resources = null
-
 [node name="Wooden_Sign_00" parent="TileMap/Gamepieces" instance=ExtResource("15_12eky")]
-position = Vector2(1024, 276)
-monster_resources = SubResource("Resource_o6vqm")
-
-[node name="Interactions" parent="TileMap/Gamepieces/Wooden_Sign_00/Brain" index="0"]
-npc_id = 2
+position = Vector2(1118, 277)
 
 [node name="AdultRedDragon_00" parent="TileMap/Gamepieces" instance=ExtResource("13_a42or")]
-position = Vector2(414, 372)
-monster_resources = SubResource("Resource_msh2u")
-
-[editable path="TileMap/Gamepieces/Wooden_Sign_00"]
+position = Vector2(873, 408)
+interaction = null

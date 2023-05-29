@@ -5,7 +5,7 @@ const DEFAULT_DELAY := 0.0
 
 const AdventureScenePreload := preload("res://scenes/adventure/places/creek_town.tscn")
 # const CollectionScenePreload := preload("res://scenes/test_scene2.tscn")
-const CombatScenePreload := preload("res://scenes/adventure/places/creek_town_combat.tscn")
+const CombatScenePreload := preload("res://scenes/adventure/places/combat_prototype.tscn")
 @onready var main_panel_array = get_tree().get_nodes_in_group("MainPanelGroup")
 @onready var adventure_scene_instance: Node = AdventureScenePreload.instantiate()
 # @onready var collection_scene_instance: Node = CollectionScenePreload.instantiate()

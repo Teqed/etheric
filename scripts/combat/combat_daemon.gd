@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 # combat_daemon.gd
 # You are the combat daemon.
 # You are responsible for the combat system, including
@@ -51,22 +51,22 @@ extends Control
 
 var slots: Array
 
-@onready var move_button_1: Button = get_node("Moves/MoveButton1")
-@onready var move_button_2: Button = get_node("Moves/MoveButton2")
-@onready var move_button_3: Button = get_node("Moves/MoveButton3")
-@onready var move_button_4: Button = get_node("Moves/MoveButton4")
-@onready var combat_log: RichTextLabel = get_node("CombatLog/RichTextLabel")
+@onready var move_button_1: Button = get_node("%MoveButton1")
+@onready var move_button_2: Button = get_node("%MoveButton2")
+@onready var move_button_3: Button = get_node("%MoveButton3")
+@onready var move_button_4: Button = get_node("%MoveButton4")
+@onready var combat_log: RichTextLabel = get_node("%CombatLogText")
 
 func _ready():
 	# Change the 'Name' and 'Description' label on each button
-	move_button_1.get_node("VBoxContainer/Name").set_text("Move 1")
-	move_button_1.get_node("VBoxContainer/Description").set_text("Move 1 Description")
-	move_button_2.get_node("VBoxContainer/Name").set_text("Move 2")
-	move_button_2.get_node("VBoxContainer/Description").set_text("Move 2 Description")
-	move_button_3.get_node("VBoxContainer/Name").set_text("Move 3")
-	move_button_3.get_node("VBoxContainer/Description").set_text("Move 3 Description")
-	move_button_4.get_node("VBoxContainer/Name").set_text("Move 4")
-	move_button_4.get_node("VBoxContainer/Description").set_text("Move 4 Description")
+	move_button_1.get_node("%Name").set_text("Move 1")
+	move_button_1.get_node("%Description").set_text("Move 1 Description")
+	move_button_2.get_node("%Name").set_text("Move 2")
+	move_button_2.get_node("%Description").set_text("Move 2 Description")
+	move_button_3.get_node("%Name").set_text("Move 3")
+	move_button_3.get_node("%Description").set_text("Move 3 Description")
+	move_button_4.get_node("%Name").set_text("Move 4")
+	move_button_4.get_node("%Description").set_text("Move 4 Description")
 
 	# Connect the 'pressed' signal of each button to the 'on_move_button_pressed' function
 	move_button_1.connect("pressed", on_move_button_1_pressed)

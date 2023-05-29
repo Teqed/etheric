@@ -99,7 +99,6 @@ func interaction() -> bool:
 	var parent: Gamepiece = get_parent()
 	print("Arrived at target: " + str(_target))
 	# _target.get_children()[2].go_to_cell(Vector2i(_target.cell.x + 1, _target.cell.y))
-	if _target.get_node("%Interactions"):
-		if _target.get_node("%Interactions").has_method("interact"):
-			return _target.get_node("%Interactions").interact(parent)
+	if _target.has_method("interact"):
+		return _target.interact(parent)
 	return false

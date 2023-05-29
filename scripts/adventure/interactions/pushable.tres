@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dm42dvbsornx2"]
+
+[ext_resource type="Script" path="res://scripts/adventure/interactions/pushable.gd" id="1_25rno"]
+
+[resource]
+script = ExtResource("1_25rno")
+name = null

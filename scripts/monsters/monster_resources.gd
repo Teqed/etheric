@@ -1,9 +1,9 @@
 
 class_name Monster_Resources extends Resource
 
-@export var tooltip: Monster_Resources_Tooltip = preload("res://scripts/monsters/tooltips/default.tres")
-@export var stats: Monster_Resources_Stats = preload("res://scripts/monsters/stats/default.tres")
-@export var moves: Monster_Resources_Moveset = preload("res://scripts/monsters/movesets/default.tres")
+@export var tooltip: Monster_Resources_Tooltip = preload("res://resources/characters/monster_resources/tooltips/default.tres")
+@export var stats: Monster_Resources_Stats = preload("res://resources/characters/monster_resources/stats/default.tres")
+@export var moves: Monster_Resources_Moveset = preload("res://resources/characters/monster_resources/movesets/default.tres")
 # func fill_custom_monster(
 # 		monster_name: String,
 # 		description: String,

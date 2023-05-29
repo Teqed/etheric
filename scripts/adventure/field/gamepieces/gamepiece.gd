@@ -57,7 +57,9 @@ const GROUP_NAME: = "_GAMEPIECES"
 
 ## Some gamepieces are monsters that can participate in combat. The [Monster_Resources] object
 ## provides the monster's stats and abilities.
-@export var monster_resources := Monster_Resources.new()
+@export var monster_resources: Monster_Resources
+
+@export var interaction: Interaction
 
 ## The gamepiece's position is snapped to whichever cell it currently occupies.
 ## [br][br]The gamepiece will move by steps, being placed at whichever cell it currently occupies.
@@ -96,6 +98,8 @@ var direction: = Vector2.ZERO:
 @onready var _path: = $Decoupler/Path2D as Path2D
 @onready var _follower: = $Decoupler/Path2D/PathFollow2D as PathFollow2D
 
+func interact(actor: Gamepiece) -> bool:
+	return interaction.interact(actor, self)
 
 func _ready() -> void:
 	set_physics_process(false)
