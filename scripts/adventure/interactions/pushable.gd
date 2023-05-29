@@ -1,3 +1,4 @@
+## Allows gamepiece to be pushed.
 extends Interaction
 
 func _interact():

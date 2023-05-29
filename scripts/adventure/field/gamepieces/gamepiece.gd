@@ -59,6 +59,9 @@ const GROUP_NAME: = "_GAMEPIECES"
 ## provides the monster's stats and abilities.
 @export var monster_resources: Monster_Resources
 
+## The interaction object that handles interactions with this gamepiece.
+## Accepts [code]null[/code] to disable interaction.
+## Uses the derivatives of [Interaction] to handle interactions.
 @export var interaction: Interaction
 
 ## The gamepiece's position is snapped to whichever cell it currently occupies.
@@ -98,8 +101,12 @@ var direction: = Vector2.ZERO:
 @onready var _path: = $Decoupler/Path2D as Path2D
 @onready var _follower: = $Decoupler/Path2D/PathFollow2D as PathFollow2D
 
+## When this gamepiece is interacted with, it attempts to use the [code]interact()[/code]
+## method to handle the interaction.
 func interact(actor: Gamepiece) -> bool:
-	return interaction.interact(actor, self)
+	if interaction:
+		return interaction.interact(actor, self)
+	return false
 
 func _ready() -> void:
 	set_physics_process(false)
