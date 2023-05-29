@@ -13,14 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://bllq4iwb6x2yf" path="res://scenes/adventure/characters/bestiary/adult_red_dragon.tscn" id="13_a42or"]
 [ext_resource type="PackedScene" uid="uid://dj1u6ucc816xa" path="res://scenes/adventure/characters/wooden_sign.tscn" id="15_12eky"]
 [ext_resource type="PackedScene" uid="uid://ba6a6ydpedrn4" path="res://scenes/adventure/characters/bestiary/sorcerer.tscn" id="15_ow6r1"]
-[ext_resource type="Resource" uid="uid://vehyo07aaevh" path="res://scripts/monsters/movesets/default.tres" id="17_aa0rp"]
+[ext_resource type="Resource" uid="uid://vehyo07aaevh" path="res://resources/characters/monster_resources/movesets/default.tres" id="17_aa0rp"]
 [ext_resource type="Texture2D" uid="uid://dtvr6mvfc8n3a" path="res://assets/misc/light.png" id="17_x1ypm"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="18_8bwjt"]
 [ext_resource type="Script" path="res://scripts/PointLight2D_slide.gd" id="18_66hlo"]
-[ext_resource type="Script" path="res://scripts/monsters/bestiary/monster_resources.gd" id="18_w1wkf"]
-[ext_resource type="Resource" path="res://scripts/monsters/stats/default.tres" id="19_ixg0o"]
+[ext_resource type="Script" path="res://scripts/monsters/monster_resources.gd" id="18_w1wkf"]
+[ext_resource type="Resource" path="res://resources/characters/monster_resources/stats/default.tres" id="19_ixg0o"]
 [ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="19_wfdln"]
-[ext_resource type="Resource" path="res://scripts/monsters/tooltips/default.tres" id="20_rwqta"]
+[ext_resource type="Resource" uid="uid://do1tufbj508kl" path="res://resources/characters/monster_resources/tooltips/default.tres" id="20_rwqta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rt3t"]
 texture = ExtResource("2_26bdm")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Monster_Resources_Move" load_steps=2 format=3 uid="uid://5bvla8c7ioip"]
 
-[ext_resource type="Script" path="res://scripts/monsters/moves/move.gd" id="1_apwj1"]
+[ext_resource type="Script" path="res://scripts/monsters/move.gd" id="1_apwj1"]
 
 [resource]
 script = ExtResource("1_apwj1")

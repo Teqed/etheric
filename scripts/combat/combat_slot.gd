@@ -1,7 +1,9 @@
 
 extends Control
 
-@export_range(0,7) var ordinal: int # Between 0 and 7, inclusive.
+## Slot number, 0-7.
+@export_range(0,7) var ordinal: int
+## Assigned gamepiece, if any.
 @export var monster: Gamepiece
 var other_objects: Array = []
 var occupied: bool = false

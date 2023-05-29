@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Monster_Resources_Tooltip" load_steps=2 format=3 uid="uid://do1tufbj508kl"]
+
+[ext_resource type="Script" path="res://scripts/monsters/tooltip.gd" id="1_xcbrw"]
+
+[resource]
+script = ExtResource("1_xcbrw")
+monster_name = "Slime"
+description = "A hungry creature made of goo."

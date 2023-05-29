@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Monster_Resources_Moveset" load_steps=6 format=3 uid="uid://vehyo07aaevh"]
+
+[ext_resource type="Resource" uid="uid://vccf62f2mfhf" path="res://resources/characters/monster_resources/moves/bite.tres" id="1_kx4b4"]
+[ext_resource type="Resource" uid="uid://gsh0ifdhewqh" path="res://resources/characters/monster_resources/moves/claw.tres" id="2_l7n5c"]
+[ext_resource type="Resource" uid="uid://d31x8q5ufyxd5" path="res://resources/characters/monster_resources/moves/roar.tres" id="3_gnqai"]
+[ext_resource type="Resource" uid="uid://5bvla8c7ioip" path="res://resources/characters/monster_resources/moves/scratch.tres" id="4_qqcbj"]
+[ext_resource type="Script" path="res://scripts/monsters/moveset.gd" id="5_3fi10"]
+
+[resource]
+script = ExtResource("5_3fi10")
+move0 = ExtResource("1_kx4b4")
+move1 = ExtResource("2_l7n5c")
+move2 = ExtResource("3_gnqai")
+move3 = ExtResource("4_qqcbj")

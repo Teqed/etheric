@@ -1,18 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba6a6ydpedrn4"]
+[gd_scene load_steps=4 format=3 uid="uid://ba6a6ydpedrn4"]
 
 [ext_resource type="PackedScene" uid="uid://da2gl0bbrebcq" path="res://scenes/adventure/characters/character_prototype.tscn" id="1_blny4"]
-[ext_resource type="Resource" uid="uid://vehyo07aaevh" path="res://scripts/monsters/movesets/default.tres" id="2_g3mqj"]
 [ext_resource type="Texture2D" uid="uid://boypyc86u75ox" path="res://resources/characters/textures/sorcerer.tres" id="2_gg8ok"]
-[ext_resource type="Script" path="res://scripts/monsters/bestiary/monster_resources.gd" id="3_wi7fx"]
-[ext_resource type="Resource" path="res://scripts/monsters/tooltips/default.tres" id="4_t8yy3"]
-
-[sub_resource type="Resource" id="Resource_x3tqb"]
-script = ExtResource("3_wi7fx")
-tooltip = ExtResource("4_t8yy3")
-moves = ExtResource("2_g3mqj")
+[ext_resource type="Resource" uid="uid://b74gcsmsij4bq" path="res://resources/characters/monster_resources/sorcerer.tres" id="2_uh1bk"]
 
 [node name="Sorcerer_00" instance=ExtResource("1_blny4")]
-monster_resources = SubResource("Resource_x3tqb")
+monster_resources = ExtResource("2_uh1bk")
 
 [node name="Sprite" parent="GFX" index="0"]
 texture = ExtResource("2_gg8ok")

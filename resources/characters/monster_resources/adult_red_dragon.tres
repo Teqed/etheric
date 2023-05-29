@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Monster_Resources" load_steps=7 format=3 uid="uid://bfnaqquelxq15"]
+
+[ext_resource type="Resource" uid="uid://vehyo07aaevh" path="res://resources/characters/monster_resources/movesets/default.tres" id="1_57wg2"]
+[ext_resource type="Script" path="res://scripts/monsters/monster_resources.gd" id="2_16ieo"]
+[ext_resource type="Script" path="res://scripts/monsters/stats.gd" id="3_kqbeq"]
+[ext_resource type="Script" path="res://scripts/monsters/tooltip.gd" id="4_bo3ah"]
+
+[sub_resource type="Resource" id="Resource_2xjgr"]
+script = ExtResource("3_kqbeq")
+health = 100
+speed = 15
+
+[sub_resource type="Resource" id="Resource_46qis"]
+script = ExtResource("4_bo3ah")
+monster_name = "Adult Red Dragon"
+description = "A fully grown chromatic dragon."
+
+[resource]
+script = ExtResource("2_16ieo")
+tooltip = SubResource("Resource_46qis")
+stats = SubResource("Resource_2xjgr")
+moves = ExtResource("1_57wg2")

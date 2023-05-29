@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Monster_Resources" load_steps=5 format=3 uid="uid://c262n2nfby6jy"]
+
+[ext_resource type="Resource" uid="uid://vehyo07aaevh" path="res://resources/characters/monster_resources/movesets/default.tres" id="1_3y1ko"]
+[ext_resource type="Script" path="res://scripts/monsters/monster_resources.gd" id="2_mq5mt"]
+[ext_resource type="Resource" path="res://resources/characters/monster_resources/stats/default.tres" id="3_synli"]
+[ext_resource type="Resource" uid="uid://do1tufbj508kl" path="res://resources/characters/monster_resources/tooltips/default.tres" id="4_8kss5"]
+
+[resource]
+script = ExtResource("2_mq5mt")
+tooltip = ExtResource("4_8kss5")
+stats = ExtResource("3_synli")
+moves = ExtResource("1_3y1ko")

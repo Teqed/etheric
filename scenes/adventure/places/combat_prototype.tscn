@@ -67,29 +67,8 @@ layer_5/tile_data = PackedInt32Array(720897, 0, 22, 720898, 65536, 22, 720899, 1
 layer_6/tile_data = PackedInt32Array(655361, 0, 21, 655362, 65536, 21, 655363, 131072, 21, 655364, 196608, 21, 655365, 262144, 21, 655403, 0, 26, 655404, 65536, 26, 655405, 131072, 26, 655406, 196608, 26, 655407, 262144, 26)
 layer_7/tile_data = PackedInt32Array(589825, 0, 20, 589826, 65536, 20, 589827, 131072, 20, 589828, 196608, 20, 589829, 262144, 20, 589867, 0, 25, 589868, 65536, 25, 589869, 131072, 25, 589870, 196608, 25, 589871, 262144, 25)
 
-[node name="Sorcerer_03" parent="TileMap" instance=ExtResource("5_f7ayd")]
-position = Vector2(3000, 949)
-
-[node name="Sorcerer_02" parent="TileMap" instance=ExtResource("5_f7ayd")]
-position = Vector2(3000, 1059)
-
-[node name="Sorcerer_01" parent="TileMap" instance=ExtResource("5_f7ayd")]
-position = Vector2(2840, 957)
-
-[node name="Sorcerer_00" parent="TileMap" instance=ExtResource("5_f7ayd")]
-position = Vector2(2840, 1083)
-
-[node name="Slime_03" parent="TileMap" instance=ExtResource("5_vf1qr")]
-position = Vector2(293, 981)
-
-[node name="Slime_02" parent="TileMap" instance=ExtResource("5_vf1qr")]
-position = Vector2(144, 1101)
-
-[node name="Slime_01" parent="TileMap" instance=ExtResource("5_vf1qr")]
-position = Vector2(293, 1114)
-
-[node name="Slime_00" parent="TileMap" instance=ExtResource("5_vf1qr")]
-position = Vector2(144, 963)
+[node name="Gamepieces" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1567, 949)
@@ -180,49 +159,73 @@ offset_bottom = 352.0
 anchors_preset = 0
 
 [node name="CombatSlot0" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
-monster = NodePath("../../../TileMap/Slime_00")
+monster = NodePath("Slime_00")
+
+[node name="Slime_00" parent="CombatDaemon/Slots/CombatSlot0" instance=ExtResource("5_vf1qr")]
+position = Vector2(-603, 94)
 
 [node name="CombatSlot1" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 offset_left = 320.0
 offset_right = 320.0
 ordinal = 1
-monster = NodePath("../../../TileMap/Slime_01")
+monster = NodePath("Slime_01")
+
+[node name="Slime_01" parent="CombatDaemon/Slots/CombatSlot1" instance=ExtResource("5_vf1qr")]
+position = Vector2(-646, 245)
 
 [node name="CombatSlot2" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 offset_left = 512.0
 offset_right = 512.0
 ordinal = 2
-monster = NodePath("../../../TileMap/Slime_02")
+monster = NodePath("Slime_02")
+
+[node name="Slime_02" parent="CombatDaemon/Slots/CombatSlot2" instance=ExtResource("5_vf1qr")]
+position = Vector2(-987, 232)
 
 [node name="CombatSlot3" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 offset_left = 704.0
 offset_right = 704.0
 ordinal = 3
-monster = NodePath("../../../TileMap/Slime_03")
+monster = NodePath("Slime_03")
+
+[node name="Slime_03" parent="CombatDaemon/Slots/CombatSlot3" instance=ExtResource("5_vf1qr")]
+position = Vector2(-1030, 112)
 
 [node name="CombatSlot4" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 offset_left = 1152.0
 offset_right = 1152.0
 ordinal = 4
-monster = NodePath("../../../TileMap/Sorcerer_00")
+monster = NodePath("Sorcerer_00")
+
+[node name="Sorcerer_00" parent="CombatDaemon/Slots/CombatSlot4" instance=ExtResource("5_f7ayd")]
+position = Vector2(1069, 214)
 
 [node name="CombatSlot5" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 offset_left = 1344.0
 offset_right = 1344.0
 ordinal = 5
-monster = NodePath("../../../TileMap/Sorcerer_01")
+monster = NodePath("Sorcerer_01")
+
+[node name="Sorcerer_01" parent="CombatDaemon/Slots/CombatSlot5" instance=ExtResource("5_f7ayd")]
+position = Vector2(877, 88)
 
 [node name="CombatSlot6" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 offset_left = 1536.0
 offset_right = 1536.0
 ordinal = 6
-monster = NodePath("../../../TileMap/Sorcerer_02")
+monster = NodePath("Sorcerer_02")
+
+[node name="Sorcerer_02" parent="CombatDaemon/Slots/CombatSlot6" instance=ExtResource("5_f7ayd")]
+position = Vector2(845, 190)
 
 [node name="CombatSlot7" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 offset_left = 1728.0
 offset_right = 1728.0
 ordinal = 7
-monster = NodePath("../../../TileMap/Sorcerer_03")
+monster = NodePath("Sorcerer_03")
+
+[node name="Sorcerer_03" parent="CombatDaemon/Slots/CombatSlot7" instance=ExtResource("5_f7ayd")]
+position = Vector2(653, 80)
 
 [node name="CombatHUD" type="SubViewportContainer" parent="."]
 visible = false

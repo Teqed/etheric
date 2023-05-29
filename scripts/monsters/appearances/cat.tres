@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Monster_Resources_Appearance" load_steps=2 format=3 uid="uid://c1dtho54fki0d"]
-
-[ext_resource type="Script" path="res://scripts/monsters/appearances/appearance.gd" id="1_4hc3g"]
-
-[resource]
-script = ExtResource("1_4hc3g")
-gameboard_position = Vector2(1, 0)
-spriteatlas = Vector2(0, 0)
