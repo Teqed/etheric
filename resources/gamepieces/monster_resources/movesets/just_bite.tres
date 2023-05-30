@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Monster_Resources_Moveset" load_steps=3 format=3 uid="uid://fpdgjcta27u5"]
 
-[ext_resource type="Resource" uid="uid://vccf62f2mfhf" path="res://resources/characters/monster_resources/moves/bite.tres" id="1_1k35i"]
+[ext_resource type="Resource" uid="uid://vccf62f2mfhf" path="res://resources/gamepieces/monster_resources/moves/bite.tres" id="1_1k35i"]
 [ext_resource type="Script" path="res://scripts/monsters/moveset.gd" id="5_bgekt"]
 
 [resource]

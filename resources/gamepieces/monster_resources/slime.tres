@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Monster_Resources" load_steps=6 format=3 uid="uid://c262n2nfby6jy"]
 
-[ext_resource type="Resource" uid="uid://fpdgjcta27u5" path="res://resources/characters/monster_resources/movesets/just_bite.tres" id="1_m86hm"]
+[ext_resource type="Resource" uid="uid://fpdgjcta27u5" path="res://resources/gamepieces/monster_resources/movesets/just_bite.tres" id="1_m86hm"]
 [ext_resource type="Script" path="res://scripts/monsters/monster_resources.gd" id="2_mq5mt"]
-[ext_resource type="Resource" path="res://resources/characters/monster_resources/stats/default.tres" id="3_synli"]
+[ext_resource type="Resource" path="res://resources/gamepieces/monster_resources/stats/default.tres" id="3_synli"]
 [ext_resource type="Script" path="res://scripts/monsters/tooltip.gd" id="4_5nr3v"]
 
 [sub_resource type="Resource" id="Resource_f4qr8"]

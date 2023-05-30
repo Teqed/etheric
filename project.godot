@@ -57,7 +57,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/AsepriteWizard/plugin.cfg", "res://addons/dictionary_inspector/plugin.cfg", "res://addons/inspector_extender/plugin.cfg", "res://addons/unused_md5_file_cleaner/plugin.cfg")
 
 [gui]
 
@@ -104,7 +104,7 @@ debug_04={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/test.dialogue", "res://dialogue/crab_town/greeter.dialogue", "res://addons/dialogue_manager/examples/dialogue.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_point_n_click.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_visual_novel.dialogue", "res://addons/dialogue_manager/examples/dialogue_with_input.dialogue", "res://dialogue/crab_town/knight.dialogue", "res://dialogue/crab_town/crab.dialogue", "res://resources/characters/interactions/dialogue/knight.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/test.dialogue", "res://dialogue/crab_town/greeter.dialogue", "res://addons/dialogue_manager/examples/dialogue.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_point_n_click.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_visual_novel.dialogue", "res://addons/dialogue_manager/examples/dialogue_with_input.dialogue", "res://dialogue/crab_town/knight.dialogue", "res://dialogue/crab_town/crab.dialogue", "res://resources/gamepieces/interactions/dialogue/knight.dialogue")
 
 [rendering]
 
