@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/gamepieces/gamepiece.gd" id="1_58jdw"]
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="2_6hg4y"]
-[ext_resource type="Script" path="res://scripts/gamepieces/passive_controller.gd" id="4_bxv12"]
+[ext_resource type="Script" path="res://scripts/gamepieces/controllers/passive_controller.gd" id="4_bxv12"]
 [ext_resource type="Script" path="res://scripts/gamepieces/animation/gamepiece_animation.gd" id="4_ggqi6"]
 [ext_resource type="Texture2D" uid="uid://bbfehut14176f" path="res://resources/gamepieces/textures/adult_red_dragon.tres" id="5_qjmqc"]
 [ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv" path="res://resources/gamepieces/animations/standard_animations.res" id="6_f2mpe"]

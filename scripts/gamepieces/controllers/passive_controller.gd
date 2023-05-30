@@ -22,8 +22,7 @@ var _current_waypoint: Vector2i
 
 
 func _ready() -> void:
-	# gdlint:ignore = private-method-call
-	super._ready()
+	super()
 
 	set_process(false)
 	set_physics_process(false)

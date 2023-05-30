@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://biqrt8k0u2lij"]
 
-[ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_pahqk"]
+[ext_resource type="Script" path="res://scripts/gameboard/field/field.gd" id="1_pahqk"]
 [ext_resource type="PackedScene" uid="uid://p1vt4gkwf87w" path="res://scenes/adventure/places/tilemap_prototype.tscn" id="2_5d4f3"]
 [ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="12_n05mv"]
 [ext_resource type="Texture2D" uid="uid://dtvr6mvfc8n3a" path="res://assets/misc/light.png" id="19_yn5sl"]
