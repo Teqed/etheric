@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GFXResources" load_steps=3 format=3 uid="uid://dui80l5v5tmdl"]
 
 [ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/gamepieces/textures/slime.tres" id="1_wyba7"]
-[ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/gfx_resources.gd" id="2_egbg2"]
+[ext_resource type="Script" path="res://scripts/gamepieces/gfx_resources.gd" id="2_egbg2"]
 
 [resource]
 script = ExtResource("2_egbg2")

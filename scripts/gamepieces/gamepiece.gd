@@ -55,7 +55,13 @@ const GROUP_NAME: = "_GAMEPIECES"
 ## The gamepiece will traverse a movement path at [code]move_speed[/code] pixels per second.
 @export var move_speed: = 160.0
 
-@export var gfx_resources: GFXResources
+## The assigned monster ID for the gamepiece, if any. This is used to look up the monster's
+## resources, such as its stats and behavior and appearance.
+@export_enum("Adult Red Dragon", "Slime", "Sorcerer") var monster_id: int:
+	set(value):
+		monster_id = value
+		update_gfx()
+		update_configuration_warnings()
 
 ## Some gamepieces are monsters that can participate in combat. The [Monster_Resources] object
 ## provides the monster's stats and abilities.
@@ -110,12 +116,19 @@ func interact(actor: Gamepiece) -> bool:
 		return interaction.interact(actor, self)
 	return false
 
+func update_gfx():
+	if monster_id != null:
+		var bestiary = GFXResourcesCollection.new()
+		# Set the monster's appearance.
+		var appearance: CanvasTexture = bestiary.get_gfx_resource(monster_id)
+		if appearance:
+			$GFX/Sprite2D.texture = appearance
+
 func _ready() -> void:
 	set_physics_process(false)
 	update_configuration_warnings()
 
-	if gfx_resources:
-		gfx_resources.setup(self)
+	update_gfx()
 
 	if not Engine.is_editor_hint():
 		assert(gameboard, "Gamepiece '%s' must have a gameboard reference to function!" % name)

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GFXResources" load_steps=3 format=3 uid="uid://dhrrc35ilaqkt"]
 
 [ext_resource type="Texture2D" uid="uid://boypyc86u75ox" path="res://resources/gamepieces/textures/sorcerer.tres" id="1_om2yp"]
-[ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/gfx_resources.gd" id="2_6wecf"]
+[ext_resource type="Script" path="res://scripts/gamepieces/gfx_resources.gd" id="2_6wecf"]
 
 [resource]
 script = ExtResource("2_6wecf")

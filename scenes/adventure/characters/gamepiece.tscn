@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://b626e0bngfvjj"]
 
-[ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/gamepiece.gd" id="1_xhsbn"]
+[ext_resource type="Script" path="res://scripts/gamepieces/gamepiece.gd" id="1_58jdw"]
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="2_6hg4y"]
-[ext_resource type="Script" path="res://scripts/adventure/fieres://resources/gamepieces/assive_controller.gd" id="4_bxv12"]
-[ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/animation/gamepiece_animation.gd" id="4_pa88h"]
+[ext_resource type="Script" path="res://scripts/gamepieces/passive_controller.gd" id="4_bxv12"]
+[ext_resource type="Script" path="res://scripts/gamepieces/animation/gamepiece_animation.gd" id="4_ggqi6"]
 [ext_resource type="Texture2D" uid="uid://bbfehut14176f" path="res://resources/gamepieces/textures/adult_red_dragon.tres" id="5_qjmqc"]
-[ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv"res://resources/gamepieces/pieces/animations/standard_animations.res" id="6_f2mpe"]
-res://resources/gamepieces/
+[ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv" path="res://resources/gamepieces/animations/standard_animations.res" id="6_f2mpe"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjjp5"]
 size = Vector2(64, 64)
 
@@ -14,7 +14,7 @@ size = Vector2(64, 64)
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_xhsbn")
+script = ExtResource("1_58jdw")
 gameboard = ExtResource("2_6hg4y")
 
 [node name="PassiveAiController" type="Node2D" parent="."]
@@ -40,7 +40,7 @@ shape = SubResource("RectangleShape2D_kjjp5")
 debug_color = Color(0.690196, 0.188235, 0.380392, 0.419608)
 
 [node name="GFX" type="Marker2D" parent="."]
-script = ExtResource("4_pa88h")
+script = ExtResource("4_ggqi6")
 
 [node name="Sprite2D" type="Sprite2D" parent="GFX"]
 scale = Vector2(4, 4)
