@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="GFXResources" load_steps=3 format=3 uid="uid://l0g0tbxusldw"]
+[gd_resource type="Resource" script_class="Monster" load_steps=3 format=3 uid="uid://clxpet8ouoojs"]
 
 [ext_resource type="Texture2D" uid="uid://bbfehut14176f" path="res://resources/gamepieces/textures/adult_red_dragon.tres" id="1_5b1gv"]
-[ext_resource type="Script" path="res://scripts/gamepieces/gfx_resources.gd" id="1_stifc"]
+[ext_resource type="Script" path="res://scripts/gamepieces/bestiary_entry.gd" id="1_dwbhb"]
 
 [resource]
-script = ExtResource("1_stifc")
+resource_name = "Adult Red Dragon"
+script = ExtResource("1_dwbhb")
+monster_id = 1
 canvas_texture = ExtResource("1_5b1gv")
-monster_id = 0
+greeting = "Roar!"
+experience_reward = 0
+health = 100
+attack = 10
+defense = 10
+speed = 10
+energy = 10

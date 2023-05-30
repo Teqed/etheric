@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="GFXResources" load_steps=3 format=3 uid="uid://dui80l5v5tmdl"]
+[gd_resource type="Resource" script_class="Monster" load_steps=3 format=3 uid="uid://or8lbp8wsoi7"]
 
+[ext_resource type="Script" path="res://scripts/gamepieces/bestiary_entry.gd" id="1_bbl8l"]
 [ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/gamepieces/textures/slime.tres" id="1_wyba7"]
-[ext_resource type="Script" path="res://scripts/gamepieces/gfx_resources.gd" id="2_egbg2"]
 
 [resource]
-script = ExtResource("2_egbg2")
+resource_name = "Slime"
+script = ExtResource("1_bbl8l")
+monster_id = 0
 canvas_texture = ExtResource("1_wyba7")
-monster_id = 1
+greeting = "Hello, I am a monster!"
+experience_reward = 0
+health = 100
+attack = 10
+defense = 10
+speed = 10
+energy = 10

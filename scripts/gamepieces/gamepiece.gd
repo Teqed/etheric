@@ -57,15 +57,34 @@ const GROUP_NAME: = "_GAMEPIECES"
 
 ## The assigned monster ID for the gamepiece, if any. This is used to look up the monster's
 ## resources, such as its stats and behavior and appearance.
-@export_enum("Adult Red Dragon", "Slime", "Sorcerer") var monster_id: int:
+## When set, the gamepiece will consult the bestiary to look up the monster's resources.
+## These will be applied to the gamepiece's descendants, such as its [Sprite2D] and
+## [member monster_id].
+@export_enum("Slime", "Adult Red Dragon", "Sorcerer") var monster_id: int:
 	set(value):
 		monster_id = value
-		update_gfx()
+		update_monster()
 		update_configuration_warnings()
 
-## Some gamepieces are monsters that can participate in combat. The [Monster_Resources] object
+## Some gamepieces are monsters that can participate in combat. The [BestiaryEntry] object
 ## provides the monster's stats and abilities.
-@export var monster_resources: Monster_Resources
+@export var bestiary_entry: BestiaryEntry
+
+## The gamepiece will belong to one of two teams,
+## [code]Team.PLAYER[/code], [code]Team.ENEMY[/code]
+## The team is used to determine which gamepieces are friendly or hostile to one another.
+@export_enum("Player", "Enemy") var team: int:
+	set(value):
+		team = value
+		update_configuration_warnings()
+
+## If the monster is friendly, it either exists in the player's collection or is a party member.
+## If the monster is an enemy, it belongs to the 'wild' collection, and the 'crashers' party.
+## They both use this flag to determine which state the monster is in.
+@export_enum("Collection", "Party") var party: int:
+	set(value):
+		party = value
+		update_configuration_warnings()
 
 ## The interaction object that handles interactions with this gamepiece.
 ## Accepts [code]null[/code] to disable interaction.
@@ -116,19 +135,31 @@ func interact(actor: Gamepiece) -> bool:
 		return interaction.interact(actor, self)
 	return false
 
+## The gamepiece may have a graphical representation. This method updates the gamepiece's
+## appearance to match its current state.
+## This method is called automatically when the gamepiece's [member monster_id] is set.
 func update_gfx():
-	if monster_id != null:
-		var bestiary = GFXResourcesCollection.new()
+	if bestiary_entry != null:
 		# Set the monster's appearance.
-		var appearance: CanvasTexture = bestiary.get_gfx_resource(monster_id)
+		var appearance: CanvasTexture = bestiary_entry.canvas_texture
 		if appearance:
 			$GFX/Sprite2D.texture = appearance
+
+## This method is called automatically when the gamepiece's [member monster_id] is set.
+## It looks up the monster's resources in the bestiary and applies them to the gamepiece.
+func update_monster():
+	if monster_id != null:
+		var bestiary = Bestiary.new()
+		bestiary_entry = bestiary.get_bestiary_entry_resource(monster_id)
+		update_gfx()
+		# Set your name to the monster's name.
+		name = bestiary_entry.resource_name + "_0"
 
 func _ready() -> void:
 	set_physics_process(false)
 	update_configuration_warnings()
 
-	update_gfx()
+	update_monster()
 
 	if not Engine.is_editor_hint():
 		assert(gameboard, "Gamepiece '%s' must have a gameboard reference to function!" % name)
