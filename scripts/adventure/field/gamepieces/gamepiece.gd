@@ -9,7 +9,7 @@
 ## Gamepiece may be placed. The gameboard is made up of cells, each of which may be occupied by one
 ##  or more gamepieces.
 class_name Gamepiece
-extends Node2D
+extends CharacterBody2D
 
 ## Emitted when the gamepiece begins to travel towards a destination cell.
 signal travel_begun
@@ -54,6 +54,8 @@ const GROUP_NAME: = "_GAMEPIECES"
 
 ## The gamepiece will traverse a movement path at [code]move_speed[/code] pixels per second.
 @export var move_speed: = 160.0
+
+@export var gfx_resources: GFXResources
 
 ## Some gamepieces are monsters that can participate in combat. The [Monster_Resources] object
 ## provides the monster's stats and abilities.
@@ -112,6 +114,9 @@ func _ready() -> void:
 	set_physics_process(false)
 	update_configuration_warnings()
 
+	if gfx_resources:
+		gfx_resources.setup(self)
+
 	if not Engine.is_editor_hint():
 		assert(gameboard, "Gamepiece '%s' must have a gameboard reference to function!" % name)
 
@@ -146,10 +151,10 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 	# If this gamepiece is supposed to block movement ensure that it has a valid physics object.
 	if blocks_movement:
-		var collision_shapes: = find_children("*", "CollisionObject2D")
+		var collision_shapes: = find_children("*", "CollisionShape2D")
 		if collision_shapes.is_empty():
 			warnings.append("Gamepiece is set to block other gamepieces but has no collision "
-				+ "object. Please add a CollisionObject2D (i.e. Area2D) to enable blocking.")
+				+ "object. Please add a CollisionShape2D to enable blocking.")
 
 	return warnings
 

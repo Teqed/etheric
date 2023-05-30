@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c8wcsyw3og56t"]
+
+[ext_resource type="Script" path="res://scripts/adventure/interactions/stuck.gd" id="1_8631u"]
+
+[resource]
+script = ExtResource("1_8631u")

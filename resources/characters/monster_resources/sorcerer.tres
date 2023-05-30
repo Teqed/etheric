@@ -7,7 +7,9 @@
 
 [sub_resource type="Resource" id="Resource_5irc7"]
 script = ExtResource("3_ukct1")
-health = 100
+current_health = 100
+max_health = 100
+attack = 10
 speed = 15
 
 [sub_resource type="Resource" id="Resource_ysniq"]

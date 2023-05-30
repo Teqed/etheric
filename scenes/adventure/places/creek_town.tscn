@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://xdr34oppohu6"]
+[gd_scene load_steps=20 format=3 uid="uid://xdr34oppohu6"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_tkpv7"]
 [ext_resource type="Texture2D" uid="uid://dq8ol0whj6t3y" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6.png" id="2_26bdm"]
@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="7_ou2dd"]
 [ext_resource type="Script" path="res://scripts/adventure/field/player_path_destination_marker.gd" id="8_ixoyl"]
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="10_dy5gu"]
-[ext_resource type="PackedScene" uid="uid://bllq4iwb6x2yf" path="res://scenes/adventure/characters/bestiary/adult_red_dragon.tscn" id="13_a42or"]
-[ext_resource type="PackedScene" uid="uid://dj1u6ucc816xa" path="res://scenes/adventure/characters/wooden_sign.tscn" id="15_12eky"]
 [ext_resource type="Texture2D" uid="uid://dtvr6mvfc8n3a" path="res://assets/misc/light.png" id="17_x1ypm"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gameboard/debug_map_boundaries.gd" id="18_8bwjt"]
 [ext_resource type="Script" path="res://scripts/PointLight2D_slide.gd" id="18_66hlo"]
@@ -4998,7 +4996,7 @@ sources/2 = SubResource("TileSetAtlasSource_tjg2g")
 [node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
 y_sort_enabled = true
 script = ExtResource("1_tkpv7")
-focused_game_piece = NodePath("TileMap/Gamepieces/AdultRedDragon_00")
+focused_game_piece = NodePath("")
 is_active = true
 
 [node name="Lighting" type="Node2D" parent="."]
@@ -5135,10 +5133,3 @@ volume_db = -20.0
 
 [node name="Gamepieces" type="Node2D" parent="TileMap"]
 y_sort_enabled = true
-
-[node name="Wooden_Sign_00" parent="TileMap/Gamepieces" instance=ExtResource("15_12eky")]
-position = Vector2(1118, 277)
-
-[node name="AdultRedDragon_00" parent="TileMap/Gamepieces" instance=ExtResource("13_a42or")]
-position = Vector2(873, 408)
-interaction = null

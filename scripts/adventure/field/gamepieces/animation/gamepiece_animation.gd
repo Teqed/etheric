@@ -31,7 +31,7 @@ var direction: = Directions.Points.N:
 	set = set_direction
 
 @onready var _anim: = $AnimationPlayer as AnimationPlayer
-@onready var _collision_shape: = $"../Area2D/CollisionShape2D" as CollisionShape2D
+@onready var _collision_shape: = $"../CollisionShape2D" as CollisionShape2D
 
 # At times the current 'graphics' (the visible element, at times abbreviated 'gfx') will move
 # separately from the rest of the animation or gamepiece.

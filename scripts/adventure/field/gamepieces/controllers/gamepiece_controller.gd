@@ -87,7 +87,7 @@ func is_cell_blocked(cell: Vector2i) -> bool:
 	# of the collision shape for a blocking flag.
 	# Please see BLOCKING_PROPERTY for more information.
 	for collision in collisions:
-		var gfx = collision.collider.owner.get_node("GFX")
+		var gfx = collision.collider.get_node("GFX")
 		if gfx.has_method(IS_BLOCKING_METHOD):
 			if gfx.call(IS_BLOCKING_METHOD):
 				return true
@@ -160,10 +160,12 @@ func _update_changed_cells() -> void:
 	# This ensures that given coordinates are only queried once per update.
 	var checked_coordinates: = {}
 
-	_rebuild_pathfinder()
+	# _rebuild_pathfinder()
 
 	for cell in _cells_to_update:
 		if not cell in checked_coordinates:
+			if !pathfinder:
+				_rebuild_pathfinder()
 			pathfinder.block_cell(cell, is_cell_blocked(cell))
 			checked_coordinates[cell] = null
 

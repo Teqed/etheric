@@ -2,6 +2,11 @@
 # class_name FieldEvents
 extends Node
 
+## Emitted when we want to disable the player input.
+signal disable_player_input
+
+## Emitted when we want to enable the player input.
+signal enable_player_input
 
 ## Emitted when the cursor moves to a new position on the field gameboard.
 signal cell_highlighted(cell: Vector2i)

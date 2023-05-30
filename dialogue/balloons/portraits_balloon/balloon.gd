@@ -18,6 +18,7 @@ var dialogue_line: DialogueLine:
 	set(next_dialogue_line):
 		if not next_dialogue_line:
 			queue_free()
+			FieldEvents.enable_player_input.emit()
 			return
 
 		is_waiting_for_input = false
@@ -32,7 +33,8 @@ var dialogue_line: DialogueLine:
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
 		character_portrait.texture = load(
-			"res://dialogue/balloons/portraits_balloon/portraits/%s%s.png" % [dialogue_line.character.to_lower(),
+			"res://dialogue/balloons/portraits_balloon/portraits/%s%s.png" \
+			% [dialogue_line.character.to_lower(),
 			file_suffix])
 
 		dialogue_label.modulate.a = 0

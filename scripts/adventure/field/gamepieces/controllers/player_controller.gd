@@ -14,6 +14,8 @@ func _ready() -> void:
 	super._ready()
 	add_to_group(GROUP_NAME)
 	FieldEvents.cell_selected.connect(_on_cell_selected)
+	FieldEvents.disable_player_input.emit()
+	FieldEvents.enable_player_input.emit()
 
 func _physics_process(_delta: float) -> void:
 	if not _focus.is_moving():
@@ -100,5 +102,6 @@ func interaction() -> bool:
 	print("Arrived at target: " + str(_target))
 	# _target.get_children()[2].go_to_cell(Vector2i(_target.cell.x + 1, _target.cell.y))
 	if _target.has_method("interact"):
+		FieldEvents.disable_player_input.emit()
 		return _target.interact(parent)
 	return false

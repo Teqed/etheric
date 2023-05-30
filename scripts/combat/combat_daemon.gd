@@ -51,11 +51,11 @@ extends Node2D
 
 var slots: Array
 
-@onready var move_button_1: Button = get_node("%MoveButton1")
-@onready var move_button_2: Button = get_node("%MoveButton2")
-@onready var move_button_3: Button = get_node("%MoveButton3")
-@onready var move_button_4: Button = get_node("%MoveButton4")
-@onready var combat_log: RichTextLabel = get_node("%CombatLogText")
+@onready var move_button_1: Button = %MoveButton1
+@onready var move_button_2: Button = %MoveButton2
+@onready var move_button_3: Button = %MoveButton3
+@onready var move_button_4: Button = %MoveButton4
+@onready var combat_log: RichTextLabel = %CombatLogText
 
 func _ready():
 	# Change the 'Name' and 'Description' label on each button

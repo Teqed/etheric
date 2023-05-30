@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GFXResources" load_steps=3 format=3 uid="uid://l0g0tbxusldw"]
+
+[ext_resource type="Texture2D" uid="uid://bbfehut14176f" path="res://resources/characters/textures/adult_red_dragon.tres" id="1_5b1gv"]
+[ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/gfx_resources.gd" id="1_stifc"]
+
+[resource]
+script = ExtResource("1_stifc")
+canvas_texture = ExtResource("1_5b1gv")

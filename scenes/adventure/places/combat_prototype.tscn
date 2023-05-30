@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://biqrt8k0u2lij"]
+[gd_scene load_steps=10 format=3 uid="uid://biqrt8k0u2lij"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/field.gd" id="1_pahqk"]
 [ext_resource type="PackedScene" uid="uid://p1vt4gkwf87w" path="res://scenes/adventure/places/tilemap_prototype.tscn" id="2_5d4f3"]
-[ext_resource type="PackedScene" uid="uid://3akjfgymw0e7" path="res://scenes/adventure/characters/bestiary/slime.tscn" id="5_vf1qr"]
 [ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="12_n05mv"]
 [ext_resource type="Texture2D" uid="uid://dtvr6mvfc8n3a" path="res://assets/misc/light.png" id="19_yn5sl"]
 [ext_resource type="Script" path="res://scripts/PointLight2D_slide.gd" id="20_qpp0m"]
@@ -69,38 +68,6 @@ layer_7/tile_data = PackedInt32Array(589825, 0, 20, 589826, 65536, 20, 589827, 1
 [node name="Gamepieces" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Slime_00" parent="Gamepieces" instance=ExtResource("5_vf1qr")]
-position = Vector2(168, 696)
-interaction = null
-
-[node name="Slime_01" parent="Gamepieces" instance=ExtResource("5_vf1qr")]
-position = Vector2(304, 696)
-interaction = null
-
-[node name="Slime_02" parent="Gamepieces" instance=ExtResource("5_vf1qr")]
-position = Vector2(160, 840)
-interaction = null
-
-[node name="Slime_03" parent="Gamepieces" instance=ExtResource("5_vf1qr")]
-position = Vector2(288, 832)
-interaction = null
-
-[node name="Slime_04" parent="Gamepieces" instance=ExtResource("5_vf1qr")]
-position = Vector2(2824, 680)
-interaction = null
-
-[node name="Slime_05" parent="Gamepieces" instance=ExtResource("5_vf1qr")]
-position = Vector2(3000, 688)
-interaction = null
-
-[node name="Slime_06" parent="Gamepieces" instance=ExtResource("5_vf1qr")]
-position = Vector2(2840, 848)
-interaction = null
-
-[node name="Slime_07" parent="Gamepieces" instance=ExtResource("5_vf1qr")]
-position = Vector2(3000, 848)
-interaction = null
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1567, 949)
 position_smoothing_enabled = true
@@ -125,42 +92,42 @@ script = ExtResource("22_y3rcs")
 
 [node name="CombatSlot0" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 position = Vector2(867, 800)
-monster = NodePath("../../../Gamepieces/Slime_00")
+monster = NodePath("")
 
 [node name="CombatSlot1" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 position = Vector2(1056, 800)
 ordinal = 1
-monster = NodePath("../../../Gamepieces/Slime_01")
+monster = NodePath("")
 
 [node name="CombatSlot2" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 position = Vector2(1248, 800)
 ordinal = 2
-monster = NodePath("../../../Gamepieces/Slime_02")
+monster = NodePath("")
 
 [node name="CombatSlot3" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 position = Vector2(1440, 800)
 ordinal = 3
-monster = NodePath("../../../Gamepieces/Slime_03")
+monster = NodePath("")
 
 [node name="CombatSlot4" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 position = Vector2(1632, 800)
 ordinal = 4
-monster = NodePath("../../../Gamepieces/Slime_04")
+monster = NodePath("")
 
 [node name="CombatSlot5" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 position = Vector2(1824, 800)
 ordinal = 5
-monster = NodePath("../../../Gamepieces/Slime_05")
+monster = NodePath("")
 
 [node name="CombatSlot6" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 position = Vector2(2016, 800)
 ordinal = 6
-monster = NodePath("../../../Gamepieces/Slime_06")
+monster = NodePath("")
 
 [node name="CombatSlot7" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
 position = Vector2(2208, 800)
 ordinal = 7
-monster = NodePath("../../../Gamepieces/Slime_07")
+monster = NodePath("")
 
 [node name="Controls" type="Control" parent="CombatDaemon"]
 layout_mode = 3

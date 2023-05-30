@@ -21,6 +21,7 @@ func _interact():
 		new_position.y += 1
 	myself.move_speed = myself.move_speed / 3
 	myself.get_node("%PassiveAiController").go_to_cell(new_position)
+	FieldEvents.enable_player_input.emit()
 	# When finished moving, reset the move speed.
 	when_arrived()
 	return false

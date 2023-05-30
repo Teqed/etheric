@@ -1,6 +1,4 @@
-extends Interaction
-
-var resource = load("res://dialogue/crab_town/crab.dialogue")
+extends InteractionDialogue
 
 func _interact():
 	show_dialogue_balloon(resource)

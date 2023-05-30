@@ -20,6 +20,8 @@ extends Node
 func _ready() -> void:
 	randomize()
 	place_camera_at_focused_game_piece()
+	FieldEvents.enable_player_input.connect(_enable_input)
+	FieldEvents.disable_player_input.connect(_disable_input)
 
 
 func place_camera_at_focused_game_piece() -> void:
@@ -67,3 +69,9 @@ func set_is_active(value: bool) -> void:
 
 	for controller in get_tree().get_nodes_in_group(PlayerController.GROUP_NAME):
 		(controller as PlayerController).is_active = is_active
+
+func _enable_input() -> void:
+	set_is_active(true)
+
+func _disable_input() -> void:
+	set_is_active(false)

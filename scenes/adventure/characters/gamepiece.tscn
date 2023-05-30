@@ -1,18 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://b626e0bngfvjj"]
+[gd_scene load_steps=9 format=3 uid="uid://b626e0bngfvjj"]
 
 [ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/gamepiece.gd" id="1_xhsbn"]
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="2_6hg4y"]
-[ext_resource type="Resource" uid="uid://cvr7elotd14lc" path="res://scripts/adventure/interactions/default_interaction.tres" id="3_5wlit"]
+[ext_resource type="Resource" uid="uid://l0g0tbxusldw" path="res://resources/characters/textures/adult_red_dragon_gfx.tres" id="3_wq30o"]
 [ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/controllers/passive_controller.gd" id="4_bxv12"]
+[ext_resource type="Script" path="res://scripts/adventure/field/gamepieces/animation/gamepiece_animation.gd" id="4_pa88h"]
+[ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/characters/textures/slime.tres" id="5_16moc"]
+[ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv" path="res://resources/characters/animations/standard_animations.res" id="6_vwlnw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ym0r2"]
-radius = 24.4
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjjp5"]
+size = Vector2(64, 64)
 
-[node name="Gamepiece" type="Node2D"]
+[node name="Gamepiece" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_xhsbn")
 gameboard = ExtResource("2_6hg4y")
-interaction = ExtResource("3_5wlit")
+gfx_resources = ExtResource("3_wq30o")
 
 [node name="PassiveAiController" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -32,10 +37,21 @@ update_scale = false
 update_rotation = false
 update_scale = false
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 7
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ym0r2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kjjp5")
 debug_color = Color(0.690196, 0.188235, 0.380392, 0.419608)
+
+[node name="GFX" type="Marker2D" parent="."]
+script = ExtResource("4_pa88h")
+
+[node name="Sprite2D" type="Sprite2D" parent="GFX"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_16moc")
+hframes = 16
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GFX"]
+autoplay = "idle_s"
+libraries = {
+"": ExtResource("6_vwlnw")
+}
