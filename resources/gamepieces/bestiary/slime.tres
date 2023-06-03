@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Monster" load_steps=3 format=3 uid="uid://or8lbp8wsoi7"]
+[gd_resource type="Resource" script_class="BestiaryEntry" load_steps=3 format=3 uid="uid://or8lbp8wsoi7"]
 
 [ext_resource type="Script" path="res://scripts/gamepieces/bestiary_entry.gd" id="1_bbl8l"]
 [ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/gamepieces/textures/slime.tres" id="1_wyba7"]

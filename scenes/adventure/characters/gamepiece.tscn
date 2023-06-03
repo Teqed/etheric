@@ -1,21 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://b626e0bngfvjj"]
+[gd_scene load_steps=9 format=3 uid="uid://b626e0bngfvjj"]
 
 [ext_resource type="Script" path="res://scripts/gamepieces/gamepiece.gd" id="1_58jdw"]
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="2_6hg4y"]
+[ext_resource type="Resource" uid="uid://or8lbp8wsoi7" path="res://resources/gamepieces/bestiary/slime.tres" id="3_d3rhg"]
 [ext_resource type="Script" path="res://scripts/gamepieces/controllers/passive_controller.gd" id="4_bxv12"]
 [ext_resource type="Script" path="res://scripts/gamepieces/animation/gamepiece_animation.gd" id="4_ggqi6"]
-[ext_resource type="Texture2D" uid="uid://bbfehut14176f" path="res://resources/gamepieces/textures/adult_red_dragon.tres" id="5_qjmqc"]
 [ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv" path="res://resources/gamepieces/animations/standard_animations.res" id="6_f2mpe"]
+[ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/gamepieces/textures/slime.tres" id="6_mr4nn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjjp5"]
 size = Vector2(64, 64)
 
-[node name="Gamepiece" type="CharacterBody2D"]
+[node name="Slime_0" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_58jdw")
 gameboard = ExtResource("2_6hg4y")
+bestiary_entry = ExtResource("3_d3rhg")
 
 [node name="PassiveAiController" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -44,7 +46,7 @@ script = ExtResource("4_ggqi6")
 
 [node name="Sprite2D" type="Sprite2D" parent="GFX"]
 scale = Vector2(4, 4)
-texture = ExtResource("5_qjmqc")
+texture = ExtResource("6_mr4nn")
 hframes = 16
 vframes = 9
 

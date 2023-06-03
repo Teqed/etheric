@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Monster" load_steps=3 format=3 uid="uid://clxpet8ouoojs"]
+[gd_resource type="Resource" script_class="BestiaryEntry" load_steps=3 format=3 uid="uid://clxpet8ouoojs"]
 
 [ext_resource type="Texture2D" uid="uid://bbfehut14176f" path="res://resources/gamepieces/textures/adult_red_dragon.tres" id="1_5b1gv"]
 [ext_resource type="Script" path="res://scripts/gamepieces/bestiary_entry.gd" id="1_dwbhb"]

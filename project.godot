@@ -34,8 +34,8 @@ config/icon="res://assets/misc/ss-logo.svg"
 Global="*res://scripts/global.gd"
 Events="*res://scripts/events.gd"
 FieldEvents="*res://scripts/gameboard/field/global_field_events.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SaveMan="*res://scripts/savegames/save_man.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -57,7 +57,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/AsepriteWizard/plugin.cfg", "res://addons/dictionary_inspector/plugin.cfg", "res://addons/inspector_extender/plugin.cfg", "res://addons/unused_md5_file_cleaner/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [gui]
 
