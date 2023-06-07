@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://xdr34oppohu6"]
+[gd_scene load_steps=25 format=3 uid="uid://xdr34oppohu6"]
 
 [ext_resource type="Script" path="res://scripts/gameboard/field/field.gd" id="1_tkpv7"]
 [ext_resource type="Texture2D" uid="uid://dq8ol0whj6t3y" path="res://assets/terrain/tilesets/RPG tileset (full) v1.6.png" id="2_26bdm"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dtvr6mvfc8n3a" path="res://assets/misc/light.png" id="17_x1ypm"]
 [ext_resource type="Script" path="res://scripts/gameboard/debug_map_boundaries.gd" id="18_8bwjt"]
 [ext_resource type="Script" path="res://scripts/PointLight2D_slide.gd" id="18_66hlo"]
+[ext_resource type="Resource" uid="uid://cvr7elotd14lc" path="res://resources/gamepieces/interactions/default_interaction.tres" id="18_j8cw2"]
+[ext_resource type="Resource" uid="uid://dfc2n4264ycpr" path="res://resources/gamepieces/bestiary/wood_sign.tres" id="19_kpctm"]
 [ext_resource type="AudioStream" uid="uid://br0jfuv0qwqds" path="res://assets/sfx/music/JRPG Music Pack #1 [Exploration] by Juhani Junkala/Exploration5 - Sneaking Around.ogg" id="19_wfdln"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rt3t"]
@@ -5151,3 +5153,10 @@ bestiary_entry = ExtResource("16_k63qo")
 position = Vector2(1120, 352)
 monster_id = 1
 bestiary_entry = ExtResource("17_0ljn6")
+interaction = ExtResource("18_j8cw2")
+
+[node name="Wood_sign_0" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
+position = Vector2(1184, 544)
+monster_id = 3
+bestiary_entry = ExtResource("19_kpctm")
+interaction = ExtResource("18_j8cw2")

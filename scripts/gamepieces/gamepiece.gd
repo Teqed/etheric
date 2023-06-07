@@ -60,7 +60,7 @@ const GROUP_NAME: = "_GAMEPIECES"
 ## When set, the gamepiece will consult the bestiary to look up the monster's resources.
 ## These will be applied to the gamepiece's descendants, such as its [Sprite2D] and
 ## [member monster_id].
-@export_enum("Slime", "Adult Red Dragon", "Sorcerer") var monster_id: int:
+@export_enum("Slime", "Adult Red Dragon", "Sorcerer", "Wood Sign") var monster_id: int:
 	set(value):
 		monster_id = value
 		update_monster()
