@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BestiaryEntry" load_steps=3 format=3 uid="uid://dfc2n4264ycpr"]
+
+[ext_resource type="Texture2D" uid="uid://dy7cr14n08chm" path="res://resources/gamepieces/textures/crate.tres" id="1_wrvqq"]
+[ext_resource type="Script" path="res://scripts/gamepieces/bestiary_entry.gd" id="2_fb61j"]
+
+[resource]
+resource_name = "Wood Crate"
+script = ExtResource("2_fb61j")
+monster_id = 3
+canvas_texture = ExtResource("1_wrvqq")
+greeting = "..."
+experience_reward = 0
+health = 100
+attack = 10
+defense = 10
+speed = 10
+energy = 10
