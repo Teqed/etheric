@@ -5007,15 +5007,9 @@ is_active = true
 position = Vector2(232, 113.6)
 color = Color(0.882353, 0.890196, 0.988235, 1)
 
-[node name="Nighttime" type="CanvasModulate" parent="."]
-visible = false
-position = Vector2(232, 113.6)
-color = Color(0.262745, 0.2, 0.482353, 1)
+[node name="Lighting" type="Node2D" parent="Daytime"]
 
-[node name="Lighting" type="Node2D" parent="."]
-position = Vector2(232, 113.6)
-
-[node name="PointDRIFT" type="PointLight2D" parent="Lighting"]
+[node name="PointDRIFT" type="PointLight2D" parent="Daytime/Lighting"]
 position = Vector2(-296, -144)
 color = Color(0.776471, 0.858824, 0.494118, 1)
 energy = 0.15
@@ -5027,7 +5021,7 @@ texture_scale = 20.0
 script = ExtResource("18_66hlo")
 speed = 5
 
-[node name="PointOVERHEAD" type="PointLight2D" parent="Lighting"]
+[node name="PointOVERHEAD" type="PointLight2D" parent="Daytime/Lighting"]
 position = Vector2(360, -433.6)
 color = Color(0.262745, 0.262745, 0.262745, 1)
 shadow_color = Color(0.101961, 0, 0.188235, 1)
@@ -5037,7 +5031,7 @@ texture = ExtResource("17_x1ypm")
 texture_scale = 15.0
 height = 100.0
 
-[node name="PointOVERHEAD2" type="PointLight2D" parent="Lighting"]
+[node name="PointOVERHEAD2" type="PointLight2D" parent="Daytime/Lighting"]
 visible = false
 position = Vector2(-600, 54.4)
 energy = 0.5
@@ -5045,6 +5039,11 @@ shadow_color = Color(0.101961, 0, 0.188235, 1)
 shadow_filter = 2
 shadow_filter_smooth = 6.5
 texture = ExtResource("17_x1ypm")
+
+[node name="Nighttime" type="CanvasModulate" parent="."]
+visible = false
+position = Vector2(232, 113.6)
+color = Color(0.262745, 0.2, 0.482353, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(232, 113.6)
