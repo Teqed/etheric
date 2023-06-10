@@ -36,6 +36,7 @@ Events="*res://scripts/events.gd"
 FieldEvents="*res://scripts/gameboard/field/global_field_events.gd"
 SaveMan="*res://scripts/savegames/save_man.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Bestiary="*res://scripts/gamepieces/bestiary.gd"
 
 [display]
 
@@ -57,7 +58,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/dictionary_inspector/plugin.cfg", "res://addons/inspector_extender/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [gui]
 

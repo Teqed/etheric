@@ -1,4 +1,4 @@
-@tool
+# @tool
 ## The BestiaryEntry class provides a way to provide a gamepiece
 ## an appearance and behavior. It will be loaded by a gamepiece and apply the
 ## textures within to its Sprite2D.

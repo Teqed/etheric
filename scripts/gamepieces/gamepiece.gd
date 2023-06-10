@@ -36,12 +36,14 @@ signal push_ended
 
 const GROUP_NAME: = "_GAMEPIECES"
 
+## The gamepiece will traverse a movement path at [code]move_speed[/code] pixels per second.
+@export var move_speed: = 160.0
+
+@export_group("Physics")
 ## The [Gameboard] object used to tie the gamepiece to the gameboard. A gamepiece without a valid
 ## gameboard reference will produce errors, stopping the program.
-@export var gameboard: Gameboard = preload('res://resources/gameboard/default_gameboard.tres'):
-	set(value):
-		gameboard = value
-		update_configuration_warnings()
+@export var gameboard: Gameboard = load(
+	'res://resources/gameboard/default_gameboard.tres')
 
 ## A gamepiece may block movement into the cell it currently occupies. To do so, the gamepiece also
 ## requires a descendant [CollisionObject2D] with a valid collision shape.
@@ -52,9 +54,10 @@ const GROUP_NAME: = "_GAMEPIECES"
 			blocks_movement_changed.emit()
 		update_configuration_warnings()
 
-## The gamepiece will traverse a movement path at [code]move_speed[/code] pixels per second.
-@export var move_speed: = 160.0
+## Some gamepieces are monsters that can participate in combat.
+@export_category("Monster")
 
+@export_group("Bestiary")
 ## The assigned monster ID for the gamepiece, if any. This is used to look up the monster's
 ## resources, such as its stats and behavior and appearance.
 ## When set, the gamepiece will consult the bestiary to look up the monster's resources.
@@ -64,19 +67,38 @@ const GROUP_NAME: = "_GAMEPIECES"
 	set(value):
 		monster_id = value
 		update_monster()
-		update_configuration_warnings()
 
-## Some gamepieces are monsters that can participate in combat. The [BestiaryEntry] object
-## provides the monster's stats and abilities.
+## The [BestiaryEntry] object provides the monster's stats and abilities.
 @export var bestiary_entry: BestiaryEntry
 
+@export_group("Stats")
+## The monster's potential determines its stats and abilities.
+@export var potential: = 1:
+	set(value):
+		potential = value
+@export var health: = bestiary_entry.health * potential if bestiary_entry.health else 1:
+	set(value):
+		update_monster_stat(value, bestiary_entry.health)
+@export var attack: = bestiary_entry.attack * potential if bestiary_entry.attack else 1:
+	set(value):
+		update_monster_stat(value, bestiary_entry.attack)
+@export var defense: = bestiary_entry.defense * potential if bestiary_entry.defense else 1:
+	set(value):
+		update_monster_stat(value, bestiary_entry.defense)
+@export var speed: = bestiary_entry.speed * potential if bestiary_entry.speed else 1:
+	set(value):
+		update_monster_stat(value, bestiary_entry.speed)
+@export var energy: = 0:
+	set(value):
+		energy = value
+
+@export_group("Team & Combat Status")
 ## The gamepiece will belong to one of two teams,
 ## [code]Team.PLAYER[/code], [code]Team.ENEMY[/code]
 ## The team is used to determine which gamepieces are friendly or hostile to one another.
 @export_enum("Player", "Enemy") var team: int = 1:
 	set(value):
 		team = value
-		update_configuration_warnings()
 
 ## If the monster is friendly, it either exists in the player's collection or is a party member.
 ## If the monster is an enemy, it belongs to the 'wild' collection, and the 'crashers' party.
@@ -84,11 +106,11 @@ const GROUP_NAME: = "_GAMEPIECES"
 @export_enum("No", "Yes") var combat: int = 0:
 	set(value):
 		combat = value
-		update_configuration_warnings()
+@export_group("")
 
 ## The interaction object that handles interactions with this gamepiece.
 ## Uses the derivatives of [Interaction] to handle interactions.
-@export var interaction: Interaction = preload(
+@export var interaction: Interaction = load(
 	'res://resources/gamepieces/interactions/default_interaction.tres')
 
 ## The gamepiece's position is snapped to whichever cell it currently occupies.
@@ -128,6 +150,10 @@ var direction: = Vector2.ZERO:
 @onready var _path: = $Decoupler/Path2D as Path2D
 @onready var _follower: = $Decoupler/Path2D/PathFollow2D as PathFollow2D
 
+## Fetch a reference to the bestiary from the root node.
+## Singleton nodes are not available in the editor, so this is done in _ready().
+@onready var _bestiary = get_node("/root/Bestiary") as Bestiary
+
 ## When this gamepiece is interacted with, it attempts to use the [code]interact()[/code]
 ## method to handle the interaction.
 func interact(actor: Gamepiece) -> bool:
@@ -149,11 +175,19 @@ func update_gfx():
 ## It looks up the monster's resources in the bestiary and applies them to the gamepiece.
 func update_monster():
 	if monster_id != null:
-		var bestiary = Bestiary.new()
-		bestiary_entry = bestiary.get_bestiary_entry_resource(monster_id)
+		bestiary_entry = _bestiary.get_bestiary_entry_resource(monster_id)
+		print(bestiary_entry)
 		update_gfx()
 		# Set your name to the monster's name.
 		name = bestiary_entry.resource_name + "_0"
+
+func update_monster_stat(value, stat):
+	if value < stat * potential:
+		value = stat * potential
+	else:
+		value = stat * potential
+	update_monster()
+	update_configuration_warnings()
 
 func _ready() -> void:
 	set_physics_process(false)
