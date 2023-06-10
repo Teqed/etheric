@@ -76,19 +76,23 @@ const GROUP_NAME: = "_GAMEPIECES"
 @export var potential: = 1:
 	set(value):
 		potential = value
-@export var health: = bestiary_entry.health * potential if bestiary_entry.health else 1:
+@export var health: int:
 	set(value):
-		update_monster_stat(value, bestiary_entry.health)
-@export var attack: = bestiary_entry.attack * potential if bestiary_entry.attack else 1:
+		health = value
+		# health = update_monster_stat(value, bestiary_entry.health)
+@export var attack: int:
 	set(value):
-		update_monster_stat(value, bestiary_entry.attack)
-@export var defense: = bestiary_entry.defense * potential if bestiary_entry.defense else 1:
+		attack = value
+		# attack = update_monster_stat(value, bestiary_entry.attack)
+@export var defense: int:
 	set(value):
-		update_monster_stat(value, bestiary_entry.defense)
-@export var speed: = bestiary_entry.speed * potential if bestiary_entry.speed else 1:
+		defense = value
+		# defense = update_monster_stat(value, bestiary_entry.defense)
+@export var speed: int:
 	set(value):
-		update_monster_stat(value, bestiary_entry.speed)
-@export var energy: = 0:
+		speed = value
+		# speed = update_monster_stat(value, bestiary_entry.speed)
+@export var energy: int:
 	set(value):
 		energy = value
 
@@ -176,18 +180,26 @@ func update_gfx():
 func update_monster():
 	if monster_id != null:
 		bestiary_entry = _bestiary.get_bestiary_entry_resource(monster_id)
-		print(bestiary_entry)
+		print("bestiary_entry: ", str(bestiary_entry))
+		print("bestiary_entry.resource_name: ", str(bestiary_entry.resource_name))
+		print("bestiary_entry.health: ", str(bestiary_entry.health))
 		update_gfx()
+		update_stats()
 		# Set your name to the monster's name.
 		name = bestiary_entry.resource_name + "_0"
 
-func update_monster_stat(value, stat):
-	if value < stat * potential:
-		value = stat * potential
-	else:
-		value = stat * potential
-	update_monster()
-	update_configuration_warnings()
+func update_stats():
+	self.set('health', bestiary_entry.health * potential if bestiary_entry.health else 1)
+	self.set('attack', bestiary_entry.attack * potential if bestiary_entry.attack else 1)
+	self.set('defense', bestiary_entry.defense * potential if bestiary_entry.defense else 1)
+	self.set('speed', bestiary_entry.speed * potential if bestiary_entry.speed else 1)
+
+# func update_monster_stat(value, stat) -> int:
+# 	if value < stat * potential:
+# 		value = value
+# 	else:
+# 		value = stat * potential
+# 	return value
 
 func _ready() -> void:
 	set_physics_process(false)

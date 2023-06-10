@@ -21,4 +21,4 @@ health = 100
 attack = 10
 defense = 10
 speed = 10
-energy = 10
+energy = 0

@@ -5146,45 +5146,30 @@ y_sort_enabled = true
 
 [node name="Slime_0" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
 position = Vector2(992, 416)
-health = 0
-attack = 0
-defense = 0
-speed = 0
 team = 0
 
 [node name="Sorcerer_0" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
 position = Vector2(1312, 416)
 monster_id = 2
 bestiary_entry = ExtResource("16_k63qo")
-health = 0
-attack = 0
-defense = 0
-speed = 0
 team = 0
 
 [node name="Adult Red Dragon_0" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
 position = Vector2(1120, 352)
 monster_id = 1
 bestiary_entry = ExtResource("17_0ljn6")
-health = 0
-attack = 0
-defense = 0
-speed = 0
 team = 0
 
 [node name="Slime_1" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
 position = Vector2(878, 416)
-health = 0
-attack = 0
-defense = 0
-speed = 0
 team = 0
 
-[node name="Slime_2" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
-position = Vector2(992, 268)
+[node name="Adult Red Dragon_1" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
+position = Vector2(992, 320)
 monster_id = 1
-health = 0
-attack = 0
-defense = 0
-speed = 0
+bestiary_entry = ExtResource("17_0ljn6")
+health = 100
+attack = 10
+defense = 10
+speed = 10
 team = 0
