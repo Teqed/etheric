@@ -1,13 +1,20 @@
-[gd_resource type="Resource" script_class="BestiaryEntry" load_steps=3 format=3 uid="uid://or8lbp8wsoi7"]
+[gd_resource type="Resource" script_class="BestiaryEntry" load_steps=6 format=3 uid="uid://or8lbp8wsoi7"]
 
+[ext_resource type="Texture2D" uid="uid://c7xact5ph6h11" path="res://assets/characters/slime.png" id="1_1btnl"]
 [ext_resource type="Script" path="res://scripts/gamepieces/bestiary_entry.gd" id="1_bbl8l"]
-[ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/gamepieces/textures/slime.tres" id="1_wyba7"]
+[ext_resource type="Texture2D" uid="uid://dxqlfe4xb0tbk" path="res://assets/characters/slime_n.png" id="2_bllkj"]
+[ext_resource type="Texture2D" uid="uid://bcnma6dyca44q" path="res://assets/characters/slime_s.png" id="3_mwjn0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xbgfp"]
+diffuse_texture = ExtResource("1_1btnl")
+normal_texture = ExtResource("2_bllkj")
+specular_texture = ExtResource("3_mwjn0")
 
 [resource]
 resource_name = "Slime"
 script = ExtResource("1_bbl8l")
 monster_id = 0
-canvas_texture = ExtResource("1_wyba7")
+canvas_texture = SubResource("CanvasTexture_xbgfp")
 greeting = "Hello, I am a monster!"
 experience_reward = 0
 health = 100
