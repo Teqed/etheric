@@ -38,7 +38,7 @@ const GROUP_NAME: = "_GAMEPIECES"
 
 ## The [Gameboard] object used to tie the gamepiece to the gameboard. A gamepiece without a valid
 ## gameboard reference will produce errors, stopping the program.
-@export var gameboard: Gameboard:
+@export var gameboard: Gameboard = preload('res://resources/gameboard/default_gameboard.tres'):
 	set(value):
 		gameboard = value
 		update_configuration_warnings()
@@ -73,7 +73,7 @@ const GROUP_NAME: = "_GAMEPIECES"
 ## The gamepiece will belong to one of two teams,
 ## [code]Team.PLAYER[/code], [code]Team.ENEMY[/code]
 ## The team is used to determine which gamepieces are friendly or hostile to one another.
-@export_enum("Player", "Enemy") var team: int:
+@export_enum("Player", "Enemy") var team: int = 1:
 	set(value):
 		team = value
 		update_configuration_warnings()
@@ -81,15 +81,15 @@ const GROUP_NAME: = "_GAMEPIECES"
 ## If the monster is friendly, it either exists in the player's collection or is a party member.
 ## If the monster is an enemy, it belongs to the 'wild' collection, and the 'crashers' party.
 ## They both use this flag to determine which state the monster is in.
-@export_enum("Collection", "Party") var party: int:
+@export_enum("No", "Yes") var combat: int = 0:
 	set(value):
-		party = value
+		combat = value
 		update_configuration_warnings()
 
 ## The interaction object that handles interactions with this gamepiece.
-## Accepts [code]null[/code] to disable interaction.
 ## Uses the derivatives of [Interaction] to handle interactions.
-@export var interaction: Interaction
+@export var interaction: Interaction = preload(
+	'res://resources/gamepieces/interactions/default_interaction.tres')
 
 ## The gamepiece's position is snapped to whichever cell it currently occupies.
 ## [br][br]The gamepiece will move by steps, being placed at whichever cell it currently occupies.

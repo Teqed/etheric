@@ -26,7 +26,7 @@ const _DIRECTION_MAPPINGS: = {
 ## The extents of the playable area.
 ## [br][br][b]Note:[/b] The boundaries must only include positive coordinates. Negative coordinates
 ## increase calculation complexity.
-@export var boundaries: = Rect2i(0, 0, 10, 10):
+@export var boundaries: = Rect2i(0, 0, 100, 100):
 	set(value):
 		boundaries = value
 
