@@ -17,7 +17,7 @@ func update():
 			var entities_with_component_ordinal_position = world.get_ids_with_component(&"Slot")
 			var party_component = world.get_component(&"Party")
 			for id in entities_with_component_ordinal_position:
-				var position = ordinal_position_component[id]
+				# var position = ordinal_position_component[id]
 				if party_component[id] == 1:
 					pass
 					# Events.populate_slot.emit(position, slime)
