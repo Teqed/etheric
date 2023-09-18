@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="BestiaryEntry" load_steps=3 format=3 uid="uid://dfc2n4264ycpr"]
+[gd_resource type="Resource" script_class="BestiaryEntry" load_steps=4 format=3 uid="uid://dfc2n4264ycpr"]
 
-[ext_resource type="Texture2D" uid="uid://dy7cr14n08chm" path="res://resources/gamepieces/textures/crate.tres" id="1_wrvqq"]
+[ext_resource type="Texture2D" uid="uid://c4uqvl3yfywpo" path="res://assets/characters/Crate.png" id="1_7f5j2"]
 [ext_resource type="Script" path="res://scripts/gamepieces/bestiary_entry.gd" id="2_fb61j"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mjo43"]
+diffuse_texture = ExtResource("1_7f5j2")
 
 [resource]
 resource_name = "Wood Crate"
 script = ExtResource("2_fb61j")
 monster_id = 3
-canvas_texture = ExtResource("1_wrvqq")
+canvas_texture = SubResource("CanvasTexture_mjo43")
 greeting = "..."
 experience_reward = 0
 health = 100

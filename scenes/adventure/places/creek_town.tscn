@@ -5004,7 +5004,7 @@ cell_size = Vector2i(64, 64)
 [node name="Gameboard" type="Node2D" node_paths=PackedStringArray("focused_game_piece")]
 y_sort_enabled = true
 script = ExtResource("1_tkpv7")
-focused_game_piece = NodePath("TileMap/Gamepieces/Slime_0")
+focused_game_piece = NodePath("TileMap/Gamepieces/Sorcerer_1")
 is_active = true
 
 [node name="Daytime" type="CanvasModulate" parent="."]
@@ -5144,20 +5144,24 @@ metadata/_edit_lock_ = true
 [node name="Gamepieces" type="Node2D" parent="TileMap"]
 y_sort_enabled = true
 
-[node name="Slime_0" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
+[node name="Sorcerer_1" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
 position = Vector2(992, 416)
+monster_id = 2
+bestiary_entry = ExtResource("16_k63qo")
+defense = 20
+speed = 20
 team = 0
 
 [node name="Sorcerer_0" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
 position = Vector2(1312, 416)
 monster_id = 2
 bestiary_entry = ExtResource("16_k63qo")
+defense = 20
+speed = 20
 team = 0
 
-[node name="Adult Red Dragon_0" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
+[node name="Slime_0" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
 position = Vector2(1120, 352)
-monster_id = 1
-bestiary_entry = ExtResource("17_0ljn6")
 team = 0
 
 [node name="Slime_1" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
@@ -5165,11 +5169,12 @@ position = Vector2(878, 416)
 team = 0
 
 [node name="Adult Red Dragon_1" parent="TileMap/Gamepieces" instance=ExtResource("15_kig5x")]
-position = Vector2(992, 320)
+position = Vector2(992, 283)
 monster_id = 1
 bestiary_entry = ExtResource("17_0ljn6")
-health = 100
-attack = 10
-defense = 10
-speed = 10
+potential = 4
+health = 800
+attack = 80
+defense = 80
+speed = 40
 team = 0

@@ -22,7 +22,7 @@ resources_spreadsheet_view/context_menu_on_leftclick=false
 
 config/name="Etheric"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.0", "GL Compatibility")
+config/features=PackedStringArray("4.1", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
@@ -35,8 +35,8 @@ Global="*res://scripts/global.gd"
 Events="*res://scripts/events.gd"
 FieldEvents="*res://scripts/gameboard/field/global_field_events.gd"
 SaveMan="*res://scripts/savegames/save_man.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Bestiary="*res://scripts/gamepieces/bestiary.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -58,7 +58,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/dictionary_inspector/plugin.cfg", "res://addons/inspector_extender/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [gui]
 
@@ -79,7 +79,7 @@ debug_01={
 }
 select={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 interact={
@@ -105,7 +105,7 @@ debug_04={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/test.dialogue", "res://dialogue/crab_town/greeter.dialogue", "res://addons/dialogue_manager/examples/dialogue.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_point_n_click.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_visual_novel.dialogue", "res://addons/dialogue_manager/examples/dialogue_with_input.dialogue", "res://dialogue/crab_town/knight.dialogue", "res://dialogue/crab_town/crab.dialogue", "res://resources/gamepieces/interactions/dialogue/knight.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/test.dialogue", "res://dialogue/crab_town/greeter.dialogue", "res://dialogue/crab_town/knight.dialogue", "res://dialogue/crab_town/crab.dialogue", "res://resources/gamepieces/interactions/dialogue/knight.dialogue")
 
 [rendering]
 

@@ -1,23 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://b626e0bngfvjj"]
+[gd_scene load_steps=13 format=3 uid="uid://b626e0bngfvjj"]
 
 [ext_resource type="Script" path="res://scripts/gamepieces/gamepiece.gd" id="1_58jdw"]
 [ext_resource type="Resource" uid="uid://ccd7nys7e4bdc" path="res://resources/gameboard/default_gameboard.tres" id="2_6hg4y"]
+[ext_resource type="Resource" uid="uid://cvr7elotd14lc" path="res://resources/gamepieces/interactions/default_interaction.tres" id="2_vdkb5"]
 [ext_resource type="Resource" uid="uid://or8lbp8wsoi7" path="res://resources/gamepieces/bestiary/slime.tres" id="3_d3rhg"]
 [ext_resource type="Script" path="res://scripts/gamepieces/controllers/passive_controller.gd" id="4_bxv12"]
 [ext_resource type="Script" path="res://scripts/gamepieces/animation/gamepiece_animation.gd" id="4_ggqi6"]
 [ext_resource type="AnimationLibrary" uid="uid://dyiitvo4crjsv" path="res://resources/gamepieces/animations/standard_animations.res" id="6_f2mpe"]
-[ext_resource type="Texture2D" uid="uid://7t16baq8l6pc" path="res://resources/gamepieces/textures/slime.tres" id="6_mr4nn"]
+[ext_resource type="Texture2D" uid="uid://c7xact5ph6h11" path="res://assets/characters/slime.png" id="7_saktu"]
+[ext_resource type="Texture2D" uid="uid://dxqlfe4xb0tbk" path="res://assets/characters/slime_n.png" id="8_43xo8"]
+[ext_resource type="Texture2D" uid="uid://bcnma6dyca44q" path="res://assets/characters/slime_s.png" id="9_fbcow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjjp5"]
 size = Vector2(64, 64)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xbgfp"]
+diffuse_texture = ExtResource("7_saktu")
+normal_texture = ExtResource("8_43xo8")
+specular_texture = ExtResource("9_fbcow")
 
 [node name="Slime_0" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_58jdw")
+interaction = ExtResource("2_vdkb5")
 gameboard = ExtResource("2_6hg4y")
 bestiary_entry = ExtResource("3_d3rhg")
+health = 100
+attack = 10
+defense = 10
+speed = 10
 
 [node name="PassiveAiController" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -46,7 +59,7 @@ script = ExtResource("4_ggqi6")
 
 [node name="Sprite2D" type="Sprite2D" parent="GFX"]
 scale = Vector2(4, 4)
-texture = ExtResource("6_mr4nn")
+texture = SubResource("CanvasTexture_xbgfp")
 hframes = 16
 vframes = 9
 

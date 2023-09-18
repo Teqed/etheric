@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bn20f7mq60o72"]
 
-[ext_resource type="Script" path="res://examples/portraits_balloon/balloon.gd" id="1_ppjps"]
-[ext_resource type="Texture2D" uid="uid://c7vjtc8h042l5" path="res://examples/portraits_balloon/portraits/nathan_small.png" id="2_0xwnj"]
-[ext_resource type="AudioStream" uid="uid://cng7ex3hvatxl" path="res://examples/portraits_balloon/talk.wav" id="2_6sd4o"]
+[ext_resource type="Script" path="res://dialogue/balloons/portraits_balloon/balloon.gd" id="1_ppjps"]
+[ext_resource type="Texture2D" uid="uid://c7vjtc8h042l5" path="res://dialogue/balloons/portraits_balloon/portraits/nathan_small.png" id="2_0xwnj"]
+[ext_resource type="AudioStream" uid="uid://cng7ex3hvatxl" path="res://dialogue/balloons/portraits_balloon/talk.wav" id="2_6sd4o"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_d5jvv"]
 
 [sub_resource type="Theme" id="Theme_isg48"]

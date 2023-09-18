@@ -36,6 +36,11 @@ signal push_ended
 
 const GROUP_NAME: = "_GAMEPIECES"
 
+## The interaction object that handles interactions with this gamepiece.
+## Uses the derivatives of [Interaction] to handle interactions.
+@export var interaction: Interaction = load(
+	'res://resources/gamepieces/interactions/default_interaction.tres')
+
 ## The gamepiece will traverse a movement path at [code]move_speed[/code] pixels per second.
 @export var move_speed: = 160.0
 
@@ -63,7 +68,7 @@ const GROUP_NAME: = "_GAMEPIECES"
 ## When set, the gamepiece will consult the bestiary to look up the monster's resources.
 ## These will be applied to the gamepiece's descendants, such as its [Sprite2D] and
 ## [member monster_id].
-@export_enum("Slime", "Adult Red Dragon", "Sorcerer", "Wood Sign") var monster_id: int:
+@export_enum("Slime", "Adult Red Dragon", "Sorcerer", "Wood Crate") var monster_id: int:
 	set(value):
 		monster_id = value
 		update_monster()
@@ -111,11 +116,6 @@ const GROUP_NAME: = "_GAMEPIECES"
 	set(value):
 		combat = value
 @export_group("")
-
-## The interaction object that handles interactions with this gamepiece.
-## Uses the derivatives of [Interaction] to handle interactions.
-@export var interaction: Interaction = load(
-	'res://resources/gamepieces/interactions/default_interaction.tres')
 
 ## The gamepiece's position is snapped to whichever cell it currently occupies.
 ## [br][br]The gamepiece will move by steps, being placed at whichever cell it currently occupies.

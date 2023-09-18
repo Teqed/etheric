@@ -90,44 +90,36 @@ script = ExtResource("22_y3rcs")
 
 [node name="Slots" type="Node2D" parent="CombatDaemon"]
 
-[node name="CombatSlot0" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot0" parent="CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
 position = Vector2(867, 800)
-monster = NodePath("")
 
-[node name="CombatSlot1" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot1" parent="CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
 position = Vector2(1056, 800)
 ordinal = 1
-monster = NodePath("")
 
-[node name="CombatSlot2" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot2" parent="CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
 position = Vector2(1248, 800)
 ordinal = 2
-monster = NodePath("")
 
-[node name="CombatSlot3" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot3" parent="CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
 position = Vector2(1440, 800)
 ordinal = 3
-monster = NodePath("")
 
-[node name="CombatSlot4" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot4" parent="CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
 position = Vector2(1632, 800)
 ordinal = 4
-monster = NodePath("")
 
-[node name="CombatSlot5" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot5" parent="CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
 position = Vector2(1824, 800)
 ordinal = 5
-monster = NodePath("")
 
-[node name="CombatSlot6" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot6" parent="CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
 position = Vector2(2016, 800)
 ordinal = 6
-monster = NodePath("")
 
-[node name="CombatSlot7" parent="CombatDaemon/Slots" node_paths=PackedStringArray("monster") instance=ExtResource("24_yfdmq")]
+[node name="CombatSlot7" parent="CombatDaemon/Slots" instance=ExtResource("24_yfdmq")]
 position = Vector2(2208, 800)
 ordinal = 7
-monster = NodePath("")
 
 [node name="Controls" type="Control" parent="CombatDaemon"]
 layout_mode = 3
